@@ -146,6 +146,12 @@ void I_InputInit(void)
 // X past half travel = digital strafe. Outside a level (menus, intermission) the left stick is a
 // d-pad so it can drive the menu without the mouse-motion spam M_Responder would make of it.
 // ponytail: STICK_DEAD, TURN_MAX and MOVE_MAX are the tuning knobs; menu options if people differ
+// LEFT_STICK_MOVE 0: the test pad's left-stick Y reports 0x25E1 at rest and latches 0000/FFFF after a
+// push (raw bytes in NOTES/logs/phase4-sticks-jesse9.log), which reads as permanent forward motion.
+// The other three axes are fine. Turn this on for a pad with a healthy Y axis.
+#ifndef LEFT_STICK_MOVE
+#define LEFT_STICK_MOVE 0
+#endif
 #define STICK_DEAD 8192
 #define STICK_STRAFE 16384
 #define TURN_MAX 160
@@ -169,20 +175,24 @@ static uint32_t stick_vkeys(void)
     if (ax[4] > TRIGGER_ON || ax[5] > TRIGGER_ON) vk |= VK_TRIGGER;
     if (in_level) {
         int turn = axis_scaled(ax[2], STICK_DEAD, TURN_MAX, true);
-        int fwd = -axis_scaled(ax[1], STICK_DEAD, MOVE_MAX, false);    // HID Y grows downward
+        int fwd = LEFT_STICK_MOVE ? -axis_scaled(ax[1], STICK_DEAD, MOVE_MAX, false) : 0;    // HID Y grows downward
         if (turn || fwd) {
             event_t ev = { .type = ev_mouse, .data1 = 0, .data2 = turn, .data3 = fwd };
             D_PostEvent(&ev);
         }
+#if LEFT_STICK_MOVE
         if (ax[0] < -STICK_STRAFE) vk |= VK_LS_LEFT; else if (ax[0] > STICK_STRAFE) vk |= VK_LS_RIGHT;
+#endif
     } else {
+#if LEFT_STICK_MOVE
         if (ax[1] < -STICK_DEAD) vk |= VK_LS_UP;   else if (ax[1] > STICK_DEAD) vk |= VK_LS_DOWN;
         if (ax[0] < -STICK_DEAD) vk |= VK_LS_MLEFT; else if (ax[0] > STICK_DEAD) vk |= VK_LS_MRIGHT;
+#endif
     }
     // diagnostics: axes and report rate at most 4x a second while any stick or trigger is active
     static int64_t last_log; static uint32_t last_reports;
     int64_t now = esp_timer_get_time();
-    if (now - last_log > 250000 && (abs(ax[0]) > STICK_DEAD || abs(ax[1]) > STICK_DEAD || abs(ax[2]) > STICK_DEAD || (vk & VK_TRIGGER))) {
+    if (now - last_log > 1000000 && (abs(ax[2]) > STICK_DEAD || (vk & VK_TRIGGER))) {
         uint32_t r = ble_pad_reports();
         printf("axes L %6d %6d R %6d %6d T %5d %5d level %d, %lu reports in %lld ms\n", ax[0], ax[1], ax[2], ax[3], ax[4], ax[5], in_level,
                (unsigned long)(r - last_reports), (long long)((now - last_log) / 1000));

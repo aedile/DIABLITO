@@ -318,9 +318,18 @@ static void hidh_callback(void *arg, esp_event_base_t base, int32_t id, void *ev
         state = PAD_CONNECTED;
         ESP_LOGI(TAG, "connected: %s", found_name);
         break;
-    case ESP_HIDH_INPUT_EVENT:
+    case ESP_HIDH_INPUT_EVENT: {
+        static int64_t last_dump;
+        int64_t now = esp_timer_get_time();
+        if (now - last_dump > 250000) {   /* raw report, 4x a second, while chasing the stick decode */
+            last_dump = now;
+            char hex[3 * 20 + 1]; int n = p->input.length < 20 ? p->input.length : 20;
+            for (int i = 0; i < n; i++) snprintf(hex + 3 * i, 4, "%02x ", p->input.data[i]);
+            ESP_LOGD(TAG, "report id %u len %u: %s", p->input.report_id, (unsigned)p->input.length, hex);
+        }
         decode_report(p->input.report_id, p->input.data, p->input.length);
         break;
+    }
     case ESP_HIDH_CLOSE_EVENT:
         ESP_LOGI(TAG, "disconnected (%d)", p->close.reason);
         esp_hidh_dev_free(p->close.dev);
