@@ -1,0 +1,2257 @@
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x2c (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001a378
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875720,len:0x1a5c
+load:0x4086c110,len:0xf58
+load:0x4086e610,len:0x3074
+entry 0x4086c11a
+[0;32mI (23) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (23) boot: compile time Sep 14 2026 20:53:10[0m
+[0;32mI (24) boot: chip revision: v0.2[0m
+[0;32mI (24) boot: efuse block revision: v0.3[0m
+[0;32mI (24) qio_mode: Enabling QIO for flash chip WinBond[0m
+[0;32mI (24) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (25) boot.esp32c6: SPI Mode       : QIO[0m
+[0;32mI (25) boot.esp32c6: SPI Flash Size : 16MB[0m
+[0;32mI (25) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (26) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (27) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (27) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (28) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (28) boot:  3 wad              Unknown data     01 40 00210000 00400000[0m
+[0;32mI (29) boot:  4 saves            WiFi data        01 02 00610000 00020000[0m
+[0;32mI (30) boot: End of partition table[0m
+[0;32mI (30) esp_image: segment 0: paddr=00010020 vaddr=420c0020 size=3174ch (202572) map[0m
+[0;32mI (67) esp_image: segment 1: paddr=00041774 vaddr=40800000 size=0e8a4h ( 59556) load[0m
+[0;32mI (80) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=b1ad8h (727768) map[0m
+[0;32mI (211) esp_image: segment 3: paddr=00101b00 vaddr=4080e8a4 size=0aee0h ( 44768) load[0m
+[0;32mI (220) esp_image: segment 4: paddr=0010c9e8 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (226) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (227) boot: Disabling RNG early entropy source...[0m
+[0;32mI (228) cpu_start: Unicore app[0m
+[0;32mI (237) cpu_start: Pro cpu start user code[0m
+[0;32mI (237) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (237) app_init: Application information:[0m
+[0;32mI (237) app_init: Project name:     diablito[0m
+[0;32mI (238) app_init: App version:      1[0m
+[0;32mI (238) app_init: Compile time:     Sep 14 2026 20:53:12[0m
+[0;32mI (238) app_init: ELF file SHA256:  40e2f6c78...[0m
+[0;32mI (238) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (239) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (239) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (239) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (239) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (240) heap_init: At 40834200 len 00048410 (289 KiB): RAM[0m
+[0;32mI (240) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (240) heap_init: At 50000004 len 00003FE4 (15 KiB): RTCRAM[0m
+[0;32mI (241) spi_flash: detected chip: generic[0m
+[0;32mI (241) spi_flash: flash io: qio[0m
+[0;32mI (242) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (242) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (243) coexist: coex firmware version: a13b09d[0m
+[0;32mI (243) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (244) main_task: Started on CPU0[0m
+[0;32mI (244) main_task: Calling app_main()[0m
+[0;32mI (244) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (244) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (244) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (245) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (245) DIABLITO: DIABLITO skeleton, IDF v5.3.4, CPU 160 MHz[0m
+[0;32mI (245) DIABLITO: heap at boot: free 292996, largest block 262144, min ever 292996, dma-capable 278396[0m
+[0;32mI (246) gpio: GPIO[3]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (246) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (750) DISPLAY: ST7789 up: 280x240 landscape, SPI 80 MHz, 2 x 8960 B DMA strips[0m
+[0;32mI (750) DIABLITO: heap after display: free 273512, largest block 245760, min ever 273512, dma-capable 258912[0m
+[0;32mI (751) DIABLITO: wad partition @0x210000 size 4194304: magic IWHD, 1264 lumps, infotable @36, file 2073676 bytes[0m
+[0;32mI (751) DIABLITO: WHD mapped at 0x42100000, header via mmap: IWHD ·©ÔUDOOM1[0m
+[0;32mI (752) DIABLITO: heap after wad mmap: free 272880, largest block 245760, min ever 272880, dma-capable 258280[0m
+[0;32mI (752) DIABLITO: main task stack high-water: 14904 bytes free[0m
+[0;32mI (753) DIABLITO: .bss ends at 0x408341f8 (short-pointer window ends at 0x40840000, 48648 bytes spare)[0m
+[0;32mI (753) DIABLITO: heap before BLE: free 272880, largest block 245760, min ever 272880, dma-capable 258280[0m
+[0;32mI (766) BLE_INIT: Using main XTAL as clock source, chip ver: 2[0m
+[0;32mI (767) BLE_INIT: ble controller commit:[ca6c20b][0m
+[0;32mI (771) BLE_INIT: Bluetooth MAC: fc:01:2c:fd:fc:b2[0m
+[0;32mI (771) phy_init: phy_version 341,a6c8fe6,Jul 30 2025,18:34:11[0m
+[0;32mI (865) phy: libbtbb version: a945109, Jul 30 2025, 18:34:25[0m
+[0;32mI (872) PAD: init, saved controller: yes[0m
+[0;32mI (1073) DIABLITO: heap after BLE init: free 234296, largest block 208896, min ever 234160, dma-capable 219696[0m
+[0;32mI (1073) DIABLITO: starting Doom[0m
+                          DIABLITO Doom 3.0.0
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0x40821884, 10000 allocated for zone
+M_LoadDefaults: Load system defaults.
+W_Init: Init WADfiles.
+===========================================================================
+                            DOOM Shareware
+===========================================================================
+ DIABLITO Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - .........
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+frame 2: 34529 us total, 11689 us display, type 4
+frame 3: 12622 us total, 11900 us display, type 4
+frame 4: 15805 us total, 11647 us display, type 4
+frame 5: 28934 us total, 11640 us display, type 4
+frame 6: 28993 us total, 11641 us display, type 4
+frame 7: 28050 us total, 11641 us display, type 4
+frame 8: 28935 us total, 11631 us display, type 4
+frame 9: 28018 us total, 11639 us display, type 4
+frame 10: 29080 us total, 11660 us display, type 4
+frame 11: 27924 us total, 11642 us display, type 4
+frame 12: 29076 us total, 11652 us display, type 4
+frame 13: 28998 us total, 11645 us display, type 4
+frame 14: 27996 us total, 11655 us display, type 4
+frame 15: 28919 us total, 11637 us display, type 4
+frame 16: 28009 us total, 11641 us display, type 4
+frame 17: 29048 us total, 11645 us display, type 4
+frame 18: 27930 us total, 11631 us display, type 4
+frame 19: 29069 us total, 11647 us display, type 4
+frame 20: 29019 us total, 11651 us display, type 4
+frame 21: 28083 us total, 11774 us display, type 4
+frame 22: 28897 us total, 11642 us display, type 4
+frame 23: 28161 us total, 11711 us display, type 4
+frame 24: 28823 us total, 11636 us display, type 4
+frame 25: 28046 us total, 11656 us display, type 4
+frame 26: 28975 us total, 11641 us display, type 4
+frame 27: 28924 us total, 11630 us display, type 4
+frame 28: 28035 us total, 11638 us display, type 4
+frame 29: 29068 us total, 11653 us display, type 4
+frame 30: 27936 us total, 11636 us display, type 4
+frame 31: 29035 us total, 11645 us display, type 4
+frame 32: 28000 us total, 11645 us display, type 4
+frame 33: 28999 us total, 11645 us display, type 4
+frame 34: 28927 us total, 11630 us display, type 4
+frame 35: 28025 us total, 11641 us display, type 4
+frame 36: 29051 us total, 11644 us display, type 4
+frame 37: 27951 us total, 11643 us display, type 4
+frame 38: 29051 us total, 11645 us display, type 4
+frame 39: 27997 us total, 11646 us display, type 4
+frame 40: 28949 us total, 11642 us display, type 4
+frame 41: 29052 us total, 11644 us display, type 4
+frame 42: 27950 us total, 11641 us display, type 4
+frame 43: 28972 us total, 11631 us display, type 4
+frame 44: 28027 us total, 11641 us display, type 4
+frame 45: 28996 us total, 11640 us display, type 4
+frame 46: 27983 us total, 11631 us display, type 4
+frame 47: 29018 us total, 11641 us display, type 4
+frame 48: 28979 us total, 11631 us display, type 4
+frame 49: 28024 us total, 11641 us display, type 4
+frame 50: 29047 us total, 11643 us display, type 4
+frame 51: 27955 us total, 11642 us display, type 4
+frame 52: 29047 us total, 11645 us display, type 4
+frame 53: 27928 us total, 11631 us display, type 4
+frame 54: 29076 us total, 11646 us display, type 4
+frame 55: 28997 us total, 11645 us display, type 4
+frame 56: 27950 us total, 11641 us display, type 4
+frame 57: 28973 us total, 11631 us display, type 4
+frame 58: 28027 us total, 11641 us display, type 4
+frame 59: 29051 us total, 11645 us display, type 4
+frame 60: 27924 us total, 11630 us display, type 4
+frame 61: 29070 us total, 11646 us display, type 4
+frame 62: 29033 us total, 11651 us display, type 4
+frame 63: 28000 us total, 11686 us display, type 4
+frame 64: 28973 us total, 11641 us display, type 4
+frame 65: 27953 us total, 11645 us display, type 4
+frame 66: 29072 us total, 11651 us display, type 4
+frame 67: 27952 us total, 11640 us display, type 4
+frame 68: 28990 us total, 11641 us display, type 4
+frame 69: 29009 us total, 11638 us display, type 4
+frame 70: 27992 us total, 11640 us display, type 4
+frame 71: 29047 us total, 11655 us display, type 4
+frame 72: 27956 us total, 11644 us display, type 4
+frame 73: 29052 us total, 11651 us display, type 4
+frame 74: 27905 us total, 11630 us display, type 4
+frame 75: 29017 us total, 11640 us display, type 4
+frame 76: 28982 us total, 11633 us display, type 4
+frame 77: 28174 us total, 11746 us display, type 4
+frame 78: 29085 us total, 11817 us display, type 4
+frame 79: 27818 us total, 11639 us display, type 4
+frame 80: 28947 us total, 11642 us display, type 4
+frame 81: 27986 us total, 11637 us display, type 4
+frame 82: 29003 us total, 11641 us display, type 4
+frame 83: 29120 us total, 11640 us display, type 4
+frame 84: 27931 us total, 11643 us display, type 4
+frame 85: 28992 us total, 11637 us display, type 4
+frame 86: 28039 us total, 11657 us display, type 4
+frame 87: 28941 us total, 11637 us display, type 4
+frame 88: 28027 us total, 11643 us display, type 4
+frame 89: 28964 us total, 11635 us display, type 4
+frame 90: 29038 us total, 11645 us display, type 4
+frame 91: 28025 us total, 11652 us display, type 4
+frame 92: 28912 us total, 11630 us display, type 4
+frame 93: 28090 us total, 11710 us display, type 4
+frame 94: 28983 us total, 11643 us display, type 4
+frame 95: 27979 us total, 11641 us display, type 4
+frame 96: 29010 us total, 11640 us display, type 4
+frame 97: 29029 us total, 11657 us display, type 4
+frame 98: 27961 us total, 11640 us display, type 4
+frame 99: 28946 us total, 11630 us display, type 4
+frame 100: 28072 us total, 11644 us display, type 4
+frame 101: 28951 us total, 11642 us display, type 4
+frame 102: 27988 us total, 11639 us display, type 4
+frame 103: 29060 us total, 11645 us display, type 4
+frame 104: 28981 us total, 11638 us display, type 4
+frame 105: 28035 us total, 11666 us display, type 4
+frame 106: 28971 us total, 11638 us display, type 4
+frame 107: 28015 us total, 11645 us display, type 4
+frame 108: 28949 us total, 11642 us display, type 4
+frame 109: 28256 us total, 11832 us display, type 4
+frame 110: 28826 us total, 11649 us display, type 4
+frame 111: 28959 us total, 11644 us display, type 4
+frame 112: 27961 us total, 11635 us display, type 4
+frame 113: 28971 us total, 11631 us display, type 4
+frame 114: 28027 us total, 11641 us display, type 4
+frame 115: 28996 us total, 11640 us display, type 4
+frame 116: 28052 us total, 11644 us display, type 4
+frame 117: 29002 us total, 11646 us display, type 4
+frame 118: 28930 us total, 11631 us display, type 4
+frame 119: 28020 us total, 11641 us display, type 4
+frame 120: 29078 us total, 11656 us display, type 4
+frame 121: 27959 us total, 11667 us display, type 4
+frame 122: 29015 us total, 11644 us display, type 4
+frame 123: 27921 us total, 11631 us display, type 4
+frame 124: 29074 us total, 11646 us display, type 4
+frame 125: 29005 us total, 11644 us display, type 4
+frame 126: 27950 us total, 11637 us display, type 4
+frame 127: 28971 us total, 11630 us display, type 4
+frame 128: 28027 us total, 11641 us display, type 4
+frame 129: 28996 us total, 11640 us display, type 4
+frame 130: 27980 us total, 11631 us display, type 4
+frame 131: 29075 us total, 11645 us display, type 4
+frame 132: 28924 us total, 11630 us display, type 4
+frame 133: 28043 us total, 11640 us display, type 4
+frame 134: 29064 us total, 11652 us display, type 4
+frame 135: 28000 us total, 11651 us display, type 4
+frame 136: 28957 us total, 11639 us display, type 4
+frame 137: 28039 us total, 11659 us display, type 4
+frame 138: 28992 us total, 11655 us display, type 4
+frame 139: 28973 us total, 11643 us display, type 4
+frame 140: 27988 us total, 11639 us display, type 4
+frame 141: 28944 us total, 11631 us display, type 4
+frame 142: 28027 us total, 11640 us display, type 4
+frame 143: 29076 us total, 11658 us display, type 4
+frame 144: 27987 us total, 11651 us display, type 4
+frame 145: 28989 us total, 11648 us display, type 4
+frame 146: 28922 us total, 11630 us display, type 4
+frame 147: 28024 us total, 11641 us display, type 4
+frame 148: 29078 us total, 11657 us display, type 4
+frame 149: 27947 us total, 11654 us display, type 4
+frame 150: 29053 us total, 11652 us display, type 4
+frame 151: 28000 us total, 11654 us display, type 4
+frame 152: 28925 us total, 11636 us display, type 4
+frame 153: 28972 us total, 11631 us display, type 4
+frame 154: 28075 us total, 11646 us display, type 4
+frame 155: 28978 us total, 11635 us display, type 4
+frame 156: 27976 us total, 11645 us display, type 4
+frame 157: 29046 us total, 11646 us display, type 4
+frame 158: 28002 us total, 11645 us display, type 4
+frame 159: 28950 us total, 11639 us display, type 4
+frame 160: 28971 us total, 11631 us display, type 4
+frame 161: 28027 us total, 11641 us display, type 4
+frame 162: 28973 us total, 11631 us display, type 4
+frame 163: 28075 us total, 11647 us display, type 4
+frame 164: 29030 us total, 11653 us display, type 4
+frame 165: 27903 us total, 11630 us display, type 4
+frame 166: 29020 us total, 11641 us display, type 4
+frame 167: 28975 us total, 11631 us display, type 4
+frame 168: 28081 us total, 11678 us display, type 4
+frame 169: 59453 us total, 12183 us display, type 5
+[0;32mI (5945) PAD: found  78:86:2e:8f:59:f6 rssi -63[0m
+frame 170: 15673 us total, 14730 us display, type 5
+frame 171: 13228 us total, 12206 us display, type 5
+frame 172: 12976 us total, 12170 us display, type 5
+frame 173: 12958 us total, 12175 us display, type 5
+frame 174: 12978 us total, 12170 us display, type 5
+frame 175: 12928 us total, 12167 us display, type 5
+frame 176: 12972 us total, 12175 us display, type 5
+frame 177: 15234 us total, 14432 us display, type 5
+frame 178: 13165 us total, 12151 us display, type 5
+frame 179: 12950 us total, 12139 us display, type 5
+frame 180: 12949 us total, 12133 us display, type 5
+[0;32mI (6099) NimBLE: Connection established [0m
+[0;32mI (6100) NIMBLE_HIDH: pairing for encrypted link (rc=0)[0m
+frame 181: 14928 us total, 14115 us display, type 5
+frame 182: 13094 us total, 12148 us display, type 5
+frame 183: 12955 us total, 12138 us display, type 5
+frame 184: 12956 us total, 12132 us display, type 5
+[0;32mI (6151) NimBLE: mtu update event; conn_handle=0 cid=4 mtu=23
+[0m
+frame 185: 15267 us total, 14455 us display, type 5
+frame 186: 13094 us total, 12148 us display, type 5
+frame 187: 12940 us total, 12133 us display, type 5
+frame 188: 12972 us total, 12141 us display, type 5
+frame 189: 12982 us total, 12147 us display, type 5
+frame 190: 12949 us total, 12132 us display, type 5
+frame 191: 12960 us total, 12133 us display, type 5
+frame 192: 13472 us total, 12651 us display, type 5
+frame 193: 13064 us total, 12160 us display, type 5
+frame 194: 12962 us total, 12133 us display, type 5
+frame 195: 12965 us total, 12139 us display, type 5
+frame 196: 13072 us total, 12255 us display, type 5
+frame 197: 12973 us total, 12138 us display, type 5
+frame 198: 12952 us total, 12139 us display, type 5
+frame 199: 12959 us total, 12133 us display, type 5
+frame 200: 13046 us total, 12219 us display, type 5
+frame 201: 21074 us total, 12182 us display, type 5
+frame 202: 13044 us total, 12142 us display, type 5
+frame 203: 13295 us total, 12476 us display, type 5
+frame 204: 12962 us total, 12137 us display, type 5
+frame 205: 12968 us total, 12139 us display, type 5
+frame 206: 12941 us total, 12133 us display, type 5
+frame 207: 12992 us total, 12218 us display, type 5
+frame 208: 12936 us total, 12139 us display, type 5
+frame 209: 13980 us total, 12143 us display, type 5
+frame 210: 12998 us total, 12136 us display, type 5
+frame 211: 13069 us total, 12272 us display, type 5
+frame 212: 12941 us total, 12137 us display, type 5
+frame 213: 12938 us total, 12141 us display, type 5
+frame 214: 12962 us total, 12134 us display, type 5
+frame 215: 13040 us total, 12222 us display, type 5
+frame 216: 12985 us total, 12143 us display, type 5
+frame 217: 12945 us total, 12134 us display, type 5
+frame 218: 13057 us total, 12222 us display, type 5
+frame 219: 12964 us total, 12141 us display, type 5
+frame 220: 12975 us total, 12141 us display, type 5
+frame 221: 12953 us total, 12132 us display, type 5
+frame 222: 13042 us total, 12225 us display, type 5
+frame 223: 12967 us total, 12135 us display, type 5
+frame 224: 12954 us total, 12139 us display, type 5
+frame 225: 12963 us total, 12132 us display, type 5
+frame 226: 13027 us total, 12213 us display, type 5
+frame 227: 12961 us total, 12136 us display, type 5
+frame 228: 12950 us total, 12133 us display, type 5
+frame 229: 12939 us total, 12129 us display, type 5
+frame 230: 13034 us total, 12219 us display, type 5
+frame 231: 12955 us total, 12136 us display, type 5
+frame 232: 12955 us total, 12138 us display, type 5
+frame 233: 12942 us total, 12139 us display, type 5
+frame 234: 13028 us total, 12213 us display, type 5
+frame 235: 12943 us total, 12132 us display, type 5
+frame 236: 12957 us total, 12139 us display, type 5
+frame 237: 12921 us total, 12135 us display, type 5
+frame 238: 13024 us total, 12212 us display, type 5
+frame 239: 13026 us total, 12222 us display, type 5
+frame 240: 12959 us total, 12135 us display, type 5
+frame 241: 12923 us total, 12128 us display, type 5
+frame 242: 12590 us total, 11642 us display, type 3
+frame 243: 36990 us total, 11690 us display, type 3
+frame 244: 32829 us total, 11686 us display, type 3
+frame 245: 32824 us total, 11690 us display, type 3
+frame 246: 32342 us total, 11692 us display, type 3
+frame 247: 35274 us total, 11692 us display, type 3
+frame 248: 34451 us total, 11691 us display, type 3
+frame 249: 34617 us total, 11862 us display, type 3
+frame 250: 34243 us total, 11692 us display, type 3
+frame 251: 35172 us total, 11685 us display, type 3
+frame 252: 35215 us total, 11940 us display, type 3
+frame 253: 34373 us total, 11692 us display, type 3
+frame 254: 35859 us total, 11691 us display, type 3
+frame 255: 35327 us total, 11896 us display, type 3
+frame 256: 34823 us total, 11692 us display, type 3
+mem @frame 256: heap free 66932, largest 40960, min ever 66660, zone free 41244, stack free 14540, uptime 7 s, gamestate 0, demo 1, usergame 0, tic 191
+frame 257: 35988 us total, 11696 us display, type 3
+frame 258: 34534 us total, 11685 us display, type 3
+frame 259: 34826 us total, 11697 us display, type 3
+frame 260: 34502 us total, 11692 us display, type 3
+frame 261: 35292 us total, 11692 us display, type 3
+frame 262: 34476 us total, 11738 us display, type 3
+frame 263: 35156 us total, 11685 us display, type 3
+frame 264: 34878 us total, 11685 us display, type 3
+frame 265: 35525 us total, 11780 us display, type 3
+frame 266: 35274 us total, 11685 us display, type 3
+frame 267: 37344 us total, 11685 us display, type 3
+frame 268: 35915 us total, 11692 us display, type 3
+frame 269: 36835 us total, 11849 us display, type 3
+frame 270: 36664 us total, 11693 us display, type 3
+frame 271: 36558 us total, 11685 us display, type 3
+frame 272: 34448 us total, 11692 us display, type 3
+frame 273: 33364 us total, 11682 us display, type 3
+frame 274: 33009 us total, 11685 us display, type 3
+frame 275: 32803 us total, 11685 us display, type 3
+frame 276: 31411 us total, 11683 us display, type 3
+frame 277: 30971 us total, 11685 us display, type 3
+frame 278: 30188 us total, 11692 us display, type 3
+frame 279: 29518 us total, 11685 us display, type 3
+frame 280: 30498 us total, 11699 us display, type 3
+frame 281: 27931 us total, 11697 us display, type 3
+frame 282: 29495 us total, 11685 us display, type 3
+frame 283: 26840 us total, 11688 us display, type 3
+frame 284: 30408 us total, 11690 us display, type 3
+frame 285: 26828 us total, 11679 us display, type 3
+frame 286: 27843 us total, 11686 us display, type 3
+frame 287: 28353 us total, 11685 us display, type 3
+frame 288: 28020 us total, 11679 us display, type 3
+frame 289: 29158 us total, 11692 us display, type 3
+frame 290: 26451 us total, 11678 us display, type 3
+frame 291: 28474 us total, 11684 us display, type 3
+frame 292: 29845 us total, 11684 us display, type 3
+frame 293: 29749 us total, 11691 us display, type 3
+frame 294: 27431 us total, 11685 us display, type 3
+frame 295: 27723 us total, 11669 us display, type 3
+frame 296: 29379 us total, 11698 us display, type 3
+frame 297: 28133 us total, 11687 us display, type 3
+frame 298: 29989 us total, 11692 us display, type 3
+frame 299: 26968 us total, 11685 us display, type 3
+frame 300: 29020 us total, 11685 us display, type 3
+[0;32mI (8809) NIMBLE_HIDH: encryption change: status=7[0m
+[0;32mI (8809) NimBLE: disconnect; reason=520 [0m
+[0;33mW (8810) NIMBLE_HIDH: pairing did not complete, discovering anyway[0m
+[0;33mW (8810) NIMBLE_HIDH: Error discovering services : 7[0m
+[0;33mW (8810) NIMBLE_HIDH: no HID report map: not an HID device, disconnecting[0m
+[0;33mW (8811) PAD: open failed: -1 on the saved pad, forgetting it and pairing fresh[0m
+frame 301: 31737 us total, 15161 us display, type 3
+[0;32mI (8842) PAD: forgot saved controller[0m
+frame 302: 43563 us total, 11691 us display, type 3
+frame 303: 30482 us total, 11682 us display, type 3
+frame 304: 30982 us total, 11683 us display, type 3
+frame 305: 30945 us total, 11685 us display, type 3
+frame 306: 31918 us total, 11692 us display, type 3
+frame 307: 31815 us total, 11685 us display, type 3
+frame 308: 31646 us total, 11691 us display, type 3
+frame 309: 33704 us total, 11685 us display, type 3
+frame 310: 31658 us total, 11684 us display, type 3
+frame 311: 34929 us total, 11861 us display, type 3
+frame 312: 34454 us total, 11774 us display, type 3
+frame 313: 37815 us total, 11685 us display, type 3
+frame 314: 35187 us total, 11690 us display, type 3
+frame 315: 39599 us total, 11685 us display, type 3
+frame 316: 37493 us total, 11724 us display, type 3
+[0;32mI (9365) PAD: found  78:86:2e:8f:59:f6 rssi -63[0m
+frame 317: 42720 us total, 13848 us display, type 3
+frame 318: 39224 us total, 11692 us display, type 3
+frame 319: 39594 us total, 11684 us display, type 3
+frame 320: 43246 us total, 11685 us display, type 3
+[0;32mI (9521) NimBLE: Connection established [0m
+[0;32mI (9523) NIMBLE_HIDH: pairing for encrypted link (rc=0)[0m
+frame 321: 40172 us total, 15306 us display, type 3
+[0;32mI (9571) NimBLE: mtu update event; conn_handle=0 cid=4 mtu=23
+[0m
+frame 322: 41833 us total, 12883 us display, type 3
+frame 323: 38625 us total, 11695 us display, type 3
+frame 324: 53816 us total, 11692 us display, type 3
+frame 325: 41173 us total, 11699 us display, type 3
+frame 326: 43682 us total, 11692 us display, type 3
+frame 327: 42612 us total, 11692 us display, type 3
+frame 328: 45599 us total, 11692 us display, type 3
+frame 329: 41119 us total, 11692 us display, type 3
+frame 330: 43492 us total, 11735 us display, type 3
+frame 331: 42356 us total, 11699 us display, type 3
+frame 332: 46241 us total, 11686 us display, type 3
+frame 333: 44590 us total, 11693 us display, type 3
+frame 334: 45878 us total, 11695 us display, type 3
+frame 335: 46319 us total, 11692 us display, type 3
+frame 336: 45123 us total, 11692 us display, type 3
+frame 337: 45879 us total, 11692 us display, type 3
+gamepad: pairing open
+frame 338: 48088 us total, 11692 us display, type 3
+frame 339: 45191 us total, 11685 us display, type 3
+frame 340: 49519 us total, 11692 us display, type 3
+frame 341: 46571 us total, 11685 us display, type 3
+frame 342: 45531 us total, 11697 us display, type 3
+frame 343: 49642 us total, 11687 us display, type 3
+frame 344: 50017 us total, 11685 us display, type 3
+frame 345: 47203 us total, 11948 us display, type 3
+frame 346: 50299 us total, 11692 us display, type 3
+frame 347: 45559 us total, 11692 us display, type 3
+frame 348: 43767 us total, 11685 us display, type 3
+frame 349: 41329 us total, 11692 us display, type 3
+frame 350: 39901 us total, 11692 us display, type 3
+frame 351: 40062 us total, 11695 us display, type 3
+frame 352: 38363 us total, 11699 us display, type 3
+frame 353: 38177 us total, 11685 us display, type 3
+frame 354: 39462 us total, 11692 us display, type 3
+frame 355: 35939 us total, 11692 us display, type 3
+frame 356: 36289 us total, 11692 us display, type 3
+frame 357: 35782 us total, 11692 us display, type 3
+frame 358: 36791 us total, 11692 us display, type 3
+frame 359: 35382 us total, 11692 us display, type 3
+frame 360: 35617 us total, 11692 us display, type 3
+frame 361: 35793 us total, 11685 us display, type 3
+frame 362: 35225 us total, 11685 us display, type 3
+frame 363: 34410 us total, 11748 us display, type 3
+frame 364: 34384 us total, 11685 us display, type 3
+frame 365: 35145 us total, 11685 us display, type 3
+frame 366: 35103 us total, 12016 us display, type 3
+frame 367: 34061 us total, 11692 us display, type 3
+frame 368: 35829 us total, 11685 us display, type 3
+frame 369: 36721 us total, 11685 us display, type 3
+frame 370: 36363 us total, 11685 us display, type 3
+frame 371: 35407 us total, 11692 us display, type 3
+frame 372: 35548 us total, 11692 us display, type 3
+frame 373: 48957 us total, 24991 us display, type 3
+frame 374: 37133 us total, 11753 us display, type 3
+frame 375: 37805 us total, 11686 us display, type 3
+frame 376: 38238 us total, 11692 us display, type 3
+frame 377: 36679 us total, 11685 us display, type 3
+frame 378: 40356 us total, 11692 us display, type 3
+frame 379: 39493 us total, 11855 us display, type 3
+frame 380: 38745 us total, 11692 us display, type 3
+frame 381: 41203 us total, 11692 us display, type 3
+frame 382: 38676 us total, 11692 us display, type 3
+frame 383: 41565 us total, 11876 us display, type 3
+frame 384: 41662 us total, 11867 us display, type 3
+frame 385: 41055 us total, 11699 us display, type 3
+frame 386: 41517 us total, 11685 us display, type 3
+frame 387: 41223 us total, 11692 us display, type 3
+frame 388: 42415 us total, 11692 us display, type 3
+frame 389: 41201 us total, 12037 us display, type 3
+frame 390: 41839 us total, 11860 us display, type 3
+frame 391: 40613 us total, 11692 us display, type 3
+frame 392: 41800 us total, 11692 us display, type 3
+frame 393: 42148 us total, 11692 us display, type 3
+frame 394: 40293 us total, 11692 us display, type 3
+frame 395: 40528 us total, 11746 us display, type 3
+frame 396: 38821 us total, 11685 us display, type 3
+frame 397: 40853 us total, 11685 us display, type 3
+frame 398: 37930 us total, 11685 us display, type 3
+frame 399: 38969 us total, 11692 us display, type 3
+frame 400: 37871 us total, 11993 us display, type 3
+frame 401: 36357 us total, 11692 us display, type 3
+frame 402: 37892 us total, 11685 us display, type 3
+frame 403: 39035 us total, 11690 us display, type 3
+frame 404: 39713 us total, 11692 us display, type 3
+frame 405: 38005 us total, 11692 us display, type 3
+frame 406: 40627 us total, 11692 us display, type 3
+frame 407: 38312 us total, 11692 us display, type 3
+frame 408: 38405 us total, 11996 us display, type 3
+frame 409: 40728 us total, 12019 us display, type 3
+frame 410: 39337 us total, 11692 us display, type 3
+frame 411: 42163 us total, 11692 us display, type 3
+frame 412: 42521 us total, 11685 us display, type 3
+frame 413: 43206 us total, 11685 us display, type 3
+frame 414: 41165 us total, 11928 us display, type 3
+frame 415: 41733 us total, 11696 us display, type 3
+frame 416: 41374 us total, 11692 us display, type 3
+[0;32mI (13426) NIMBLE_HIDH: encryption change: status=0[0m
+frame 417: 51203 us total, 11692 us display, type 3
+frame 418: 43349 us total, 11692 us display, type 3
+[0;32mI (13520) NIMBLE_HIDH: service 0x1800 handles 1-7[0m
+[0;32mI (13520) NIMBLE_HIDH: service 0x1801 handles 8-8[0m
+[0;32mI (13520) NIMBLE_HIDH: service 0x180a handles 9-17[0m
+frame 419: 44516 us total, 11692 us display, type 3
+[0;32mI (13570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 420: 42221 us total, 11692 us display, type 3
+[0;32mI (13620) NIMBLE_HIDH: service 0x180f handles 18-21[0m
+[0;32mI (13620) NIMBLE_HIDH: service 0x1812 handles 22-35[0m
+frame 421: 43060 us total, 11692 us display, type 3
+[0;32mI (13670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 422: 39920 us total, 12416 us display, type 3
+frame 423: 38798 us total, 11692 us display, type 3
+[0;32mI (13720) NIMBLE_HIDH: service 00000001-5f60-4c4f-9c83-a7953298d40d handles 36-42[0m
+frame 424: 40058 us total, 11692 us display, type 3
+[0;32mI (13770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 425: 40923 us total, 11698 us display, type 3
+frame 426: 39890 us total, 11685 us display, type 3
+[0;32mI (13870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 427: 40824 us total, 12485 us display, type 3
+frame 428: 42174 us total, 11686 us display, type 3
+frame 429: 41469 us total, 11699 us display, type 3
+[0;32mI (13970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 430: 45608 us total, 11692 us display, type 3
+frame 431: 40495 us total, 11692 us display, type 3
+[0;32mI (14070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 432: 41548 us total, 11692 us display, type 3
+[0;32mI (14120) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 433: 40243 us total, 12804 us display, type 3
+frame 434: 40818 us total, 11699 us display, type 3
+[0;32mI (14170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 435: 40560 us total, 11685 us display, type 3
+[0;32mI (14220) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (14220) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 436: 39471 us total, 11692 us display, type 3
+[0;32mI (14270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 437: 42439 us total, 11685 us display, type 3
+frame 438: 43584 us total, 11692 us display, type 3
+[0;32mI (14370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 439: 46232 us total, 12821 us display, type 3
+frame 440: 43204 us total, 12452 us display, type 3
+frame 441: 44883 us total, 11699 us display, type 3
+[0;32mI (14470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 442: 44626 us total, 11699 us display, type 3
+frame 443: 45260 us total, 11692 us display, type 3
+[0;32mI (14570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 444: 44610 us total, 11692 us display, type 3
+frame 445: 42697 us total, 11685 us display, type 3
+[0;32mI (14670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 446: 43927 us total, 11685 us display, type 3
+[0;32mI (14720) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (14720) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 447: 42838 us total, 13480 us display, type 3
+[0;32mI (14770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 448: 40510 us total, 12777 us display, type 3
+frame 449: 38053 us total, 11692 us display, type 3
+[0;32mI (14820) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (14820) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 450: 38565 us total, 11685 us display, type 3
+[0;32mI (14870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 451: 36955 us total, 11685 us display, type 3
+[0;32mI (14920) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (14920) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 452: 36421 us total, 13217 us display, type 3
+frame 453: 36338 us total, 11692 us display, type 3
+[0;32mI (14970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 454: 38001 us total, 11692 us display, type 3
+frame 455: 35534 us total, 11691 us display, type 3
+frame 456: 34740 us total, 11685 us display, type 3
+[0;32mI (15070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 457: 35250 us total, 11686 us display, type 3
+frame 458: 36886 us total, 11692 us display, type 3
+[0;32mI (15170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 459: 34384 us total, 12427 us display, type 3
+frame 460: 34337 us total, 11692 us display, type 3
+frame 461: 35082 us total, 11692 us display, type 3
+[0;32mI (15270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 462: 37159 us total, 12426 us display, type 3
+frame 463: 32696 us total, 11692 us display, type 3
+frame 464: 35070 us total, 11692 us display, type 3
+[0;32mI (15370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 465: 37695 us total, 11692 us display, type 3
+frame 466: 38122 us total, 12859 us display, type 3
+frame 467: 38916 us total, 11692 us display, type 3
+[0;32mI (15470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 468: 37121 us total, 11692 us display, type 3
+frame 469: 38740 us total, 11692 us display, type 3
+[0;32mI (15570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 470: 40505 us total, 12425 us display, type 3
+frame 471: 36036 us total, 11692 us display, type 3
+[0;32mI (15620) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 472: 40400 us total, 11692 us display, type 3
+[0;32mI (15670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 473: 40001 us total, 11692 us display, type 3
+frame 474: 37795 us total, 11685 us display, type 3
+[0;32mI (15770) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (15771) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 475: 41816 us total, 13351 us display, type 3
+frame 476: 38932 us total, 11685 us display, type 3
+frame 477: 40973 us total, 11699 us display, type 3
+[0;32mI (15870) NIMBLE_HIDH: notify handle 30 len 16[0m
+[0;32mI (15871) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 478: 38680 us total, 11692 us display, type 3
+frame 479: 39061 us total, 11692 us display, type 3
+[0;32mI (15970) NIMBLE_HIDH: notify handle 30 len 16[0m
+[0;32mI (15971) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 480: 40465 us total, 13278 us display, type 3
+frame 481: 35841 us total, 11685 us display, type 3
+[0;32mI (16020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 482: 38342 us total, 11685 us display, type 3
+[0;32mI (16070) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 483: 40773 us total, 11685 us display, type 3
+[0;32mI (16120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 484: 36190 us total, 12650 us display, type 3
+frame 485: 36733 us total, 11685 us display, type 3
+[0;32mI (16170) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 486: 38347 us total, 11685 us display, type 3
+[0;32mI (16220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 487: 37829 us total, 11685 us display, type 3
+[0;32mI (16270) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 488: 36100 us total, 12660 us display, type 3
+frame 489: 35570 us total, 11699 us display, type 3
+[0;32mI (16320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 490: 37152 us total, 11689 us display, type 3
+[0;32mI (16370) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 491: 37017 us total, 11685 us display, type 3
+frame 492: 35228 us total, 11686 us display, type 3
+[0;32mI (16420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 493: 38048 us total, 11692 us display, type 3
+[0;32mI (16470) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 494: 36088 us total, 11685 us display, type 3
+[0;32mI (16520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 495: 35667 us total, 12421 us display, type 3
+frame 496: 34061 us total, 11685 us display, type 3
+[0;32mI (16570) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 497: 35007 us total, 11685 us display, type 3
+[0;32mI (16620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 498: 33952 us total, 12423 us display, type 3
+frame 499: 33259 us total, 11685 us display, type 3
+[0;32mI (16670) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 500: 33880 us total, 11692 us display, type 3
+[0;32mI (16720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 501: 35323 us total, 11692 us display, type 3
+frame 502: 33282 us total, 11692 us display, type 3
+[0;32mI (16770) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 503: 34040 us total, 11692 us display, type 3
+[0;32mI (16820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 504: 34281 us total, 11692 us display, type 3
+frame 505: 32833 us total, 11685 us display, type 3
+[0;32mI (16870) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (16870) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 506: 34937 us total, 11691 us display, type 3
+[0;32mI (16920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 507: 34803 us total, 11692 us display, type 3
+frame 508: 33737 us total, 12856 us display, type 3
+frame 509: 33324 us total, 11699 us display, type 3
+[0;32mI (17020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 510: 33264 us total, 11685 us display, type 3
+[0;32mI (17070) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (17070) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 511: 33986 us total, 13319 us display, type 3
+frame 512: 33215 us total, 11685 us display, type 3
+mem @frame 512: heap free 65992, largest 39936, min ever 65444, zone free 41244, stack free 14540, uptime 16 s, gamestate 0, demo 1, usergame 0, tic 531
+[0;32mI (17120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 513: 34768 us total, 11689 us display, type 3
+frame 514: 33757 us total, 12445 us display, type 3
+frame 515: 32905 us total, 11692 us display, type 3
+[0;32mI (17221) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 516: 34236 us total, 11691 us display, type 3
+[0;32mI (17270) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (17271) NimBLE: Read complete; status=14 conn_handle=0[0m
+[0;32mI (17271) NIMBLE_HIDH: notify handle 30 len 16[0m
+[0;32mI (17272) NIMBLE_HIDH: attaching listeners, battery handle 20 ccc 21[0m
+[0;32mI (17273) PAD: report map: 20 input fields[0m
+[0;32mI (17273) PAD:   field rid 1 page 1 usage 0x30 bits 16 @0 logical 0..65535[0m
+[0;32mI (17274) PAD:   field rid 1 page 1 usage 0x31 bits 16 @16 logical 0..65535[0m
+[0;32mI (17275) PAD:   field rid 1 page 1 usage 0x32 bits 16 @32 logical 0..65535[0m
+[0;32mI (17276) PAD:   field rid 1 page 1 usage 0x35 bits 16 @48 logical 0..65535[0m
+[0;32mI (17277) PAD:   field rid 1 page 1 usage 0x39 bits 4 @96 logical 1..8[0m
+[0;32mI (17277) PAD:   field rid 1 page 9 usage 0x01 bits 1 @104 logical 0..1[0m
+[0;32mI (17278) PAD:   field rid 1 page 9 usage 0x02 bits 1 @105 logical 0..1[0m
+[0;32mI (17278) PAD:   field rid 1 page 9 usage 0x03 bits 1 @106 logical 0..1[0m
+[0;32mI (17278) PAD:   field rid 1 page 9 usage 0x04 bits 1 @107 logical 0..1[0m
+[0;32mI (17279) PAD:   field rid 1 page 9 usage 0x05 bits 1 @108 logical 0..1[0m
+[0;32mI (17279) PAD:   field rid 1 page 9 usage 0x06 bits 1 @109 logical 0..1[0m
+[0;32mI (17279) PAD:   field rid 1 page 9 usage 0x07 bits 1 @110 logical 0..1[0m
+[0;32mI (17280) PAD:   field rid 1 page 9 usage 0x08 bits 1 @111 logical 0..1[0m
+[0;32mI (17280) PAD:   field rid 1 page 9 usage 0x09 bits 1 @112 logical 0..1[0m
+[0;32mI (17280) PAD:   field rid 1 page 9 usage 0x0a bits 1 @113 logical 0..1[0m
+[0;32mI (17281) PAD:   field rid 1 page 9 usage 0x0b bits 1 @114 logical 0..1[0m
+[0;32mI (17281) PAD:   field rid 1 page 9 usage 0x0c bits 1 @115 logical 0..1[0m
+[0;32mI (17281) PAD:   field rid 1 page 9 usage 0x0d bits 1 @116 logical 0..1[0m
+[0;32mI (17282) PAD:   field rid 1 page 9 usage 0x0e bits 1 @117 logical 0..1[0m
+[0;32mI (17282) PAD:   field rid 1 page 9 usage 0x0f bits 1 @118 logical 0..1[0m
+[0;32mI (17282) PAD:   rid 1 page 1 usage 30 bit 0 size 16 [0..65535][0m
+[0;32mI (17282) PAD:   rid 1 page 1 usage 31 bit 16 size 16 [0..65535][0m
+[0;32mI (17283) PAD:   rid 1 page 1 usage 32 bit 32 size 16 [0..65535][0m
+[0;32mI (17283) PAD:   rid 1 page 1 usage 35 bit 48 size 16 [0..65535][0m
+[0;32mI (17283) PAD:   rid 1 page 1 usage 39 bit 96 size 4 [1..8][0m
+[0;32mI (17284) PAD:   rid 1 page 9 usage 1 bit 104 size 1 [0..1][0m
+[0;32mI (17284) PAD:   rid 1 page 9 usage 2 bit 105 size 1 [0..1][0m
+[0;32mI (17284) PAD:   rid 1 page 9 usage 3 bit 106 size 1 [0..1][0m
+[0;32mI (17285) PAD:   rid 1 page 9 usage 4 bit 107 size 1 [0..1][0m
+[0;32mI (17285) PAD:   rid 1 page 9 usage 5 bit 108 size 1 [0..1][0m
+[0;32mI (17285) PAD:   rid 1 page 9 usage 6 bit 109 size 1 [0..1][0m
+[0;32mI (17285) PAD:   rid 1 page 9 usage 7 bit 110 size 1 [0..1][0m
+[0;32mI (17286) PAD:   rid 1 page 9 usage 8 bit 111 size 1 [0..1][0m
+[0;32mI (17286) PAD:   rid 1 page 9 usage 9 bit 112 size 1 [0..1][0m
+[0;32mI (17286) PAD:   rid 1 page 9 usage a bit 113 size 1 [0..1][0m
+[0;32mI (17287) PAD:   rid 1 page 9 usage b bit 114 size 1 [0..1][0m
+[0;32mI (17287) PAD:   rid 1 page 9 usage c bit 115 size 1 [0..1][0m
+[0;32mI (17287) PAD:   rid 1 page 9 usage d bit 116 size 1 [0..1][0m
+[0;32mI (17287) PAD:   rid 1 page 9 usage e bit 117 size 1 [0..1][0m
+[0;32mI (17288) PAD:   rid 1 page 9 usage f bit 118 size 1 [0..1][0m
+frame 517: 36398 us total, 15940 us display, type 3
+[0;32mI (17290) PAD: connected: Xbox Wireless Controller[0m
+gamepad connected: Xbox Wireless Controller
+frame 518: 49133 us total, 11750 us display, type 3
+frame 519: 35533 us total, 11685 us display, type 3
+[0;32mI (17370) NimBLE: Subscribe complete; status=259 conn_handle=0 attr_handle=20
+[0m
+[0;32mI (17371) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x200000
+frame 520: 38540 us total, 11692 us display, type 3
+frame 521: 36585 us total, 11685 us display, type 3
+[0;32mI (17470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 522: 36287 us total, 12742 us display, type 3
+frame 523: 39626 us total, 11685 us display, type 3
+[0;32mI (17520) NIMBLE_HIDH: write complete; status=0 attr_handle=21[0m
+[0;32mI (17521) NIMBLE_HIDH: notify handle 30 len 16[0m
+[0;32mI (17521) NIMBLE_HIDH: report id 3 type 2 mode 1 perms 0xe handle 34 ccc 0[0m
+[0;32mI (17521) NIMBLE_HIDH: report id 1 type 1 mode 1 perms 0x12 handle 30 ccc 31[0m
+frame 524: 39576 us total, 11692 us display, type 3
+frame 525: 37644 us total, 11692 us display, type 3
+[0;32mI (17620) NimBLE: Subscribe complete; status=259 conn_handle=0 attr_handle=30
+[0m
+[0;32mI (17621) NIMBLE_HIDH: notify handle 30 len 16[0m
+[0;32mI (17621) NIMBLE_HIDH:   notify registered[0m
+frame 526: 40031 us total, 13529 us display, type 3
+frame 527: 37086 us total, 11685 us display, type 3
+[0;32mI (17670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 528: 39166 us total, 11692 us display, type 3
+[0;32mI (17720) NIMBLE_HIDH: write complete; status=0 attr_handle=31[0m
+[0;32mI (17720) NIMBLE_HIDH:   ccc written[0m
+[0;32mI (17720) NIMBLE_HIDH: listeners attached[0m
+frame 529: 39883 us total, 11685 us display, type 3
+[0;32mI (17770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 530: 39631 us total, 11685 us display, type 3
+frame 531: 37148 us total, 11686 us display, type 3
+frame 532: 37618 us total, 11692 us display, type 3
+[0;32mI (17870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 533: 37594 us total, 11685 us display, type 3
+frame 534: 36475 us total, 11692 us display, type 3
+[0;32mI (17970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 535: 37868 us total, 12852 us display, type 3
+frame 536: 35221 us total, 11692 us display, type 3
+frame 537: 36376 us total, 11685 us display, type 3
+[0;32mI (18070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 538: 40423 us total, 11692 us display, type 3
+[0;32mI (18120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 539: 37263 us total, 12604 us display, type 3
+frame 540: 38041 us total, 11685 us display, type 3
+frame 541: 39340 us total, 11685 us display, type 3
+[0;32mI (18220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 542: 38435 us total, 11692 us display, type 3
+frame 543: 37604 us total, 11959 us display, type 3
+frame 544: 38135 us total, 11695 us display, type 3
+[0;32mI (18320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 545: 38095 us total, 11692 us display, type 3
+frame 546: 37616 us total, 11692 us display, type 3
+[0;32mI (18420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 547: 37089 us total, 12293 us display, type 3
+frame 548: 35985 us total, 11685 us display, type 3
+frame 549: 37608 us total, 11685 us display, type 3
+[0;32mI (18520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 550: 38053 us total, 11686 us display, type 3
+[0;32mI (18570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 551: 38370 us total, 12408 us display, type 3
+frame 552: 36287 us total, 11692 us display, type 3
+frame 553: 39218 us total, 11692 us display, type 3
+[0;32mI (18670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 554: 38286 us total, 11685 us display, type 3
+frame 555: 36408 us total, 11692 us display, type 3
+frame 556: 37356 us total, 11691 us display, type 3
+[0;32mI (18770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 557: 38585 us total, 11692 us display, type 3
+frame 558: 36326 us total, 11699 us display, type 3
+[0;32mI (18870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 559: 37631 us total, 12373 us display, type 3
+frame 560: 39529 us total, 11685 us display, type 3
+frame 561: 37779 us total, 11698 us display, type 3
+[0;32mI (18970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 562: 38150 us total, 11692 us display, type 3
+frame 563: 38606 us total, 12056 us display, type 3
+frame 564: 37173 us total, 11692 us display, type 3
+[0;32mI (19070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 565: 39111 us total, 11692 us display, type 3
+[0;32mI (19120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 566: 39964 us total, 11692 us display, type 3
+frame 567: 39072 us total, 11692 us display, type 3
+[0;32mI (19220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 568: 41016 us total, 12391 us display, type 3
+frame 569: 37533 us total, 11692 us display, type 3
+frame 570: 41044 us total, 11692 us display, type 3
+[0;32mI (19320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 571: 41569 us total, 11685 us display, type 3
+frame 572: 39213 us total, 11685 us display, type 3
+[0;32mI (19420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 573: 39205 us total, 12549 us display, type 3
+frame 574: 37368 us total, 11692 us display, type 3
+frame 575: 38371 us total, 11685 us display, type 3
+[0;32mI (19520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 576: 38038 us total, 11692 us display, type 3
+frame 577: 38070 us total, 11767 us display, type 3
+frame 578: 36939 us total, 11687 us display, type 3
+[0;32mI (19620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 579: 38154 us total, 11685 us display, type 3
+[0;32mI (19670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 580: 40554 us total, 11692 us display, type 3
+frame 581: 38510 us total, 11692 us display, type 3
+[0;32mI (19770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 582: 38449 us total, 12252 us display, type 3
+frame 583: 37104 us total, 11692 us display, type 3
+frame 584: 36171 us total, 11685 us display, type 3
+[0;32mI (19870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 585: 38321 us total, 12864 us display, type 3
+frame 586: 35875 us total, 11684 us display, type 3
+[0;32mI (19920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 587: 36170 us total, 11692 us display, type 3
+frame 588: 37607 us total, 11692 us display, type 3
+[0;32mI (20020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 589: 37078 us total, 12664 us display, type 3
+frame 590: 36637 us total, 11699 us display, type 3
+frame 591: 38263 us total, 11685 us display, type 3
+[0;32mI (20120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 592: 38671 us total, 11692 us display, type 3
+frame 593: 37350 us total, 11814 us display, type 3
+frame 594: 36285 us total, 11691 us display, type 3
+[0;32mI (20220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 595: 38287 us total, 11692 us display, type 3
+[0;32mI (20270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 596: 37587 us total, 11689 us display, type 3
+[0;32mI (20320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 597: 35995 us total, 12477 us display, type 3
+input: down 0x00010
+frame 598: 38929 us total, 11692 us display, type 3
+frame 599: 37266 us total, 11692 us display, type 3
+[0;32mI (20420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 600: 37538 us total, 11685 us display, type 3
+frame 601: 36284 us total, 11686 us display, type 3
+frame 602: 38179 us total, 11692 us display, type 3
+[0;32mI (20520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 603: 38413 us total, 11691 us display, type 3
+frame 604: 37540 us total, 11692 us display, type 3
+[0;32mI (20620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 605: 38631 us total, 12306 us display, type 3
+frame 606: 37198 us total, 11692 us display, type 3
+frame 607: 37806 us total, 11685 us display, type 3
+[0;32mI (20720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 608: 38849 us total, 11699 us display, type 3
+frame 609: 37713 us total, 11692 us display, type 3
+frame 610: 35839 us total, 11698 us display, type 3
+[0;32mI (20820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 611: 38800 us total, 11692 us display, type 3
+[0;32mI (20870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 612: 38532 us total, 11692 us display, type 3
+frame 613: 36970 us total, 11699 us display, type 3
+[0;32mI (20970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 614: 38369 us total, 12270 us display, type 3
+frame 615: 37457 us total, 11693 us display, type 3
+frame 616: 36639 us total, 11685 us display, type 3
+[0;32mI (21070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 617: 38560 us total, 11692 us display, type 3
+frame 618: 36266 us total, 11694 us display, type 3
+frame 619: 36816 us total, 11693 us display, type 3
+[0;32mI (21170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 620: 38937 us total, 11692 us display, type 3
+frame 621: 36352 us total, 11685 us display, type 3
+frame 622: 36160 us total, 11685 us display, type 3
+[0;32mI (21270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 623: 39306 us total, 11692 us display, type 3
+frame 624: 38080 us total, 11692 us display, type 3
+[0;32mI (21370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 625: 37840 us total, 11692 us display, type 3
+frame 626: 36487 us total, 11687 us display, type 3
+frame 627: 38138 us total, 11685 us display, type 3
+[0;32mI (21470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 628: 39586 us total, 11699 us display, type 3
+frame 629: 36908 us total, 11692 us display, type 3
+[0;32mI (21570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 630: 39900 us total, 12679 us display, type 3
+frame 631: 36845 us total, 11692 us display, type 3
+frame 632: 36379 us total, 11692 us display, type 3
+[0;32mI (21670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 633: 40450 us total, 11685 us display, type 3
+frame 634: 36547 us total, 11692 us display, type 3
+frame 635: 37177 us total, 11685 us display, type 3
+[0;32mI (21770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 636: 40455 us total, 11692 us display, type 3
+[0;32mI (21820) NIMBLE_HIDH: notify handle 20 len 1[0m
+frame 637: 37286 us total, 11692 us display, type 3
+[0;32mI (21870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 638: 40425 us total, 12527 us display, type 3
+input: down 0x00010
+frame 639: 39800 us total, 11693 us display, type 3
+frame 640: 36694 us total, 11692 us display, type 3
+[0;32mI (21970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 641: 40311 us total, 11686 us display, type 3
+[0;32mI (22020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 642: 39027 us total, 11685 us display, type 3
+[0;32mI (22070) NIMBLE_HIDH: notify handle 20 len 1[0m
+frame 643: 37533 us total, 12525 us display, type 3
+frame 644: 37701 us total, 11692 us display, type 3
+frame 645: 38933 us total, 11692 us display, type 3
+[0;32mI (22170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 646: 36365 us total, 11692 us display, type 3
+[0;32mI (22220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 647: 38076 us total, 12573 us display, type 3
+frame 648: 36758 us total, 11685 us display, type 3
+frame 649: 34438 us total, 11699 us display, type 3
+[0;32mI (22320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 650: 36860 us total, 11692 us display, type 3
+frame 651: 35925 us total, 11692 us display, type 3
+frame 652: 35627 us total, 11685 us display, type 3
+[0;32mI (22420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 653: 35512 us total, 11699 us display, type 3
+frame 654: 35795 us total, 11723 us display, type 3
+frame 655: 34790 us total, 11692 us display, type 3
+[0;32mI (22520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 656: 36714 us total, 11689 us display, type 3
+frame 657: 33593 us total, 11693 us display, type 3
+frame 658: 33826 us total, 11692 us display, type 3
+[0;32mI (22620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 659: 35291 us total, 11692 us display, type 3
+frame 660: 34072 us total, 11692 us display, type 3
+frame 661: 33264 us total, 11685 us display, type 3
+[0;32mI (22720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 662: 34959 us total, 11685 us display, type 3
+[0;32mI (22770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 663: 34045 us total, 11685 us display, type 3
+frame 664: 34817 us total, 12002 us display, type 3
+frame 665: 32467 us total, 11685 us display, type 3
+[0;32mI (22870) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x100000
+frame 666: 35878 us total, 11692 us display, type 3
+frame 667: 32982 us total, 11773 us display, type 3
+frame 668: 33037 us total, 11685 us display, type 3
+[0;32mI (22970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 669: 35139 us total, 11685 us display, type 3
+frame 670: 34381 us total, 11693 us display, type 3
+frame 671: 33805 us total, 11699 us display, type 3
+[0;32mI (23070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 672: 33905 us total, 11692 us display, type 3
+frame 673: 34887 us total, 11849 us display, type 3
+frame 674: 33800 us total, 11685 us display, type 3
+[0;32mI (23170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 675: 36336 us total, 11697 us display, type 3
+frame 676: 34364 us total, 11699 us display, type 3
+frame 677: 35437 us total, 11692 us display, type 3
+[0;32mI (23270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 678: 37031 us total, 11685 us display, type 3
+frame 679: 37630 us total, 11685 us display, type 3
+[0;32mI (23370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 680: 37709 us total, 12390 us display, type 3
+frame 681: 37259 us total, 11699 us display, type 3
+frame 682: 43054 us total, 11685 us display, type 3
+[0;32mI (23470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 683: 45105 us total, 11692 us display, type 3
+[0;32mI (23520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 684: 47730 us total, 11692 us display, type 3
+frame 685: 46145 us total, 11685 us display, type 3
+[0;32mI (23620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 686: 44834 us total, 11692 us display, type 3
+frame 687: 42435 us total, 11692 us display, type 3
+[0;32mI (23720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 688: 42077 us total, 12608 us display, type 3
+frame 689: 40372 us total, 11692 us display, type 3
+[0;32mI (23770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 690: 39190 us total, 11692 us display, type 3
+frame 691: 39789 us total, 11692 us display, type 3
+[0;32mI (23870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 692: 43661 us total, 11685 us display, type 3
+frame 693: 41224 us total, 11692 us display, type 3
+[0;32mI (23970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 694: 43909 us total, 12439 us display, type 3
+frame 695: 43500 us total, 11987 us display, type 3
+frame 696: 44000 us total, 11692 us display, type 3
+[0;32mI (24070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 697: 44322 us total, 11692 us display, type 3
+frame 698: 44910 us total, 11686 us display, type 3
+[0;32mI (24170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 699: 43713 us total, 11692 us display, type 3
+frame 700: 44868 us total, 11692 us display, type 3
+[0;32mI (24270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 701: 43565 us total, 11685 us display, type 3
+frame 702: 42190 us total, 11692 us display, type 3
+[0;32mI (24370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 703: 44619 us total, 12689 us display, type 3
+frame 704: 41660 us total, 11692 us display, type 3
+frame 705: 43243 us total, 11686 us display, type 3
+[0;32mI (24470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 706: 41541 us total, 11692 us display, type 3
+frame 707: 40062 us total, 11695 us display, type 3
+[0;32mI (24570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 708: 39830 us total, 12382 us display, type 3
+frame 709: 38907 us total, 11685 us display, type 3
+frame 710: 47254 us total, 11699 us display, type 3
+[0;32mI (24670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 711: 44930 us total, 11699 us display, type 3
+frame 712: 43832 us total, 11685 us display, type 3
+[0;32mI (24770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 713: 39702 us total, 11685 us display, type 3
+frame 714: 41669 us total, 11692 us display, type 3
+[0;32mI (24870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 715: 40741 us total, 12536 us display, type 3
+frame 716: 41504 us total, 11685 us display, type 3
+frame 717: 41323 us total, 11685 us display, type 3
+[0;32mI (24970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 718: 37381 us total, 11698 us display, type 3
+frame 719: 36028 us total, 11692 us display, type 3
+frame 720: 35192 us total, 11699 us display, type 3
+[0;32mI (25070) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00010
+frame 721: 38633 us total, 11697 us display, type 3
+frame 722: 38730 us total, 11692 us display, type 3
+[0;32mI (25170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 723: 50646 us total, 12192 us display, type 5
+frame 724: 13097 us total, 12132 us display, type 5
+[0;32mI (25220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 725: 14056 us total, 13254 us display, type 5
+frame 726: 13134 us total, 12156 us display, type 5
+frame 727: 12938 us total, 12132 us display, type 5
+frame 728: 12960 us total, 12132 us display, type 5
+frame 729: 13109 us total, 12312 us display, type 5
+frame 730: 12969 us total, 12138 us display, type 5
+frame 731: 12944 us total, 12138 us display, type 5
+frame 732: 12957 us total, 12132 us display, type 5
+[0;32mI (25319) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 733: 13669 us total, 12856 us display, type 5
+frame 734: 13020 us total, 12143 us display, type 5
+frame 735: 12931 us total, 12128 us display, type 5
+frame 736: 12940 us total, 12133 us display, type 5
+frame 737: 13121 us total, 12307 us display, type 5
+frame 738: 12950 us total, 12134 us display, type 5
+frame 739: 12955 us total, 12128 us display, type 5
+frame 740: 12958 us total, 12139 us display, type 5
+[0;32mI (25419) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 741: 13659 us total, 12837 us display, type 5
+frame 742: 13009 us total, 12144 us display, type 5
+frame 743: 12966 us total, 12141 us display, type 5
+frame 744: 12949 us total, 12143 us display, type 5
+frame 745: 12980 us total, 12142 us display, type 5
+frame 746: 12950 us total, 12132 us display, type 5
+frame 747: 12960 us total, 12132 us display, type 5
+[0;32mI (25519) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 748: 13660 us total, 12830 us display, type 5
+frame 749: 13012 us total, 12148 us display, type 5
+frame 750: 12971 us total, 12132 us display, type 5
+frame 751: 12957 us total, 12132 us display, type 5
+frame 752: 13127 us total, 12301 us display, type 5
+frame 753: 12948 us total, 12134 us display, type 5
+frame 754: 12960 us total, 12133 us display, type 5
+[0;32mI (25620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 755: 23781 us total, 13347 us display, type 5
+frame 756: 13105 us total, 12153 us display, type 5
+frame 757: 12954 us total, 12132 us display, type 5
+frame 758: 12959 us total, 12133 us display, type 5
+frame 759: 13117 us total, 12302 us display, type 5
+frame 760: 12982 us total, 12139 us display, type 5
+frame 761: 12948 us total, 12128 us display, type 5
+frame 762: 12966 us total, 12138 us display, type 5
+[0;32mI (25719) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 763: 14918 us total, 13041 us display, type 5
+frame 764: 13081 us total, 12152 us display, type 5
+frame 765: 12958 us total, 12133 us display, type 5
+frame 766: 12954 us total, 12132 us display, type 5
+[0;32mI (25769) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 767: 13750 us total, 12158 us display, type 5
+frame 768: 12996 us total, 12144 us display, type 5
+mem @frame 768: heap free 66016, largest 39936, min ever 65140, zone free 55016, stack free 14540, uptime 25 s, gamestate 0, demo 0, usergame 1, tic 813
+frame 769: 14152 us total, 12133 us display, type 5
+frame 770: 13137 us total, 12325 us display, type 5
+frame 771: 12990 us total, 12147 us display, type 5
+frame 772: 12952 us total, 12133 us display, type 5
+frame 773: 13025 us total, 12208 us display, type 5
+[0;32mI (25869) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 774: 13751 us total, 12921 us display, type 5
+frame 775: 13045 us total, 12153 us display, type 5
+frame 776: 12952 us total, 12134 us display, type 5
+frame 777: 12952 us total, 12132 us display, type 5
+[0;32mI (25919) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 778: 13742 us total, 12917 us display, type 5
+frame 779: 12991 us total, 12146 us display, type 5
+frame 780: 12915 us total, 12132 us display, type 5
+frame 781: 12925 us total, 12129 us display, type 5
+frame 782: 13126 us total, 12301 us display, type 5
+frame 783: 12927 us total, 12137 us display, type 5
+frame 784: 12944 us total, 12132 us display, type 5
+frame 785: 12929 us total, 12132 us display, type 5
+[0;32mI (26019) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 786: 13757 us total, 12223 us display, type 5
+frame 787: 12947 us total, 12137 us display, type 5
+frame 788: 12943 us total, 12133 us display, type 5
+frame 789: 13089 us total, 12288 us display, type 5
+frame 790: 12968 us total, 12146 us display, type 5
+frame 791: 12921 us total, 12130 us display, type 5
+frame 792: 12928 us total, 12134 us display, type 5
+[0;32mI (26119) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 793: 13638 us total, 12836 us display, type 5
+frame 794: 12982 us total, 12152 us display, type 5
+frame 795: 12941 us total, 12139 us display, type 5
+frame 796: 12618 us total, 11639 us display, type 3
+[0;32mI (26170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 797: 46128 us total, 11692 us display, type 3
+frame 798: 40093 us total, 11699 us display, type 3
+[0;32mI (26270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 799: 41256 us total, 11692 us display, type 3
+frame 800: 40303 us total, 12056 us display, type 3
+[0;32mI (26370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 801: 40618 us total, 12688 us display, type 3
+frame 802: 39407 us total, 11692 us display, type 3
+frame 803: 40444 us total, 11692 us display, type 3
+[0;32mI (26470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 804: 41693 us total, 11685 us display, type 3
+frame 805: 40181 us total, 11692 us display, type 3
+[0;32mI (26570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 806: 41046 us total, 12750 us display, type 3
+frame 807: 38698 us total, 11692 us display, type 3
+frame 808: 36384 us total, 11692 us display, type 3
+[0;32mI (26670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 809: 36101 us total, 11692 us display, type 3
+frame 810: 34179 us total, 11911 us display, type 3
+frame 811: 32504 us total, 11692 us display, type 3
+[0;32mI (26770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 812: 32665 us total, 11685 us display, type 3
+frame 813: 29789 us total, 11689 us display, type 3
+frame 814: 29505 us total, 11692 us display, type 3
+[0;32mI (26870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 815: 29646 us total, 12373 us display, type 3
+frame 816: 28507 us total, 11699 us display, type 3
+frame 817: 28758 us total, 12049 us display, type 3
+frame 818: 28394 us total, 11693 us display, type 3
+[0;32mI (26970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 819: 29588 us total, 11692 us display, type 3
+frame 820: 29042 us total, 11683 us display, type 3
+frame 821: 29994 us total, 11685 us display, type 3
+[0;32mI (27070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 822: 30892 us total, 12437 us display, type 3
+frame 823: 31335 us total, 11699 us display, type 3
+frame 824: 32639 us total, 11685 us display, type 3
+[0;32mI (27170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 825: 35099 us total, 12520 us display, type 3
+frame 826: 34558 us total, 11693 us display, type 3
+frame 827: 35693 us total, 11699 us display, type 3
+[0;32mI (27270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 828: 39749 us total, 11691 us display, type 3
+frame 829: 39054 us total, 11919 us display, type 3
+frame 830: 39428 us total, 11699 us display, type 3
+[0;32mI (27370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 831: 41109 us total, 11692 us display, type 3
+frame 832: 40194 us total, 11686 us display, type 3
+[0;32mI (27470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 833: 42154 us total, 11685 us display, type 3
+frame 834: 41210 us total, 12055 us display, type 3
+[0;32mI (27570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 835: 41350 us total, 12844 us display, type 3
+input: down 0x800000
+frame 836: 39727 us total, 11692 us display, type 3
+frame 837: 39480 us total, 11692 us display, type 3
+[0;32mI (27670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 838: 39471 us total, 11699 us display, type 3
+frame 839: 38200 us total, 11692 us display, type 3
+frame 840: 38961 us total, 11692 us display, type 3
+[0;32mI (27770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 841: 39683 us total, 11686 us display, type 3
+frame 842: 38893 us total, 11692 us display, type 3
+[0;32mI (27870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 843: 40853 us total, 11692 us display, type 3
+frame 844: 39576 us total, 11692 us display, type 3
+frame 845: 39730 us total, 11686 us display, type 3
+[0;32mI (27970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 846: 41594 us total, 11685 us display, type 3
+frame 847: 40773 us total, 11692 us display, type 3
+[0;32mI (28070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 848: 42441 us total, 11685 us display, type 3
+frame 849: 42551 us total, 11692 us display, type 3
+[0;32mI (28170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 850: 42896 us total, 12371 us display, type 3
+frame 851: 42758 us total, 11686 us display, type 3
+frame 852: 43258 us total, 11692 us display, type 3
+[0;32mI (28270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 853: 44773 us total, 11692 us display, type 3
+frame 854: 46073 us total, 11697 us display, type 3
+[0;32mI (28370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 855: 46546 us total, 11685 us display, type 3
+frame 856: 45976 us total, 11686 us display, type 3
+[0;32mI (28470) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x400000
+frame 857: 47211 us total, 11692 us display, type 3
+frame 858: 45648 us total, 11693 us display, type 3
+[0;32mI (28570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 859: 46542 us total, 11692 us display, type 3
+frame 860: 45707 us total, 11685 us display, type 3
+[0;32mI (28670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 861: 45593 us total, 12370 us display, type 3
+frame 862: 45342 us total, 11685 us display, type 3
+frame 863: 45539 us total, 11692 us display, type 3
+[0;32mI (28770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 864: 46632 us total, 11692 us display, type 3
+frame 865: 46045 us total, 11692 us display, type 3
+[0;32mI (28870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 866: 47072 us total, 11685 us display, type 3
+frame 867: 46416 us total, 11693 us display, type 3
+[0;32mI (28970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 868: 46526 us total, 11692 us display, type 3
+frame 869: 45148 us total, 11692 us display, type 3
+[0;32mI (29070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 870: 44430 us total, 11692 us display, type 3
+frame 871: 45309 us total, 11685 us display, type 3
+[0;32mI (29170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 872: 45001 us total, 12375 us display, type 3
+frame 873: 42475 us total, 11839 us display, type 3
+frame 874: 42574 us total, 11692 us display, type 3
+[0;32mI (29270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 875: 44054 us total, 11692 us display, type 3
+frame 876: 42528 us total, 11692 us display, type 3
+[0;32mI (29370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 877: 42696 us total, 11692 us display, type 3
+frame 878: 42285 us total, 11694 us display, type 3
+[0;32mI (29470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 879: 42515 us total, 12385 us display, type 3
+frame 880: 41620 us total, 11765 us display, type 3
+frame 881: 41135 us total, 11685 us display, type 3
+[0;32mI (29570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 882: 42914 us total, 11685 us display, type 3
+[0;32mI (29620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 883: 42198 us total, 11685 us display, type 3
+frame 884: 41437 us total, 11692 us display, type 3
+[0;32mI (29720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 885: 41475 us total, 12351 us display, type 3
+frame 886: 41644 us total, 12029 us display, type 3
+frame 887: 41252 us total, 11685 us display, type 3
+[0;32mI (29820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 888: 42170 us total, 11692 us display, type 3
+frame 889: 41218 us total, 11685 us display, type 3
+[0;32mI (29920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 890: 42066 us total, 11692 us display, type 3
+frame 891: 41080 us total, 11692 us display, type 3
+[0;32mI (30020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 892: 41927 us total, 12705 us display, type 3
+frame 893: 41128 us total, 11699 us display, type 3
+frame 894: 40880 us total, 11692 us display, type 3
+[0;32mI (30120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 895: 42159 us total, 11692 us display, type 3
+frame 896: 40994 us total, 11692 us display, type 3
+[0;32mI (30220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 897: 41624 us total, 12721 us display, type 3
+frame 898: 40723 us total, 11947 us display, type 3
+frame 899: 40841 us total, 11698 us display, type 3
+[0;32mI (30320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 900: 43035 us total, 11692 us display, type 3
+frame 901: 41878 us total, 11699 us display, type 3
+[0;32mI (30420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 902: 43677 us total, 11685 us display, type 3
+frame 903: 43736 us total, 11685 us display, type 3
+[0;32mI (30520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 904: 43780 us total, 12390 us display, type 3
+frame 905: 41336 us total, 11691 us display, type 3
+frame 906: 42297 us total, 11692 us display, type 3
+[0;32mI (30620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 907: 42920 us total, 11692 us display, type 3
+frame 908: 42282 us total, 11692 us display, type 3
+[0;32mI (30720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 909: 42722 us total, 11692 us display, type 3
+frame 910: 41693 us total, 11852 us display, type 3
+[0;32mI (30820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 911: 42583 us total, 12753 us display, type 3
+frame 912: 41596 us total, 11686 us display, type 3
+frame 913: 42306 us total, 11699 us display, type 3
+[0;32mI (30920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 914: 42838 us total, 11692 us display, type 3
+frame 915: 41864 us total, 11685 us display, type 3
+[0;32mI (31020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 916: 42725 us total, 11685 us display, type 3
+frame 917: 41449 us total, 11772 us display, type 3
+frame 918: 41453 us total, 11685 us display, type 3
+[0;32mI (31120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 919: 43200 us total, 11686 us display, type 3
+frame 920: 42208 us total, 11685 us display, type 3
+[0;32mI (31220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 921: 42631 us total, 11692 us display, type 3
+frame 922: 41769 us total, 11692 us display, type 3
+[0;32mI (31320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 923: 42462 us total, 12652 us display, type 3
+frame 924: 41649 us total, 11860 us display, type 3
+frame 925: 41377 us total, 11685 us display, type 3
+[0;32mI (31420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 926: 42987 us total, 11686 us display, type 3
+frame 927: 42323 us total, 11699 us display, type 3
+[0;32mI (31520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 928: 42775 us total, 11686 us display, type 3
+frame 929: 41840 us total, 11685 us display, type 3
+[0;32mI (31620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 930: 42411 us total, 12762 us display, type 3
+input: down 0x200000
+frame 931: 42316 us total, 11692 us display, type 3
+frame 932: 42288 us total, 11685 us display, type 3
+[0;32mI (31720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 933: 43447 us total, 11695 us display, type 3
+frame 934: 42346 us total, 11685 us display, type 3
+[0;32mI (31820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 935: 45119 us total, 11685 us display, type 3
+frame 936: 44190 us total, 11692 us display, type 3
+[0;32mI (31920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 937: 44001 us total, 12621 us display, type 3
+input: down 0x800000
+frame 938: 43592 us total, 11758 us display, type 3
+frame 939: 43774 us total, 11692 us display, type 3
+[0;32mI (32020) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x100000
+frame 940: 46221 us total, 11692 us display, type 3
+frame 941: 44133 us total, 11685 us display, type 3
+[0;32mI (32120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 942: 44986 us total, 11692 us display, type 3
+frame 943: 44025 us total, 11685 us display, type 3
+[0;32mI (32220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 944: 44097 us total, 11685 us display, type 3
+frame 945: 43589 us total, 11692 us display, type 3
+[0;32mI (32320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 946: 44651 us total, 12742 us display, type 3
+frame 947: 43681 us total, 11877 us display, type 3
+frame 948: 42755 us total, 11692 us display, type 3
+[0;32mI (32420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 949: 44022 us total, 11692 us display, type 3
+frame 950: 43186 us total, 11689 us display, type 3
+[0;32mI (32520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 951: 45282 us total, 11692 us display, type 3
+frame 952: 44686 us total, 11685 us display, type 3
+[0;32mI (32620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 953: 46881 us total, 11699 us display, type 3
+frame 954: 45298 us total, 11687 us display, type 3
+[0;32mI (32720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 955: 46067 us total, 12520 us display, type 3
+frame 956: 44455 us total, 11692 us display, type 3
+frame 957: 44515 us total, 11685 us display, type 3
+[0;32mI (32820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 958: 44261 us total, 11692 us display, type 3
+frame 959: 42788 us total, 11685 us display, type 3
+[0;32mI (32920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 960: 41369 us total, 11692 us display, type 3
+frame 961: 38490 us total, 11685 us display, type 3
+frame 962: 31876 us total, 11685 us display, type 3
+[0;32mI (33020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 963: 32248 us total, 11692 us display, type 3
+input: down 0x400000
+frame 964: 31330 us total, 11700 us display, type 3
+frame 965: 31929 us total, 11699 us display, type 3
+[0;32mI (33120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 966: 34230 us total, 11699 us display, type 3
+frame 967: 35750 us total, 11691 us display, type 3
+frame 968: 36481 us total, 11692 us display, type 3
+[0;32mI (33220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 969: 40239 us total, 11685 us display, type 3
+frame 970: 40119 us total, 11691 us display, type 3
+[0;32mI (33320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 971: 42859 us total, 11685 us display, type 3
+frame 972: 42405 us total, 11695 us display, type 3
+[0;32mI (33420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 973: 44722 us total, 12847 us display, type 3
+frame 974: 43436 us total, 11738 us display, type 3
+frame 975: 43272 us total, 11692 us display, type 3
+[0;32mI (33520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 976: 44413 us total, 11692 us display, type 3
+frame 977: 43424 us total, 11692 us display, type 3
+[0;32mI (33620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 978: 43990 us total, 11692 us display, type 3
+frame 979: 43185 us total, 11685 us display, type 3
+[0;32mI (33720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 980: 43484 us total, 11692 us display, type 3
+frame 981: 42864 us total, 11904 us display, type 3
+frame 982: 41989 us total, 11685 us display, type 3
+[0;32mI (33820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 983: 43139 us total, 11699 us display, type 3
+frame 984: 42818 us total, 11688 us display, type 3
+[0;32mI (33920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 985: 44193 us total, 11692 us display, type 3
+frame 986: 42461 us total, 11685 us display, type 3
+[0;32mI (34020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 987: 42939 us total, 11692 us display, type 3
+frame 988: 40775 us total, 11692 us display, type 3
+frame 989: 40759 us total, 11691 us display, type 3
+[0;32mI (34120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 990: 41669 us total, 11686 us display, type 3
+[0;32mI (34170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 991: 41499 us total, 11692 us display, type 3
+frame 992: 40144 us total, 11692 us display, type 3
+[0;32mI (34270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 993: 40415 us total, 12658 us display, type 3
+input: down 0x00008
+frame 994: 39328 us total, 11699 us display, type 3
+frame 995: 38960 us total, 11693 us display, type 3
+[0;32mI (34370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 996: 39521 us total, 11685 us display, type 3
+[0;32mI (34420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 997: 39060 us total, 11685 us display, type 3
+frame 998: 37872 us total, 11692 us display, type 3
+frame 999: 35738 us total, 11699 us display, type 3
+[0;32mI (34520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1000: 36419 us total, 11685 us display, type 3
+[0;32mI (34570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1001: 36525 us total, 11692 us display, type 3
+frame 1002: 34838 us total, 11691 us display, type 3
+frame 1003: 34811 us total, 11692 us display, type 3
+[0;32mI (34670) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00010
+frame 1004: 35338 us total, 11693 us display, type 3
+frame 1005: 34160 us total, 11874 us display, type 3
+frame 1006: 32621 us total, 11683 us display, type 3
+[0;32mI (34770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1007: 33921 us total, 11691 us display, type 3
+frame 1008: 34816 us total, 11685 us display, type 3
+frame 1009: 33629 us total, 11698 us display, type 3
+[0;32mI (34870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1010: 35243 us total, 11685 us display, type 3
+frame 1011: 33474 us total, 11923 us display, type 3
+frame 1012: 32643 us total, 11692 us display, type 3
+[0;32mI (34970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1013: 33450 us total, 11692 us display, type 3
+frame 1014: 31128 us total, 11867 us display, type 3
+frame 1015: 30739 us total, 11683 us display, type 3
+[0;32mI (35070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1016: 32130 us total, 11692 us display, type 3
+frame 1017: 30335 us total, 11697 us display, type 3
+[0;32mI (35120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1018: 31579 us total, 11692 us display, type 3
+frame 1019: 30868 us total, 11689 us display, type 3
+frame 1020: 29304 us total, 11690 us display, type 3
+[0;32mI (35220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1021: 30079 us total, 11692 us display, type 3
+frame 1022: 28825 us total, 11691 us display, type 3
+frame 1023: 29502 us total, 11685 us display, type 3
+[0;32mI (35320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1024: 29738 us total, 12375 us display, type 3
+mem @frame 1024: heap free 66016, largest 39936, min ever 65140, zone free 55016, stack free 14540, uptime 35 s, gamestate 0, demo 0, usergame 1, tic 1135
+frame 1025: 30640 us total, 11682 us display, type 3
+frame 1026: 29921 us total, 11685 us display, type 3
+frame 1027: 29559 us total, 11691 us display, type 3
+[0;32mI (35420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1028: 31424 us total, 11692 us display, type 3
+frame 1029: 30015 us total, 11685 us display, type 3
+frame 1030: 37342 us total, 11692 us display, type 3
+[0;32mI (35520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1031: 38985 us total, 11699 us display, type 3
+frame 1032: 37888 us total, 11692 us display, type 3
+[0;32mI (35620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1033: 42224 us total, 11692 us display, type 3
+frame 1034: 40755 us total, 11713 us display, type 3
+frame 1035: 41199 us total, 11699 us display, type 3
+[0;32mI (35720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1036: 42987 us total, 11692 us display, type 3
+frame 1037: 40776 us total, 11691 us display, type 3
+[0;32mI (35820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1038: 41014 us total, 11699 us display, type 3
+frame 1039: 40578 us total, 11686 us display, type 3
+[0;32mI (35920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1040: 41093 us total, 12588 us display, type 3
+frame 1041: 40079 us total, 11692 us display, type 3
+frame 1042: 40852 us total, 11692 us display, type 3
+[0;32mI (36020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1043: 42010 us total, 11685 us display, type 3
+frame 1044: 40289 us total, 11685 us display, type 3
+[0;32mI (36120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1045: 40056 us total, 12594 us display, type 3
+frame 1046: 38502 us total, 11692 us display, type 3
+frame 1047: 39925 us total, 11692 us display, type 3
+[0;32mI (36220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1048: 41639 us total, 11692 us display, type 3
+frame 1049: 44513 us total, 11685 us display, type 3
+[0;32mI (36320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1050: 46275 us total, 11692 us display, type 3
+frame 1051: 47676 us total, 11685 us display, type 3
+[0;32mI (36420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1052: 46108 us total, 12560 us display, type 3
+frame 1053: 45356 us total, 11803 us display, type 3
+[0;32mI (36520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1054: 46403 us total, 12549 us display, type 3
+frame 1055: 44309 us total, 11692 us display, type 3
+frame 1056: 44458 us total, 11692 us display, type 3
+[0;32mI (36620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1057: 43839 us total, 11692 us display, type 3
+frame 1058: 40583 us total, 11685 us display, type 3
+[0;32mI (36720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1059: 40949 us total, 11685 us display, type 3
+frame 1060: 38859 us total, 11692 us display, type 3
+frame 1061: 38845 us total, 11692 us display, type 3
+[0;32mI (36820) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00001
+frame 1062: 42433 us total, 11685 us display, type 3
+frame 1063: 42067 us total, 11685 us display, type 3
+[0;32mI (36920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1064: 42662 us total, 11692 us display, type 3
+frame 1065: 42686 us total, 11692 us display, type 3
+[0;32mI (37020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1066: 43360 us total, 12377 us display, type 3
+frame 1067: 43013 us total, 11866 us display, type 3
+frame 1068: 43399 us total, 11692 us display, type 3
+[0;32mI (37120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1069: 45574 us total, 11692 us display, type 3
+frame 1070: 45170 us total, 11685 us display, type 3
+[0;32mI (37220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1071: 45556 us total, 11692 us display, type 3
+frame 1072: 45114 us total, 11699 us display, type 3
+[0;32mI (37320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1073: 46078 us total, 11699 us display, type 3
+frame 1074: 45023 us total, 11692 us display, type 3
+[0;32mI (37420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1075: 46383 us total, 11685 us display, type 3
+frame 1076: 45416 us total, 11692 us display, type 3
+[0;32mI (37520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1077: 45965 us total, 12529 us display, type 3
+frame 1078: 44701 us total, 11692 us display, type 3
+frame 1079: 45388 us total, 11692 us display, type 3
+[0;32mI (37620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1080: 46709 us total, 11685 us display, type 3
+frame 1081: 49356 us total, 11692 us display, type 3
+[0;32mI (37720) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00002
+frame 1082: 54847 us total, 11692 us display, type 3
+frame 1083: 50346 us total, 11699 us display, type 3
+[0;32mI (37820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1084: 47155 us total, 11692 us display, type 3
+frame 1085: 45518 us total, 11692 us display, type 3
+[0;32mI (37920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1086: 45580 us total, 11685 us display, type 3
+frame 1087: 44564 us total, 11692 us display, type 3
+[0;32mI (38020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1088: 45845 us total, 11692 us display, type 3
+frame 1089: 44328 us total, 11691 us display, type 3
+[0;32mI (38120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1090: 44316 us total, 11692 us display, type 3
+frame 1091: 44129 us total, 11966 us display, type 3
+[0;32mI (38220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1092: 44519 us total, 12853 us display, type 3
+frame 1093: 43835 us total, 11699 us display, type 3
+frame 1094: 43933 us total, 11692 us display, type 3
+[0;32mI (38320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1095: 45875 us total, 11692 us display, type 3
+frame 1096: 44016 us total, 11692 us display, type 3
+[0;32mI (38420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1097: 44565 us total, 11685 us display, type 3
+[0;32mI (38470) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00001
+frame 1098: 44961 us total, 11685 us display, type 3
+frame 1099: 43543 us total, 11692 us display, type 3
+[0;32mI (38570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1100: 44221 us total, 12372 us display, type 3
+frame 1101: 44051 us total, 11936 us display, type 3
+frame 1102: 43433 us total, 11685 us display, type 3
+[0;32mI (38670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1103: 44551 us total, 11699 us display, type 3
+frame 1104: 43252 us total, 11685 us display, type 3
+[0;32mI (38770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1105: 43785 us total, 11692 us display, type 3
+frame 1106: 43042 us total, 11691 us display, type 3
+[0;32mI (38870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1107: 44043 us total, 11685 us display, type 3
+frame 1108: 43523 us total, 11692 us display, type 3
+frame 1109: 42470 us total, 11685 us display, type 3
+[0;32mI (38970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1110: 43878 us total, 11699 us display, type 3
+frame 1111: 43096 us total, 11691 us display, type 3
+[0;32mI (39070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1112: 43807 us total, 11692 us display, type 3
+[0;32mI (39120) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00008
+frame 1113: 44250 us total, 11692 us display, type 3
+frame 1114: 43499 us total, 11692 us display, type 3
+[0;32mI (39220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1115: 43571 us total, 12484 us display, type 3
+frame 1116: 41885 us total, 11686 us display, type 3
+frame 1117: 41451 us total, 11691 us display, type 3
+[0;32mI (39320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1118: 42668 us total, 11692 us display, type 3
+frame 1119: 41455 us total, 11692 us display, type 3
+[0;32mI (39420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1120: 41704 us total, 11685 us display, type 3
+frame 1121: 40052 us total, 11692 us display, type 3
+frame 1122: 35780 us total, 11692 us display, type 3
+[0;32mI (39520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1123: 33541 us total, 11692 us display, type 3
+frame 1124: 32060 us total, 11690 us display, type 3
+frame 1125: 31410 us total, 11692 us display, type 3
+[0;32mI (39620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1126: 30660 us total, 11693 us display, type 3
+frame 1127: 29912 us total, 11935 us display, type 3
+frame 1128: 29736 us total, 11680 us display, type 3
+[0;32mI (39720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1129: 31369 us total, 11691 us display, type 3
+frame 1130: 29734 us total, 11694 us display, type 3
+frame 1131: 29889 us total, 11685 us display, type 3
+[0;32mI (39820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1132: 30205 us total, 12476 us display, type 3
+input: down 0x00004
+frame 1133: 29569 us total, 11681 us display, type 3
+frame 1134: 30008 us total, 11684 us display, type 3
+frame 1135: 29979 us total, 11692 us display, type 3
+[0;32mI (39920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1136: 32584 us total, 11692 us display, type 3
+[0;32mI (39970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1137: 36974 us total, 11699 us display, type 3
+frame 1138: 39312 us total, 11685 us display, type 3
+frame 1139: 42118 us total, 11685 us display, type 3
+[0;32mI (40070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1140: 43152 us total, 11692 us display, type 3
+frame 1141: 43434 us total, 11692 us display, type 3
+[0;32mI (40170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1142: 44718 us total, 11692 us display, type 3
+frame 1143: 45340 us total, 11698 us display, type 3
+[0;32mI (40270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1144: 45754 us total, 11692 us display, type 3
+[0;32mI (40320) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00001
+frame 1145: 46305 us total, 11692 us display, type 3
+frame 1146: 44691 us total, 11692 us display, type 3
+[0;32mI (40420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1147: 45382 us total, 12371 us display, type 3
+frame 1148: 44767 us total, 11692 us display, type 3
+frame 1149: 45335 us total, 11686 us display, type 3
+[0;32mI (40520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1150: 46433 us total, 11692 us display, type 3
+frame 1151: 47048 us total, 11699 us display, type 3
+[0;32mI (40620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1152: 46735 us total, 11692 us display, type 3
+frame 1153: 46416 us total, 11696 us display, type 3
+[0;32mI (40720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1154: 48329 us total, 11685 us display, type 3
+frame 1155: 47732 us total, 11699 us display, type 3
+[0;32mI (40820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1156: 48106 us total, 11692 us display, type 3
+frame 1157: 47978 us total, 11699 us display, type 3
+[0;32mI (40920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1158: 47597 us total, 11685 us display, type 3
+frame 1159: 45780 us total, 11685 us display, type 3
+[0;32mI (41020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1160: 46504 us total, 11692 us display, type 3
+frame 1161: 45111 us total, 11699 us display, type 3
+[0;32mI (41120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1162: 45953 us total, 12857 us display, type 3
+frame 1163: 44978 us total, 11699 us display, type 3
+frame 1164: 44488 us total, 11685 us display, type 3
+[0;32mI (41220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1165: 45396 us total, 11692 us display, type 3
+frame 1166: 39650 us total, 11685 us display, type 3
+[0;32mI (41320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1167: 42317 us total, 11699 us display, type 3
+frame 1168: 43228 us total, 11699 us display, type 3
+[0;32mI (41420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1169: 44937 us total, 12378 us display, type 3
+frame 1170: 46839 us total, 11699 us display, type 3
+[0;32mI (41520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1171: 46872 us total, 12706 us display, type 3
+frame 1172: 45551 us total, 11685 us display, type 3
+frame 1173: 46405 us total, 11685 us display, type 3
+[0;32mI (41620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1174: 45610 us total, 11692 us display, type 3
+frame 1175: 43218 us total, 11692 us display, type 3
+[0;32mI (41720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1176: 44605 us total, 11692 us display, type 3
+frame 1177: 43203 us total, 11685 us display, type 3
+[0;32mI (41820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1178: 44241 us total, 11691 us display, type 3
+frame 1179: 42331 us total, 11692 us display, type 3
+[0;32mI (41920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1180: 43291 us total, 12518 us display, type 3
+frame 1181: 41895 us total, 11699 us display, type 3
+frame 1182: 43094 us total, 11692 us display, type 3
+[0;32mI (42020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1183: 44119 us total, 11692 us display, type 3
+frame 1184: 44284 us total, 11692 us display, type 3
+[0;32mI (42120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1185: 44231 us total, 11692 us display, type 3
+frame 1186: 43978 us total, 11699 us display, type 3
+[0;32mI (42220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1187: 43952 us total, 12354 us display, type 3
+frame 1188: 43596 us total, 11687 us display, type 3
+frame 1189: 44924 us total, 11685 us display, type 3
+[0;32mI (42320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1190: 46644 us total, 11692 us display, type 3
+frame 1191: 45691 us total, 11692 us display, type 3
+[0;32mI (42420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1192: 46926 us total, 11692 us display, type 3
+frame 1193: 46422 us total, 11692 us display, type 3
+[0;32mI (42520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1194: 47821 us total, 11692 us display, type 3
+frame 1195: 47535 us total, 11692 us display, type 3
+[0;32mI (42620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1196: 49214 us total, 11692 us display, type 3
+frame 1197: 47644 us total, 11699 us display, type 3
+[0;32mI (42720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1198: 47775 us total, 11699 us display, type 3
+frame 1199: 46874 us total, 11692 us display, type 3
+[0;32mI (42820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1200: 47574 us total, 11685 us display, type 3
+frame 1201: 44444 us total, 11692 us display, type 3
+[0;32mI (42920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1202: 44604 us total, 12398 us display, type 3
+frame 1203: 43188 us total, 11685 us display, type 3
+frame 1204: 44928 us total, 11685 us display, type 3
+[0;32mI (43020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1205: 46457 us total, 11698 us display, type 3
+frame 1206: 47039 us total, 11692 us display, type 3
+[0;32mI (43120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1207: 47279 us total, 11685 us display, type 3
+frame 1208: 47357 us total, 11685 us display, type 3
+[0;32mI (43220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1209: 47334 us total, 11692 us display, type 3
+frame 1210: 46074 us total, 11696 us display, type 3
+[0;32mI (43320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1211: 46100 us total, 11692 us display, type 3
+frame 1212: 45019 us total, 11692 us display, type 3
+[0;32mI (43420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1213: 45455 us total, 12374 us display, type 3
+frame 1214: 45456 us total, 11692 us display, type 3
+[0;32mI (43520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1215: 45309 us total, 12281 us display, type 3
+frame 1216: 44514 us total, 11695 us display, type 3
+frame 1217: 44033 us total, 11692 us display, type 3
+[0;32mI (43620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1218: 44690 us total, 11685 us display, type 3
+frame 1219: 43329 us total, 11692 us display, type 3
+[0;32mI (43720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1220: 43789 us total, 11699 us display, type 3
+frame 1221: 43100 us total, 11692 us display, type 3
+[0;32mI (43820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1222: 43721 us total, 12555 us display, type 3
+frame 1223: 43176 us total, 11869 us display, type 3
+frame 1224: 42936 us total, 11692 us display, type 3
+[0;32mI (43920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1225: 43299 us total, 11692 us display, type 3
+frame 1226: 42901 us total, 11692 us display, type 3
+[0;32mI (44020) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00010
+frame 1227: 43818 us total, 11692 us display, type 3
+frame 1228: 40963 us total, 11686 us display, type 3
+[0;32mI (44120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1229: 40115 us total, 12683 us display, type 3
+frame 1230: 38608 us total, 11685 us display, type 3
+frame 1231: 42963 us total, 11691 us display, type 3
+[0;32mI (44220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1232: 41496 us total, 11692 us display, type 3
+[0;32mI (44270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1233: 41964 us total, 11692 us display, type 3
+frame 1234: 41098 us total, 11699 us display, type 3
+[0;32mI (44370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1235: 41092 us total, 12616 us display, type 3
+frame 1236: 39581 us total, 11685 us display, type 3
+frame 1237: 39291 us total, 11692 us display, type 3
+[0;32mI (44470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1238: 41790 us total, 11685 us display, type 3
+[0;32mI (44520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1239: 40572 us total, 11685 us display, type 3
+input: down 0x00002
+frame 1240: 39944 us total, 11692 us display, type 3
+frame 1241: 39257 us total, 11685 us display, type 3
+[0;32mI (44620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1242: 40373 us total, 11692 us display, type 3
+frame 1243: 39651 us total, 11685 us display, type 3
+[0;32mI (44720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1244: 40587 us total, 11699 us display, type 3
+frame 1245: 40293 us total, 11692 us display, type 3
+frame 1246: 39287 us total, 11685 us display, type 3
+[0;32mI (44820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1247: 41261 us total, 11692 us display, type 3
+frame 1248: 43441 us total, 11685 us display, type 3
+[0;32mI (44920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1249: 45963 us total, 11685 us display, type 3
+frame 1250: 46305 us total, 11685 us display, type 3
+[0;32mI (45020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1251: 46409 us total, 11692 us display, type 3
+frame 1252: 46287 us total, 11685 us display, type 3
+[0;32mI (45120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1253: 46200 us total, 12722 us display, type 3
+frame 1254: 45796 us total, 11685 us display, type 3
+[0;32mI (45220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1255: 45868 us total, 12581 us display, type 3
+frame 1256: 45484 us total, 11685 us display, type 3
+frame 1257: 45625 us total, 11692 us display, type 3
+[0;32mI (45320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1258: 47262 us total, 11685 us display, type 3
+frame 1259: 45577 us total, 11692 us display, type 3
+[0;32mI (45420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1260: 46106 us total, 11691 us display, type 3
+frame 1261: 45851 us total, 11692 us display, type 3
+[0;32mI (45520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1262: 46077 us total, 11692 us display, type 3
+frame 1263: 45010 us total, 11692 us display, type 3
+[0;32mI (45620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1264: 46652 us total, 11692 us display, type 3
+frame 1265: 44686 us total, 11810 us display, type 3
+[0;32mI (45720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1266: 45646 us total, 12387 us display, type 3
+frame 1267: 45082 us total, 11844 us display, type 3
+frame 1268: 44704 us total, 11692 us display, type 3
+[0;32mI (45820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1269: 46296 us total, 11692 us display, type 3
+frame 1270: 45072 us total, 11685 us display, type 3
+[0;32mI (45920) NIMBLE_HIDH: notify handle 30 len 16[0m
+input: down 0x00001
+frame 1271: 46742 us total, 11693 us display, type 3
+frame 1272: 44821 us total, 11692 us display, type 3
+[0;32mI (46020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1273: 46110 us total, 11692 us display, type 3
+frame 1274: 44651 us total, 11685 us display, type 3
+[0;32mI (46120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1275: 45362 us total, 11699 us display, type 3
+[0;32mI (46170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1276: 45519 us total, 12765 us display, type 3
+frame 1277: 45355 us total, 11866 us display, type 3
+frame 1278: 44739 us total, 11685 us display, type 3
+[0;32mI (46270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1279: 45975 us total, 11692 us display, type 3
+frame 1280: 45349 us total, 11698 us display, type 3
+mem @frame 1280: heap free 66016, largest 39936, min ever 65140, zone free 55016, stack free 14540, uptime 46 s, gamestate 0, demo 0, usergame 1, tic 1521
+[0;32mI (46370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1281: 47412 us total, 11686 us display, type 3
+frame 1282: 44887 us total, 11691 us display, type 3
+[0;32mI (46470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1283: 46836 us total, 11699 us display, type 3
+frame 1284: 45163 us total, 11691 us display, type 3
+[0;32mI (46570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1285: 45747 us total, 11692 us display, type 3
+frame 1286: 45047 us total, 11693 us display, type 3
+[0;32mI (46670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1287: 44423 us total, 12414 us display, type 3
+frame 1288: 43823 us total, 11685 us display, type 3
+frame 1289: 43399 us total, 11685 us display, type 3
+[0;32mI (46770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1290: 45619 us total, 11692 us display, type 3
+frame 1291: 44153 us total, 11692 us display, type 3
+[0;32mI (46870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1292: 45170 us total, 11685 us display, type 3
+frame 1293: 43836 us total, 11690 us display, type 3
+[0;32mI (46970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1294: 44632 us total, 11693 us display, type 3
+frame 1295: 43563 us total, 11685 us display, type 3
+[0;32mI (47070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1296: 44877 us total, 12761 us display, type 3
+frame 1297: 43497 us total, 11811 us display, type 3
+frame 1298: 43212 us total, 11692 us display, type 3
+[0;32mI (47170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1299: 45227 us total, 11685 us display, type 3
+frame 1300: 43625 us total, 11693 us display, type 3
+[0;32mI (47270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1301: 44360 us total, 11692 us display, type 3
+frame 1302: 43593 us total, 11692 us display, type 3
+[0;32mI (47370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1303: 44909 us total, 11692 us display, type 3
+[0;32mI (47420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1304: 43740 us total, 12376 us display, type 3
+frame 1305: 43357 us total, 11692 us display, type 3
+frame 1306: 42901 us total, 11692 us display, type 3
+[0;32mI (47520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1307: 44302 us total, 11691 us display, type 3
+frame 1308: 43488 us total, 11692 us display, type 3
+[0;32mI (47620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1309: 44802 us total, 11685 us display, type 3
+frame 1310: 43326 us total, 11698 us display, type 3
+[0;32mI (47720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1311: 44104 us total, 11692 us display, type 3
+frame 1312: 43757 us total, 12056 us display, type 3
+[0;32mI (47820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1313: 43434 us total, 12371 us display, type 3
+frame 1314: 42904 us total, 11692 us display, type 3
+frame 1315: 43266 us total, 11686 us display, type 3
+[0;32mI (47920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1316: 45157 us total, 11685 us display, type 3
+frame 1317: 43201 us total, 11685 us display, type 3
+[0;32mI (48020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1318: 44471 us total, 11698 us display, type 3
+frame 1319: 43284 us total, 11692 us display, type 3
+[0;32mI (48120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1320: 43471 us total, 12370 us display, type 3
+frame 1321: 43036 us total, 11817 us display, type 3
+frame 1322: 43452 us total, 11685 us display, type 3
+[0;32mI (48220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1323: 44432 us total, 11692 us display, type 3
+frame 1324: 43449 us total, 11685 us display, type 3
+[0;32mI (48320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1325: 44691 us total, 11692 us display, type 3
+frame 1326: 43154 us total, 11692 us display, type 3
+[0;32mI (48420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1327: 44145 us total, 11685 us display, type 3
+frame 1328: 42766 us total, 11692 us display, type 3
+[0;32mI (48520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1329: 44389 us total, 12370 us display, type 3
+frame 1330: 42726 us total, 11699 us display, type 3
+frame 1331: 44002 us total, 11699 us display, type 3
+[0;32mI (48620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1332: 44362 us total, 11692 us display, type 3
+[0;32mI (48670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1333: 44102 us total, 11685 us display, type 3
+frame 1334: 43233 us total, 11699 us display, type 3
+[0;32mI (48770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1335: 44665 us total, 11692 us display, type 3
+frame 1336: 42923 us total, 11757 us display, type 3
+[0;32mI (48870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1337: 43699 us total, 12347 us display, type 3
+frame 1338: 43292 us total, 11685 us display, type 3
+frame 1339: 43388 us total, 11692 us display, type 3
+[0;32mI (48970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1340: 44335 us total, 11699 us display, type 3
+frame 1341: 43225 us total, 11690 us display, type 3
+[0;32mI (49070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1342: 44854 us total, 11692 us display, type 3
+frame 1343: 43180 us total, 11685 us display, type 3
+[0;32mI (49170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1344: 44114 us total, 12356 us display, type 3
+frame 1345: 42818 us total, 11685 us display, type 3
+frame 1346: 42947 us total, 11692 us display, type 3
+[0;32mI (49270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1347: 44311 us total, 11685 us display, type 3
+frame 1348: 44205 us total, 11692 us display, type 3
+[0;32mI (49370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1349: 44148 us total, 11693 us display, type 3
+frame 1350: 43325 us total, 11685 us display, type 3
+[0;32mI (49470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1351: 44509 us total, 11697 us display, type 3
+frame 1352: 42827 us total, 11685 us display, type 3
+[0;32mI (49570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1353: 43699 us total, 12552 us display, type 3
+frame 1354: 42707 us total, 11692 us display, type 3
+frame 1355: 44180 us total, 11692 us display, type 3
+[0;32mI (49670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1356: 43925 us total, 11692 us display, type 3
+frame 1357: 43700 us total, 11692 us display, type 3
+[0;32mI (49770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1358: 43994 us total, 11692 us display, type 3
+frame 1359: 43341 us total, 11692 us display, type 3
+[0;32mI (49870) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1360: 43545 us total, 12350 us display, type 3
+frame 1361: 43641 us total, 11759 us display, type 3
+frame 1362: 42769 us total, 11692 us display, type 3
+[0;32mI (49970) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1363: 44597 us total, 11692 us display, type 3
+frame 1364: 43570 us total, 11686 us display, type 3
+[0;32mI (50070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1365: 44174 us total, 11685 us display, type 3
+frame 1366: 43284 us total, 11692 us display, type 3
+[0;32mI (50170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1367: 44008 us total, 11692 us display, type 3
+frame 1368: 43837 us total, 11956 us display, type 3
+[0;32mI (50270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1369: 43701 us total, 12654 us display, type 3
+frame 1370: 43355 us total, 11685 us display, type 3
+frame 1371: 43391 us total, 11692 us display, type 3
+[0;32mI (50370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1372: 44050 us total, 11699 us display, type 3
+frame 1373: 43147 us total, 11696 us display, type 3
+[0;32mI (50470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1374: 44757 us total, 11692 us display, type 3
+[0;32mI (50520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1375: 43973 us total, 11692 us display, type 3
+frame 1376: 43120 us total, 11699 us display, type 3
+[0;32mI (50620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1377: 44196 us total, 12668 us display, type 3
+frame 1378: 42942 us total, 11699 us display, type 3
+frame 1379: 43367 us total, 11692 us display, type 3
+[0;32mI (50720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1380: 44108 us total, 11685 us display, type 3
+frame 1381: 43832 us total, 11689 us display, type 3
+[0;32mI (50820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1382: 44139 us total, 11685 us display, type 3
+frame 1383: 43485 us total, 11699 us display, type 3
+[0;32mI (50920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1384: 44474 us total, 12804 us display, type 3
+frame 1385: 43022 us total, 11866 us display, type 3
+frame 1386: 42761 us total, 11685 us display, type 3
+[0;32mI (51020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1387: 45119 us total, 11688 us display, type 3
+frame 1388: 43211 us total, 11692 us display, type 3
+[0;32mI (51120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1389: 44121 us total, 11699 us display, type 3
+frame 1390: 43608 us total, 11685 us display, type 3
+[0;32mI (51220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1391: 44178 us total, 11686 us display, type 3
+frame 1392: 43010 us total, 11884 us display, type 3
+[0;32mI (51320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1393: 43489 us total, 12247 us display, type 3
+frame 1394: 43547 us total, 11685 us display, type 3
+frame 1395: 43502 us total, 11692 us display, type 3
+[0;32mI (51420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1396: 44106 us total, 11692 us display, type 3
+frame 1397: 43786 us total, 11694 us display, type 3
+[0;32mI (51520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1398: 44092 us total, 11692 us display, type 3
+frame 1399: 43228 us total, 11686 us display, type 3
+[0;32mI (51620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1400: 43589 us total, 12339 us display, type 3
+frame 1401: 43496 us total, 11685 us display, type 3
+frame 1402: 42846 us total, 11685 us display, type 3
+[0;32mI (51720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1403: 44850 us total, 11692 us display, type 3
+frame 1404: 43230 us total, 11685 us display, type 3
+[0;32mI (51820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1405: 43963 us total, 11689 us display, type 3
+frame 1406: 43355 us total, 11692 us display, type 3
+[0;32mI (51920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1407: 44620 us total, 11685 us display, type 3
+frame 1408: 42810 us total, 11692 us display, type 3
+frame 1409: 42892 us total, 11693 us display, type 3
+[0;32mI (52020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1410: 44621 us total, 11685 us display, type 3
+frame 1411: 43380 us total, 11693 us display, type 3
+[0;32mI (52120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1412: 44088 us total, 11699 us display, type 3
+frame 1413: 43156 us total, 11692 us display, type 3
+[0;32mI (52220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1414: 44872 us total, 11692 us display, type 3
+frame 1415: 43149 us total, 11685 us display, type 3
+[0;32mI (52320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1416: 44384 us total, 12651 us display, type 3
+frame 1417: 42833 us total, 11685 us display, type 3
+frame 1418: 43240 us total, 11699 us display, type 3
+[0;32mI (52420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1419: 44315 us total, 11692 us display, type 3
+frame 1420: 43892 us total, 11692 us display, type 3
+[0;32mI (52520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1421: 44031 us total, 11692 us display, type 3
+frame 1422: 43283 us total, 11692 us display, type 3
+[0;32mI (52620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1423: 44509 us total, 12827 us display, type 3
+frame 1424: 42993 us total, 11993 us display, type 3
+frame 1425: 42860 us total, 11685 us display, type 3
+[0;32mI (52720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1426: 44100 us total, 11692 us display, type 3
+frame 1427: 44285 us total, 11692 us display, type 3
+[0;32mI (52820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1428: 43956 us total, 11699 us display, type 3
+frame 1429: 43946 us total, 11692 us display, type 3
+[0;32mI (52920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1430: 44012 us total, 11692 us display, type 3
+frame 1431: 43352 us total, 11686 us display, type 3
+[0;32mI (53020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1432: 43477 us total, 12416 us display, type 3
+frame 1433: 43615 us total, 11685 us display, type 3
+[0;32mI (53070) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1434: 44046 us total, 11692 us display, type 3
+frame 1435: 43632 us total, 11699 us display, type 3
+[0;32mI (53170) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1436: 44492 us total, 11692 us display, type 3
+frame 1437: 43153 us total, 11692 us display, type 3
+[0;32mI (53270) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1438: 44062 us total, 11697 us display, type 3
+frame 1439: 43148 us total, 11697 us display, type 3
+[0;32mI (53370) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1440: 44213 us total, 12346 us display, type 3
+frame 1441: 42755 us total, 11692 us display, type 3
+frame 1442: 43824 us total, 11692 us display, type 3
+[0;32mI (53470) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1443: 44352 us total, 11698 us display, type 3
+frame 1444: 43302 us total, 11685 us display, type 3
+[0;32mI (53570) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1445: 44001 us total, 11685 us display, type 3
+frame 1446: 44038 us total, 11685 us display, type 3
+[0;32mI (53670) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1447: 43980 us total, 12827 us display, type 3
+frame 1448: 43010 us total, 11685 us display, type 3
+frame 1449: 43218 us total, 11685 us display, type 3
+[0;32mI (53770) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1450: 44265 us total, 11692 us display, type 3
+[0;32mI (53820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1451: 44413 us total, 11685 us display, type 3
+frame 1452: 43315 us total, 11685 us display, type 3
+[0;32mI (53920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1453: 44783 us total, 11685 us display, type 3
+frame 1454: 43197 us total, 11685 us display, type 3
+[0;32mI (54020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1455: 44450 us total, 11692 us display, type 3
+frame 1456: 42754 us total, 11692 us display, type 3
+frame 1457: 42863 us total, 11685 us display, type 3
+[0;32mI (54120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1458: 44112 us total, 11699 us display, type 3
+frame 1459: 44206 us total, 11692 us display, type 3
+[0;32mI (54220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1460: 43965 us total, 11692 us display, type 3
+frame 1461: 43495 us total, 11692 us display, type 3
+[0;32mI (54320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1462: 44483 us total, 11699 us display, type 3
+frame 1463: 43271 us total, 11692 us display, type 3
+[0;32mI (54420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1464: 43591 us total, 12515 us display, type 3
+frame 1465: 42901 us total, 11685 us display, type 3
+frame 1466: 43935 us total, 11685 us display, type 3
+[0;32mI (54520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1467: 44302 us total, 11699 us display, type 3
+frame 1468: 43705 us total, 11685 us display, type 3
+[0;32mI (54620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1469: 44014 us total, 11685 us display, type 3
+frame 1470: 43316 us total, 11692 us display, type 3
+[0;32mI (54720) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1471: 43380 us total, 12311 us display, type 3
+frame 1472: 43547 us total, 11692 us display, type 3
+frame 1473: 42743 us total, 11685 us display, type 3
+[0;32mI (54820) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1474: 44556 us total, 11692 us display, type 3
+frame 1475: 43745 us total, 11696 us display, type 3
+[0;32mI (54920) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1476: 44189 us total, 11692 us display, type 3
+frame 1477: 43189 us total, 11685 us display, type 3
+[0;32mI (55020) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1478: 44235 us total, 11685 us display, type 3
+frame 1479: 43823 us total, 12063 us display, type 3
+[0;32mI (55120) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1480: 43628 us total, 12355 us display, type 3
+frame 1481: 42866 us total, 11692 us display, type 3
+frame 1482: 43881 us total, 11692 us display, type 3
+[0;32mI (55220) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1483: 44342 us total, 11692 us display, type 3
+frame 1484: 43230 us total, 11685 us display, type 3
+[0;32mI (55320) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1485: 44030 us total, 11685 us display, type 3
+frame 1486: 43993 us total, 11685 us display, type 3
+[0;32mI (55420) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1487: 44008 us total, 12727 us display, type 3
+frame 1488: 43523 us total, 11998 us display, type 3
+frame 1489: 42871 us total, 11693 us display, type 3
+[0;32mI (55520) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1490: 44401 us total, 11699 us display, type 3
+frame 1491: 43453 us total, 11691 us display, type 3
+[0;32mI (55620) NIMBLE_HIDH: notify handle 30 len 16[0m
+frame 1492: 44708 us total, 11685 us display, type 3
+frame 1493: 43382 us total, 11685 us display, type 3
+frame 1494: 43347 us total, 11692 us display, type 3
+frame 1495: 43404 us total, 11696 us display, type 3
+frame 1496: 42798 us total, 11691 us display, type 3
+frame 1497: 42947 us total, 11692 us display, type 3
+frame 1498: 43393 us total, 11692 us display, type 3
+frame 1499: 44021 us total, 11689 us display, type 3
+frame 1500: 43260 us total, 11699 us display, type 3
+frame 1501: 43672 us total, 11685 us display, type 3
+frame 1502: 43356 us total, 11692 us display, type 3
+frame 1503: 42799 us total, 11690 us display, type 3
+frame 1504: 42858 us total, 11685 us display, type 3
+frame 1505: 43922 us total, 11685 us display, type 3
+frame 1506: 43418 us total, 11692 us display, type 3
+frame 1507: 43249 us total, 11692 us display, type 3
+frame 1508: 43721 us total, 11699 us display, type 3
+frame 1509: 43143 us total, 11699 us display, type 3
+frame 1510: 42864 us total, 11699 us display, type 3
+frame 1511: 42789 us total, 11741 us display, type 3
+frame 1512: 43586 us total, 11691 us display, type 3
+frame 1513: 43354 us total, 11692 us display, type 3
+frame 1514: 43659 us total, 11692 us display, type 3
+frame 1515: 43170 us total, 11685 us display, type 3
+frame 1516: 43256 us total, 11685 us display, type 3
+frame 1517: 43163 us total, 11692 us display, type 3
+frame 1518: 43847 us total, 12011 us display, type 3
+frame 1519: 42737 us total, 11685 us display, type 3
+frame 1520: 43433 us total, 11699 us display, type 3
+frame 1521: 43761 us total, 11686 us display, type 3
+frame 1522: 43307 us total, 11699 us display, type 3
+frame 1523: 43102 us total, 11692 us display, type 3
+frame 1524: 43347 us total, 11692 us display, type 3
+frame 1525: 43493 us total, 11692 us display, type 3
+frame 1526: 43115 us total, 11883 us display, type 3
+frame 1527: 42836 us total, 11692 us display, type 3
+frame 1528: 43972 us total, 11699 us display, type 3
+frame 1529: 43143 us total, 11699 us display, type 3
+frame 1530: 43290 us total, 11699 us display, type 3
+frame 1531: 43154 us total, 11692 us display, type 3
+frame 1532: 44074 us total, 11692 us display, type 3
+frame 1533: 43229 us total, 12030 us display, type 3
+frame 1534: 43528 us total, 11934 us display, type 3
+frame 1535: 42878 us total, 11694 us display, type 3
+frame 1536: 43395 us total, 11685 us display, type 3
+mem @frame 1536: heap free 66016, largest 39936, min ever 65140, zone free 55016, stack free 14540, uptime 57 s, gamestate 0, demo 0, usergame 1, tic 1913
+frame 1537: 44456 us total, 11699 us display, type 3
+frame 1538: 43798 us total, 11692 us display, type 3
+frame 1539: 43242 us total, 11692 us display, type 3
+frame 1540: 42878 us total, 11699 us display, type 3
+frame 1541: 43387 us total, 11692 us display, type 3
+frame 1542: 42734 us total, 11692 us display, type 3
+frame 1543: 43363 us total, 11685 us display, type 3
+frame 1544: 43189 us total, 11686 us display, type 3
+frame 1545: 44000 us total, 11687 us display, type 3
+frame 1546: 43151 us total, 11685 us display, type 3
+frame 1547: 43816 us total, 11685 us display, type 3
+frame 1548: 43118 us total, 11964 us display, type 3
+frame 1549: 43015 us total, 11685 us display, type 3
+frame 1550: 42746 us total, 11692 us display, type 3
+frame 1551: 44231 us total, 11685 us display, type 3
+frame 1552: 43144 us total, 11692 us display, type 3
+frame 1553: 43508 us total, 11685 us display, type 3
+frame 1554: 43596 us total, 11699 us display, type 3
+[0;32mI (58380) NimBLE: disconnect; reason=520 [0m
+[0;32mI (58380) PAD: disconnected (520)[0m
+frame 1555: 43526 us total, 12228 us display, type 3
+gamepad: pairing open
+gamepad disconnected: Xbox Wireless Controller
+frame 1556: 44868 us total, 11692 us display, type 3
+frame 1557: 43541 us total, 12328 us display, type 3
+frame 1558: 44389 us total, 11692 us display, type 3
+frame 1559: 43623 us total, 11692 us display, type 3
+frame 1560: 44439 us total, 11692 us display, type 3
+frame 1561: 43647 us total, 11692 us display, type 3
+frame 1562: 42975 us total, 11699 us display, type 3
+frame 1563: 43933 us total, 11692 us display, type 3
+frame 1564: 43994 us total, 11735 us display, type 3
+frame 1565: 43535 us total, 11685 us display, type 3
+frame 1566: 43278 us total, 11721 us display, type 3
+frame 1567: 44786 us total, 11686 us display, type 3
+frame 1568: 43409 us total, 11692 us display, type 3
+frame 1569: 42986 us total, 11699 us display, type 3
+frame 1570: 44056 us total, 11692 us display, type 3
+frame 1571: 43516 us total, 11719 us display, type 3
+frame 1572: 43514 us total, 11692 us display, type 3
+frame 1573: 43017 us total, 11693 us display, type 3

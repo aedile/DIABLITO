@@ -280,10 +280,17 @@ static void hidh_callback(void *arg, esp_event_base_t base, int32_t id, void *ev
     switch ((esp_hidh_event_t)id) {
     case ESP_HIDH_OPEN_EVENT:
         if (p->open.status != ESP_OK) {
-            ESP_LOGW(TAG, "open failed: %d, ignoring that device for a minute", p->open.status);
-            memcpy(bad_addr, target.addr, 6);
-            bad_until = esp_timer_get_time() + 60000000;
-            if (have_saved && memcmp(saved.addr, target.addr, 6) == 0) ble_pad_forget();
+            if (have_saved && memcmp(saved.addr, target.addr, 6) == 0) {
+                /* the saved pad refused us: its bond is gone (re-paired elsewhere or put back into
+                 * pairing mode). Drop ours and pair fresh on the next sighting, no penalty box. */
+                ESP_LOGW(TAG, "open failed: %d on the saved pad, forgetting it and pairing fresh", p->open.status);
+                ble_pad_forget();
+                accept_any = true;
+            } else {
+                ESP_LOGW(TAG, "open failed: %d, ignoring that device for a minute", p->open.status);
+                memcpy(bad_addr, target.addr, 6);
+                bad_until = esp_timer_get_time() + 60000000;
+            }
             dev = NULL;
             post(CMD_SCAN);
             break;
