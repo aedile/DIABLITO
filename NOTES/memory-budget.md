@@ -72,7 +72,13 @@ free.
 | In E1M1 with BLE and the I2S mixer running | 54,400 | 28,672 |
 
 Sound cost ~13 KB (8 KB DMA ring, I2S and I2C driver state, 2 x 4 KB mix buffers were already
-there). **54 KB of heap headroom** remains for phase 7.
+there).
+
+### Phase 6 (display task added, 6 KB stack)
+
+Heap free in E1M1 and in the demos: **46,600** (largest block 21 KB), steady over a five-minute
+soak. The 19.5 KB IRAM experiment (reverted) would have taken this to 27 KB. That 46 KB is the
+headroom for phase 7.
 
 ## Layout on the C6 (current)
 

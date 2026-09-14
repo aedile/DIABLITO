@@ -58,5 +58,5 @@ target_compile_definitions(${COMPONENT_LIB} PRIVATE
     EMU8950_NO_RATECONV=1 NO_ZONE_DEBUG=1
     # render_newhope
     PICODOOM_RENDER_NEWHOPE=1 MERGE_DISTSCALE0_INTO_VIEWCOSSINANGLE=1
-    DOOM_PROFILE=1
+    # DOOM_PROFILE=1   # 2 kHz PC sampler, see esp/prof.c and tools/symbolize.sh
 )

@@ -20,6 +20,7 @@
 #include "doom/m_menu.h"
 #include "ble_pad.h"
 #include "driver/usb_serial_jtag.h"
+#include "display.h"
 #include "esp_vfs_usb_serial_jtag.h"
 
 float mouse_acceleration = 2.0;
@@ -201,9 +202,33 @@ static uint32_t stick_vkeys(void)
     return vk;
 }
 
+// Medal mode: after doom_idle_sleep_s without input while the attract loop runs, put the panel to
+// sleep and park the game task (tics stop, the DAC ring drains to silence, BLE keeps listening).
+// Any medal button or pad button wakes it. 0 disables.
+int doom_idle_sleep_s = 120;
+static int64_t last_input_us;
+
+static void idle_sleep_if_due(uint32_t vk)
+{
+    int64_t now = esp_timer_get_time();
+    if (vk) last_input_us = now;
+    if (!doom_idle_sleep_s || !demoplayback || now - last_input_us < (int64_t)doom_idle_sleep_s * 1000000) return;
+    printf("idle %d s in attract: display sleep\n", doom_idle_sleep_s);
+    vTaskDelay(pdMS_TO_TICKS(150));          // let the display task finish the frame in flight
+    display_sleep(true);
+    for (;;) {
+        vTaskDelay(pdMS_TO_TICKS(100));
+        if (gpio_get_level(PIN_BTN_BOOT) == 0 || gpio_get_level(PIN_BTN_PWR) == 0 || ble_pad_buttons()) break;
+    }
+    display_sleep(false);
+    last_input_us = esp_timer_get_time();
+    printf("wake\n");
+}
+
 void I_GetEvent(void)
 {
     uint32_t vk = ble_pad_buttons() | stick_vkeys() | medal_vkeys() | serial_vkeys();
+    idle_sleep_if_due(vk);
     if (gamestate == GS_LEVEL && !menuactive && !demoplayback && (vk & (PAD_LEFT | PAD_RIGHT))) {
         // d-pad left/right strafe in a level; the right stick turns. In menus they stay arrows.
         if (vk & PAD_LEFT) vk |= VK_LS_LEFT;
