@@ -206,7 +206,7 @@ static uint32_t stick_vkeys(void)
 // sleep and park the game task (tics stop, the DAC ring drains to silence, BLE keeps listening).
 // Any medal button or pad button wakes it. 0 disables.
 #ifndef DOOM_IDLE_SLEEP_S
-#define DOOM_IDLE_SLEEP_S 120
+#define DOOM_IDLE_SLEEP_S 0      // 0 = never: the medal stays visual in attract (Jesse); NVS medal/idle_s can turn it on
 #endif
 int doom_idle_sleep_s = DOOM_IDLE_SLEEP_S;   // build default; NVS medal/idle_s overrides
 static int64_t last_input_us;
