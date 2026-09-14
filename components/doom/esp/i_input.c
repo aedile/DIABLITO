@@ -34,7 +34,7 @@ int novert = 0;
 typedef struct { uint32_t pad_bit; uint8_t keys[3]; } vkey_t;
 enum { VK_MEDAL_BOOT = 1u << 16, VK_MEDAL_PWR_TAP = 1u << 17, VK_MEDAL_PWR_HOLD = 1u << 18,
        VK_LS_UP = 1u << 20, VK_LS_DOWN = 1u << 21, VK_LS_LEFT = 1u << 22, VK_LS_RIGHT = 1u << 23,
-       VK_LS_MLEFT = 1u << 24, VK_LS_MRIGHT = 1u << 25 };
+       VK_LS_MLEFT = 1u << 24, VK_LS_MRIGHT = 1u << 25, VK_TRIGGER = 1u << 26 };
 static const vkey_t vkeys[] = {
     { PAD_UP,     { KEY_UPARROW } },
     { PAD_DOWN,   { KEY_DOWNARROW } },
@@ -54,6 +54,7 @@ static const vkey_t vkeys[] = {
     { VK_LS_RIGHT, { '.' } },
     { VK_LS_MLEFT,  { KEY_LEFTARROW } },                // left stick as a d-pad outside levels
     { VK_LS_MRIGHT, { KEY_RIGHTARROW } },
+    { VK_TRIGGER,   { KEY_RCTRL } },                    // either trigger fires
     { VK_MEDAL_BOOT,     { KEY_RCTRL, KEY_DOWNARROW } },
     { VK_MEDAL_PWR_TAP,  { ' ', KEY_ENTER, 'y' } },
     { VK_MEDAL_PWR_HOLD, { KEY_ESCAPE } },
@@ -158,12 +159,14 @@ static int axis_scaled(int v, int dead, int max, bool squared)
     return v < 0 ? -out : out;
 }
 
+#define TRIGGER_ON 9000
 static uint32_t stick_vkeys(void)
 {
-    int16_t ax[4];
+    int16_t ax[6];
     ble_pad_axes(ax);
     uint32_t vk = 0;
     bool in_level = gamestate == GS_LEVEL && !menuactive && !demoplayback;
+    if (ax[4] > TRIGGER_ON || ax[5] > TRIGGER_ON) vk |= VK_TRIGGER;
     if (in_level) {
         int turn = axis_scaled(ax[2], STICK_DEAD, TURN_MAX, true);
         int fwd = -axis_scaled(ax[1], STICK_DEAD, MOVE_MAX, false);    // HID Y grows downward
@@ -176,12 +179,14 @@ static uint32_t stick_vkeys(void)
         if (ax[1] < -STICK_DEAD) vk |= VK_LS_UP;   else if (ax[1] > STICK_DEAD) vk |= VK_LS_DOWN;
         if (ax[0] < -STICK_DEAD) vk |= VK_LS_MLEFT; else if (ax[0] > STICK_DEAD) vk |= VK_LS_MRIGHT;
     }
-    // diagnostics: axes at most 4x a second while any stick is off centre
-    static int64_t last_log;
+    // diagnostics: axes and report rate at most 4x a second while any stick or trigger is active
+    static int64_t last_log; static uint32_t last_reports;
     int64_t now = esp_timer_get_time();
-    if (now - last_log > 250000 && (abs(ax[0]) > STICK_DEAD || abs(ax[1]) > STICK_DEAD || abs(ax[2]) > STICK_DEAD)) {
-        last_log = now;
-        printf("axes L %6d %6d R %6d %6d level %d\n", ax[0], ax[1], ax[2], ax[3], in_level);
+    if (now - last_log > 250000 && (abs(ax[0]) > STICK_DEAD || abs(ax[1]) > STICK_DEAD || abs(ax[2]) > STICK_DEAD || (vk & VK_TRIGGER))) {
+        uint32_t r = ble_pad_reports();
+        printf("axes L %6d %6d R %6d %6d T %5d %5d level %d, %lu reports in %lld ms\n", ax[0], ax[1], ax[2], ax[3], ax[4], ax[5], in_level,
+               (unsigned long)(r - last_reports), (long long)((now - last_log) / 1000));
+        last_log = now; last_reports = r;
     }
     return vk;
 }
@@ -189,6 +194,12 @@ static uint32_t stick_vkeys(void)
 void I_GetEvent(void)
 {
     uint32_t vk = ble_pad_buttons() | stick_vkeys() | medal_vkeys() | serial_vkeys();
+    if (gamestate == GS_LEVEL && !menuactive && !demoplayback && (vk & (PAD_LEFT | PAD_RIGHT))) {
+        // d-pad left/right strafe in a level; the right stick turns. In menus they stay arrows.
+        if (vk & PAD_LEFT) vk |= VK_LS_LEFT;
+        if (vk & PAD_RIGHT) vk |= VK_LS_RIGHT;
+        vk &= ~(PAD_LEFT | PAD_RIGHT);
+    }
     uint32_t down = vk & ~prev_vk, up = prev_vk & ~vk;
     if (down) { post_set(down, ev_keydown); printf("input: down 0x%05lx\n", (unsigned long)down); }
     if (up) post_set(up, ev_keyup);

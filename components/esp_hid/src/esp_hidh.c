@@ -82,9 +82,9 @@ esp_err_t esp_hidh_init(const esp_hidh_config_t *config)
     TAILQ_INIT(&s_esp_hidh_devices);
     s_event_callback = config->callback;
     const esp_event_loop_args_t event_task_args = {
-        .queue_size = 5,
+        .queue_size = 16,
         .task_name = "esp_hidh_events",
-        .task_priority = uxTaskPriorityGet(NULL),
+        .task_priority = 5,   /* DIABLITO: above the game task, which never yields; at the caller's priority the 5-deep queue backed up and the NimBLE host task blocked posting into it */
         .task_stack_size = config->event_stack_size > 0 ? config->event_stack_size : 4096,
         .task_core_id = tskNO_AFFINITY
     };

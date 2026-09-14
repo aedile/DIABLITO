@@ -37,7 +37,8 @@ const char *ble_pad_name(void);          /* controller found / connected, "" if 
 bool ble_pad_has_saved(void);
 void ble_pad_forget(void);               /* drop the saved controller and its bond */
 uint32_t ble_pad_buttons(void);          /* PAD_* mask */
-void ble_pad_axes(int16_t axes[4]);      /* LX, LY, RX, RY centred (-32768..32767; up/left negative); 0 when the pad has no such axis */
+void ble_pad_axes(int16_t axes[6]);      /* LX, LY, RX, RY centred (-32768..32767; up/left negative), then LT, RT (0..32767); 0 when the pad has no such axis */
+uint32_t ble_pad_reports(void);           /* input reports decoded since boot (rate check) */
 uint32_t ble_pad_raw(void);              /* raw HID button bits (bit n = button n+1), for the serial log */
 uint32_t ble_pad_adv_seen(void);         /* advertisements seen since boot: proves the scanner is alive */
 

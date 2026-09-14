@@ -75,7 +75,7 @@ static void hid_parse(const uint8_t *d, size_t len)
                 if (pi == npos && npos < 8) pos[npos++].rid = rid;
                 for (uint32_t k = 0; k < rcount && pi < 8; k++) {
                     uint16_t u = nus ? usages[k < (uint32_t)nus ? k : nus - 1] : 0;
-                    if (!(v & 1) && nfields < 64 && (page == 9 || page == 1 || page == 7))
+                    if (!(v & 1) && nfields < 64 && (page == 9 || page == 1 || page == 7 || page == 2))
                         fields[nfields++] = (hid_field_t){ rid, rsize, pos[pi].bits, page, u, lmin, lmax };
                     pos[pi].bits += rsize;
                 }
@@ -124,9 +124,11 @@ static uint32_t map_buttons(uint32_t raw)
 }
 
 static volatile uint32_t cur_buttons, cur_raw;
-static volatile int16_t cur_axes[4];      /* LX LY RX RY, centred */
+static volatile int16_t cur_axes[6];      /* LX LY RX RY centred, LT RT 0..32767 */
+static volatile uint32_t report_count;
 
-void ble_pad_axes(int16_t axes[4]) { for (int i = 0; i < 4; i++) axes[i] = cur_axes[i]; }
+void ble_pad_axes(int16_t axes[6]) { for (int i = 0; i < 6; i++) axes[i] = cur_axes[i]; }
+uint32_t ble_pad_reports(void) { return report_count; }
 
 static void decode_report(uint8_t rid, const uint8_t *d, size_t len)
 {
@@ -137,6 +139,10 @@ static void decode_report(uint8_t rid, const uint8_t *d, size_t len)
         uint32_t v = get_bits(d, len, h->bit, h->size);
         if (h->page == 9) {
             if (v && h->usage >= 1 && h->usage <= 32) raw |= 1u << (h->usage - 1);
+        } else if (h->page == 2) {           /* simulation controls: 0xC5 brake = LT, 0xC4 accelerator = RT */
+            int32_t range = h->lmax - h->lmin;
+            if (range > 0 && (h->usage == 0xC5 || h->usage == 0xC4))
+                cur_axes[h->usage == 0xC5 ? 4 : 5] = (int16_t)((int64_t)((int32_t)v - h->lmin) * 32767 / range);
         } else if (h->page == 1) {
             int32_t sv = h->lmin < 0 ? sign_ext(v, (h->size + 7) / 8) : (int32_t)v;
             int32_t range = h->lmax - h->lmin;
@@ -187,6 +193,7 @@ static void decode_report(uint8_t rid, const uint8_t *d, size_t len)
     }
     cur_raw = raw;
     cur_buttons = map_buttons(raw & 0xFFFF) | dir;
+    report_count++;
 }
 
 /* ---- connection state ---- */
