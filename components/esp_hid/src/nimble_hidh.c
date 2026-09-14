@@ -786,7 +786,7 @@ esp_hidh_gattc_event_handler(struct ble_gap_event *event, void *arg)
         return 0;
 
     case BLE_GAP_EVENT_NOTIFY_RX:
-        ESP_LOGI(TAG, "notify handle %u len %u", event->notify_rx.attr_handle, OS_MBUF_PKTLEN(event->notify_rx.om));
+        ESP_LOGD(TAG, "notify handle %u len %u", event->notify_rx.attr_handle, OS_MBUF_PKTLEN(event->notify_rx.om));   /* DIABLITO: was INFO, 100 Hz from the host task */
         /* Peer sent us a notification or indication. */
         MODLOG_DFLT(DEBUG, "received %s; conn_handle=%d attr_handle=%d "
                     "attr_len=%d\n",
