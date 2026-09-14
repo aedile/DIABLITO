@@ -63,8 +63,16 @@ stack cut from 32 KB to 16 KB (8x the measured use), phase-2 test pattern buffer
 | In E1M1 with BLE scanning | 67,708 | 41,984 |
 
 BLE costs ~39 KB heap + ~43 KB `.bss`. Zone peak 25 KB of 64 KB. Main stack 14,540 of 16,384
-free. **67 KB of heap headroom** is what phase 5 (audio: ~8 KB DMA ring + 2 x 4 KB mix
-buffers) and phase 7 have to live in.
+free.
+
+### Phase 5 measured (BLE + sound, `phase5-sound-run2.log`)
+
+| Point | Free heap | Largest block |
+|---|---|---|
+| In E1M1 with BLE and the I2S mixer running | 54,400 | 28,672 |
+
+Sound cost ~13 KB (8 KB DMA ring, I2S and I2C driver state, 2 x 4 KB mix buffers were already
+there). **54 KB of heap headroom** remains for phase 7.
 
 ## Layout on the C6 (current)
 
