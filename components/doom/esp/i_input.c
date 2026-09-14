@@ -16,6 +16,8 @@
 #include "doomkeys.h"
 #include "i_input.h"
 #include "m_controls.h"
+#include "doom/doomstat.h"
+#include "doom/m_menu.h"
 #include "ble_pad.h"
 #include "driver/usb_serial_jtag.h"
 #include "esp_vfs_usb_serial_jtag.h"
@@ -31,7 +33,8 @@ int novert = 0;
 // virtual key set: one bit per (pad button or medal action), each posting up to 3 key codes
 typedef struct { uint32_t pad_bit; uint8_t keys[3]; } vkey_t;
 enum { VK_MEDAL_BOOT = 1u << 16, VK_MEDAL_PWR_TAP = 1u << 17, VK_MEDAL_PWR_HOLD = 1u << 18,
-       VK_LS_UP = 1u << 20, VK_LS_DOWN = 1u << 21, VK_LS_LEFT = 1u << 22, VK_LS_RIGHT = 1u << 23 };
+       VK_LS_UP = 1u << 20, VK_LS_DOWN = 1u << 21, VK_LS_LEFT = 1u << 22, VK_LS_RIGHT = 1u << 23,
+       VK_LS_MLEFT = 1u << 24, VK_LS_MRIGHT = 1u << 25 };
 static const vkey_t vkeys[] = {
     { PAD_UP,     { KEY_UPARROW } },
     { PAD_DOWN,   { KEY_DOWNARROW } },
@@ -49,6 +52,8 @@ static const vkey_t vkeys[] = {
     { VK_LS_DOWN,  { KEY_DOWNARROW } },
     { VK_LS_LEFT,  { ',' } },                          // strafe (key_strafeleft/right defaults)
     { VK_LS_RIGHT, { '.' } },
+    { VK_LS_MLEFT,  { KEY_LEFTARROW } },                // left stick as a d-pad outside levels
+    { VK_LS_MRIGHT, { KEY_RIGHTARROW } },
     { VK_MEDAL_BOOT,     { KEY_RCTRL, KEY_DOWNARROW } },
     { VK_MEDAL_PWR_TAP,  { ' ', KEY_ENTER, 'y' } },
     { VK_MEDAL_PWR_HOLD, { KEY_ESCAPE } },
@@ -133,25 +138,50 @@ void I_InputInit(void)
     esp_vfs_usb_serial_jtag_use_driver();   // console printf must go through the same driver, or the two fight over the FIFO and hang
 }
 
-// Sticks. Left: digital move/strafe past a 25 % deadzone. Right X: analog turn as a Doom mouse
-// event once per tic; full deflection matches the keyboard's fast turn (mousex 160 * 8 = 1280
-// per tic), squared response for fine aim near centre.
-// ponytail: STICK_DEAD and TURN_MAX are the tuning knobs; make them menu options if people differ
+// Sticks. In a level, movement is analog through Doom's own mouse path: G_BuildTiccmd adds
+// mousey to forward motion (walk 25, run 50) and 8*mousex to the turn, with the latest event per
+// tic winning, so one ev_mouse per poll is exactly right. Left stick Y = forward/back (linear past
+// the deadzone, full stick = run speed), right stick X = turn (squared for fine aim), left stick
+// X past half travel = digital strafe. Outside a level (menus, intermission) the left stick is a
+// d-pad so it can drive the menu without the mouse-motion spam M_Responder would make of it.
+// ponytail: STICK_DEAD, TURN_MAX and MOVE_MAX are the tuning knobs; menu options if people differ
 #define STICK_DEAD 8192
+#define STICK_STRAFE 16384
 #define TURN_MAX 160
+#define MOVE_MAX 50
+static int axis_scaled(int v, int dead, int max, bool squared)
+{
+    int mag = (v < 0 ? -v : v) - dead;
+    if (mag <= 0) return 0;
+    int span = 32767 - dead;
+    int out = squared ? (int)((int64_t)mag * mag * max / ((int64_t)span * span)) : mag * max / span;
+    return v < 0 ? -out : out;
+}
+
 static uint32_t stick_vkeys(void)
 {
     int16_t ax[4];
     ble_pad_axes(ax);
     uint32_t vk = 0;
-    if (ax[1] < -STICK_DEAD) vk |= VK_LS_UP;   else if (ax[1] > STICK_DEAD) vk |= VK_LS_DOWN;
-    if (ax[0] < -STICK_DEAD) vk |= VK_LS_LEFT; else if (ax[0] > STICK_DEAD) vk |= VK_LS_RIGHT;
-    int rx = ax[2];
-    if (rx > STICK_DEAD || rx < -STICK_DEAD) {
-        int mag = (rx < 0 ? -rx : rx) - STICK_DEAD;                 // 0 .. 32767-STICK_DEAD
-        int turn = (int)((int64_t)mag * mag * TURN_MAX / ((32767 - STICK_DEAD) * (int64_t)(32767 - STICK_DEAD)));
-        event_t ev = { .type = ev_mouse, .data1 = 0, .data2 = rx < 0 ? -turn : turn, .data3 = 0 };
-        D_PostEvent(&ev);
+    bool in_level = gamestate == GS_LEVEL && !menuactive && !demoplayback;
+    if (in_level) {
+        int turn = axis_scaled(ax[2], STICK_DEAD, TURN_MAX, true);
+        int fwd = -axis_scaled(ax[1], STICK_DEAD, MOVE_MAX, false);    // HID Y grows downward
+        if (turn || fwd) {
+            event_t ev = { .type = ev_mouse, .data1 = 0, .data2 = turn, .data3 = fwd };
+            D_PostEvent(&ev);
+        }
+        if (ax[0] < -STICK_STRAFE) vk |= VK_LS_LEFT; else if (ax[0] > STICK_STRAFE) vk |= VK_LS_RIGHT;
+    } else {
+        if (ax[1] < -STICK_DEAD) vk |= VK_LS_UP;   else if (ax[1] > STICK_DEAD) vk |= VK_LS_DOWN;
+        if (ax[0] < -STICK_DEAD) vk |= VK_LS_MLEFT; else if (ax[0] > STICK_DEAD) vk |= VK_LS_MRIGHT;
+    }
+    // diagnostics: axes at most 4x a second while any stick is off centre
+    static int64_t last_log;
+    int64_t now = esp_timer_get_time();
+    if (now - last_log > 250000 && (abs(ax[0]) > STICK_DEAD || abs(ax[1]) > STICK_DEAD || abs(ax[2]) > STICK_DEAD)) {
+        last_log = now;
+        printf("axes L %6d %6d R %6d %6d level %d\n", ax[0], ax[1], ax[2], ax[3], in_level);
     }
     return vk;
 }

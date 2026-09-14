@@ -51,10 +51,17 @@ static int services_discovered;
 static int chrs_discovered;
 static int dscs_discovered;
 static int status = 0;
+static int s_read_status;
 
 static inline void WAIT_CB(void)
 {
-    xSemaphoreTake(s_ble_hidh_cb_semaphore, portMAX_DELAY);
+    /* DIABLITO: bounded. A peer that drops the link mid-discovery never answers; the 10 s cap
+     * surfaces that as a failed step instead of a hung pad task. */
+    if (xSemaphoreTake(s_ble_hidh_cb_semaphore, pdMS_TO_TICKS(10000)) != pdTRUE) {
+        ESP_LOGW(TAG, "GATT operation timed out");
+        status = BLE_HS_ETIMEOUT;
+        s_read_status = BLE_HS_ETIMEOUT;
+    }
 }
 
 static inline void SEND_CB(void)
@@ -370,15 +377,16 @@ static void read_device_services(esp_hidh_dev_t *dev)
     uint8_t hidindex = 0;
     int rc;
 
+    status = 0;
     rc = ble_gattc_disc_all_svcs(dev->ble.conn_id, svc_disced, service_result);
     if (rc != 0) {
-        ESP_LOGD(TAG, "Error discovering services : %d", rc);
-        assert(rc != 0);
+        ESP_LOGW(TAG, "Error discovering services : %d", rc);   /* DIABLITO: e.g. ENOTCONN, link already gone */
+        return;
     }
     WAIT_CB();
     if (status != 0) {
-        ESP_LOGE(TAG, "failed to find services");
-        assert(status == 0);
+        ESP_LOGE(TAG, "failed to find services (%d)", status);
+        return;
     }
     dcount = services_discovered; /* fatal if services are more than 10 */
 
@@ -1039,7 +1047,8 @@ esp_hidh_dev_t *esp_ble_hidh_dev_open(uint8_t *bda, uint8_t address_type)
     if (!ensure_encrypted(dev->ble.conn_id)) ESP_LOGW(TAG, "pairing did not complete, discovering anyway");
 
     /* perform service discovery and fill the report maps */
-    read_device_services(dev);
+    if (dev->ble.conn_id != (uint16_t)-1) read_device_services(dev);
+    else ESP_LOGW(TAG, "link dropped during pairing (status 0x%x)", dev->status);   /* DIABLITO: falls into the failed-open path below */
 
     if (dev->config.report_maps_len == 0 || dev->config.report_maps == NULL || dev->config.report_maps[0].len == 0) {
         /* NESTOR: no HID report map: this is not a controller. Report the open as failed and
