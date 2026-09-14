@@ -11,8 +11,18 @@
 extern "C" {
 #endif
 
+/* Orientation is a build-time choice. Portrait (medal on a lanyard): 240x280, Doom scaled 4:3
+ * to 240x200 with 40 px bars. Landscape: 280x240, Doom scaled 8:7 to 280x200 with 20 px bars. */
+#ifndef DISPLAY_PORTRAIT
+#define DISPLAY_PORTRAIT 1
+#endif
+#if DISPLAY_PORTRAIT
+#define DISPLAY_WIDTH   240
+#define DISPLAY_HEIGHT  280
+#else
 #define DISPLAY_WIDTH   280
 #define DISPLAY_HEIGHT  240
+#endif
 #define STRIP_ROWS      16
 
 /* GPIO (Waveshare ESP32-C6-LCD-1.69, see NOTES/hardware-map.md) */
@@ -25,7 +35,7 @@ extern "C" {
 #define LCD_SPI_HOST    SPI2_HOST
 #define LCD_SPI_CLOCK   80000000
 
-void display_init(void);                                   /* panel up, landscape, black, backlight 60 % */
+void display_init(void);                                   /* panel up, oriented, black, backlight 60 % */
 void display_set_window(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 void display_fill(uint16_t rgb565);                        /* whole panel, blocking */
 void display_set_backlight(uint8_t brightness);            /* 0..255 */

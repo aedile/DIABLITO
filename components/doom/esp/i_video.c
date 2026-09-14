@@ -793,24 +793,39 @@ void __scratch_x("scanlines") handle_overlays(uint16_t *buffer, int scanline) {
     }
 }
 
-// 320 -> 280 wide: keep seven of every eight pixels. One load/store per output pixel, no table.
+// Horizontal fit, one load/store per output pixel, no table. Portrait 240: keep three of every
+// four (drop columns 3 and 7 of each 8). Landscape 280: keep seven of every eight.
+#define DOOM_VIEW_W DISPLAY_WIDTH
+#define DOOM_VIEW_Y ((DISPLAY_HEIGHT - SCREENHEIGHT) / 2)
+#if DISPLAY_PORTRAIT
+#define OUT_PER_8 6
+static inline void downsample_line(const uint16_t *s, uint16_t *d) {
+    for (int g = 0; g < SCREENWIDTH / 8; g++, s += 8, d += 6) {
+        d[0] = s[0]; d[1] = s[1]; d[2] = s[2]; d[3] = s[4]; d[4] = s[5]; d[5] = s[6];
+    }
+}
+#else
+#define OUT_PER_8 7
 static inline void downsample_line(const uint16_t *s, uint16_t *d) {
     for (int g = 0; g < SCREENWIDTH / 8; g++, s += 8, d += 7) {
         d[0] = s[0]; d[1] = s[1]; d[2] = s[2]; d[3] = s[3]; d[4] = s[4]; d[5] = s[5]; d[6] = s[6];
     }
 }
+#endif
 
-#define DOOM_VIEW_W 280
-#define DOOM_VIEW_Y ((DISPLAY_HEIGHT - SCREENHEIGHT) / 2)
-
-// Fast path for a 3D-view row with no overlay on it: palette-convert and 8:7 downsample in one
+// Fast path for a 3D-view row with no overlay on it: palette-convert and downsample in one
 // pass, four source pixels per load, straight into the DMA strip. No 320-wide intermediate.
 static inline void convert_downsample(const uint8_t *src, uint16_t *d) {
     const uint32_t *s = (const uint32_t *)src;
-    for (int g = 0; g < SCREENWIDTH / 8; g++, s += 2, d += 7) {
+    for (int g = 0; g < SCREENWIDTH / 8; g++, s += 2, d += OUT_PER_8) {
         uint32_t a = s[0], b = s[1];
+#if DISPLAY_PORTRAIT
+        d[0] = palette[a & 0xff]; d[1] = palette[(a >> 8) & 0xff]; d[2] = palette[(a >> 16) & 0xff];
+        d[3] = palette[b & 0xff]; d[4] = palette[(b >> 8) & 0xff]; d[5] = palette[(b >> 16) & 0xff];
+#else
         d[0] = palette[a & 0xff]; d[1] = palette[(a >> 8) & 0xff]; d[2] = palette[(a >> 16) & 0xff]; d[3] = palette[a >> 24];
         d[4] = palette[b & 0xff]; d[5] = palette[(b >> 8) & 0xff]; d[6] = palette[(b >> 16) & 0xff];
+#endif
     }
 }
 

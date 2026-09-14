@@ -51,8 +51,12 @@ static void send_data(const uint8_t *data, size_t len)
 
 void display_set_window(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
 {
-    uint16_t x0 = x + ST7789_OFFSET, x1 = x + w - 1 + ST7789_OFFSET, y1 = y + h - 1;
-    uint8_t c[4] = { x0 >> 8, x0, x1 >> 8, x1 }, r[4] = { y >> 8, y, y1 >> 8, y1 };
+#if DISPLAY_PORTRAIT
+    uint16_t x0 = x, x1 = x + w - 1, y0 = y + ST7789_OFFSET, y1 = y + h - 1 + ST7789_OFFSET;   /* offset on the 320-long axis: rows */
+#else
+    uint16_t x0 = x + ST7789_OFFSET, x1 = x + w - 1 + ST7789_OFFSET, y0 = y, y1 = y + h - 1;   /* rotated: columns */
+#endif
+    uint8_t c[4] = { x0 >> 8, x0, x1 >> 8, x1 }, r[4] = { y0 >> 8, y0, y1 >> 8, y1 };
     send_cmd(ST7789_CASET); send_data(c, 4);
     send_cmd(ST7789_RASET); send_data(r, 4);
     send_cmd(ST7789_RAMWR);
@@ -181,7 +185,7 @@ void display_init(void)
 
     send_cmd(ST7789_SWRESET); vTaskDelay(pdMS_TO_TICKS(150));
     send_cmd(ST7789_SLPOUT);  vTaskDelay(pdMS_TO_TICKS(120));
-    uint8_t colmod = 0x55, madctl = 0x60;   /* RGB565; MX|MV = landscape, USB connector on the left */
+    uint8_t colmod = 0x55, madctl = DISPLAY_PORTRAIT ? 0x00 : 0x60;   /* RGB565; 0x60 = MX|MV landscape (USB on the left) */
     send_cmd(ST7789_COLMOD); send_data(&colmod, 1);
     send_cmd(ST7789_MADCTL); send_data(&madctl, 1);
     send_cmd(ST7789_INVON);
@@ -189,5 +193,5 @@ void display_init(void)
     send_cmd(ST7789_DISPON); vTaskDelay(pdMS_TO_TICKS(10));
     display_fill(0x0000);
     display_set_backlight(153);
-    ESP_LOGI(TAG, "ST7789 up: 280x240 landscape, SPI %d MHz, 2 x %d B DMA strips", LCD_SPI_CLOCK / 1000000, DMA_BUFFER_SIZE);
+    ESP_LOGI(TAG, "ST7789 up: %dx%d %s, SPI %d MHz, 2 x %d B DMA strips", DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_PORTRAIT ? "portrait" : "landscape", LCD_SPI_CLOCK / 1000000, DMA_BUFFER_SIZE);
 }
