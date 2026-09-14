@@ -23,10 +23,12 @@
 #include "pico.h"
 typedef struct audio_buffer audio_buffer_t;
 
+#ifndef PICO_SOUND_SAMPLE_FREQ
 #if USE_EMU8950_OPL
 #define PICO_SOUND_SAMPLE_FREQ 49716
 #else
 #define PICO_SOUND_SAMPLE_FREQ 44100
+#endif
 #endif
 
 #ifndef NUM_SOUND_CHANNELS

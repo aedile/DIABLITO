@@ -48,6 +48,7 @@
 #include "image_decoder.h"
 #include "display.h"
 #include "doom/doomstat.h"
+#include "i_sound.h"
 #include "esp_heap_caps.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
@@ -835,6 +836,7 @@ uint32_t doom_frame_count;
 void I_DisplayFrame(void) {
     static int64_t last_us;
     if (!initialized) return;
+    I_UpdateSound();          /* second mixer opportunity per frame: 46 ms buffers vs 40-80 ms frames */
     new_frame_stuff();
     int64_t t0 = esp_timer_get_time();
     fill_scanlines();
@@ -847,6 +849,8 @@ void I_DisplayFrame(void) {
     last_us = t1;
     if ((doom_frame_count & 255) == 0) {
         extern int Z_FreeMemory(void);
+        extern uint32_t audio_underrun_count(void); extern int audio_queued_ms(void);
+        printf("audio: %lu underruns, %d ms queued\n", (unsigned long)audio_underrun_count(), audio_queued_ms());
         printf("mem @frame %lu: heap free %u, largest %u, min ever %u, zone free %d, stack free %u, uptime %lu s, gamestate %d, demo %d, usergame %d, tic %d\n",
                (unsigned long)doom_frame_count, (unsigned)heap_caps_get_free_size(MALLOC_CAP_8BIT),
                (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_8BIT),
