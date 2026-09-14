@@ -8,12 +8,12 @@ Date: 2026-09-14. Log: `NOTES/logs/phase7-run1-idle.log`.
   about 2.3 s after power-on, preceded by a 1.5 s DIABLITO splash drawn in `main.c` (5x7 glyphs
   scaled 5x, Doom red, no assets). Any key on the title or during a demo opens the menu, so a
   button press or a pad button leaves attract.
-- **Idle display sleep.** `components/doom/esp/i_input.c`: after `doom_idle_sleep_s` (default
-  120) seconds without any input while a demo is playing, the panel gets backlight off plus
+- **Idle display sleep: off by default.** Jesse wants the medal visual in attract, so
+  `doom_idle_sleep_s` defaults to 0. The mechanism is built and verified: after that many seconds without any input while a demo is playing, the panel gets backlight off plus
   ST7789 `SLPIN`, and the game task parks polling the two buttons and the pad at 10 Hz. Tics
   stop, the sound ring drains to silence, BLE keeps listening. Any medal button or pad button
-  wakes it (`SLPOUT`, backlight back). The period comes from NVS key `medal/idle_s` if present;
-  `idf.py -DIDLE_SLEEP_S=0 build` makes a display-always-on build.
+  wakes it (`SLPOUT`, backlight back). NVS key `medal/idle_s` or `idf.py -DIDLE_SLEEP_S=n build`
+  turns it on.
 - **Battery run log.** Every 60 s the uptime and battery millivolts go to NVS (`medal/runlog`);
   at the next boot the previous run's last record is printed:
   `previous run (boot N) lasted S s (M min), last battery X mV`. That is how the runtime on a
@@ -26,8 +26,7 @@ Date: 2026-09-14. Log: `NOTES/logs/phase7-run1-idle.log`.
 - Idle sleep triggered at 120 s of untouched attract loop, frame output stopped, heap steady at
   46,412, no reset (`phase7-run1-idle.log`).
 - Splash and wake-on-button: Jesse's eyes and thumb (pending).
-- **Battery runtime, display on:** pending. Protocol: flash the `IDLE_SLEEP_S=0` build, charge
-  fully, unplug, leave it in the attract loop until it dies, plug back in, boot, read the
+- **Battery runtime, display on:** pending. Protocol: charge fully, unplug, leave it in the attract loop until it dies, plug back in, boot, read the
   "previous run lasted" line.
 
 Gate: open until the runtime number is in.
