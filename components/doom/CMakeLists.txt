@@ -60,3 +60,6 @@ target_compile_definitions(${COMPONENT_LIB} PRIVATE
     PICODOOM_RENDER_NEWHOPE=1 MERGE_DISTSCALE0_INTO_VIEWCOSSINANGLE=1
     # DOOM_PROFILE=1   # 2 kHz PC sampler, see esp/prof.c and tools/symbolize.sh
 )
+if(DEFINED IDLE_SLEEP_S)   # idf.py -DIDLE_SLEEP_S=0 build: display never sleeps (battery runtime test)
+    target_compile_definitions(${COMPONENT_LIB} PRIVATE DOOM_IDLE_SLEEP_S=${IDLE_SLEEP_S})
+endif()
