@@ -29,6 +29,7 @@ void display_init(void);                                   /* panel up, landscap
 void display_set_window(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 void display_fill(uint16_t rgb565);                        /* whole panel, blocking */
 void display_set_backlight(uint8_t brightness);            /* 0..255 */
+void display_sleep(bool sleep);                            /* backlight off + panel SLPIN, and back; caller must not be streaming */
 
 /* Frames are streamed into a viewport (default: whole panel). w must be a multiple of 4. */
 void display_set_viewport(int x, int y, int w, int h);

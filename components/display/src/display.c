@@ -16,6 +16,7 @@ static const char *TAG = "DISPLAY";
 #define ST7789_OFFSET 20   /* the visible 280 columns sit in the middle of the panel's 320-long axis */
 
 #define ST7789_SWRESET 0x01
+#define ST7789_SLPIN   0x10
 #define ST7789_SLPOUT  0x11
 #define ST7789_NORON   0x13
 #define ST7789_INVON   0x21
@@ -128,6 +129,19 @@ IRAM_ATTR void display_push_strip(const uint8_t *rows, int pitch, int y0, int nr
         }
     }
     display_submit_strip(y0, nrows);
+}
+
+void display_sleep(bool sleep)
+{
+    display_wait_done();
+    if (sleep) {
+        display_set_backlight(0);
+        send_cmd(ST7789_SLPIN);
+    } else {
+        send_cmd(ST7789_SLPOUT);
+        vTaskDelay(pdMS_TO_TICKS(120));
+        display_set_backlight(153);
+    }
 }
 
 void display_set_backlight(uint8_t brightness)
