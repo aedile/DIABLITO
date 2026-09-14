@@ -1,0 +1,85 @@
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x2c (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40805022
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875720,len:0x1a5c
+load:0x4086c110,len:0xf58
+load:0x4086e610,len:0x3074
+entry 0x4086c11a
+[0;32mI (23) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (23) boot: compile time Sep 14 2026 20:28:36[0m
+[0;32mI (23) boot: chip revision: v0.2[0m
+[0;32mI (24) boot: efuse block revision: v0.3[0m
+[0;32mI (24) qio_mode: Enabling QIO for flash chip WinBond[0m
+[0;32mI (24) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (25) boot.esp32c6: SPI Mode       : QIO[0m
+[0;32mI (25) boot.esp32c6: SPI Flash Size : 16MB[0m
+[0;32mI (25) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (26) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (26) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (27) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (28) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (28) boot:  3 wad              Unknown data     01 40 00210000 00400000[0m
+[0;32mI (29) boot:  4 saves            WiFi data        01 02 00610000 00020000[0m
+[0;32mI (29) boot: End of partition table[0m
+[0;32mI (30) esp_image: segment 0: paddr=00010020 vaddr=42020020 size=0bac8h ( 47816) map[0m
+[0;32mI (39) esp_image: segment 1: paddr=0001baf0 vaddr=40800000 size=04528h ( 17704) load[0m
+[0;32mI (43) esp_image: segment 2: paddr=00020020 vaddr=42000020 size=14e84h ( 85636) map[0m
+[0;32mI (59) esp_image: segment 3: paddr=00034eac vaddr=40804528 size=08a44h ( 35396) load[0m
+[0;32mI (67) esp_image: segment 4: paddr=0003d8f8 vaddr=4080cf70 size=018d4h (  6356) load[0m
+[0;32mI (69) esp_image: segment 5: paddr=0003f1d4 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (73) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (74) boot: Disabling RNG early entropy source...[0m
+[0;32mI (74) cpu_start: Unicore app[0m
+[0;32mI (83) cpu_start: Pro cpu start user code[0m
+[0;32mI (83) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (83) app_init: Application information:[0m
+[0;32mI (83) app_init: Project name:     diablito[0m
+[0;32mI (84) app_init: App version:      1[0m
+[0;32mI (84) app_init: Compile time:     Sep 14 2026 20:28:34[0m
+[0;32mI (84) app_init: ELF file SHA256:  d76214fb1...[0m
+[0;32mI (84) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (85) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (85) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (85) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (85) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (86) heap_init: At 40810C80 len 0006B990 (430 KiB): RAM[0m
+[0;32mI (86) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (86) heap_init: At 50000004 len 00003FE4 (15 KiB): RTCRAM[0m
+[0;32mI (87) spi_flash: detected chip: generic[0m
+[0;32mI (87) spi_flash: flash io: qio[0m
+[0;32mI (88) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (88) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (89) coexist: coex firmware version: a13b09d[0m
+[0;32mI (89) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (89) main_task: Started on CPU0[0m
+[0;32mI (89) main_task: Calling app_main()[0m
+[0;32mI (89) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (89) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (89) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (90) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (90) DIABLITO: DIABLITO skeleton, IDF v5.3.4, CPU 160 MHz[0m
+[0;32mI (90) DIABLITO: heap at boot: free 445956, largest block 417792, min ever 445956, dma-capable 431356[0m
+[0;32mI (91) gpio: GPIO[3]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (91) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (595) DISPLAY: ST7789 up: 280x240 landscape, SPI 80 MHz, 2 x 8960 B DMA strips[0m
+[0;32mI (595) DIABLITO: heap after display: free 426472, largest block 401408, min ever 426472, dma-capable 411872[0m
+[0;32mI (610) DIABLITO: test pattern: full 280x240 frame in 14655 us (3530 us of that blocked on DMA)[0m
+[0;32mI (611) DIABLITO: wad partition @0x210000 size 4194304: magic IWHD, 1264 lumps, infotable @36, file 2073676 bytes[0m
+[0;32mI (611) DIABLITO: WHD mapped at 0x42030000, header via mmap: IWHD ·©ÔUDOOM1[0m
+[0;32mI (612) DIABLITO: heap after wad mmap: free 425840, largest block 393216, min ever 425840, dma-capable 411240[0m
+[0;32mI (699) DIABLITO: flash sequential: 2073676 bytes in 86617 us = 23.9 MB/s (sum 2b131da9)[0m
+[0;32mI (958) DIABLITO: flash random 4-byte reads over 2025 KB: 200000 in 259227 us = 1296 ns each (sum bd7201a8)[0m
+[0;32mI (975) DIABLITO: sram random 4-byte reads over 64 KB: 200000 in 13851 us = 69 ns each (sum da2f5ee5)[0m
+[0;32mI (1111) DIABLITO: flash random 4-byte reads over 64 KB (cache-resident?): 200000 in 135168 us = 675 ns each (sum da2f5ee5)[0m
+[0;32mI (1111) DIABLITO: heap after bench: free 425624, largest block 393216, min ever 360084, dma-capable 411024[0m
+[0;32mI (1111) DIABLITO: main task stack high-water: 6664 bytes free[0m
+[0;32mI (1112) DIABLITO: heap idle: free 425624, largest block 393216, min ever 360084, dma-capable 411024[0m
+[0;32mI (1112) DIABLITO: battery 4203 mV (100%)[0m
+[0;32mI (6112) DIABLITO: heap idle: free 425536, largest block 393216, min ever 360084, dma-capable 410936[0m
+[0;32mI (6112) DIABLITO: battery 4203 mV (100%)[0m
+[0;32mI (11112) DIABLITO: heap idle: free 425536, largest block 393216, min ever 360084, dma-capable 410936[0m
+[0;32mI (11112) DIABLITO: battery 4197 mV (99%)[0m

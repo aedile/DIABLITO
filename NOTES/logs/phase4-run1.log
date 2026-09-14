@@ -1,0 +1,3094 @@
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x2c (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001a326
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875720,len:0x1a5c
+load:0x4086c110,len:0xf58
+load:0x4086e610,len:0x3074
+entry 0x4086c11a
+[0;32mI (23) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (23) boot: compile time Sep 14 2026 20:53:10[0m
+[0;32mI (24) boot: chip revision: v0.2[0m
+[0;32mI (24) boot: efuse block revision: v0.3[0m
+[0;32mI (24) qio_mode: Enabling QIO for flash chip WinBond[0m
+[0;32mI (24) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (25) boot.esp32c6: SPI Mode       : QIO[0m
+[0;32mI (25) boot.esp32c6: SPI Flash Size : 16MB[0m
+[0;32mI (25) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (26) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (27) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (27) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (28) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (28) boot:  3 wad              Unknown data     01 40 00210000 00400000[0m
+[0;32mI (29) boot:  4 saves            WiFi data        01 02 00610000 00020000[0m
+[0;32mI (30) boot: End of partition table[0m
+[0;32mI (30) esp_image: segment 0: paddr=00010020 vaddr=420c0020 size=31554h (202068) map[0m
+[0;32mI (67) esp_image: segment 1: paddr=0004157c vaddr=40800000 size=0ea9ch ( 60060) load[0m
+[0;32mI (80) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=b1314h (725780) map[0m
+[0;32mI (210) esp_image: segment 3: paddr=0010133c vaddr=4080ea9c size=0ab90h ( 43920) load[0m
+[0;32mI (220) esp_image: segment 4: paddr=0010bed4 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (226) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (226) boot: Disabling RNG early entropy source...[0m
+[0;32mI (228) cpu_start: Unicore app[0m
+[0;32mI (236) cpu_start: Pro cpu start user code[0m
+[0;32mI (236) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (236) app_init: Application information:[0m
+[0;32mI (237) app_init: Project name:     diablito[0m
+[0;32mI (237) app_init: App version:      1[0m
+[0;32mI (237) app_init: Compile time:     Sep 14 2026 20:53:12[0m
+[0;32mI (238) app_init: ELF file SHA256:  225dc4297...[0m
+[0;32mI (238) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (238) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (238) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (238) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (239) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (239) heap_init: At 40834080 len 00048590 (289 KiB): RAM[0m
+[0;32mI (239) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (240) heap_init: At 50000004 len 00003FE4 (15 KiB): RTCRAM[0m
+[0;32mI (241) spi_flash: detected chip: generic[0m
+[0;32mI (241) spi_flash: flash io: qio[0m
+[0;32mI (241) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (242) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (242) coexist: coex firmware version: a13b09d[0m
+[0;32mI (242) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (243) main_task: Started on CPU0[0m
+[0;32mI (243) main_task: Calling app_main()[0m
+[0;32mI (243) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (243) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (243) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (244) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (244) DIABLITO: DIABLITO skeleton, IDF v5.3.4, CPU 160 MHz[0m
+[0;32mI (244) DIABLITO: heap at boot: free 293380, largest block 262144, min ever 293380, dma-capable 278780[0m
+[0;32mI (245) gpio: GPIO[3]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (245) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (749) DISPLAY: ST7789 up: 280x240 landscape, SPI 80 MHz, 2 x 8960 B DMA strips[0m
+[0;32mI (749) DIABLITO: heap after display: free 273896, largest block 245760, min ever 273896, dma-capable 259296[0m
+[0;32mI (750) DIABLITO: wad partition @0x210000 size 4194304: magic IWHD, 1264 lumps, infotable @36, file 2073676 bytes[0m
+[0;32mI (750) DIABLITO: WHD mapped at 0x42100000, header via mmap: IWHD ·©ÔUDOOM1[0m
+[0;32mI (751) DIABLITO: heap after wad mmap: free 273264, largest block 245760, min ever 273264, dma-capable 258664[0m
+[0;32mI (751) DIABLITO: main task stack high-water: 14904 bytes free[0m
+[0;32mI (752) DIABLITO: .bss ends at 0x40834080 (short-pointer window ends at 0x40840000, 49024 bytes spare)[0m
+[0;32mI (752) DIABLITO: heap before BLE: free 273264, largest block 245760, min ever 273264, dma-capable 258664[0m
+[0;32mI (764) BLE_INIT: Using main XTAL as clock source, chip ver: 2[0m
+[0;32mI (764) BLE_INIT: ble controller commit:[ca6c20b][0m
+[0;32mI (768) BLE_INIT: Bluetooth MAC: fc:01:2c:fd:fc:b2[0m
+[0;32mI (768) phy_init: phy_version 341,a6c8fe6,Jul 30 2025,18:34:11[0m
+[0;33mW (769) phy_init: failed to load RF calibration data (0xffffffff), falling back to full calibration[0m
+[0;32mI (852) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(2)[0m
+[0;32mI (870) phy: libbtbb version: a945109, Jul 30 2025, 18:34:25[0m
+[0;32mI (877) PAD: init, saved controller: no[0m
+[0;32mI (935) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+[0;32mI (1078) DIABLITO: heap after BLE init: free 234712, largest block 208896, min ever 234576, dma-capable 220112[0m
+[0;32mI (1078) DIABLITO: starting Doom[0m
+                          DIABLITO Doom 3.0.0
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0x40821724, 10000 allocated for zone
+M_LoadDefaults: Load system defaults.
+W_Init: Init WADfiles.
+===========================================================================
+                            DOOM Shareware
+===========================================================================
+ DIABLITO Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - .........
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+frame 2: 33828 us total, 11686 us display, type 4
+frame 3: 12251 us total, 11635 us display, type 4
+frame 4: 16744 us total, 11634 us display, type 4
+frame 5: 29038 us total, 11645 us display, type 4
+frame 6: 28988 us total, 11641 us display, type 4
+frame 7: 28000 us total, 11641 us display, type 4
+frame 8: 28973 us total, 11635 us display, type 4
+frame 9: 28002 us total, 11635 us display, type 4
+[0;32mI (1349) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 10: 29052 us total, 11647 us display, type 4
+frame 11: 28190 us total, 11843 us display, type 4
+frame 12: 28826 us total, 11644 us display, type 4
+frame 13: 28946 us total, 11642 us display, type 4
+frame 14: 28030 us total, 11643 us display, type 4
+frame 15: 28978 us total, 11642 us display, type 4
+[0;32mI (1530) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+[0;32mI (1531) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+frame 16: 28376 us total, 12009 us display, type 4
+[0;32mI (1551) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+frame 17: 28660 us total, 11644 us display, type 4
+frame 18: 27967 us total, 11635 us display, type 4
+frame 19: 28987 us total, 11642 us display, type 4
+frame 20: 29014 us total, 11645 us display, type 4
+frame 21: 27999 us total, 11635 us display, type 4
+frame 22: 29007 us total, 11644 us display, type 4
+frame 23: 27993 us total, 11639 us display, type 4
+frame 24: 28975 us total, 11635 us display, type 4
+frame 25: 28011 us total, 11642 us display, type 4
+frame 26: 29032 us total, 11646 us display, type 4
+frame 27: 28981 us total, 11642 us display, type 4
+frame 28: 28015 us total, 11651 us display, type 4
+frame 29: 28972 us total, 11642 us display, type 4
+frame 30: 28000 us total, 11642 us display, type 4
+frame 31: 29021 us total, 11644 us display, type 4
+frame 32: 27993 us total, 11639 us display, type 4
+frame 33: 28975 us total, 11635 us display, type 4
+frame 34: 29105 us total, 11716 us display, type 4
+frame 35: 27925 us total, 11635 us display, type 4
+frame 36: 29000 us total, 11644 us display, type 4
+frame 37: 27995 us total, 11638 us display, type 4
+frame 38: 28973 us total, 11634 us display, type 4
+frame 39: 28002 us total, 11635 us display, type 4
+frame 40: 29043 us total, 11645 us display, type 4
+frame 41: 28972 us total, 11642 us display, type 4
+frame 42: 27997 us total, 11641 us display, type 4
+frame 43: 28986 us total, 11635 us display, type 4
+frame 44: 28046 us total, 11643 us display, type 4
+frame 45: 28968 us total, 11642 us display, type 4
+frame 46: 28023 us total, 11645 us display, type 4
+frame 47: 28990 us total, 11640 us display, type 4
+frame 48: 29007 us total, 11644 us display, type 4
+frame 49: 28000 us total, 11636 us display, type 4
+frame 50: 28994 us total, 11644 us display, type 4
+frame 51: 27999 us total, 11636 us display, type 4
+frame 52: 28973 us total, 11634 us display, type 4
+frame 53: 28002 us total, 11635 us display, type 4
+frame 54: 29043 us total, 11643 us display, type 4
+frame 55: 28970 us total, 11642 us display, type 4
+frame 56: 27997 us total, 11641 us display, type 4
+frame 57: 29099 us total, 11745 us display, type 4
+frame 58: 27965 us total, 11644 us display, type 4
+frame 59: 28963 us total, 11636 us display, type 4
+frame 60: 27988 us total, 11637 us display, type 4
+frame 61: 29039 us total, 11647 us display, type 4
+frame 62: 28955 us total, 11642 us display, type 4
+frame 63: 28049 us total, 11653 us display, type 4
+frame 64: 28952 us total, 11642 us display, type 4
+frame 65: 28022 us total, 11643 us display, type 4
+frame 66: 28995 us total, 11636 us display, type 4
+frame 67: 27992 us total, 11635 us display, type 4
+frame 68: 29015 us total, 11643 us display, type 4
+[0;32mI (3047) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -91[0m
+frame 69: 29239 us total, 11900 us display, type 4
+frame 70: 27804 us total, 11651 us display, type 4
+frame 71: 28928 us total, 11642 us display, type 4
+frame 72: 27984 us total, 11635 us display, type 4
+frame 73: 28997 us total, 11635 us display, type 4
+frame 74: 28104 us total, 11715 us display, type 4
+frame 75: 28935 us total, 11635 us display, type 4
+frame 76: 28963 us total, 11635 us display, type 4
+frame 77: 28004 us total, 11635 us display, type 4
+[0;32mI (3288) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 78: 29058 us total, 11647 us display, type 4
+frame 79: 27986 us total, 11635 us display, type 4
+frame 80: 28951 us total, 11635 us display, type 4
+frame 81: 28016 us total, 11642 us display, type 4
+frame 82: 28986 us total, 11635 us display, type 4
+frame 83: 29000 us total, 11635 us display, type 4
+frame 84: 28000 us total, 11635 us display, type 4
+frame 85: 29026 us total, 11647 us display, type 4
+frame 86: 28007 us total, 11635 us display, type 4
+frame 87: 28993 us total, 11646 us display, type 4
+frame 88: 28015 us total, 11635 us display, type 4
+frame 89: 28971 us total, 11641 us display, type 4
+frame 90: 28986 us total, 11635 us display, type 4
+frame 91: 28046 us total, 11643 us display, type 4
+frame 92: 29071 us total, 11636 us display, type 4
+frame 93: 27915 us total, 11634 us display, type 4
+frame 94: 28970 us total, 11635 us display, type 4
+frame 95: 28037 us total, 11646 us display, type 4
+frame 96: 28989 us total, 11636 us display, type 4
+frame 97: 28976 us total, 11635 us display, type 4
+frame 98: 28087 us total, 11663 us display, type 4
+frame 99: 28935 us total, 11642 us display, type 4
+frame 100: 27988 us total, 11642 us display, type 4
+frame 101: 28989 us total, 11635 us display, type 4
+frame 102: 28003 us total, 11635 us display, type 4
+frame 103: 28997 us total, 11635 us display, type 4
+[0;32mI (4048) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+[0;32mI (4049) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 104: 29100 us total, 11735 us display, type 4
+frame 105: 27987 us total, 11651 us display, type 4
+frame 106: 28927 us total, 11642 us display, type 4
+frame 107: 27988 us total, 11635 us display, type 4
+frame 108: 29026 us total, 11642 us display, type 4
+frame 109: 27997 us total, 11635 us display, type 4
+frame 110: 28975 us total, 11635 us display, type 4
+frame 111: 29018 us total, 11653 us display, type 4
+frame 112: 28048 us total, 11644 us display, type 4
+frame 113: 28949 us total, 11642 us display, type 4
+frame 114: 28029 us total, 11680 us display, type 4
+frame 115: 28985 us total, 11643 us display, type 4
+frame 116: 27996 us total, 11636 us display, type 4
+frame 117: 29042 us total, 11644 us display, type 4
+frame 118: 28982 us total, 11635 us display, type 4
+frame 119: 27976 us total, 11641 us display, type 4
+frame 120: 28973 us total, 11634 us display, type 4
+frame 121: 28066 us total, 11699 us display, type 4
+frame 122: 28981 us total, 11644 us display, type 4
+frame 123: 27985 us total, 11635 us display, type 4
+frame 124: 29013 us total, 11645 us display, type 4
+frame 125: 28970 us total, 11642 us display, type 4
+frame 126: 28052 us total, 11644 us display, type 4
+frame 127: 28983 us total, 11635 us display, type 4
+frame 128: 27976 us total, 11637 us display, type 4
+frame 129: 28974 us total, 11634 us display, type 4
+frame 130: 28002 us total, 11635 us display, type 4
+frame 131: 29064 us total, 11644 us display, type 4
+frame 132: 28954 us total, 11642 us display, type 4
+frame 133: 28007 us total, 11655 us display, type 4
+frame 134: 29013 us total, 11645 us display, type 4
+frame 135: 28107 us total, 11759 us display, type 4
+frame 136: 28889 us total, 11644 us display, type 4
+frame 137: 28106 us total, 11739 us display, type 4
+[0;32mI (4999) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+frame 138: 28933 us total, 11646 us display, type 4
+frame 139: 28938 us total, 11642 us display, type 4
+frame 140: 27990 us total, 11634 us display, type 4
+frame 141: 28995 us total, 11635 us display, type 4
+frame 142: 28124 us total, 11753 us display, type 4
+frame 143: 28910 us total, 11644 us display, type 4
+frame 144: 27995 us total, 11639 us display, type 4
+frame 145: 28978 us total, 11635 us display, type 4
+frame 146: 29030 us total, 11645 us display, type 4
+frame 147: 28008 us total, 11642 us display, type 4
+frame 148: 28959 us total, 11635 us display, type 4
+frame 149: 28000 us total, 11635 us display, type 4
+frame 150: 29031 us total, 11645 us display, type 4
+frame 151: 27994 us total, 11640 us display, type 4
+frame 152: 28976 us total, 11635 us display, type 4
+frame 153: 28996 us total, 11635 us display, type 4
+frame 154: 28048 us total, 11644 us display, type 4
+frame 155: 28957 us total, 11635 us display, type 4
+frame 156: 28000 us total, 11635 us display, type 4
+frame 157: 29100 us total, 11645 us display, type 4
+frame 158: 27924 us total, 11634 us display, type 4
+frame 159: 29020 us total, 11645 us display, type 4
+frame 160: 28957 us total, 11635 us display, type 4
+frame 161: 27998 us total, 11635 us display, type 4
+frame 162: 28997 us total, 11635 us display, type 4
+frame 163: 28003 us total, 11635 us display, type 4
+frame 164: 29032 us total, 11644 us display, type 4
+frame 165: 28009 us total, 11642 us display, type 4
+frame 166: 29003 us total, 11644 us display, type 4
+frame 167: 28968 us total, 11646 us display, type 4
+frame 168: 28048 us total, 11655 us display, type 4
+frame 169: 59866 us total, 12189 us display, type 5
+frame 170: 12967 us total, 12133 us display, type 5
+frame 171: 12994 us total, 12267 us display, type 5
+frame 172: 12861 us total, 12137 us display, type 5
+frame 173: 12845 us total, 12132 us display, type 5
+frame 174: 13180 us total, 12450 us display, type 5
+frame 175: 12910 us total, 12186 us display, type 5
+frame 176: 12883 us total, 12136 us display, type 5
+frame 177: 12926 us total, 12208 us display, type 5
+frame 178: 13001 us total, 12258 us display, type 5
+frame 179: 12913 us total, 12134 us display, type 5
+frame 180: 12870 us total, 12136 us display, type 5
+frame 181: 12851 us total, 12136 us display, type 5
+frame 182: 12989 us total, 12262 us display, type 5
+frame 183: 12897 us total, 12144 us display, type 5
+frame 184: 12874 us total, 12141 us display, type 5
+frame 185: 12868 us total, 12136 us display, type 5
+frame 186: 12915 us total, 12185 us display, type 5
+frame 187: 12871 us total, 12138 us display, type 5
+frame 188: 12957 us total, 12225 us display, type 5
+frame 189: 12893 us total, 12138 us display, type 5
+frame 190: 12983 us total, 12252 us display, type 5
+frame 191: 12876 us total, 12139 us display, type 5
+frame 192: 12862 us total, 12135 us display, type 5
+frame 193: 12866 us total, 12136 us display, type 5
+frame 194: 12914 us total, 12174 us display, type 5
+frame 195: 12868 us total, 12137 us display, type 5
+frame 196: 12967 us total, 12225 us display, type 5
+frame 197: 12877 us total, 12138 us display, type 5
+frame 198: 12943 us total, 12185 us display, type 5
+frame 199: 12868 us total, 12133 us display, type 5
+frame 200: 13116 us total, 12380 us display, type 5
+frame 201: 21384 us total, 12281 us display, type 5
+frame 202: 12991 us total, 12136 us display, type 5
+frame 203: 12863 us total, 12132 us display, type 5
+frame 204: 12874 us total, 12132 us display, type 5
+frame 205: 12916 us total, 12185 us display, type 5
+frame 206: 12885 us total, 12143 us display, type 5
+frame 207: 12972 us total, 12247 us display, type 5
+frame 208: 12955 us total, 12200 us display, type 5
+frame 209: 13972 us total, 12215 us display, type 5
+frame 210: 12901 us total, 12145 us display, type 5
+frame 211: 13077 us total, 12327 us display, type 5
+frame 212: 12904 us total, 12142 us display, type 5
+frame 213: 12948 us total, 12208 us display, type 5
+frame 214: 12884 us total, 12140 us display, type 5
+frame 215: 12886 us total, 12141 us display, type 5
+frame 216: 12867 us total, 12131 us display, type 5
+frame 217: 12923 us total, 12141 us display, type 5
+frame 218: 12870 us total, 12134 us display, type 5
+frame 219: 12869 us total, 12132 us display, type 5
+frame 220: 13059 us total, 12331 us display, type 5
+frame 221: 12887 us total, 12140 us display, type 5
+frame 222: 12870 us total, 12137 us display, type 5
+frame 223: 12852 us total, 12136 us display, type 5
+frame 224: 12915 us total, 12181 us display, type 5
+frame 225: 12860 us total, 12137 us display, type 5
+frame 226: 12869 us total, 12133 us display, type 5
+frame 227: 12853 us total, 12132 us display, type 5
+frame 228: 12912 us total, 12181 us display, type 5
+frame 229: 12858 us total, 12138 us display, type 5
+frame 230: 12860 us total, 12137 us display, type 5
+frame 231: 12847 us total, 12136 us display, type 5
+frame 232: 12901 us total, 12179 us display, type 5
+frame 233: 12867 us total, 12144 us display, type 5
+frame 234: 12861 us total, 12141 us display, type 5
+frame 235: 12853 us total, 12132 us display, type 5
+frame 236: 12897 us total, 12178 us display, type 5
+frame 237: 12848 us total, 12128 us display, type 5
+frame 238: 12846 us total, 12136 us display, type 5
+frame 239: 12945 us total, 12227 us display, type 5
+frame 240: 13002 us total, 12270 us display, type 5
+frame 241: 12868 us total, 12145 us display, type 5
+frame 242: 12623 us total, 11644 us display, type 3
+frame 243: 37010 us total, 11694 us display, type 3
+frame 244: 32885 us total, 11930 us display, type 3
+frame 245: 32331 us total, 11694 us display, type 3
+frame 246: 33394 us total, 11694 us display, type 3
+frame 247: 34225 us total, 11693 us display, type 3
+frame 248: 34141 us total, 11997 us display, type 3
+frame 249: 34482 us total, 11693 us display, type 3
+frame 250: 35361 us total, 11763 us display, type 3
+frame 251: 34368 us total, 11692 us display, type 3
+frame 252: 34401 us total, 11693 us display, type 3
+frame 253: 34289 us total, 11840 us display, type 3
+frame 254: 36674 us total, 11686 us display, type 3
+frame 255: 34683 us total, 11700 us display, type 3
+frame 256: 34379 us total, 11686 us display, type 3
+mem @frame 256: heap free 68132, largest 43008, min ever 67996, zone free 41244, stack free 14540, uptime 7 s, gamestate 0, demo 1, usergame 0, tic 191
+frame 257: 35479 us total, 11716 us display, type 3
+frame 258: 34193 us total, 11800 us display, type 3
+frame 259: 35631 us total, 11692 us display, type 3
+frame 260: 34246 us total, 11699 us display, type 3
+frame 261: 34328 us total, 11686 us display, type 3
+frame 262: 34860 us total, 11687 us display, type 3
+frame 263: 36010 us total, 11686 us display, type 3
+frame 264: 34548 us total, 11694 us display, type 3
+frame 265: 35113 us total, 11701 us display, type 3
+frame 266: 35530 us total, 11687 us display, type 3
+frame 267: 36725 us total, 11686 us display, type 3
+frame 268: 36552 us total, 11693 us display, type 3
+frame 269: 36705 us total, 11693 us display, type 3
+frame 270: 36422 us total, 11694 us display, type 3
+frame 271: 35587 us total, 11687 us display, type 3
+frame 272: 33913 us total, 11693 us display, type 3
+frame 273: 33726 us total, 11694 us display, type 3
+frame 274: 32696 us total, 11700 us display, type 3
+frame 275: 32473 us total, 11687 us display, type 3
+frame 276: 31442 us total, 11698 us display, type 3
+frame 277: 30929 us total, 11692 us display, type 3
+frame 278: 29600 us total, 11686 us display, type 3
+frame 279: 29645 us total, 11684 us display, type 3
+frame 280: 28722 us total, 11683 us display, type 3
+frame 281: 27565 us total, 11689 us display, type 3
+frame 282: 27424 us total, 11682 us display, type 3
+frame 283: 26862 us total, 11682 us display, type 3
+[0;32mI (8298) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+frame 284: 28316 us total, 12202 us display, type 3
+frame 285: 26850 us total, 11683 us display, type 3
+frame 286: 26360 us total, 11886 us display, type 3
+frame 287: 27635 us total, 12024 us display, type 3
+frame 288: 26858 us total, 11678 us display, type 3
+frame 289: 28535 us total, 11744 us display, type 3
+frame 290: 28078 us total, 11684 us display, type 3
+frame 291: 27442 us total, 11675 us display, type 3
+frame 292: 32304 us total, 11694 us display, type 3
+[0;32mI (8550) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -83[0m
+frame 293: 26790 us total, 12008 us display, type 3
+frame 294: 28804 us total, 11679 us display, type 3
+frame 295: 26891 us total, 11672 us display, type 3
+frame 296: 30261 us total, 11678 us display, type 3
+frame 297: 28822 us total, 11687 us display, type 3
+frame 298: 27200 us total, 11683 us display, type 3
+frame 299: 29356 us total, 11690 us display, type 3
+frame 300: 28774 us total, 11692 us display, type 3
+frame 301: 28525 us total, 11680 us display, type 3
+frame 302: 31176 us total, 11686 us display, type 3
+frame 303: 30186 us total, 11687 us display, type 3
+frame 304: 31959 us total, 11686 us display, type 3
+frame 305: 30791 us total, 11694 us display, type 3
+frame 306: 31577 us total, 11694 us display, type 3
+frame 307: 33036 us total, 11694 us display, type 3
+frame 308: 31566 us total, 11820 us display, type 3
+frame 309: 32860 us total, 11686 us display, type 3
+frame 310: 32054 us total, 11687 us display, type 3
+frame 311: 31693 us total, 11830 us display, type 3
+frame 312: 33386 us total, 11686 us display, type 3
+frame 313: 36838 us total, 11694 us display, type 3
+frame 314: 35962 us total, 11864 us display, type 3
+frame 315: 35828 us total, 11693 us display, type 3
+frame 316: 37469 us total, 11692 us display, type 3
+frame 317: 39902 us total, 11687 us display, type 3
+[0;32mI (9351) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+[0;32mI (9351) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+frame 318: 40920 us total, 12391 us display, type 3
+frame 319: 38481 us total, 11694 us display, type 3
+frame 320: 38734 us total, 11694 us display, type 3
+frame 321: 39716 us total, 11686 us display, type 3
+frame 322: 37712 us total, 11825 us display, type 3
+frame 323: 39368 us total, 11687 us display, type 3
+frame 324: 38666 us total, 11693 us display, type 3
+frame 325: 37612 us total, 11692 us display, type 3
+frame 326: 41928 us total, 11804 us display, type 3
+frame 327: 42849 us total, 11693 us display, type 3
+frame 328: 42585 us total, 12228 us display, type 3
+frame 329: 45207 us total, 11768 us display, type 3
+frame 330: 40548 us total, 11701 us display, type 3
+frame 331: 43900 us total, 11693 us display, type 3
+frame 332: 42244 us total, 11701 us display, type 3
+frame 333: 46298 us total, 11693 us display, type 3
+frame 334: 41780 us total, 11696 us display, type 3
+frame 335: 47957 us total, 11694 us display, type 3
+frame 336: 44042 us total, 11701 us display, type 3
+frame 337: 46770 us total, 11700 us display, type 3
+frame 338: 45021 us total, 11694 us display, type 3
+frame 339: 45441 us total, 11686 us display, type 3
+frame 340: 47632 us total, 11694 us display, type 3
+frame 341: 46654 us total, 11686 us display, type 3
+frame 342: 47111 us total, 11699 us display, type 3
+frame 343: 47165 us total, 11694 us display, type 3
+frame 344: 49117 us total, 11858 us display, type 3
+frame 345: 47239 us total, 11686 us display, type 3
+frame 346: 52091 us total, 11686 us display, type 3
+frame 347: 48684 us total, 11700 us display, type 3
+frame 348: 48005 us total, 11694 us display, type 3
+frame 349: 44793 us total, 11694 us display, type 3
+frame 350: 41114 us total, 11808 us display, type 3
+frame 351: 40214 us total, 11693 us display, type 3
+frame 352: 37608 us total, 11693 us display, type 3
+frame 353: 41043 us total, 11701 us display, type 3
+frame 354: 38536 us total, 11686 us display, type 3
+frame 355: 36371 us total, 11693 us display, type 3
+frame 356: 38151 us total, 11694 us display, type 3
+frame 357: 36675 us total, 11693 us display, type 3
+frame 358: 35822 us total, 11687 us display, type 3
+frame 359: 35951 us total, 11694 us display, type 3
+frame 360: 36668 us total, 11694 us display, type 3
+frame 361: 36559 us total, 11694 us display, type 3
+frame 362: 34726 us total, 11686 us display, type 3
+frame 363: 35597 us total, 11694 us display, type 3
+frame 364: 34703 us total, 11929 us display, type 3
+frame 365: 35119 us total, 11693 us display, type 3
+frame 366: 33990 us total, 11693 us display, type 3
+frame 367: 34066 us total, 11693 us display, type 3
+frame 368: 35237 us total, 11694 us display, type 3
+frame 369: 35449 us total, 11687 us display, type 3
+frame 370: 36301 us total, 11701 us display, type 3
+frame 371: 34812 us total, 11693 us display, type 3
+frame 372: 37736 us total, 11687 us display, type 3
+frame 373: 35545 us total, 11694 us display, type 3
+frame 374: 35614 us total, 11686 us display, type 3
+frame 375: 35334 us total, 11693 us display, type 3
+frame 376: 36935 us total, 11693 us display, type 3
+frame 377: 36546 us total, 11693 us display, type 3
+frame 378: 36376 us total, 11686 us display, type 3
+frame 379: 35618 us total, 11692 us display, type 3
+frame 380: 42065 us total, 11849 us display, type 3
+frame 381: 38825 us total, 11694 us display, type 3
+frame 382: 40496 us total, 11686 us display, type 3
+frame 383: 39011 us total, 11686 us display, type 3
+frame 384: 39250 us total, 11694 us display, type 3
+frame 385: 42946 us total, 11694 us display, type 3
+frame 386: 40069 us total, 11694 us display, type 3
+frame 387: 40863 us total, 11710 us display, type 3
+frame 388: 41597 us total, 11686 us display, type 3
+frame 389: 40854 us total, 11686 us display, type 3
+frame 390: 41933 us total, 11693 us display, type 3
+frame 391: 39441 us total, 11687 us display, type 3
+frame 392: 43045 us total, 11778 us display, type 3
+frame 393: 40609 us total, 11694 us display, type 3
+frame 394: 42760 us total, 11694 us display, type 3
+frame 395: 40526 us total, 11693 us display, type 3
+frame 396: 41675 us total, 11687 us display, type 3
+frame 397: 39932 us total, 11694 us display, type 3
+frame 398: 38498 us total, 11686 us display, type 3
+frame 399: 39847 us total, 11687 us display, type 3
+frame 400: 38377 us total, 11815 us display, type 3
+frame 401: 38140 us total, 11694 us display, type 3
+frame 402: 36450 us total, 12166 us display, type 3
+frame 403: 36653 us total, 11698 us display, type 3
+frame 404: 37500 us total, 11696 us display, type 3
+frame 405: 38533 us total, 11694 us display, type 3
+frame 406: 40226 us total, 11687 us display, type 3
+frame 407: 38054 us total, 11686 us display, type 3
+[0;32mI (12949) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 408: 40464 us total, 11701 us display, type 3
+frame 409: 39014 us total, 11773 us display, type 3
+frame 410: 38312 us total, 11687 us display, type 3
+frame 411: 38961 us total, 11765 us display, type 3
+frame 412: 40119 us total, 11687 us display, type 3
+frame 413: 41672 us total, 11694 us display, type 3
+frame 414: 39193 us total, 11693 us display, type 3
+frame 415: 42365 us total, 11694 us display, type 3
+frame 416: 40955 us total, 11690 us display, type 3
+frame 417: 41429 us total, 11694 us display, type 3
+frame 418: 42146 us total, 11694 us display, type 3
+frame 419: 40989 us total, 11694 us display, type 3
+frame 420: 42429 us total, 11694 us display, type 3
+frame 421: 41543 us total, 11694 us display, type 3
+frame 422: 42106 us total, 11997 us display, type 3
+frame 423: 40790 us total, 11718 us display, type 3
+frame 424: 39274 us total, 11696 us display, type 3
+frame 425: 37957 us total, 11693 us display, type 3
+frame 426: 38313 us total, 11686 us display, type 3
+frame 427: 39150 us total, 11687 us display, type 3
+frame 428: 37659 us total, 11685 us display, type 3
+frame 429: 37880 us total, 11694 us display, type 3
+[0;32mI (13839) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+frame 430: 42714 us total, 11694 us display, type 3
+frame 431: 40396 us total, 11694 us display, type 3
+frame 432: 43681 us total, 11694 us display, type 3
+frame 433: 42498 us total, 11686 us display, type 3
+frame 434: 41046 us total, 11692 us display, type 3
+frame 435: 39202 us total, 11785 us display, type 3
+[0;32mI (14086) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 436: 40382 us total, 11843 us display, type 3
+frame 437: 40969 us total, 11701 us display, type 3
+frame 438: 39903 us total, 11694 us display, type 3
+frame 439: 38981 us total, 11694 us display, type 3
+frame 440: 40228 us total, 11694 us display, type 3
+frame 441: 42294 us total, 11687 us display, type 3
+frame 442: 45132 us total, 11686 us display, type 3
+frame 443: 44837 us total, 11729 us display, type 3
+frame 444: 42022 us total, 11743 us display, type 3
+frame 445: 45026 us total, 11686 us display, type 3
+frame 446: 42680 us total, 11694 us display, type 3
+frame 447: 43362 us total, 11687 us display, type 3
+frame 448: 43103 us total, 11686 us display, type 3
+frame 449: 42539 us total, 11694 us display, type 3
+frame 450: 40056 us total, 11937 us display, type 3
+frame 451: 39879 us total, 11827 us display, type 3
+frame 452: 38136 us total, 11686 us display, type 3
+frame 453: 36769 us total, 11809 us display, type 3
+frame 454: 35317 us total, 11686 us display, type 3
+frame 455: 35656 us total, 11780 us display, type 3
+frame 456: 37040 us total, 11694 us display, type 3
+[0;32mI (14937) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+[0;32mI (14938) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+frame 457: 35376 us total, 11687 us display, type 3
+frame 458: 36423 us total, 11694 us display, type 3
+frame 459: 34885 us total, 11693 us display, type 3
+frame 460: 34357 us total, 11701 us display, type 3
+frame 461: 34850 us total, 11701 us display, type 3
+frame 462: 34509 us total, 11694 us display, type 3
+frame 463: 35288 us total, 11777 us display, type 3
+frame 464: 34288 us total, 11694 us display, type 3
+frame 465: 33449 us total, 11685 us display, type 3
+frame 466: 35613 us total, 11701 us display, type 3
+frame 467: 34541 us total, 11686 us display, type 3
+frame 468: 36606 us total, 11701 us display, type 3
+frame 469: 36327 us total, 11686 us display, type 3
+frame 470: 34548 us total, 11746 us display, type 3
+frame 471: 40105 us total, 11694 us display, type 3
+frame 472: 38184 us total, 11686 us display, type 3
+frame 473: 34887 us total, 11686 us display, type 3
+frame 474: 39712 us total, 11694 us display, type 3
+frame 475: 36477 us total, 11686 us display, type 3
+frame 476: 38036 us total, 11686 us display, type 3
+frame 477: 38706 us total, 11693 us display, type 3
+frame 478: 38915 us total, 11694 us display, type 3
+frame 479: 39655 us total, 11970 us display, type 3
+frame 480: 39612 us total, 11687 us display, type 3
+frame 481: 38497 us total, 11694 us display, type 3
+frame 482: 38422 us total, 11777 us display, type 3
+frame 483: 38939 us total, 11693 us display, type 3
+[0;32mI (15933) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 484: 37722 us total, 11694 us display, type 3
+frame 485: 37484 us total, 11690 us display, type 3
+frame 486: 39022 us total, 11686 us display, type 3
+frame 487: 36785 us total, 11926 us display, type 3
+frame 488: 36046 us total, 11686 us display, type 3
+frame 489: 37116 us total, 11686 us display, type 3
+frame 490: 37165 us total, 11693 us display, type 3
+frame 491: 35901 us total, 11686 us display, type 3
+frame 492: 34763 us total, 11686 us display, type 3
+frame 493: 36344 us total, 11693 us display, type 3
+frame 494: 35517 us total, 11694 us display, type 3
+frame 495: 36478 us total, 11694 us display, type 3
+frame 496: 34780 us total, 11694 us display, type 3
+frame 497: 36812 us total, 11694 us display, type 3
+frame 498: 34554 us total, 11694 us display, type 3
+frame 499: 34742 us total, 11687 us display, type 3
+frame 500: 34122 us total, 11689 us display, type 3
+frame 501: 34720 us total, 11687 us display, type 3
+frame 502: 33373 us total, 11687 us display, type 3
+frame 503: 33323 us total, 11693 us display, type 3
+frame 504: 32249 us total, 11911 us display, type 3
+frame 505: 34483 us total, 11694 us display, type 3
+frame 506: 32902 us total, 11686 us display, type 3
+frame 507: 33789 us total, 11693 us display, type 3
+frame 508: 33115 us total, 11743 us display, type 3
+frame 509: 32847 us total, 11686 us display, type 3
+frame 510: 33180 us total, 11911 us display, type 3
+frame 511: 32673 us total, 11686 us display, type 3
+frame 512: 33746 us total, 11700 us display, type 3
+mem @frame 512: heap free 68132, largest 43008, min ever 67996, zone free 41244, stack free 14540, uptime 16 s, gamestate 0, demo 1, usergame 0, tic 525
+frame 513: 35189 us total, 11694 us display, type 3
+frame 514: 32074 us total, 11687 us display, type 3
+frame 515: 32676 us total, 11696 us display, type 3
+frame 516: 31967 us total, 11694 us display, type 3
+frame 517: 32662 us total, 11937 us display, type 3
+frame 518: 32518 us total, 11695 us display, type 3
+frame 519: 34231 us total, 11686 us display, type 3
+frame 520: 32944 us total, 11687 us display, type 3
+frame 521: 32323 us total, 11693 us display, type 3
+frame 522: 36700 us total, 11686 us display, type 3
+frame 523: 34032 us total, 12009 us display, type 3
+frame 524: 34998 us total, 11686 us display, type 3
+frame 525: 36188 us total, 11686 us display, type 3
+frame 526: 35108 us total, 11687 us display, type 3
+frame 527: 34271 us total, 11694 us display, type 3
+frame 528: 35596 us total, 11687 us display, type 3
+frame 529: 37154 us total, 11686 us display, type 3
+frame 530: 36091 us total, 11693 us display, type 3
+frame 531: 35948 us total, 11686 us display, type 3
+frame 532: 35381 us total, 11694 us display, type 3
+frame 533: 38353 us total, 11686 us display, type 3
+frame 534: 36182 us total, 11699 us display, type 3
+frame 535: 36314 us total, 11694 us display, type 3
+frame 536: 38505 us total, 11687 us display, type 3
+frame 537: 35162 us total, 11693 us display, type 3
+frame 538: 36555 us total, 11694 us display, type 3
+frame 539: 34767 us total, 11694 us display, type 3
+[0;32mI (17905) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+frame 540: 36556 us total, 11912 us display, type 3
+frame 541: 34630 us total, 11701 us display, type 3
+frame 542: 35270 us total, 11686 us display, type 3
+frame 543: 34319 us total, 11687 us display, type 3
+frame 544: 38411 us total, 11771 us display, type 3
+frame 545: 36438 us total, 11693 us display, type 3
+frame 546: 36193 us total, 11694 us display, type 3
+frame 547: 36669 us total, 11750 us display, type 3
+frame 548: 38078 us total, 11690 us display, type 3
+frame 549: 36380 us total, 11694 us display, type 3
+[0;32mI (18239) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 550: 36904 us total, 11693 us display, type 3
+frame 551: 37213 us total, 11694 us display, type 3
+frame 552: 36186 us total, 11694 us display, type 3
+frame 553: 34265 us total, 11687 us display, type 3
+frame 554: 35655 us total, 11694 us display, type 3
+frame 555: 36284 us total, 11687 us display, type 3
+frame 556: 35672 us total, 11696 us display, type 3
+frame 557: 34987 us total, 11701 us display, type 3
+frame 558: 36738 us total, 11693 us display, type 3
+frame 559: 37301 us total, 11694 us display, type 3
+frame 560: 36404 us total, 11693 us display, type 3
+frame 561: 34839 us total, 11685 us display, type 3
+frame 562: 36211 us total, 11686 us display, type 3
+frame 563: 36748 us total, 11694 us display, type 3
+frame 564: 35689 us total, 11700 us display, type 3
+frame 565: 36132 us total, 11713 us display, type 3
+frame 566: 37553 us total, 11687 us display, type 3
+frame 567: 37271 us total, 11694 us display, type 3
+frame 568: 36697 us total, 11693 us display, type 3
+frame 569: 35430 us total, 11697 us display, type 3
+frame 570: 37971 us total, 11694 us display, type 3
+frame 571: 35250 us total, 11697 us display, type 3
+frame 572: 36860 us total, 11834 us display, type 3
+frame 573: 38073 us total, 11694 us display, type 3
+frame 574: 37810 us total, 11694 us display, type 3
+frame 575: 38488 us total, 11687 us display, type 3
+frame 576: 37548 us total, 11694 us display, type 3
+frame 577: 39693 us total, 11805 us display, type 3
+frame 578: 38160 us total, 11701 us display, type 3
+frame 579: 38199 us total, 11694 us display, type 3
+frame 580: 37379 us total, 11694 us display, type 3
+frame 581: 37267 us total, 11735 us display, type 3
+frame 582: 36756 us total, 11687 us display, type 3
+frame 583: 36203 us total, 11686 us display, type 3
+frame 584: 34981 us total, 11687 us display, type 3
+frame 585: 37535 us total, 11786 us display, type 3
+frame 586: 35932 us total, 11694 us display, type 3
+frame 587: 35943 us total, 11694 us display, type 3
+frame 588: 38581 us total, 11718 us display, type 3
+frame 589: 36627 us total, 11686 us display, type 3
+frame 590: 37424 us total, 11687 us display, type 3
+frame 591: 35444 us total, 11694 us display, type 3
+frame 592: 35642 us total, 11700 us display, type 3
+frame 593: 35196 us total, 11694 us display, type 3
+frame 594: 35030 us total, 11701 us display, type 3
+frame 595: 34343 us total, 11686 us display, type 3
+frame 596: 36139 us total, 11686 us display, type 3
+frame 597: 34665 us total, 11749 us display, type 3
+frame 598: 36864 us total, 11694 us display, type 3
+frame 599: 36679 us total, 11686 us display, type 3
+frame 600: 34745 us total, 11692 us display, type 3
+frame 601: 37280 us total, 11693 us display, type 3
+frame 602: 36403 us total, 11694 us display, type 3
+frame 603: 36746 us total, 11694 us display, type 3
+frame 604: 34462 us total, 11686 us display, type 3
+frame 605: 35914 us total, 11693 us display, type 3
+input: down 0x00040
+frame 606: 36842 us total, 11700 us display, type 3
+frame 607: 37489 us total, 11693 us display, type 3
+frame 608: 37217 us total, 11700 us display, type 3
+frame 609: 37882 us total, 11686 us display, type 3
+frame 610: 39093 us total, 11702 us display, type 3
+frame 611: 37473 us total, 11693 us display, type 3
+frame 612: 37587 us total, 11749 us display, type 3
+frame 613: 37550 us total, 11693 us display, type 3
+frame 614: 37972 us total, 11687 us display, type 3
+frame 615: 39031 us total, 11686 us display, type 3
+frame 616: 38433 us total, 11694 us display, type 3
+frame 617: 36503 us total, 11687 us display, type 3
+frame 618: 39430 us total, 11693 us display, type 3
+frame 619: 37261 us total, 11701 us display, type 3
+frame 620: 36338 us total, 11687 us display, type 3
+frame 621: 39120 us total, 11687 us display, type 3
+frame 622: 37036 us total, 11687 us display, type 3
+frame 623: 37133 us total, 11686 us display, type 3
+frame 624: 38940 us total, 11694 us display, type 3
+frame 625: 37064 us total, 11687 us display, type 3
+frame 626: 37227 us total, 11699 us display, type 3
+frame 627: 37805 us total, 11687 us display, type 3
+frame 628: 36606 us total, 11687 us display, type 3
+frame 629: 37261 us total, 11686 us display, type 3
+frame 630: 37339 us total, 11805 us display, type 3
+frame 631: 38944 us total, 11693 us display, type 3
+frame 632: 37763 us total, 11693 us display, type 3
+frame 633: 36772 us total, 11686 us display, type 3
+frame 634: 38990 us total, 11687 us display, type 3
+frame 635: 38717 us total, 11694 us display, type 3
+frame 636: 36198 us total, 11687 us display, type 3
+frame 637: 40877 us total, 12078 us display, type 3
+frame 638: 37570 us total, 11693 us display, type 3
+frame 639: 38148 us total, 11703 us display, type 3
+frame 640: 38121 us total, 11733 us display, type 3
+frame 641: 36148 us total, 11694 us display, type 3
+frame 642: 39071 us total, 11694 us display, type 3
+frame 643: 38258 us total, 11690 us display, type 3
+frame 644: 37037 us total, 11686 us display, type 3
+frame 645: 38313 us total, 11693 us display, type 3
+frame 646: 41197 us total, 11701 us display, type 3
+frame 647: 36710 us total, 11692 us display, type 3
+frame 648: 38400 us total, 11694 us display, type 3
+frame 649: 38209 us total, 11700 us display, type 3
+frame 650: 36310 us total, 11686 us display, type 3
+frame 651: 37360 us total, 11694 us display, type 3
+frame 652: 37908 us total, 11694 us display, type 3
+frame 653: 36152 us total, 11694 us display, type 3
+frame 654: 38586 us total, 11801 us display, type 3
+frame 655: 35865 us total, 11687 us display, type 3
+frame 656: 35974 us total, 11686 us display, type 3
+frame 657: 34610 us total, 11717 us display, type 3
+frame 658: 35390 us total, 11686 us display, type 3
+frame 659: 35140 us total, 11886 us display, type 3
+frame 660: 36026 us total, 11687 us display, type 3
+frame 661: 33740 us total, 11691 us display, type 3
+frame 662: 35729 us total, 11694 us display, type 3
+frame 663: 34286 us total, 11686 us display, type 3
+frame 664: 35695 us total, 11694 us display, type 3
+frame 665: 34887 us total, 11694 us display, type 3
+frame 666: 34965 us total, 11923 us display, type 3
+frame 667: 32773 us total, 11756 us display, type 3
+frame 668: 35547 us total, 11687 us display, type 3
+frame 669: 32384 us total, 11690 us display, type 3
+frame 670: 34709 us total, 11766 us display, type 3
+frame 671: 33149 us total, 11686 us display, type 3
+frame 672: 34333 us total, 11693 us display, type 3
+frame 673: 33028 us total, 11696 us display, type 3
+frame 674: 32526 us total, 11687 us display, type 3
+frame 675: 34429 us total, 11693 us display, type 3
+frame 676: 33062 us total, 11694 us display, type 3
+frame 677: 34426 us total, 11687 us display, type 3
+frame 678: 32241 us total, 11743 us display, type 3
+frame 679: 36103 us total, 11687 us display, type 3
+frame 680: 33293 us total, 11694 us display, type 3
+frame 681: 33953 us total, 11694 us display, type 3
+frame 682: 33421 us total, 11687 us display, type 3
+frame 683: 34644 us total, 11694 us display, type 3
+input: down 0x00010
+frame 684: 34440 us total, 11686 us display, type 3
+frame 685: 34721 us total, 11694 us display, type 3
+frame 686: 34225 us total, 11687 us display, type 3
+frame 687: 37308 us total, 11791 us display, type 3
+frame 688: 35716 us total, 11693 us display, type 3
+frame 689: 37080 us total, 11688 us display, type 3
+frame 690: 36924 us total, 11693 us display, type 3
+frame 691: 39072 us total, 11897 us display, type 3
+frame 692: 44392 us total, 11693 us display, type 3
+frame 693: 44460 us total, 11693 us display, type 3
+frame 694: 47934 us total, 11983 us display, type 3
+frame 695: 44756 us total, 11694 us display, type 3
+frame 696: 43416 us total, 11775 us display, type 3
+frame 697: 41120 us total, 11881 us display, type 3
+frame 698: 39823 us total, 11687 us display, type 3
+frame 699: 39266 us total, 11686 us display, type 3
+frame 700: 39995 us total, 11687 us display, type 3
+frame 701: 40860 us total, 11686 us display, type 3
+frame 702: 42916 us total, 11687 us display, type 3
+frame 703: 41271 us total, 11686 us display, type 3
+frame 704: 44382 us total, 11694 us display, type 3
+frame 705: 42581 us total, 11687 us display, type 3
+frame 706: 44061 us total, 11687 us display, type 3
+frame 707: 41009 us total, 11686 us display, type 3
+frame 708: 43973 us total, 11743 us display, type 3
+frame 709: 42301 us total, 11694 us display, type 3
+frame 710: 43415 us total, 11691 us display, type 3
+frame 711: 42429 us total, 11693 us display, type 3
+frame 712: 40337 us total, 11807 us display, type 3
+frame 713: 40611 us total, 11694 us display, type 3
+frame 714: 39998 us total, 11694 us display, type 3
+frame 715: 41257 us total, 11695 us display, type 3
+frame 716: 37623 us total, 11687 us display, type 3
+frame 717: 40057 us total, 11686 us display, type 3
+frame 718: 35835 us total, 11689 us display, type 3
+frame 719: 35857 us total, 11686 us display, type 3
+frame 720: 45699 us total, 11701 us display, type 3
+frame 721: 44316 us total, 11687 us display, type 3
+frame 722: 42277 us total, 11686 us display, type 3
+frame 723: 41047 us total, 11694 us display, type 3
+frame 724: 40924 us total, 11686 us display, type 3
+frame 725: 41123 us total, 11693 us display, type 3
+frame 726: 41650 us total, 11686 us display, type 3
+frame 727: 43817 us total, 11693 us display, type 3
+frame 728: 37002 us total, 11694 us display, type 3
+frame 729: 39553 us total, 11693 us display, type 3
+frame 730: 37197 us total, 11694 us display, type 3
+frame 731: 38431 us total, 11687 us display, type 3
+frame 732: 41775 us total, 11694 us display, type 3
+frame 733: 37686 us total, 11694 us display, type 3
+frame 734: 38430 us total, 11686 us display, type 3
+frame 735: 37777 us total, 11694 us display, type 3
+frame 736: 38619 us total, 11694 us display, type 3
+frame 737: 38075 us total, 11701 us display, type 3
+frame 738: 37707 us total, 11686 us display, type 3
+frame 739: 37905 us total, 11686 us display, type 3
+frame 740: 38795 us total, 11694 us display, type 3
+frame 741: 38789 us total, 11694 us display, type 3
+frame 742: 38136 us total, 11694 us display, type 3
+frame 743: 38421 us total, 11686 us display, type 3
+[0;32mI (25552) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -93[0m
+[0;32mI (25553) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -94[0m
+frame 744: 35801 us total, 11687 us display, type 3
+frame 745: 33622 us total, 11694 us display, type 3
+frame 746: 34004 us total, 11694 us display, type 3
+frame 747: 34096 us total, 11694 us display, type 3
+frame 748: 33392 us total, 11694 us display, type 3
+frame 749: 32307 us total, 11693 us display, type 3
+frame 750: 31023 us total, 11701 us display, type 3
+frame 751: 30719 us total, 11686 us display, type 3
+frame 752: 31701 us total, 11693 us display, type 3
+frame 753: 34848 us total, 11806 us display, type 3
+frame 754: 34091 us total, 11875 us display, type 3
+frame 755: 33194 us total, 11687 us display, type 3
+frame 756: 33826 us total, 11694 us display, type 3
+frame 757: 31774 us total, 11700 us display, type 3
+frame 758: 32749 us total, 11687 us display, type 3
+frame 759: 32392 us total, 11701 us display, type 3
+frame 760: 31708 us total, 11700 us display, type 3
+frame 761: 33688 us total, 11686 us display, type 3
+frame 762: 31060 us total, 11687 us display, type 3
+input: down 0x00010
+frame 763: 32407 us total, 11701 us display, type 3
+frame 764: 32003 us total, 11694 us display, type 3
+frame 765: 33236 us total, 11694 us display, type 3
+frame 766: 31985 us total, 11701 us display, type 3
+frame 767: 32658 us total, 11693 us display, type 3
+frame 768: 33085 us total, 11694 us display, type 3
+mem @frame 768: heap free 68132, largest 43008, min ever 67996, zone free 41188, stack free 14540, uptime 26 s, gamestate 0, demo 1, usergame 0, tic 856
+frame 769: 33637 us total, 11686 us display, type 3
+frame 770: 34554 us total, 11694 us display, type 3
+[0;32mI (26430) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 771: 33799 us total, 12055 us display, type 3
+frame 772: 33970 us total, 12026 us display, type 3
+frame 773: 32904 us total, 11693 us display, type 3
+frame 774: 35456 us total, 11700 us display, type 3
+frame 775: 33092 us total, 11687 us display, type 3
+frame 776: 35072 us total, 11686 us display, type 3
+frame 777: 32809 us total, 11694 us display, type 3
+frame 778: 33701 us total, 11694 us display, type 3
+frame 779: 36016 us total, 11694 us display, type 3
+frame 780: 33715 us total, 11769 us display, type 3
+frame 781: 34596 us total, 11700 us display, type 3
+frame 782: 33641 us total, 11694 us display, type 3
+frame 783: 34828 us total, 11687 us display, type 3
+frame 784: 36774 us total, 11713 us display, type 3
+frame 785: 38357 us total, 11694 us display, type 3
+frame 786: 38252 us total, 11701 us display, type 3
+frame 787: 38091 us total, 11694 us display, type 3
+frame 788: 38713 us total, 11694 us display, type 3
+frame 789: 38278 us total, 11696 us display, type 3
+frame 790: 39600 us total, 11693 us display, type 3
+frame 791: 40396 us total, 11701 us display, type 3
+frame 792: 39590 us total, 11829 us display, type 3
+frame 793: 39875 us total, 11686 us display, type 3
+frame 794: 40251 us total, 11694 us display, type 3
+frame 795: 41291 us total, 11694 us display, type 3
+frame 796: 39597 us total, 11693 us display, type 3
+frame 797: 38324 us total, 11701 us display, type 3
+frame 798: 42164 us total, 11712 us display, type 3
+frame 799: 40370 us total, 11701 us display, type 3
+frame 800: 42108 us total, 11694 us display, type 3
+frame 801: 38317 us total, 11694 us display, type 3
+frame 802: 40151 us total, 11694 us display, type 3
+[0;32mI (27639) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+[0;32mI (27657) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 803: 42190 us total, 12071 us display, type 3
+frame 804: 39559 us total, 11694 us display, type 3
+frame 805: 39661 us total, 11687 us display, type 3
+frame 806: 39786 us total, 11687 us display, type 3
+frame 807: 41412 us total, 11693 us display, type 3
+frame 808: 38839 us total, 11687 us display, type 3
+frame 809: 36683 us total, 11686 us display, type 3
+frame 810: 37885 us total, 11693 us display, type 3
+frame 811: 35530 us total, 11693 us display, type 3
+frame 812: 35024 us total, 11693 us display, type 3
+frame 813: 34782 us total, 11686 us display, type 3
+frame 814: 35844 us total, 11687 us display, type 3
+frame 815: 34816 us total, 11693 us display, type 3
+frame 816: 34607 us total, 12262 us display, type 3
+frame 817: 35303 us total, 11694 us display, type 3
+frame 818: 38488 us total, 11687 us display, type 3
+frame 819: 36015 us total, 11686 us display, type 3
+frame 820: 35486 us total, 11694 us display, type 3
+frame 821: 36932 us total, 11694 us display, type 3
+frame 822: 40629 us total, 11686 us display, type 3
+frame 823: 41514 us total, 11694 us display, type 3
+frame 824: 43614 us total, 11700 us display, type 3
+frame 825: 43235 us total, 11694 us display, type 3
+frame 826: 44402 us total, 11686 us display, type 3
+frame 827: 42610 us total, 11694 us display, type 3
+frame 828: 44673 us total, 11693 us display, type 3
+frame 829: 43659 us total, 11693 us display, type 3
+frame 830: 45488 us total, 11701 us display, type 3
+frame 831: 41943 us total, 11694 us display, type 3
+frame 832: 42696 us total, 11686 us display, type 3
+frame 833: 42019 us total, 11693 us display, type 3
+frame 834: 42426 us total, 11694 us display, type 3
+frame 835: 40950 us total, 11694 us display, type 3
+frame 836: 42307 us total, 11693 us display, type 3
+frame 837: 40790 us total, 11695 us display, type 3
+frame 838: 41324 us total, 11686 us display, type 3
+frame 839: 40259 us total, 11694 us display, type 3
+frame 840: 40236 us total, 11846 us display, type 3
+frame 841: 41316 us total, 11694 us display, type 3
+frame 842: 41518 us total, 11741 us display, type 3
+frame 843: 43519 us total, 11710 us display, type 3
+frame 844: 41372 us total, 11686 us display, type 3
+frame 845: 42194 us total, 11693 us display, type 3
+frame 846: 39652 us total, 11692 us display, type 3
+frame 847: 45639 us total, 11694 us display, type 3
+frame 848: 41254 us total, 11686 us display, type 3
+frame 849: 43081 us total, 11687 us display, type 3
+frame 850: 41182 us total, 11686 us display, type 3
+frame 851: 41690 us total, 11921 us display, type 3
+frame 852: 41042 us total, 11686 us display, type 3
+frame 853: 40754 us total, 11694 us display, type 3
+frame 854: 43480 us total, 11686 us display, type 3
+frame 855: 42731 us total, 11699 us display, type 3
+frame 856: 43522 us total, 11694 us display, type 3
+frame 857: 47735 us total, 11687 us display, type 3
+frame 858: 45522 us total, 11698 us display, type 3
+frame 859: 47457 us total, 11686 us display, type 3
+frame 860: 44421 us total, 11694 us display, type 3
+frame 861: 46752 us total, 11943 us display, type 3
+frame 862: 49364 us total, 11700 us display, type 3
+frame 863: 46733 us total, 11730 us display, type 3
+frame 864: 48995 us total, 11694 us display, type 3
+frame 865: 48814 us total, 11686 us display, type 3
+frame 866: 46764 us total, 11686 us display, type 3
+frame 867: 47989 us total, 11693 us display, type 3
+frame 868: 48920 us total, 11700 us display, type 3
+frame 869: 48399 us total, 11686 us display, type 3
+frame 870: 46893 us total, 11693 us display, type 3
+frame 871: 47711 us total, 11700 us display, type 3
+frame 872: 46233 us total, 11687 us display, type 3
+frame 873: 45591 us total, 11694 us display, type 3
+frame 874: 45144 us total, 11694 us display, type 3
+frame 875: 43552 us total, 11940 us display, type 3
+frame 876: 45593 us total, 11686 us display, type 3
+frame 877: 44758 us total, 11694 us display, type 3
+frame 878: 45095 us total, 11694 us display, type 3
+frame 879: 46231 us total, 12687 us display, type 3
+frame 880: 46164 us total, 11693 us display, type 3
+[0;32mI (30957) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+frame 881: 45593 us total, 11694 us display, type 3
+frame 882: 43141 us total, 11686 us display, type 3
+frame 883: 42595 us total, 11694 us display, type 3
+[0;32mI (31089) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 884: 41385 us total, 11693 us display, type 3
+frame 885: 40224 us total, 11764 us display, type 3
+frame 886: 39802 us total, 11687 us display, type 3
+frame 887: 40061 us total, 11687 us display, type 3
+[0;32mI (31252) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 888: 41007 us total, 12157 us display, type 3
+frame 889: 41430 us total, 11693 us display, type 3
+frame 890: 41936 us total, 11693 us display, type 3
+frame 891: 42064 us total, 11693 us display, type 3
+frame 892: 43709 us total, 11687 us display, type 3
+[0;32mI (31439) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -83[0m
+frame 893: 44311 us total, 11693 us display, type 3
+frame 894: 45474 us total, 11686 us display, type 3
+frame 895: 44989 us total, 11811 us display, type 3
+frame 896: 44447 us total, 11716 us display, type 3
+frame 897: 44700 us total, 11691 us display, type 3
+frame 898: 44524 us total, 11787 us display, type 3
+frame 899: 45852 us total, 11693 us display, type 3
+frame 900: 43756 us total, 11693 us display, type 3
+frame 901: 44489 us total, 11701 us display, type 3
+frame 902: 43232 us total, 11693 us display, type 3
+frame 903: 44931 us total, 11694 us display, type 3
+frame 904: 44233 us total, 11687 us display, type 3
+[0;32mI (32000) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+frame 905: 45473 us total, 11694 us display, type 3
+frame 906: 44500 us total, 11693 us display, type 3
+frame 907: 43123 us total, 11693 us display, type 3
+frame 908: 45051 us total, 11686 us display, type 3
+frame 909: 44395 us total, 11694 us display, type 3
+frame 910: 45055 us total, 11871 us display, type 3
+frame 911: 42969 us total, 11694 us display, type 3
+frame 912: 43220 us total, 11686 us display, type 3
+frame 913: 43859 us total, 11919 us display, type 3
+frame 914: 44773 us total, 11833 us display, type 3
+frame 915: 44909 us total, 11694 us display, type 3
+frame 916: 42301 us total, 11694 us display, type 3
+frame 917: 43029 us total, 11695 us display, type 3
+frame 918: 39885 us total, 11696 us display, type 3
+frame 919: 38520 us total, 11686 us display, type 3
+frame 920: 41627 us total, 11696 us display, type 3
+frame 921: 39721 us total, 11694 us display, type 3
+frame 922: 39687 us total, 11693 us display, type 3
+frame 923: 38851 us total, 11686 us display, type 3
+frame 924: 39476 us total, 11694 us display, type 3
+frame 925: 39228 us total, 11694 us display, type 3
+frame 926: 40111 us total, 11698 us display, type 3
+frame 927: 39474 us total, 11694 us display, type 3
+frame 928: 39368 us total, 11701 us display, type 3
+frame 929: 38102 us total, 11981 us display, type 3
+[0;32mI (33045) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+[0;32mI (33045) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 930: 40765 us total, 12856 us display, type 3
+frame 931: 38708 us total, 11716 us display, type 3
+frame 932: 39286 us total, 11701 us display, type 3
+frame 933: 38547 us total, 11687 us display, type 3
+frame 934: 37815 us total, 11694 us display, type 3
+frame 935: 35954 us total, 11687 us display, type 3
+frame 936: 38122 us total, 11694 us display, type 3
+frame 937: 36995 us total, 11795 us display, type 3
+frame 938: 36358 us total, 11981 us display, type 3
+frame 939: 36876 us total, 11710 us display, type 3
+frame 940: 34744 us total, 11686 us display, type 3
+frame 941: 35346 us total, 11746 us display, type 3
+frame 942: 32557 us total, 11711 us display, type 3
+frame 943: 33398 us total, 11687 us display, type 3
+frame 944: 33031 us total, 11713 us display, type 3
+frame 945: 31234 us total, 11694 us display, type 3
+frame 946: 30729 us total, 11687 us display, type 3
+frame 947: 30597 us total, 11693 us display, type 3
+frame 948: 30341 us total, 11694 us display, type 3
+frame 949: 32020 us total, 11692 us display, type 3
+frame 950: 30414 us total, 11694 us display, type 3
+frame 951: 30476 us total, 11686 us display, type 3
+frame 952: 29976 us total, 11686 us display, type 3
+frame 953: 29394 us total, 11701 us display, type 3
+frame 954: 29446 us total, 11802 us display, type 3
+frame 955: 30436 us total, 11899 us display, type 3
+frame 956: 29828 us total, 11693 us display, type 3
+frame 957: 29011 us total, 11694 us display, type 3
+frame 958: 28799 us total, 11691 us display, type 3
+frame 959: 31237 us total, 11686 us display, type 3
+frame 960: 32147 us total, 11694 us display, type 3
+frame 961: 34123 us total, 11694 us display, type 3
+frame 962: 33499 us total, 11739 us display, type 3
+frame 963: 33663 us total, 11694 us display, type 3
+frame 964: 34317 us total, 11694 us display, type 3
+frame 965: 42655 us total, 11694 us display, type 3
+[0;32mI (34232) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -93[0m
+frame 966: 38650 us total, 11687 us display, type 3
+input: down 0x00001
+frame 967: 38856 us total, 11693 us display, type 3
+frame 968: 42990 us total, 11854 us display, type 3
+frame 969: 38010 us total, 11690 us display, type 3
+frame 970: 42966 us total, 11686 us display, type 3
+frame 971: 40969 us total, 11686 us display, type 3
+input: down 0x00001
+frame 972: 42611 us total, 11701 us display, type 3
+frame 973: 40413 us total, 11686 us display, type 3
+frame 974: 40242 us total, 11693 us display, type 3
+frame 975: 43351 us total, 11701 us display, type 3
+frame 976: 41630 us total, 11693 us display, type 3
+frame 977: 43423 us total, 11694 us display, type 3
+frame 978: 42454 us total, 11739 us display, type 3
+[0;32mI (34789) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 979: 41992 us total, 11693 us display, type 3
+frame 980: 43209 us total, 11700 us display, type 3
+[0;32mI (34851) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+input: down 0x00001
+frame 981: 44152 us total, 11696 us display, type 3
+frame 982: 42853 us total, 11697 us display, type 3
+frame 983: 41695 us total, 11686 us display, type 3
+frame 984: 42190 us total, 11687 us display, type 3
+frame 985: 46214 us total, 11693 us display, type 3
+input: down 0x00001
+frame 986: 47142 us total, 11694 us display, type 3
+frame 987: 44929 us total, 11694 us display, type 3
+frame 988: 46470 us total, 11687 us display, type 3
+frame 989: 43166 us total, 11904 us display, type 3
+frame 990: 49476 us total, 11701 us display, type 3
+frame 991: 45130 us total, 11693 us display, type 3
+frame 992: 44961 us total, 11694 us display, type 3
+frame 993: 47496 us total, 11686 us display, type 3
+frame 994: 43981 us total, 11686 us display, type 3
+input: down 0x00001
+frame 995: 46090 us total, 11693 us display, type 3
+frame 996: 43506 us total, 11779 us display, type 3
+frame 997: 39077 us total, 12068 us display, type 3
+frame 998: 40418 us total, 11693 us display, type 3
+frame 999: 38737 us total, 11687 us display, type 3
+frame 1000: 39349 us total, 11693 us display, type 3
+frame 1001: 39160 us total, 11694 us display, type 3
+frame 1002: 37937 us total, 11694 us display, type 3
+frame 1003: 38569 us total, 11686 us display, type 3
+frame 1004: 42787 us total, 11686 us display, type 3
+frame 1005: 41082 us total, 11686 us display, type 3
+frame 1006: 40995 us total, 11689 us display, type 3
+frame 1007: 39191 us total, 11687 us display, type 3
+frame 1008: 38795 us total, 11687 us display, type 3
+frame 1009: 37192 us total, 11756 us display, type 3
+frame 1010: 37485 us total, 11696 us display, type 3
+frame 1011: 35674 us total, 11686 us display, type 3
+frame 1012: 35065 us total, 11713 us display, type 3
+frame 1013: 35358 us total, 11694 us display, type 3
+frame 1014: 34351 us total, 11686 us display, type 3
+frame 1015: 33908 us total, 11694 us display, type 3
+input: down 0x00010
+frame 1016: 33572 us total, 11694 us display, type 3
+frame 1017: 41291 us total, 11701 us display, type 3
+frame 1018: 50998 us total, 12333 us display, type 5
+frame 1019: 12996 us total, 12140 us display, type 5
+frame 1020: 12867 us total, 12141 us display, type 5
+frame 1021: 13176 us total, 12400 us display, type 5
+frame 1022: 12924 us total, 12134 us display, type 5
+frame 1023: 12886 us total, 12139 us display, type 5
+[0;32mI (36489) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+[0;32mI (36490) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 1024: 13801 us total, 13076 us display, type 5
+mem @frame 1024: heap free 68132, largest 43008, min ever 67996, zone free 55016, stack free 14540, uptime 36 s, gamestate 0, demo 0, usergame 1, tic 1207
+frame 1025: 14126 us total, 12346 us display, type 5
+frame 1026: 12882 us total, 12134 us display, type 5
+frame 1027: 12876 us total, 12132 us display, type 5
+frame 1028: 12860 us total, 12137 us display, type 5
+frame 1029: 12902 us total, 12183 us display, type 5
+frame 1030: 12878 us total, 12138 us display, type 5
+frame 1031: 12863 us total, 12136 us display, type 5
+frame 1032: 12875 us total, 12136 us display, type 5
+frame 1033: 12905 us total, 12176 us display, type 5
+frame 1034: 12879 us total, 12138 us display, type 5
+frame 1035: 13210 us total, 12479 us display, type 5
+frame 1036: 13007 us total, 12229 us display, type 5
+frame 1037: 12937 us total, 12197 us display, type 5
+frame 1038: 12896 us total, 12137 us display, type 5
+frame 1039: 12871 us total, 12132 us display, type 5
+frame 1040: 12867 us total, 12130 us display, type 5
+frame 1041: 12907 us total, 12173 us display, type 5
+frame 1042: 12871 us total, 12138 us display, type 5
+frame 1043: 13030 us total, 12288 us display, type 5
+frame 1044: 13105 us total, 12358 us display, type 5
+frame 1045: 12942 us total, 12195 us display, type 5
+frame 1046: 12883 us total, 12142 us display, type 5
+frame 1047: 13146 us total, 12310 us display, type 5
+frame 1048: 12881 us total, 12138 us display, type 5
+frame 1049: 22952 us total, 12198 us display, type 5
+frame 1050: 13407 us total, 12612 us display, type 5
+frame 1051: 12924 us total, 12134 us display, type 5
+frame 1052: 13075 us total, 12220 us display, type 5
+frame 1053: 12908 us total, 12146 us display, type 5
+frame 1054: 13052 us total, 12316 us display, type 5
+frame 1055: 12941 us total, 12191 us display, type 5
+frame 1056: 12879 us total, 12137 us display, type 5
+frame 1057: 13962 us total, 12148 us display, type 5
+frame 1058: 13156 us total, 12384 us display, type 5
+frame 1059: 13014 us total, 12272 us display, type 5
+frame 1060: 12899 us total, 12137 us display, type 5
+frame 1061: 12874 us total, 12143 us display, type 5
+frame 1062: 12881 us total, 12136 us display, type 5
+frame 1063: 12913 us total, 12178 us display, type 5
+frame 1064: 12880 us total, 12134 us display, type 5
+frame 1065: 13018 us total, 12282 us display, type 5
+frame 1066: 12897 us total, 12138 us display, type 5
+frame 1067: 13055 us total, 12318 us display, type 5
+frame 1068: 12900 us total, 12139 us display, type 5
+frame 1069: 12966 us total, 12228 us display, type 5
+frame 1070: 12881 us total, 12138 us display, type 5
+frame 1071: 12921 us total, 12181 us display, type 5
+frame 1072: 12864 us total, 12127 us display, type 5
+frame 1073: 12878 us total, 12144 us display, type 5
+frame 1074: 12867 us total, 12142 us display, type 5
+frame 1075: 12907 us total, 12175 us display, type 5
+frame 1076: 12873 us total, 12144 us display, type 5
+frame 1077: 13129 us total, 12398 us display, type 5
+frame 1078: 13122 us total, 12371 us display, type 5
+frame 1079: 12880 us total, 12136 us display, type 5
+frame 1080: 12892 us total, 12134 us display, type 5
+frame 1081: 12853 us total, 12132 us display, type 5
+frame 1082: 12915 us total, 12183 us display, type 5
+frame 1083: 12864 us total, 12143 us display, type 5
+frame 1084: 12861 us total, 12131 us display, type 5
+frame 1085: 12856 us total, 12145 us display, type 5
+input: down 0x00010
+frame 1086: 13108 us total, 12178 us display, type 5
+frame 1087: 12844 us total, 12135 us display, type 5
+frame 1088: 12864 us total, 12132 us display, type 5
+frame 1089: 13003 us total, 12287 us display, type 5
+frame 1090: 12612 us total, 11645 us display, type 3
+frame 1091: 44987 us total, 11694 us display, type 3
+frame 1092: 40248 us total, 11686 us display, type 3
+frame 1093: 40600 us total, 11821 us display, type 3
+frame 1094: 41266 us total, 11694 us display, type 3
+frame 1095: 40300 us total, 11687 us display, type 3
+frame 1096: 40848 us total, 11686 us display, type 3
+frame 1097: 40466 us total, 11693 us display, type 3
+frame 1098: 40433 us total, 11743 us display, type 3
+frame 1099: 40382 us total, 11686 us display, type 3
+frame 1100: 41281 us total, 11693 us display, type 3
+frame 1101: 40470 us total, 11693 us display, type 3
+frame 1102: 40433 us total, 11693 us display, type 3
+frame 1103: 39981 us total, 11694 us display, type 3
+frame 1104: 40061 us total, 11700 us display, type 3
+frame 1105: 40104 us total, 11694 us display, type 3
+frame 1106: 39400 us total, 11686 us display, type 3
+frame 1107: 40373 us total, 11686 us display, type 3
+frame 1108: 40433 us total, 11694 us display, type 3
+frame 1109: 39475 us total, 11693 us display, type 3
+[0;32mI (38148) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -91[0m
+frame 1110: 40566 us total, 11694 us display, type 3
+frame 1111: 39602 us total, 11694 us display, type 3
+frame 1112: 39367 us total, 11694 us display, type 3
+frame 1113: 39963 us total, 11891 us display, type 3
+input: down 0x00020
+frame 1114: 39463 us total, 11691 us display, type 3
+frame 1115: 39863 us total, 11686 us display, type 3
+frame 1116: 39306 us total, 11687 us display, type 3
+frame 1117: 39872 us total, 11693 us display, type 3
+frame 1118: 39851 us total, 11687 us display, type 3
+frame 1119: 39879 us total, 11693 us display, type 3
+frame 1120: 39483 us total, 11700 us display, type 3
+frame 1121: 39600 us total, 11686 us display, type 3
+frame 1122: 39528 us total, 11694 us display, type 3
+frame 1123: 39388 us total, 11693 us display, type 3
+frame 1124: 39618 us total, 11694 us display, type 3
+frame 1125: 39721 us total, 11686 us display, type 3
+frame 1126: 39257 us total, 11833 us display, type 3
+frame 1127: 39067 us total, 11694 us display, type 3
+frame 1128: 39488 us total, 11694 us display, type 3
+frame 1129: 39686 us total, 11694 us display, type 3
+frame 1130: 39526 us total, 11687 us display, type 3
+frame 1131: 39583 us total, 11693 us display, type 3
+frame 1132: 39485 us total, 11692 us display, type 3
+frame 1133: 40391 us total, 11694 us display, type 3
+frame 1134: 39306 us total, 11687 us display, type 3
+frame 1135: 39734 us total, 11694 us display, type 3
+frame 1136: 39482 us total, 11686 us display, type 3
+frame 1137: 39826 us total, 11686 us display, type 3
+frame 1138: 39611 us total, 11701 us display, type 3
+frame 1139: 39449 us total, 11693 us display, type 3
+frame 1140: 40088 us total, 11687 us display, type 3
+frame 1141: 39691 us total, 11692 us display, type 3
+frame 1142: 39362 us total, 11686 us display, type 3
+frame 1143: 39741 us total, 11686 us display, type 3
+frame 1144: 39918 us total, 11687 us display, type 3
+frame 1145: 39624 us total, 11694 us display, type 3
+frame 1146: 40212 us total, 11694 us display, type 3
+frame 1147: 40248 us total, 11743 us display, type 3
+frame 1148: 39416 us total, 11694 us display, type 3
+frame 1149: 39700 us total, 11692 us display, type 3
+frame 1150: 39451 us total, 11694 us display, type 3
+frame 1151: 39659 us total, 11686 us display, type 3
+frame 1152: 39743 us total, 11692 us display, type 3
+frame 1153: 39597 us total, 11694 us display, type 3
+frame 1154: 39335 us total, 11834 us display, type 3
+frame 1155: 39586 us total, 11694 us display, type 3
+frame 1156: 39261 us total, 11695 us display, type 3
+frame 1157: 39636 us total, 11694 us display, type 3
+frame 1158: 39224 us total, 11695 us display, type 3
+[0;32mI (40099) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+[0;32mI (40101) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+frame 1159: 42136 us total, 11827 us display, type 3
+input: down 0x00080
+frame 1160: 40493 us total, 11687 us display, type 3
+frame 1161: 14334 us total, 11681 us display, type 3
+frame 1162: 21690 us total, 11679 us display, type 3
+frame 1163: 28643 us total, 11677 us display, type 3
+frame 1164: 29033 us total, 11678 us display, type 3
+frame 1165: 28029 us total, 11683 us display, type 3
+frame 1166: 28856 us total, 11681 us display, type 3
+frame 1167: 28447 us total, 11676 us display, type 3
+frame 1168: 28816 us total, 11678 us display, type 3
+frame 1169: 27815 us total, 11677 us display, type 3
+frame 1170: 29184 us total, 11674 us display, type 3
+frame 1171: 28945 us total, 11683 us display, type 3
+frame 1172: 27871 us total, 11677 us display, type 3
+frame 1173: 29410 us total, 11707 us display, type 3
+frame 1174: 27652 us total, 11684 us display, type 3
+frame 1175: 29021 us total, 11739 us display, type 3
+frame 1176: 27963 us total, 11676 us display, type 3
+frame 1177: 29281 us total, 11676 us display, type 3
+frame 1178: 28815 us total, 11680 us display, type 3
+frame 1179: 27807 us total, 11676 us display, type 3
+frame 1180: 29560 us total, 11936 us display, type 3
+frame 1181: 27665 us total, 11674 us display, type 3
+frame 1182: 28894 us total, 11684 us display, type 3
+frame 1183: 27906 us total, 11674 us display, type 3
+frame 1184: 29106 us total, 11680 us display, type 3
+frame 1185: 28852 us total, 11677 us display, type 3
+frame 1186: 28137 us total, 11687 us display, type 3
+frame 1187: 29373 us total, 11783 us display, type 3
+frame 1188: 27703 us total, 11677 us display, type 3
+frame 1189: 29071 us total, 11682 us display, type 3
+frame 1190: 28011 us total, 11673 us display, type 3
+frame 1191: 28943 us total, 11677 us display, type 3
+frame 1192: 29237 us total, 11687 us display, type 3
+frame 1193: 27599 us total, 11674 us display, type 3
+frame 1194: 28912 us total, 11689 us display, type 3
+frame 1195: 28036 us total, 11675 us display, type 3
+frame 1196: 29060 us total, 11678 us display, type 3
+frame 1197: 28381 us total, 11682 us display, type 3
+frame 1198: 28819 us total, 11685 us display, type 3
+frame 1199: 28717 us total, 11675 us display, type 3
+frame 1200: 28285 us total, 11681 us display, type 3
+frame 1201: 28958 us total, 11678 us display, type 3
+frame 1202: 27909 us total, 11678 us display, type 3
+frame 1203: 28944 us total, 11678 us display, type 3
+frame 1204: 27938 us total, 11676 us display, type 3
+frame 1205: 29072 us total, 11678 us display, type 3
+frame 1206: 28901 us total, 11675 us display, type 3
+frame 1207: 28404 us total, 11674 us display, type 3
+frame 1208: 28840 us total, 11678 us display, type 3
+frame 1209: 27801 us total, 11682 us display, type 3
+frame 1210: 29260 us total, 11679 us display, type 3
+frame 1211: 28235 us total, 11980 us display, type 3
+frame 1212: 28612 us total, 11681 us display, type 3
+frame 1213: 28830 us total, 11689 us display, type 3
+frame 1214: 28034 us total, 11674 us display, type 3
+frame 1215: 29069 us total, 11678 us display, type 3
+frame 1216: 27964 us total, 11681 us display, type 3
+frame 1217: 29329 us total, 11675 us display, type 3
+frame 1218: 27827 us total, 11674 us display, type 3
+frame 1219: 28798 us total, 11675 us display, type 3
+frame 1220: 29313 us total, 11687 us display, type 3
+frame 1221: 27904 us total, 11683 us display, type 3
+frame 1222: 28995 us total, 11744 us display, type 3
+frame 1223: 27933 us total, 11680 us display, type 3
+frame 1224: 28836 us total, 11700 us display, type 3
+frame 1225: 28044 us total, 11675 us display, type 3
+frame 1226: 28968 us total, 11675 us display, type 3
+frame 1227: 29472 us total, 11685 us display, type 3
+frame 1228: 27805 us total, 11685 us display, type 3
+frame 1229: 28712 us total, 11681 us display, type 3
+frame 1230: 28354 us total, 11734 us display, type 3
+input: down 0x00080
+frame 1231: 54578 us total, 11742 us display, type 3
+frame 1232: 40096 us total, 11687 us display, type 3
+frame 1233: 39530 us total, 11699 us display, type 3
+frame 1234: 39294 us total, 11696 us display, type 3
+frame 1235: 39580 us total, 11687 us display, type 3
+frame 1236: 40178 us total, 11694 us display, type 3
+frame 1237: 39505 us total, 11687 us display, type 3
+[0;32mI (42443) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -94[0m
+frame 1238: 41203 us total, 11686 us display, type 3
+frame 1239: 40048 us total, 11703 us display, type 3
+frame 1240: 39153 us total, 11693 us display, type 3
+frame 1241: 39260 us total, 11694 us display, type 3
+frame 1242: 39852 us total, 11701 us display, type 3
+[0;32mI (42647) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 1243: 40677 us total, 11686 us display, type 3
+frame 1244: 40132 us total, 11686 us display, type 3
+frame 1245: 39304 us total, 11694 us display, type 3
+frame 1246: 39362 us total, 11686 us display, type 3
+frame 1247: 39940 us total, 11687 us display, type 3
+frame 1248: 39982 us total, 11686 us display, type 3
+frame 1249: 39180 us total, 11694 us display, type 3
+frame 1250: 39416 us total, 11701 us display, type 3
+frame 1251: 39348 us total, 11693 us display, type 3
+frame 1252: 39982 us total, 11694 us display, type 3
+frame 1253: 39963 us total, 11725 us display, type 3
+frame 1254: 39100 us total, 11686 us display, type 3
+frame 1255: 39345 us total, 11694 us display, type 3
+frame 1256: 39760 us total, 11745 us display, type 3
+frame 1257: 39826 us total, 11694 us display, type 3
+frame 1258: 40332 us total, 12018 us display, type 3
+frame 1259: 39032 us total, 11686 us display, type 3
+frame 1260: 39647 us total, 11694 us display, type 3
+frame 1261: 39351 us total, 11687 us display, type 3
+frame 1262: 39403 us total, 11694 us display, type 3
+frame 1263: 39581 us total, 11702 us display, type 3
+frame 1264: 39092 us total, 11686 us display, type 3
+frame 1265: 40610 us total, 11735 us display, type 3
+frame 1266: 39325 us total, 11686 us display, type 3
+frame 1267: 39539 us total, 11694 us display, type 3
+frame 1268: 39428 us total, 11693 us display, type 3
+frame 1269: 39315 us total, 11905 us display, type 3
+frame 1270: 39977 us total, 11693 us display, type 3
+frame 1271: 39497 us total, 11687 us display, type 3
+frame 1272: 40577 us total, 11694 us display, type 3
+frame 1273: 40294 us total, 11694 us display, type 3
+frame 1274: 39370 us total, 11687 us display, type 3
+frame 1275: 39535 us total, 11694 us display, type 3
+frame 1276: 39242 us total, 11686 us display, type 3
+frame 1277: 39463 us total, 11693 us display, type 3
+frame 1278: 39456 us total, 11812 us display, type 3
+frame 1279: 39539 us total, 11700 us display, type 3
+frame 1280: 39895 us total, 11686 us display, type 3
+mem @frame 1280: heap free 68132, largest 43008, min ever 67996, zone free 55016, stack free 14540, uptime 43 s, gamestate 0, demo 0, usergame 1, tic 1446
+frame 1281: 40431 us total, 11694 us display, type 3
+frame 1282: 39215 us total, 11686 us display, type 3
+frame 1283: 39714 us total, 11694 us display, type 3
+frame 1284: 39220 us total, 11686 us display, type 3
+[0;32mI (44300) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+[0;32mI (44300) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 1285: 41105 us total, 11694 us display, type 3
+frame 1286: 39592 us total, 11694 us display, type 3
+frame 1287: 39831 us total, 11701 us display, type 3
+frame 1288: 39795 us total, 12061 us display, type 3
+frame 1289: 39358 us total, 11694 us display, type 3
+frame 1290: 39254 us total, 11694 us display, type 3
+[0;32mI (44549) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 1291: 40380 us total, 11693 us display, type 3
+frame 1292: 39180 us total, 11693 us display, type 3
+frame 1293: 39996 us total, 11693 us display, type 3
+frame 1294: 39365 us total, 11694 us display, type 3
+frame 1295: 39543 us total, 11686 us display, type 3
+frame 1296: 40023 us total, 11687 us display, type 3
+frame 1297: 39133 us total, 11693 us display, type 3
+frame 1298: 39625 us total, 11693 us display, type 3
+frame 1299: 40142 us total, 11693 us display, type 3
+frame 1300: 39671 us total, 11687 us display, type 3
+frame 1301: 40147 us total, 11686 us display, type 3
+frame 1302: 39073 us total, 11686 us display, type 3
+frame 1303: 39727 us total, 11693 us display, type 3
+frame 1304: 39394 us total, 11693 us display, type 3
+frame 1305: 39291 us total, 11694 us display, type 3
+frame 1306: 40279 us total, 11694 us display, type 3
+input: down 0x00004
+frame 1307: 39915 us total, 11701 us display, type 3
+frame 1308: 40174 us total, 11687 us display, type 3
+frame 1309: 39488 us total, 11693 us display, type 3
+frame 1310: 40010 us total, 11694 us display, type 3
+frame 1311: 41377 us total, 11694 us display, type 3
+frame 1312: 40038 us total, 11694 us display, type 3
+frame 1313: 40559 us total, 11693 us display, type 3
+frame 1314: 40275 us total, 11701 us display, type 3
+frame 1315: 40568 us total, 11693 us display, type 3
+frame 1316: 40492 us total, 11694 us display, type 3
+input: down 0x00004
+frame 1317: 41104 us total, 11694 us display, type 3
+frame 1318: 40491 us total, 11689 us display, type 3
+frame 1319: 40334 us total, 11694 us display, type 3
+frame 1320: 40500 us total, 11686 us display, type 3
+frame 1321: 41087 us total, 11693 us display, type 3
+input: down 0x00004
+frame 1322: 41581 us total, 11791 us display, type 3
+frame 1323: 40740 us total, 11704 us display, type 3
+frame 1324: 40848 us total, 12053 us display, type 3
+frame 1325: 40817 us total, 11693 us display, type 3
+frame 1326: 40164 us total, 11694 us display, type 3
+frame 1327: 40138 us total, 11695 us display, type 3
+frame 1328: 40471 us total, 11686 us display, type 3
+frame 1329: 40496 us total, 11835 us display, type 3
+frame 1330: 40484 us total, 11686 us display, type 3
+frame 1331: 40356 us total, 11686 us display, type 3
+frame 1332: 41281 us total, 11694 us display, type 3
+frame 1333: 40487 us total, 11700 us display, type 3
+frame 1334: 40414 us total, 11701 us display, type 3
+frame 1335: 40383 us total, 11693 us display, type 3
+frame 1336: 40876 us total, 11694 us display, type 3
+frame 1337: 40480 us total, 11693 us display, type 3
+frame 1338: 40210 us total, 11693 us display, type 3
+frame 1339: 40472 us total, 11686 us display, type 3
+frame 1340: 40585 us total, 11701 us display, type 3
+frame 1341: 40159 us total, 11694 us display, type 3
+frame 1342: 40321 us total, 11686 us display, type 3
+frame 1343: 40785 us total, 11810 us display, type 3
+frame 1344: 40212 us total, 11686 us display, type 3
+frame 1345: 40217 us total, 11686 us display, type 3
+frame 1346: 40267 us total, 11693 us display, type 3
+frame 1347: 40745 us total, 11693 us display, type 3
+frame 1348: 40727 us total, 11694 us display, type 3
+frame 1349: 40098 us total, 11686 us display, type 3
+frame 1350: 40657 us total, 11997 us display, type 3
+frame 1351: 40266 us total, 11686 us display, type 3
+frame 1352: 40550 us total, 11696 us display, type 3
+frame 1353: 40264 us total, 11694 us display, type 3
+frame 1354: 41052 us total, 11694 us display, type 3
+frame 1355: 39978 us total, 11698 us display, type 3
+frame 1356: 40290 us total, 11694 us display, type 3
+input: down 0x00001
+frame 1357: 40687 us total, 11694 us display, type 3
+frame 1358: 40415 us total, 11686 us display, type 3
+frame 1359: 40831 us total, 11686 us display, type 3
+frame 1360: 40104 us total, 11686 us display, type 3
+frame 1361: 40785 us total, 11720 us display, type 3
+frame 1362: 40229 us total, 11686 us display, type 3
+frame 1363: 40084 us total, 11694 us display, type 3
+frame 1364: 40709 us total, 11693 us display, type 3
+frame 1365: 40251 us total, 11686 us display, type 3
+frame 1366: 41007 us total, 11744 us display, type 3
+input: down 0x00001
+frame 1367: 40710 us total, 11800 us display, type 3
+frame 1368: 41424 us total, 11686 us display, type 3
+frame 1369: 40619 us total, 11694 us display, type 3
+frame 1370: 40721 us total, 11694 us display, type 3
+frame 1371: 41686 us total, 11693 us display, type 3
+input: down 0x00001
+frame 1372: 42322 us total, 11999 us display, type 3
+frame 1373: 43761 us total, 11693 us display, type 3
+frame 1374: 42686 us total, 11686 us display, type 3
+frame 1375: 43312 us total, 11696 us display, type 3
+frame 1376: 43724 us total, 11693 us display, type 3
+input: down 0x00001
+frame 1377: 43720 us total, 11693 us display, type 3
+frame 1378: 44492 us total, 11693 us display, type 3
+frame 1379: 45135 us total, 11851 us display, type 3
+frame 1380: 44928 us total, 11700 us display, type 3
+frame 1381: 45736 us total, 11690 us display, type 3
+frame 1382: 44651 us total, 11694 us display, type 3
+frame 1383: 44881 us total, 11694 us display, type 3
+frame 1384: 45765 us total, 11694 us display, type 3
+frame 1385: 45594 us total, 11687 us display, type 3
+frame 1386: 45259 us total, 11687 us display, type 3
+frame 1387: 46233 us total, 11694 us display, type 3
+frame 1388: 45693 us total, 11733 us display, type 3
+frame 1389: 45351 us total, 11834 us display, type 3
+frame 1390: 44991 us total, 11694 us display, type 3
+frame 1391: 46077 us total, 11694 us display, type 3
+frame 1392: 46093 us total, 11849 us display, type 3
+frame 1393: 45943 us total, 11694 us display, type 3
+frame 1394: 45553 us total, 11686 us display, type 3
+frame 1395: 45597 us total, 11693 us display, type 3
+frame 1396: 45763 us total, 11694 us display, type 3
+frame 1397: 46262 us total, 11694 us display, type 3
+frame 1398: 45367 us total, 11826 us display, type 3
+frame 1399: 47028 us total, 11686 us display, type 3
+frame 1400: 45245 us total, 11693 us display, type 3
+frame 1401: 44945 us total, 11693 us display, type 3
+frame 1402: 45669 us total, 11686 us display, type 3
+frame 1403: 45912 us total, 11686 us display, type 3
+frame 1404: 45727 us total, 11694 us display, type 3
+frame 1405: 45900 us total, 11694 us display, type 3
+frame 1406: 46179 us total, 11694 us display, type 3
+frame 1407: 45297 us total, 11686 us display, type 3
+frame 1408: 44881 us total, 11686 us display, type 3
+frame 1409: 45602 us total, 11694 us display, type 3
+frame 1410: 45242 us total, 11710 us display, type 3
+frame 1411: 45504 us total, 11693 us display, type 3
+frame 1412: 45242 us total, 11792 us display, type 3
+frame 1413: 45339 us total, 11687 us display, type 3
+frame 1414: 45091 us total, 11686 us display, type 3
+frame 1415: 45007 us total, 11781 us display, type 3
+frame 1416: 45740 us total, 11701 us display, type 3
+frame 1417: 46089 us total, 11693 us display, type 3
+frame 1418: 44920 us total, 11698 us display, type 3
+frame 1419: 45519 us total, 11686 us display, type 3
+frame 1420: 44979 us total, 11686 us display, type 3
+frame 1421: 44959 us total, 11686 us display, type 3
+frame 1422: 45281 us total, 11694 us display, type 3
+frame 1423: 45409 us total, 11687 us display, type 3
+frame 1424: 45717 us total, 11694 us display, type 3
+frame 1425: 45210 us total, 11701 us display, type 3
+input: down 0x00040
+frame 1426: 47211 us total, 11745 us display, type 3
+frame 1427: 46347 us total, 11700 us display, type 3
+frame 1428: 46704 us total, 11687 us display, type 3
+frame 1429: 47114 us total, 11686 us display, type 3
+frame 1430: 46642 us total, 11686 us display, type 3
+frame 1431: 46263 us total, 11693 us display, type 3
+frame 1432: 47642 us total, 11701 us display, type 3
+frame 1433: 46236 us total, 11686 us display, type 3
+frame 1434: 46196 us total, 11694 us display, type 3
+frame 1435: 46631 us total, 11701 us display, type 3
+frame 1436: 46088 us total, 11687 us display, type 3
+frame 1437: 46187 us total, 11686 us display, type 3
+frame 1438: 46371 us total, 11696 us display, type 3
+frame 1439: 45750 us total, 11687 us display, type 3
+frame 1440: 45656 us total, 11687 us display, type 3
+frame 1441: 46707 us total, 11694 us display, type 3
+frame 1442: 46119 us total, 11694 us display, type 3
+frame 1443: 45714 us total, 11693 us display, type 3
+frame 1444: 45608 us total, 11687 us display, type 3
+[0;32mI (51160) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -93[0m
+frame 1445: 46467 us total, 11694 us display, type 3
+frame 1446: 45901 us total, 11699 us display, type 3
+frame 1447: 45548 us total, 11686 us display, type 3
+frame 1448: 45851 us total, 11694 us display, type 3
+frame 1449: 46220 us total, 11686 us display, type 3
+frame 1450: 45502 us total, 11694 us display, type 3
+frame 1451: 45963 us total, 11694 us display, type 3
+frame 1452: 46471 us total, 12034 us display, type 3
+frame 1453: 46450 us total, 11694 us display, type 3
+frame 1454: 45588 us total, 11688 us display, type 3
+frame 1455: 46001 us total, 11686 us display, type 3
+[0;32mI (51640) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 1456: 46828 us total, 11692 us display, type 3
+frame 1457: 45648 us total, 11701 us display, type 3
+frame 1458: 46523 us total, 11693 us display, type 3
+frame 1459: 45485 us total, 11699 us display, type 3
+frame 1460: 45594 us total, 11706 us display, type 3
+frame 1461: 45954 us total, 11687 us display, type 3
+frame 1462: 45817 us total, 11701 us display, type 3
+frame 1463: 45672 us total, 11694 us display, type 3
+frame 1464: 45872 us total, 11914 us display, type 3
+frame 1465: 45719 us total, 11687 us display, type 3
+frame 1466: 46561 us total, 11694 us display, type 3
+frame 1467: 45617 us total, 11686 us display, type 3
+frame 1468: 45654 us total, 11687 us display, type 3
+frame 1469: 46227 us total, 11686 us display, type 3
+input: down 0x00002
+frame 1470: 47484 us total, 11694 us display, type 3
+frame 1471: 46317 us total, 11687 us display, type 3
+frame 1472: 47219 us total, 11693 us display, type 3
+frame 1473: 46814 us total, 11695 us display, type 3
+frame 1474: 46585 us total, 11694 us display, type 3
+frame 1475: 46307 us total, 11850 us display, type 3
+frame 1476: 46434 us total, 11910 us display, type 3
+frame 1477: 46328 us total, 11694 us display, type 3
+frame 1478: 46448 us total, 11688 us display, type 3
+frame 1479: 46378 us total, 11694 us display, type 3
+frame 1480: 46301 us total, 11694 us display, type 3
+frame 1481: 46408 us total, 11695 us display, type 3
+[0;32mI (52841) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 1482: 47878 us total, 11690 us display, type 3
+frame 1483: 45652 us total, 11694 us display, type 3
+[0;32mI (52948) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+[0;32mI (52949) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 1484: 46845 us total, 11694 us display, type 3
+frame 1485: 46419 us total, 11694 us display, type 3
+frame 1486: 45940 us total, 11826 us display, type 3
+frame 1487: 45902 us total, 11693 us display, type 3
+frame 1488: 45883 us total, 11694 us display, type 3
+frame 1489: 45568 us total, 11687 us display, type 3
+frame 1490: 46062 us total, 11694 us display, type 3
+input: down 0x00002
+frame 1491: 45937 us total, 11686 us display, type 3
+frame 1492: 46316 us total, 11694 us display, type 3
+frame 1493: 46590 us total, 11997 us display, type 3
+frame 1494: 46434 us total, 11701 us display, type 3
+frame 1495: 46867 us total, 11694 us display, type 3
+frame 1496: 46622 us total, 11687 us display, type 3
+frame 1497: 46840 us total, 11687 us display, type 3
+frame 1498: 46398 us total, 11693 us display, type 3
+frame 1499: 46284 us total, 11698 us display, type 3
+frame 1500: 46854 us total, 11694 us display, type 3
+frame 1501: 46139 us total, 11701 us display, type 3
+frame 1502: 46546 us total, 11687 us display, type 3
+frame 1503: 46208 us total, 11693 us display, type 3
+frame 1504: 46345 us total, 11694 us display, type 3
+frame 1505: 45690 us total, 11693 us display, type 3
+frame 1506: 46525 us total, 11686 us display, type 3
+frame 1507: 45620 us total, 11694 us display, type 3
+frame 1508: 46386 us total, 11686 us display, type 3
+frame 1509: 45632 us total, 11694 us display, type 3
+frame 1510: 45724 us total, 11686 us display, type 3
+frame 1511: 46292 us total, 11694 us display, type 3
+frame 1512: 46653 us total, 11687 us display, type 3
+input: down 0x00002
+frame 1513: 45785 us total, 11687 us display, type 3
+frame 1514: 46502 us total, 11694 us display, type 3
+frame 1515: 46244 us total, 11701 us display, type 3
+frame 1516: 46222 us total, 11694 us display, type 3
+frame 1517: 46275 us total, 11686 us display, type 3
+frame 1518: 46829 us total, 11687 us display, type 3
+frame 1519: 47169 us total, 11686 us display, type 3
+frame 1520: 46287 us total, 11701 us display, type 3
+frame 1521: 46642 us total, 11693 us display, type 3
+frame 1522: 46331 us total, 11743 us display, type 3
+frame 1523: 46397 us total, 11686 us display, type 3
+frame 1524: 47217 us total, 11693 us display, type 3
+frame 1525: 46386 us total, 11694 us display, type 3
+frame 1526: 46632 us total, 11687 us display, type 3
+frame 1527: 45621 us total, 11737 us display, type 3
+frame 1528: 45462 us total, 11686 us display, type 3
+frame 1529: 45504 us total, 11693 us display, type 3
+frame 1530: 45469 us total, 11689 us display, type 3
+input: down 0x00002
+frame 1531: 46026 us total, 11686 us display, type 3
+frame 1532: 46364 us total, 11694 us display, type 3
+frame 1533: 46278 us total, 11686 us display, type 3
+frame 1534: 46007 us total, 11687 us display, type 3
+frame 1535: 46875 us total, 11701 us display, type 3
+frame 1536: 47351 us total, 11686 us display, type 3
+mem @frame 1536: heap free 68132, largest 43008, min ever 67996, zone free 55016, stack free 14540, uptime 55 s, gamestate 0, demo 0, usergame 1, tic 1839
+frame 1537: 47636 us total, 11694 us display, type 3
+frame 1538: 46594 us total, 11694 us display, type 3
+frame 1539: 46696 us total, 11686 us display, type 3
+frame 1540: 46621 us total, 11694 us display, type 3
+frame 1541: 46191 us total, 11764 us display, type 3
+frame 1542: 46643 us total, 11695 us display, type 3
+frame 1543: 46228 us total, 11694 us display, type 3
+frame 1544: 46417 us total, 11689 us display, type 3
+frame 1545: 45670 us total, 11694 us display, type 3
+frame 1546: 46109 us total, 11688 us display, type 3
+frame 1547: 46385 us total, 11846 us display, type 3
+frame 1548: 45705 us total, 11686 us display, type 3
+frame 1549: 45616 us total, 11695 us display, type 3
+frame 1550: 45627 us total, 11687 us display, type 3
+frame 1551: 45905 us total, 11687 us display, type 3
+frame 1552: 46005 us total, 11686 us display, type 3
+input: down 0x00002
+frame 1553: 46796 us total, 11687 us display, type 3
+frame 1554: 46081 us total, 11687 us display, type 3
+frame 1555: 46723 us total, 11701 us display, type 3
+frame 1556: 46825 us total, 11989 us display, type 3
+frame 1557: 46098 us total, 11701 us display, type 3
+frame 1558: 46602 us total, 11687 us display, type 3
+frame 1559: 46664 us total, 11686 us display, type 3
+frame 1560: 46381 us total, 11693 us display, type 3
+frame 1561: 46262 us total, 11694 us display, type 3
+frame 1562: 46560 us total, 11687 us display, type 3
+frame 1563: 46559 us total, 11694 us display, type 3
+frame 1564: 46353 us total, 11694 us display, type 3
+frame 1565: 46551 us total, 11701 us display, type 3
+frame 1566: 46159 us total, 11694 us display, type 3
+frame 1567: 45919 us total, 11701 us display, type 3
+frame 1568: 46374 us total, 11996 us display, type 3
+frame 1569: 45916 us total, 11694 us display, type 3
+frame 1570: 45849 us total, 11700 us display, type 3
+frame 1571: 46544 us total, 11693 us display, type 3
+frame 1572: 45634 us total, 11690 us display, type 3
+frame 1573: 46416 us total, 11693 us display, type 3
+frame 1574: 45791 us total, 11855 us display, type 3
+input: down 0x00010
+frame 1575: 45451 us total, 11694 us display, type 3
+I_Quit: restarting
+[0;32mI (57290) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+[0;32mI (57291) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -95[0m
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x2c (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875720,len:0x1a5c
+load:0x4086c110,len:0xf58
+load:0x4086e610,len:0x3074
+entry 0x4086c11a
+[0;32mI (22) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (22) boot: compile time Sep 14 2026 20:53:10[0m
+[0;32mI (23) boot: chip revision: v0.2[0m
+[0;32mI (23) boot: efuse block revision: v0.3[0m
+[0;32mI (24) qio_mode: Enabling QIO for flash chip WinBond[0m
+[0;32mI (25) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (25) boot.esp32c6: SPI Mode       : QIO[0m
+[0;32mI (25) boot.esp32c6: SPI Flash Size : 16MB[0m
+[0;32mI (26) boot: Enabling RNG early entropy source...[0m
+[0;32mI (27) boot: Partition Table:[0m
+[0;32mI (27) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (28) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (29) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (30) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (30) boot:  3 wad              Unknown data     01 40 00210000 00400000[0m
+[0;32mI (31) boot:  4 saves            WiFi data        01 02 00610000 00020000[0m
+[0;32mI (32) boot: End of partition table[0m
+[0;32mI (33) esp_image: segment 0: paddr=00010020 vaddr=420c0020 size=31554h (202068) map[0m
+[0;32mI (105) esp_image: segment 1: paddr=0004157c vaddr=40800000 size=0ea9ch ( 60060) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=b1314h (725780) map[0m
+[0;32mI (388) esp_image: segment 3: paddr=0010133c vaddr=4080ea9c size=0ab90h ( 43920) load[0m
+[0;32mI (407) esp_image: segment 4: paddr=0010bed4 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (418) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (419) boot: Disabling RNG early entropy source...[0m
+[0;32mI (422) cpu_start: Unicore app[0m
+[0;32mI (430) cpu_start: Pro cpu start user code[0m
+[0;32mI (430) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (431) app_init: Application information:[0m
+[0;32mI (431) app_init: Project name:     diablito[0m
+[0;32mI (431) app_init: App version:      1[0m
+[0;32mI (431) app_init: Compile time:     Sep 14 2026 20:53:12[0m
+[0;32mI (432) app_init: ELF file SHA256:  225dc4297...[0m
+[0;32mI (432) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (432) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (432) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (433) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (433) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (433) heap_init: At 40834080 len 00048590 (289 KiB): RAM[0m
+[0;32mI (434) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (434) heap_init: At 50000004 len 00003FE4 (15 KiB): RTCRAM[0m
+[0;32mI (435) spi_flash: detected chip: generic[0m
+[0;32mI (435) spi_flash: flash io: qio[0m
+[0;32mI (436) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (436) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (436) coexist: coex firmware version: a13b09d[0m
+[0;32mI (437) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (437) main_task: Started on CPU0[0m
+[0;32mI (437) main_task: Calling app_main()[0m
+[0;32mI (437) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (437) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (437) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (438) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (438) DIABLITO: DIABLITO skeleton, IDF v5.3.4, CPU 160 MHz[0m
+[0;32mI (438) DIABLITO: heap at boot: free 293380, largest block 262144, min ever 293380, dma-capable 278780[0m
+[0;32mI (439) gpio: GPIO[3]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (439) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (943) DISPLAY: ST7789 up: 280x240 landscape, SPI 80 MHz, 2 x 8960 B DMA strips[0m
+[0;32mI (943) DIABLITO: heap after display: free 273896, largest block 245760, min ever 273896, dma-capable 259296[0m
+[0;32mI (944) DIABLITO: wad partition @0x210000 size 4194304: magic IWHD, 1264 lumps, infotable @36, file 2073676 bytes[0m
+[0;32mI (944) DIABLITO: WHD mapped at 0x42100000, header via mmap: IWHD ·©ÔUDOOM1[0m
+[0;32mI (945) DIABLITO: heap after wad mmap: free 273264, largest block 245760, min ever 273264, dma-capable 258664[0m
+[0;32mI (945) DIABLITO: main task stack high-water: 14904 bytes free[0m
+[0;32mI (946) DIABLITO: .bss ends at 0x40834080 (short-pointer window ends at 0x40840000, 49024 bytes spare)[0m
+[0;32mI (946) DIABLITO: heap before BLE: free 273264, largest block 245760, min ever 273264, dma-capable 258664[0m
+[0;32mI (957) BLE_INIT: Using main XTAL as clock source, chip ver: 2[0m
+[0;32mI (958) BLE_INIT: ble controller commit:[ca6c20b][0m
+[0;32mI (962) BLE_INIT: Bluetooth MAC: fc:01:2c:fd:fc:b2[0m
+[0;32mI (962) phy_init: phy_version 341,a6c8fe6,Jul 30 2025,18:34:11[0m
+[0;32mI (1055) phy: libbtbb version: a945109, Jul 30 2025, 18:34:25[0m
+[0;32mI (1060) PAD: init, saved controller: no[0m
+[0;32mI (1261) DIABLITO: heap after BLE init: free 234744, largest block 208896, min ever 234608, dma-capable 220144[0m
+[0;32mI (1261) DIABLITO: starting Doom[0m
+                          DIABLITO Doom 3.0.0
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0x40821724, 10000 allocated for zone
+M_LoadDefaults: Load system defaults.
+W_Init: Init WADfiles.
+===========================================================================
+                            DOOM Shareware
+===========================================================================
+ DIABLITO Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - .........
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+[0;32mI (1272) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 2: 33966 us total, 11689 us display, type 4
+frame 3: 12253 us total, 11635 us display, type 4
+frame 4: 16719 us total, 11635 us display, type 4
+frame 5: 28999 us total, 11635 us display, type 4
+[0;32mI (1428) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -81[0m
+[0;32mI (1428) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -81[0m
+frame 6: 29066 us total, 11646 us display, type 4
+frame 7: 27960 us total, 11637 us display, type 4
+frame 8: 28987 us total, 11642 us display, type 4
+frame 9: 28043 us total, 11646 us display, type 4
+frame 10: 29002 us total, 11635 us display, type 4
+[0;32mI (1580) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+[0;32mI (1581) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+frame 11: 28419 us total, 12091 us display, type 4
+frame 12: 28593 us total, 11636 us display, type 4
+frame 13: 28961 us total, 11646 us display, type 4
+frame 14: 27995 us total, 11637 us display, type 4
+frame 15: 29042 us total, 11645 us display, type 4
+frame 16: 27952 us total, 11642 us display, type 4
+frame 17: 28981 us total, 11635 us display, type 4
+frame 18: 28000 us total, 11635 us display, type 4
+frame 19: 29003 us total, 11635 us display, type 4
+frame 20: 29030 us total, 11645 us display, type 4
+frame 21: 27992 us total, 11635 us display, type 4
+frame 22: 28987 us total, 11642 us display, type 4
+frame 23: 27988 us total, 11635 us display, type 4
+frame 24: 29003 us total, 11635 us display, type 4
+frame 25: 27997 us total, 11635 us display, type 4
+frame 26: 29003 us total, 11635 us display, type 4
+frame 27: 28997 us total, 11635 us display, type 4
+frame 28: 28140 us total, 11767 us display, type 4
+frame 29: 28917 us total, 11644 us display, type 4
+frame 30: 27990 us total, 11658 us display, type 4
+frame 31: 28997 us total, 11644 us display, type 4
+frame 32: 28068 us total, 11746 us display, type 4
+frame 33: 28941 us total, 11644 us display, type 4
+frame 34: 28951 us total, 11635 us display, type 4
+frame 35: 27996 us total, 11635 us display, type 4
+frame 36: 29052 us total, 11645 us display, type 4
+frame 37: 27978 us total, 11642 us display, type 4
+frame 38: 28993 us total, 11641 us display, type 4
+frame 39: 28012 us total, 11645 us display, type 4
+frame 40: 29012 us total, 11641 us display, type 4
+frame 41: 28954 us total, 11635 us display, type 4
+frame 42: 28048 us total, 11644 us display, type 4
+frame 43: 28955 us total, 11635 us display, type 4
+frame 44: 27993 us total, 11634 us display, type 4
+frame 45: 29005 us total, 11635 us display, type 4
+frame 46: 27996 us total, 11635 us display, type 4
+frame 47: 29004 us total, 11635 us display, type 4
+frame 48: 29035 us total, 11644 us display, type 4
+frame 49: 27988 us total, 11642 us display, type 4
+frame 50: 28977 us total, 11635 us display, type 4
+frame 51: 28034 us total, 11645 us display, type 4
+frame 52: 29009 us total, 11642 us display, type 4
+frame 53: 27955 us total, 11635 us display, type 4
+input: down 0x00010
+frame 54: 29752 us total, 11658 us display, type 4
+frame 55: 28774 us total, 11715 us display, type 4
+frame 56: 27839 us total, 11653 us display, type 4
+frame 57: 28976 us total, 11647 us display, type 4
+frame 58: 28075 us total, 11661 us display, type 4
+frame 59: 29000 us total, 11658 us display, type 4
+frame 60: 27917 us total, 11649 us display, type 4
+frame 61: 29021 us total, 11658 us display, type 4
+frame 62: 28980 us total, 11650 us display, type 4
+frame 63: 28042 us total, 11660 us display, type 4
+frame 64: 28996 us total, 11660 us display, type 4
+frame 65: 27957 us total, 11647 us display, type 4
+frame 66: 29025 us total, 11654 us display, type 4
+frame 67: 28073 us total, 11662 us display, type 4
+frame 68: 29002 us total, 11662 us display, type 4
+frame 69: 29072 us total, 11738 us display, type 4
+frame 70: 27879 us total, 11660 us display, type 4
+frame 71: 28972 us total, 11657 us display, type 4
+frame 72: 27982 us total, 11651 us display, type 4
+frame 73: 29104 us total, 11661 us display, type 4
+frame 74: 27976 us total, 11656 us display, type 4
+frame 75: 28999 us total, 11659 us display, type 4
+frame 76: 28806 us total, 11832 us display, type 4
+frame 77: 27886 us total, 11651 us display, type 4
+frame 78: 28992 us total, 11657 us display, type 4
+frame 79: 27940 us total, 11648 us display, type 4
+frame 80: 29057 us total, 11653 us display, type 4
+frame 81: 27941 us total, 11646 us display, type 4
+frame 82: 29005 us total, 11650 us display, type 4
+frame 83: 29071 us total, 11650 us display, type 4
+frame 84: 28018 us total, 11653 us display, type 4
+frame 85: 28969 us total, 11660 us display, type 4
+frame 86: 27990 us total, 11660 us display, type 4
+frame 87: 29011 us total, 11659 us display, type 4
+frame 88: 27978 us total, 11651 us display, type 4
+frame 89: 28982 us total, 11648 us display, type 4
+frame 90: 28966 us total, 11648 us display, type 4
+frame 91: 28012 us total, 11648 us display, type 4
+frame 92: 29004 us total, 11648 us display, type 4
+frame 93: 27984 us total, 11650 us display, type 4
+frame 94: 29018 us total, 11648 us display, type 4
+frame 95: 27986 us total, 11648 us display, type 4
+frame 96: 29064 us total, 11651 us display, type 4
+frame 97: 28984 us total, 11651 us display, type 4
+frame 98: 27994 us total, 11656 us display, type 4
+frame 99: 28986 us total, 11652 us display, type 4
+frame 100: 27974 us total, 11649 us display, type 4
+frame 101: 29068 us total, 11654 us display, type 4
+frame 102: 27941 us total, 11649 us display, type 4
+frame 103: 28999 us total, 11648 us display, type 4
+frame 104: 29029 us total, 11651 us display, type 4
+frame 105: 28038 us total, 11653 us display, type 4
+frame 106: 28993 us total, 11654 us display, type 4
+frame 107: 27926 us total, 11647 us display, type 4
+frame 108: 29014 us total, 11648 us display, type 4
+frame 109: 27986 us total, 11648 us display, type 4
+frame 110: 29015 us total, 11648 us display, type 4
+frame 111: 28988 us total, 11648 us display, type 4
+frame 112: 28013 us total, 11648 us display, type 4
+frame 113: 29004 us total, 11650 us display, type 4
+frame 114: 27981 us total, 11647 us display, type 4
+frame 115: 29111 us total, 11656 us display, type 4
+frame 116: 27919 us total, 11655 us display, type 4
+frame 117: 29064 us total, 11652 us display, type 4
+frame 118: 28919 us total, 11649 us display, type 4
+frame 119: 27999 us total, 11648 us display, type 4
+frame 120: 29003 us total, 11648 us display, type 4
+frame 121: 27984 us total, 11650 us display, type 4
+frame 122: 29068 us total, 11656 us display, type 4
+frame 123: 27978 us total, 11651 us display, type 4
+frame 124: 29037 us total, 11669 us display, type 4
+frame 125: 28962 us total, 11651 us display, type 4
+frame 126: 28029 us total, 11685 us display, type 4
+frame 127: 28996 us total, 11654 us display, type 4
+frame 128: 27940 us total, 11647 us display, type 4
+frame 129: 29006 us total, 11650 us display, type 4
+frame 130: 27987 us total, 11648 us display, type 4
+frame 131: 29015 us total, 11650 us display, type 4
+frame 132: 28985 us total, 11648 us display, type 4
+frame 133: 28140 us total, 11667 us display, type 4
+frame 134: 28931 us total, 11652 us display, type 4
+frame 135: 27926 us total, 11647 us display, type 4
+frame 136: 29069 us total, 11658 us display, type 4
+frame 137: 27980 us total, 11654 us display, type 4
+frame 138: 29064 us total, 11660 us display, type 4
+frame 139: 28909 us total, 11650 us display, type 4
+frame 140: 27992 us total, 11650 us display, type 4
+frame 141: 29097 us total, 11660 us display, type 4
+frame 142: 27916 us total, 11652 us display, type 4
+frame 143: 29045 us total, 11654 us display, type 4
+frame 144: 28132 us total, 11739 us display, type 4
+frame 145: 28870 us total, 11657 us display, type 4
+[0;32mI (5432) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 146: 29022 us total, 11657 us display, type 4
+frame 147: 27967 us total, 11661 us display, type 4
+frame 148: 29011 us total, 11656 us display, type 4
+frame 149: 27989 us total, 11664 us display, type 4
+frame 150: 28969 us total, 11649 us display, type 4
+frame 151: 28369 us total, 12046 us display, type 4
+frame 152: 28714 us total, 11648 us display, type 4
+frame 153: 28922 us total, 11650 us display, type 4
+frame 154: 28007 us total, 11647 us display, type 4
+frame 155: 29025 us total, 11658 us display, type 4
+frame 156: 27944 us total, 11646 us display, type 4
+frame 157: 29003 us total, 11648 us display, type 4
+frame 158: 27986 us total, 11647 us display, type 4
+frame 159: 29019 us total, 11650 us display, type 4
+frame 160: 28983 us total, 11647 us display, type 4
+frame 161: 28170 us total, 11804 us display, type 4
+frame 162: 28904 us total, 11650 us display, type 4
+frame 163: 27927 us total, 11649 us display, type 4
+frame 164: 29062 us total, 11653 us display, type 4
+frame 165: 27947 us total, 11648 us display, type 4
+frame 166: 29003 us total, 11648 us display, type 4
+frame 167: 29017 us total, 11653 us display, type 4
+frame 168: 28042 us total, 11661 us display, type 4
+frame 169: 60112 us total, 13021 us display, type 5
+frame 170: 13802 us total, 12968 us display, type 5
+frame 171: 13563 us total, 12815 us display, type 5
+[0;32mI (6172) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+[0;32mI (6172) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+frame 172: 14689 us total, 13947 us display, type 5
+frame 173: 13963 us total, 13161 us display, type 5
+frame 174: 13604 us total, 12831 us display, type 5
+frame 175: 13749 us total, 13013 us display, type 5
+frame 176: 13599 us total, 12842 us display, type 5
+frame 177: 13614 us total, 12878 us display, type 5
+frame 178: 13600 us total, 12832 us display, type 5
+frame 179: 13561 us total, 12834 us display, type 5
+frame 180: 13552 us total, 12810 us display, type 5
+frame 181: 13621 us total, 12891 us display, type 5
+frame 182: 13581 us total, 12823 us display, type 5
+frame 183: 13554 us total, 12819 us display, type 5
+frame 184: 13553 us total, 12815 us display, type 5
+frame 185: 13628 us total, 12832 us display, type 5
+frame 186: 13572 us total, 12826 us display, type 5
+frame 187: 13558 us total, 12820 us display, type 5
+frame 188: 13607 us total, 12860 us display, type 5
+frame 189: 13581 us total, 12833 us display, type 5
+frame 190: 13566 us total, 12812 us display, type 5
+frame 191: 13558 us total, 12825 us display, type 5
+frame 192: 13616 us total, 12866 us display, type 5
+frame 193: 13595 us total, 12842 us display, type 5
+frame 194: 13560 us total, 12808 us display, type 5
+frame 195: 13893 us total, 13152 us display, type 5
+frame 196: 13694 us total, 12854 us display, type 5
+frame 197: 13627 us total, 12825 us display, type 5
+frame 198: 13544 us total, 12801 us display, type 5
+frame 199: 13634 us total, 12896 us display, type 5
+frame 200: 13561 us total, 12818 us display, type 5
+frame 201: 21821 us total, 13000 us display, type 5
+frame 202: 13815 us total, 12954 us display, type 5
+frame 203: 13567 us total, 12830 us display, type 5
+[0;32mI (6617) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+[0;32mI (6617) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -96[0m
+frame 204: 14687 us total, 13921 us display, type 5
+frame 205: 13763 us total, 12973 us display, type 5
+frame 206: 13740 us total, 12933 us display, type 5
+frame 207: 13564 us total, 12807 us display, type 5
+frame 208: 13562 us total, 12807 us display, type 5
+frame 209: 15083 us total, 13285 us display, type 5
+frame 210: 13713 us total, 12864 us display, type 5
+frame 211: 13570 us total, 12824 us display, type 5
+frame 212: 13833 us total, 13072 us display, type 5
+frame 213: 13702 us total, 12936 us display, type 5
+frame 214: 13594 us total, 12834 us display, type 5
+frame 215: 13593 us total, 12834 us display, type 5
+frame 216: 13555 us total, 12815 us display, type 5
+frame 217: 13633 us total, 12884 us display, type 5
+frame 218: 13789 us total, 13037 us display, type 5
+frame 219: 13826 us total, 13032 us display, type 5
+frame 220: 13682 us total, 12909 us display, type 5
+frame 221: 13616 us total, 12840 us display, type 5
+frame 222: 13561 us total, 12827 us display, type 5
+frame 223: 13565 us total, 12824 us display, type 5
+frame 224: 13618 us total, 12888 us display, type 5
+frame 225: 13593 us total, 12836 us display, type 5
+frame 226: 13563 us total, 12825 us display, type 5
+frame 227: 13544 us total, 12812 us display, type 5
+frame 228: 13590 us total, 12857 us display, type 5
+frame 229: 13563 us total, 12822 us display, type 5
+frame 230: 13534 us total, 12802 us display, type 5
+frame 231: 13580 us total, 12857 us display, type 5
+frame 232: 13561 us total, 12817 us display, type 5
+frame 233: 13727 us total, 12995 us display, type 5
+frame 234: 13597 us total, 12838 us display, type 5
+frame 235: 13765 us total, 13039 us display, type 5
+frame 236: 13720 us total, 12942 us display, type 5
+frame 237: 13559 us total, 12830 us display, type 5
+frame 238: 13540 us total, 12807 us display, type 5
+frame 239: 13724 us total, 12905 us display, type 5
+frame 240: 13593 us total, 12828 us display, type 5
+frame 241: 13519 us total, 12800 us display, type 5
+frame 242: 13002 us total, 11643 us display, type 3
+frame 243: 37487 us total, 11694 us display, type 3
+frame 244: 33401 us total, 11693 us display, type 3
+frame 245: 33203 us total, 11700 us display, type 3
+frame 246: 33574 us total, 11686 us display, type 3
+frame 247: 35521 us total, 11694 us display, type 3
+frame 248: 34504 us total, 11691 us display, type 3
+frame 249: 35772 us total, 11771 us display, type 3
+frame 250: 35686 us total, 11693 us display, type 3
+frame 251: 35622 us total, 11686 us display, type 3
+frame 252: 34982 us total, 11774 us display, type 3
+frame 253: 34729 us total, 11694 us display, type 3
+frame 254: 37611 us total, 11701 us display, type 3
+frame 255: 35978 us total, 11804 us display, type 3
+frame 256: 35175 us total, 11701 us display, type 3
+mem @frame 256: heap free 68132, largest 43008, min ever 67996, zone free 41244, stack free 14540, uptime 7 s, gamestate 0, demo 1, usergame 0, tic 191
+frame 257: 36418 us total, 11687 us display, type 3
+frame 258: 35608 us total, 11694 us display, type 3
+frame 259: 35398 us total, 11790 us display, type 3
+frame 260: 34884 us total, 11692 us display, type 3
+frame 261: 35382 us total, 11687 us display, type 3
+frame 262: 36190 us total, 11705 us display, type 3
+frame 263: 35503 us total, 11687 us display, type 3
+frame 264: 35209 us total, 11687 us display, type 3
+frame 265: 35632 us total, 11701 us display, type 3
+frame 266: 38252 us total, 11686 us display, type 3
+frame 267: 36043 us total, 11688 us display, type 3
+frame 268: 36281 us total, 11693 us display, type 3
+frame 269: 37590 us total, 11686 us display, type 3
+frame 270: 37389 us total, 11693 us display, type 3
+frame 271: 35287 us total, 11700 us display, type 3
+frame 272: 34760 us total, 11694 us display, type 3
+frame 273: 34729 us total, 11686 us display, type 3
+frame 274: 33061 us total, 11687 us display, type 3
+frame 275: 32041 us total, 11693 us display, type 3
+frame 276: 31905 us total, 11686 us display, type 3
+frame 277: 30726 us total, 11700 us display, type 3
+frame 278: 30596 us total, 11693 us display, type 3
+frame 279: 30635 us total, 11689 us display, type 3
+frame 280: 30180 us total, 11687 us display, type 3
+frame 281: 29108 us total, 11694 us display, type 3
+frame 282: 27321 us total, 11692 us display, type 3
+frame 283: 28805 us total, 11694 us display, type 3
+frame 284: 27319 us total, 11693 us display, type 3
+frame 285: 27265 us total, 11693 us display, type 3
+frame 286: 28341 us total, 11694 us display, type 3
+frame 287: 28516 us total, 11686 us display, type 3
+frame 288: 27710 us total, 11690 us display, type 3
+frame 289: 27763 us total, 11697 us display, type 3
+frame 290: 28091 us total, 11693 us display, type 3
+frame 291: 30236 us total, 11694 us display, type 3
+frame 292: 28028 us total, 11694 us display, type 3
+frame 293: 28809 us total, 11692 us display, type 3
+frame 294: 29423 us total, 11691 us display, type 3
+frame 295: 27328 us total, 11686 us display, type 3
+frame 296: 28795 us total, 11686 us display, type 3
+frame 297: 28298 us total, 11700 us display, type 3
+frame 298: 28859 us total, 11687 us display, type 3
+frame 299: 28887 us total, 11686 us display, type 3
+frame 300: 28257 us total, 11694 us display, type 3
+frame 301: 32179 us total, 11694 us display, type 3
+frame 302: 31267 us total, 11693 us display, type 3
+frame 303: 31483 us total, 11693 us display, type 3
+frame 304: 31528 us total, 11693 us display, type 3
+frame 305: 32494 us total, 11693 us display, type 3
+frame 306: 32309 us total, 11694 us display, type 3
+frame 307: 32783 us total, 11693 us display, type 3
+frame 308: 33266 us total, 11694 us display, type 3
+frame 309: 32352 us total, 11687 us display, type 3
+frame 310: 34791 us total, 11693 us display, type 3
+frame 311: 34945 us total, 11694 us display, type 3
+frame 312: 37671 us total, 11701 us display, type 3
+frame 313: 36593 us total, 11693 us display, type 3
+frame 314: 39849 us total, 11694 us display, type 3
+frame 315: 38521 us total, 11693 us display, type 3
+frame 316: 36904 us total, 11693 us display, type 3
+frame 317: 41939 us total, 11799 us display, type 3
+frame 318: 40562 us total, 11701 us display, type 3
+frame 319: 40973 us total, 11693 us display, type 3
+frame 320: 37240 us total, 11770 us display, type 3
+frame 321: 39309 us total, 11693 us display, type 3
+frame 322: 42154 us total, 11694 us display, type 3
+frame 323: 37911 us total, 11693 us display, type 3
+frame 324: 35832 us total, 11687 us display, type 3
+frame 325: 41891 us total, 11823 us display, type 3
+frame 326: 40705 us total, 11693 us display, type 3
+frame 327: 43578 us total, 11693 us display, type 3
+frame 328: 43360 us total, 11694 us display, type 3
+frame 329: 44892 us total, 11701 us display, type 3
+frame 330: 43293 us total, 11693 us display, type 3
+frame 331: 46890 us total, 11687 us display, type 3
+frame 332: 43350 us total, 11687 us display, type 3
+frame 333: 45080 us total, 11687 us display, type 3
+frame 334: 45041 us total, 11693 us display, type 3
+frame 335: 45507 us total, 11693 us display, type 3
+frame 336: 46600 us total, 11693 us display, type 3
+frame 337: 43972 us total, 11693 us display, type 3
+frame 338: 48133 us total, 11698 us display, type 3
+frame 339: 45793 us total, 11694 us display, type 3
+frame 340: 50677 us total, 11687 us display, type 3
+frame 341: 46986 us total, 11687 us display, type 3
+frame 342: 46637 us total, 11694 us display, type 3
+frame 343: 50696 us total, 11692 us display, type 3
+frame 344: 50775 us total, 11687 us display, type 3
+frame 345: 50454 us total, 11694 us display, type 3
+frame 346: 50642 us total, 11693 us display, type 3
+frame 347: 46360 us total, 11694 us display, type 3
+frame 348: 41186 us total, 11701 us display, type 3
+frame 349: 39941 us total, 11698 us display, type 3
+frame 350: 40630 us total, 11693 us display, type 3
+frame 351: 39109 us total, 11894 us display, type 3
+frame 352: 40182 us total, 11700 us display, type 3
+frame 353: 40342 us total, 11687 us display, type 3
+frame 354: 39314 us total, 11687 us display, type 3
+frame 355: 36543 us total, 11693 us display, type 3
+frame 356: 37614 us total, 11693 us display, type 3
+frame 357: 36228 us total, 11694 us display, type 3
+frame 358: 36954 us total, 11700 us display, type 3
+frame 359: 37243 us total, 11763 us display, type 3
+frame 360: 35811 us total, 11694 us display, type 3
+frame 361: 35470 us total, 11688 us display, type 3
+[0;32mI (11518) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 362: 37255 us total, 11700 us display, type 3
+frame 363: 35029 us total, 11693 us display, type 3
+frame 364: 34794 us total, 11903 us display, type 3
+frame 365: 34517 us total, 11694 us display, type 3
+frame 366: 35806 us total, 11701 us display, type 3
+frame 367: 36619 us total, 11687 us display, type 3
+frame 368: 36727 us total, 11686 us display, type 3
+frame 369: 35253 us total, 11690 us display, type 3
+frame 370: 37704 us total, 11700 us display, type 3
+frame 371: 35870 us total, 11694 us display, type 3
+frame 372: 36689 us total, 11808 us display, type 3
+frame 373: 35881 us total, 11686 us display, type 3
+frame 374: 38429 us total, 11694 us display, type 3
+frame 375: 38016 us total, 11694 us display, type 3
+[0;32mI (12023) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+[0;32mI (12024) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 376: 37824 us total, 11694 us display, type 3
+frame 377: 42799 us total, 11693 us display, type 3
+frame 378: 39192 us total, 11701 us display, type 3
+frame 379: 40173 us total, 11694 us display, type 3
+frame 380: 39026 us total, 11694 us display, type 3
+frame 381: 40760 us total, 11731 us display, type 3
+frame 382: 43388 us total, 11687 us display, type 3
+frame 383: 41670 us total, 11694 us display, type 3
+frame 384: 41404 us total, 11686 us display, type 3
+frame 385: 41184 us total, 11687 us display, type 3
+frame 386: 42793 us total, 11687 us display, type 3
+frame 387: 42077 us total, 11686 us display, type 3
+frame 388: 42421 us total, 11757 us display, type 3
+frame 389: 41145 us total, 11694 us display, type 3
+frame 390: 42377 us total, 11686 us display, type 3
+frame 391: 41854 us total, 11694 us display, type 3
+frame 392: 42671 us total, 11694 us display, type 3
+frame 393: 40382 us total, 11686 us display, type 3
+frame 394: 40399 us total, 11687 us display, type 3
+frame 395: 40946 us total, 11998 us display, type 3
+frame 396: 40706 us total, 11691 us display, type 3
+frame 397: 40006 us total, 11686 us display, type 3
+frame 398: 38702 us total, 11694 us display, type 3
+frame 399: 36897 us total, 11694 us display, type 3
+frame 400: 38550 us total, 11687 us display, type 3
+frame 401: 38356 us total, 11693 us display, type 3
+frame 402: 37997 us total, 11738 us display, type 3
+frame 403: 42382 us total, 11698 us display, type 3
+frame 404: 38606 us total, 11996 us display, type 3
+frame 405: 40618 us total, 11687 us display, type 3
+frame 406: 39595 us total, 11694 us display, type 3
+[0;32mI (13288) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+frame 407: 39438 us total, 12478 us display, type 3
+frame 408: 41261 us total, 11694 us display, type 3
+frame 409: 40599 us total, 11687 us display, type 3
+frame 410: 42348 us total, 11686 us display, type 3
+frame 411: 41202 us total, 11701 us display, type 3
+frame 412: 42582 us total, 11693 us display, type 3
+frame 413: 41409 us total, 11740 us display, type 3
+[0;32mI (13564) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -90[0m
+frame 414: 44250 us total, 11694 us display, type 3
+frame 415: 41861 us total, 11694 us display, type 3
+frame 416: 43065 us total, 11694 us display, type 3
+frame 417: 41292 us total, 11747 us display, type 3
+frame 418: 42794 us total, 11694 us display, type 3
+frame 419: 42197 us total, 11687 us display, type 3
+frame 420: 40855 us total, 11694 us display, type 3
+frame 421: 40431 us total, 11694 us display, type 3
+frame 422: 37801 us total, 11997 us display, type 3
+frame 423: 40094 us total, 11687 us display, type 3
+frame 424: 41518 us total, 11698 us display, type 3
+frame 425: 38954 us total, 11939 us display, type 3
+frame 426: 41344 us total, 11686 us display, type 3
+frame 427: 41858 us total, 11694 us display, type 3
+frame 428: 41648 us total, 11693 us display, type 3
+frame 429: 44304 us total, 11694 us display, type 3
+frame 430: 41175 us total, 11693 us display, type 3
+frame 431: 40099 us total, 11687 us display, type 3
+frame 432: 41542 us total, 11701 us display, type 3
+frame 433: 39680 us total, 11686 us display, type 3
+frame 434: 39792 us total, 11686 us display, type 3
+frame 435: 39931 us total, 11686 us display, type 3
+frame 436: 40719 us total, 11765 us display, type 3
+frame 437: 44419 us total, 11687 us display, type 3
+frame 438: 43383 us total, 11700 us display, type 3
+frame 439: 44711 us total, 11694 us display, type 3
+frame 440: 44429 us total, 11701 us display, type 3
+frame 441: 44453 us total, 11694 us display, type 3
+frame 442: 43989 us total, 11693 us display, type 3
+frame 443: 44163 us total, 11687 us display, type 3
+frame 444: 44159 us total, 11701 us display, type 3
+frame 445: 44457 us total, 11754 us display, type 3
+frame 446: 42726 us total, 11925 us display, type 3
+frame 447: 39946 us total, 11991 us display, type 3
+frame 448: 38927 us total, 11692 us display, type 3
+frame 449: 37991 us total, 11694 us display, type 3
+frame 450: 36021 us total, 11694 us display, type 3
+frame 451: 34967 us total, 11693 us display, type 3
+frame 452: 38542 us total, 11687 us display, type 3
+frame 453: 34915 us total, 11687 us display, type 3
+frame 454: 36657 us total, 11694 us display, type 3
+frame 455: 36876 us total, 11700 us display, type 3
+frame 456: 34974 us total, 11693 us display, type 3
+frame 457: 35816 us total, 11694 us display, type 3
+frame 458: 34360 us total, 11696 us display, type 3
+frame 459: 36206 us total, 11701 us display, type 3
+frame 460: 34763 us total, 11759 us display, type 3
+frame 461: 34233 us total, 11698 us display, type 3
+frame 462: 35472 us total, 11686 us display, type 3
+frame 463: 34791 us total, 11686 us display, type 3
+frame 464: 37991 us total, 11686 us display, type 3
+frame 465: 37321 us total, 11694 us display, type 3
+frame 466: 35813 us total, 11686 us display, type 3
+frame 467: 40821 us total, 11686 us display, type 3
+frame 468: 38603 us total, 11694 us display, type 3
+frame 469: 34889 us total, 11693 us display, type 3
+frame 470: 40462 us total, 11694 us display, type 3
+frame 471: 39323 us total, 11686 us display, type 3
+frame 472: 36380 us total, 11701 us display, type 3
+[0;32mI (15925) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+[0;32mI (15925) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+frame 473: 42006 us total, 12831 us display, type 3
+frame 474: 40076 us total, 11694 us display, type 3
+frame 475: 38630 us total, 11693 us display, type 3
+frame 476: 40534 us total, 11686 us display, type 3
+frame 477: 40820 us total, 11778 us display, type 3
+[0;32mI (16136) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+frame 478: 40222 us total, 12018 us display, type 3
+frame 479: 37232 us total, 11687 us display, type 3
+frame 480: 39195 us total, 11693 us display, type 3
+[0;32mI (16216) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+frame 481: 39308 us total, 11694 us display, type 3
+frame 482: 38036 us total, 11756 us display, type 3
+frame 483: 38203 us total, 11686 us display, type 3
+frame 484: 38000 us total, 11687 us display, type 3
+frame 485: 37305 us total, 11693 us display, type 3
+frame 486: 37429 us total, 11701 us display, type 3
+frame 487: 35862 us total, 11701 us display, type 3
+frame 488: 36608 us total, 11686 us display, type 3
+frame 489: 35501 us total, 11694 us display, type 3
+frame 490: 38258 us total, 11700 us display, type 3
+frame 491: 36077 us total, 11714 us display, type 3
+frame 492: 36066 us total, 11694 us display, type 3
+[0;32mI (16670) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -94[0m
+frame 493: 36067 us total, 11694 us display, type 3
+frame 494: 35596 us total, 11694 us display, type 3
+frame 495: 35445 us total, 11686 us display, type 3
+frame 496: 34218 us total, 11726 us display, type 3
+frame 497: 33867 us total, 11694 us display, type 3
+frame 498: 34272 us total, 11694 us display, type 3
+frame 499: 34107 us total, 11835 us display, type 3
+frame 500: 34358 us total, 11725 us display, type 3
+frame 501: 33857 us total, 11694 us display, type 3
+frame 502: 33924 us total, 11700 us display, type 3
+frame 503: 33853 us total, 11695 us display, type 3
+frame 504: 34933 us total, 11694 us display, type 3
+frame 505: 33771 us total, 11686 us display, type 3
+frame 506: 34105 us total, 11693 us display, type 3
+frame 507: 33338 us total, 11704 us display, type 3
+frame 508: 33556 us total, 11686 us display, type 3
+frame 509: 35104 us total, 11693 us display, type 3
+frame 510: 33089 us total, 11693 us display, type 3
+frame 511: 32678 us total, 11693 us display, type 3
+frame 512: 34097 us total, 11890 us display, type 3
+mem @frame 512: heap free 68132, largest 43008, min ever 67996, zone free 41244, stack free 14540, uptime 16 s, gamestate 0, demo 1, usergame 0, tic 531
+frame 513: 33622 us total, 11697 us display, type 3
+frame 514: 35209 us total, 11693 us display, type 3
+frame 515: 33742 us total, 11694 us display, type 3
+frame 516: 33003 us total, 11886 us display, type 3
+frame 517: 37002 us total, 11694 us display, type 3
+frame 518: 35087 us total, 11686 us display, type 3
+frame 519: 35675 us total, 11694 us display, type 3
+frame 520: 36623 us total, 11693 us display, type 3
+frame 521: 35512 us total, 11699 us display, type 3
+frame 522: 35819 us total, 12042 us display, type 3
+frame 523: 38085 us total, 11694 us display, type 3
+frame 524: 36181 us total, 11694 us display, type 3
+frame 525: 38016 us total, 11694 us display, type 3
+frame 526: 36675 us total, 11701 us display, type 3
+[0;32mI (17878) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+frame 527: 37070 us total, 12071 us display, type 3
+[0;32mI (17881) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+[0;32mI (17882) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 528: 39204 us total, 11694 us display, type 3
+frame 529: 37220 us total, 11687 us display, type 3
+frame 530: 38695 us total, 11710 us display, type 3
+frame 531: 37051 us total, 11789 us display, type 3
+frame 532: 37150 us total, 11687 us display, type 3
+[0;32mI (18087) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 533: 39377 us total, 11686 us display, type 3
+frame 534: 34953 us total, 11694 us display, type 3
+frame 535: 35860 us total, 11693 us display, type 3
+frame 536: 37256 us total, 11923 us display, type 3
+frame 537: 35685 us total, 11686 us display, type 3
+frame 538: 35144 us total, 11689 us display, type 3
+frame 539: 37456 us total, 11694 us display, type 3
+frame 540: 39712 us total, 11686 us display, type 3
+frame 541: 35978 us total, 11686 us display, type 3
+frame 542: 38120 us total, 11695 us display, type 3
+frame 543: 38146 us total, 11701 us display, type 3
+frame 544: 36924 us total, 11701 us display, type 3
+frame 545: 37053 us total, 11694 us display, type 3
+frame 546: 37620 us total, 12052 us display, type 3
+frame 547: 35969 us total, 11774 us display, type 3
+frame 548: 36403 us total, 11694 us display, type 3
+frame 549: 34586 us total, 11686 us display, type 3
+frame 550: 37663 us total, 11701 us display, type 3
+frame 551: 35600 us total, 11693 us display, type 3
+frame 552: 37470 us total, 11701 us display, type 3
+frame 553: 37749 us total, 11694 us display, type 3
+frame 554: 37264 us total, 11693 us display, type 3
+frame 555: 35598 us total, 11694 us display, type 3
+frame 556: 36872 us total, 11693 us display, type 3
+frame 557: 37998 us total, 12127 us display, type 3
+frame 558: 35610 us total, 11686 us display, type 3
+frame 559: 36595 us total, 11694 us display, type 3
+frame 560: 39870 us total, 11700 us display, type 3
+frame 561: 36621 us total, 11687 us display, type 3
+frame 562: 36859 us total, 11686 us display, type 3
+frame 563: 37601 us total, 11701 us display, type 3
+frame 564: 37631 us total, 11687 us display, type 3
+frame 565: 36664 us total, 11701 us display, type 3
+frame 566: 36514 us total, 11686 us display, type 3
+frame 567: 39234 us total, 11694 us display, type 3
+frame 568: 37769 us total, 11687 us display, type 3
+frame 569: 39166 us total, 11693 us display, type 3
+frame 570: 39147 us total, 11694 us display, type 3
+frame 571: 39318 us total, 11693 us display, type 3
+frame 572: 40304 us total, 11686 us display, type 3
+frame 573: 38697 us total, 11686 us display, type 3
+frame 574: 37854 us total, 11694 us display, type 3
+frame 575: 37048 us total, 11693 us display, type 3
+frame 576: 37960 us total, 11694 us display, type 3
+frame 577: 36880 us total, 11694 us display, type 3
+frame 578: 37918 us total, 11694 us display, type 3
+frame 579: 36668 us total, 11686 us display, type 3
+frame 580: 36466 us total, 11694 us display, type 3
+frame 581: 36342 us total, 11693 us display, type 3
+frame 582: 38542 us total, 11694 us display, type 3
+frame 583: 37357 us total, 11686 us display, type 3
+frame 584: 37817 us total, 11697 us display, type 3
+frame 585: 36147 us total, 11691 us display, type 3
+frame 586: 36370 us total, 11687 us display, type 3
+frame 587: 34637 us total, 11686 us display, type 3
+[0;32mI (20122) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 588: 36767 us total, 11701 us display, type 3
+frame 589: 37018 us total, 11694 us display, type 3
+frame 590: 35988 us total, 11698 us display, type 3
+frame 591: 34990 us total, 11701 us display, type 3
+frame 592: 39501 us total, 11810 us display, type 3
+frame 593: 36362 us total, 12003 us display, type 3
+frame 594: 36319 us total, 11687 us display, type 3
+frame 595: 37111 us total, 11693 us display, type 3
+frame 596: 37485 us total, 11701 us display, type 3
+frame 597: 35391 us total, 11693 us display, type 3
+frame 598: 36329 us total, 11693 us display, type 3
+frame 599: 36730 us total, 11693 us display, type 3
+frame 600: 36672 us total, 11694 us display, type 3
+frame 601: 35034 us total, 11701 us display, type 3
+frame 602: 37527 us total, 11687 us display, type 3
+frame 603: 38939 us total, 11686 us display, type 3
+frame 604: 36481 us total, 11694 us display, type 3
+frame 605: 36397 us total, 11687 us display, type 3
+frame 606: 37252 us total, 11686 us display, type 3
+frame 607: 37659 us total, 11686 us display, type 3
+[0;32mI (20874) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -94[0m
+frame 608: 36819 us total, 11701 us display, type 3
+frame 609: 37098 us total, 11694 us display, type 3
+frame 610: 38354 us total, 11687 us display, type 3
+frame 611: 36108 us total, 11827 us display, type 3
+frame 612: 36671 us total, 11687 us display, type 3
+frame 613: 36550 us total, 11694 us display, type 3
+frame 614: 37627 us total, 11687 us display, type 3
+frame 615: 37215 us total, 11795 us display, type 3
+[0;32mI (21187) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 616: 37182 us total, 11909 us display, type 3
+frame 617: 37930 us total, 11791 us display, type 3
+[0;32mI (21230) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -80[0m
+frame 618: 38180 us total, 11701 us display, type 3
+frame 619: 36920 us total, 11729 us display, type 3
+frame 620: 36948 us total, 11694 us display, type 3
+frame 621: 36164 us total, 11694 us display, type 3
+frame 622: 36895 us total, 11701 us display, type 3
+frame 623: 37726 us total, 11687 us display, type 3
+frame 624: 35569 us total, 11835 us display, type 3
+frame 625: 39612 us total, 11693 us display, type 3
+frame 626: 36990 us total, 11693 us display, type 3
+frame 627: 36623 us total, 11694 us display, type 3
+frame 628: 38596 us total, 11697 us display, type 3
+frame 629: 37077 us total, 11694 us display, type 3
+[0;32mI (21679) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 630: 39567 us total, 11686 us display, type 3
+frame 631: 36433 us total, 11694 us display, type 3
+frame 632: 39298 us total, 11877 us display, type 3
+frame 633: 37669 us total, 11701 us display, type 3
+frame 634: 36749 us total, 11694 us display, type 3
+frame 635: 38806 us total, 11687 us display, type 3
+frame 636: 37830 us total, 11686 us display, type 3
+frame 637: 36294 us total, 11738 us display, type 3
+frame 638: 38016 us total, 11700 us display, type 3
+frame 639: 37439 us total, 11700 us display, type 3
+frame 640: 39808 us total, 11694 us display, type 3
+frame 641: 37579 us total, 11687 us display, type 3
+frame 642: 37589 us total, 11694 us display, type 3
+frame 643: 38963 us total, 11697 us display, type 3
+frame 644: 36999 us total, 11701 us display, type 3
+frame 645: 36390 us total, 11686 us display, type 3
+frame 646: 37837 us total, 11686 us display, type 3
+frame 647: 34796 us total, 11694 us display, type 3
+frame 648: 38086 us total, 11914 us display, type 3
+frame 649: 35941 us total, 11693 us display, type 3
+frame 650: 33978 us total, 11694 us display, type 3
+frame 651: 35611 us total, 11693 us display, type 3
+frame 652: 33732 us total, 11687 us display, type 3
+frame 653: 36118 us total, 11687 us display, type 3
+frame 654: 34396 us total, 11694 us display, type 3
+frame 655: 34380 us total, 11686 us display, type 3
+[0;32mI (22641) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+[0;32mI (22663) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+frame 656: 35381 us total, 12053 us display, type 3
+frame 657: 35659 us total, 11686 us display, type 3
+frame 658: 34217 us total, 11698 us display, type 3
+frame 659: 35106 us total, 11700 us display, type 3
+frame 660: 33270 us total, 11694 us display, type 3
+[0;32mI (22840) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -84[0m
+frame 661: 35471 us total, 12173 us display, type 3
+frame 662: 31890 us total, 11690 us display, type 3
+frame 663: 32139 us total, 11686 us display, type 3
+[0;32mI (22919) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+frame 664: 34884 us total, 11704 us display, type 3
+frame 665: 32027 us total, 11687 us display, type 3
+frame 666: 34067 us total, 11686 us display, type 3
+frame 667: 32811 us total, 11687 us display, type 3
+frame 668: 33815 us total, 11694 us display, type 3
+frame 669: 32536 us total, 11687 us display, type 3
+frame 670: 33055 us total, 11960 us display, type 3
+frame 671: 34188 us total, 11701 us display, type 3
+frame 672: 32404 us total, 11687 us display, type 3
+frame 673: 35533 us total, 11694 us display, type 3
+frame 674: 32512 us total, 11743 us display, type 3
+frame 675: 34593 us total, 11694 us display, type 3
+frame 676: 32934 us total, 11694 us display, type 3
+frame 677: 33391 us total, 11687 us display, type 3
+frame 678: 32353 us total, 11687 us display, type 3
+frame 679: 34709 us total, 11766 us display, type 3
+frame 680: 34701 us total, 11983 us display, type 3
+frame 681: 35114 us total, 11694 us display, type 3
+frame 682: 34818 us total, 11815 us display, type 3
+frame 683: 34571 us total, 11694 us display, type 3
+frame 684: 38438 us total, 11701 us display, type 3
+frame 685: 38444 us total, 11686 us display, type 3
+frame 686: 41299 us total, 11766 us display, type 3
+frame 687: 44881 us total, 11686 us display, type 3
+frame 688: 45451 us total, 11700 us display, type 3
+frame 689: 45914 us total, 11701 us display, type 3
+frame 690: 42339 us total, 11784 us display, type 3
+frame 691: 40901 us total, 11694 us display, type 3
+[0;32mI (23927) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 692: 41993 us total, 11693 us display, type 3
+frame 693: 39162 us total, 11687 us display, type 3
+frame 694: 37797 us total, 11694 us display, type 3
+frame 695: 42307 us total, 11687 us display, type 3
+frame 696: 40461 us total, 11694 us display, type 3
+frame 697: 41597 us total, 11687 us display, type 3
+frame 698: 41908 us total, 11687 us display, type 3
+frame 699: 43290 us total, 11697 us display, type 3
+frame 700: 43332 us total, 11695 us display, type 3
+frame 701: 42958 us total, 11694 us display, type 3
+frame 702: 43962 us total, 11743 us display, type 3
+frame 703: 43860 us total, 11694 us display, type 3
+frame 704: 42167 us total, 11694 us display, type 3
+frame 705: 43223 us total, 11687 us display, type 3
+frame 706: 41384 us total, 11686 us display, type 3
+frame 707: 41592 us total, 11700 us display, type 3
+frame 708: 43253 us total, 11890 us display, type 3
+frame 709: 40901 us total, 11686 us display, type 3
+frame 710: 41456 us total, 11693 us display, type 3
+frame 711: 39754 us total, 11693 us display, type 3
+frame 712: 39846 us total, 11694 us display, type 3
+frame 713: 37078 us total, 11699 us display, type 3
+frame 714: 40907 us total, 11686 us display, type 3
+frame 715: 47816 us total, 11856 us display, type 3
+frame 716: 42063 us total, 11691 us display, type 3
+frame 717: 39804 us total, 11694 us display, type 3
+frame 718: 38332 us total, 11770 us display, type 3
+frame 719: 40716 us total, 11701 us display, type 3
+frame 720: 39861 us total, 11694 us display, type 3
+frame 721: 40906 us total, 11701 us display, type 3
+frame 722: 37265 us total, 11694 us display, type 3
+frame 723: 37242 us total, 11806 us display, type 3
+frame 724: 35685 us total, 11694 us display, type 3
+frame 725: 37861 us total, 11694 us display, type 3
+frame 726: 38791 us total, 11818 us display, type 3
+frame 727: 38110 us total, 11694 us display, type 3
+frame 728: 37101 us total, 11918 us display, type 3
+[0;32mI (25432) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+[0;32mI (25436) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -77[0m
+frame 729: 37546 us total, 11689 us display, type 3
+frame 730: 36988 us total, 11694 us display, type 3
+frame 731: 38436 us total, 11694 us display, type 3
+frame 732: 35926 us total, 11829 us display, type 3
+frame 733: 37177 us total, 11694 us display, type 3
+frame 734: 37273 us total, 11686 us display, type 3
+frame 735: 36834 us total, 11694 us display, type 3
+[0;32mI (25713) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -77[0m
+frame 736: 37787 us total, 12349 us display, type 3
+frame 737: 37723 us total, 11687 us display, type 3
+frame 738: 36434 us total, 11695 us display, type 3
+frame 739: 32275 us total, 11689 us display, type 3
+frame 740: 32780 us total, 11700 us display, type 3
+[0;32mI (25883) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 741: 33736 us total, 11729 us display, type 3
+frame 742: 32970 us total, 11699 us display, type 3
+frame 743: 31360 us total, 11700 us display, type 3
+frame 744: 31600 us total, 11727 us display, type 3
+frame 745: 30886 us total, 11692 us display, type 3
+frame 746: 30781 us total, 11686 us display, type 3
+frame 747: 31886 us total, 11693 us display, type 3
+frame 748: 33487 us total, 11699 us display, type 3
+frame 749: 33374 us total, 11693 us display, type 3
+frame 750: 34738 us total, 11694 us display, type 3
+frame 751: 33262 us total, 11693 us display, type 3
+frame 752: 31638 us total, 11694 us display, type 3
+frame 753: 33060 us total, 11704 us display, type 3
+frame 754: 31894 us total, 11693 us display, type 3
+frame 755: 31695 us total, 11686 us display, type 3
+frame 756: 32623 us total, 11701 us display, type 3
+frame 757: 32425 us total, 11693 us display, type 3
+frame 758: 32049 us total, 11686 us display, type 3
+frame 759: 31268 us total, 11694 us display, type 3
+frame 760: 32000 us total, 11694 us display, type 3
+frame 761: 31639 us total, 11686 us display, type 3
+frame 762: 32180 us total, 11928 us display, type 3
+frame 763: 32257 us total, 11694 us display, type 3
+frame 764: 30756 us total, 11694 us display, type 3
+frame 765: 35217 us total, 11694 us display, type 3
+frame 766: 31999 us total, 11836 us display, type 3
+frame 767: 32482 us total, 11686 us display, type 3
+frame 768: 32872 us total, 11694 us display, type 3
+mem @frame 768: heap free 68132, largest 43008, min ever 67996, zone free 41188, stack free 14540, uptime 26 s, gamestate 0, demo 1, usergame 0, tic 861
+[0;32mI (26782) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -88[0m
+frame 769: 34396 us total, 11818 us display, type 3
+frame 770: 33169 us total, 11837 us display, type 3
+frame 771: 34143 us total, 11701 us display, type 3
+frame 772: 33183 us total, 11694 us display, type 3
+frame 773: 33471 us total, 11687 us display, type 3
+frame 774: 32422 us total, 11701 us display, type 3
+frame 775: 34072 us total, 11701 us display, type 3
+frame 776: 33273 us total, 11686 us display, type 3
+frame 777: 35313 us total, 11693 us display, type 3
+frame 778: 34538 us total, 11687 us display, type 3
+frame 779: 35602 us total, 11694 us display, type 3
+frame 780: 34651 us total, 11693 us display, type 3
+frame 781: 38240 us total, 11693 us display, type 3
+frame 782: 39658 us total, 11686 us display, type 3
+frame 783: 36443 us total, 11694 us display, type 3
+frame 784: 37753 us total, 11686 us display, type 3
+frame 785: 37628 us total, 11693 us display, type 3
+frame 786: 39619 us total, 11694 us display, type 3
+frame 787: 40536 us total, 11687 us display, type 3
+frame 788: 36837 us total, 11693 us display, type 3
+frame 789: 40515 us total, 11693 us display, type 3
+frame 790: 41477 us total, 11697 us display, type 3
+frame 791: 40231 us total, 11687 us display, type 3
+frame 792: 38094 us total, 11686 us display, type 3
+frame 793: 42019 us total, 11694 us display, type 3
+frame 794: 40812 us total, 11687 us display, type 3
+frame 795: 41274 us total, 11686 us display, type 3
+frame 796: 39097 us total, 11694 us display, type 3
+frame 797: 40563 us total, 11686 us display, type 3
+frame 798: 39628 us total, 11694 us display, type 3
+frame 799: 37894 us total, 11808 us display, type 3
+frame 800: 40633 us total, 11687 us display, type 3
+frame 801: 39722 us total, 11694 us display, type 3
+frame 802: 39656 us total, 11701 us display, type 3
+frame 803: 39602 us total, 11687 us display, type 3
+frame 804: 38335 us total, 11694 us display, type 3
+frame 805: 38147 us total, 11694 us display, type 3
+frame 806: 36039 us total, 11701 us display, type 3
+frame 807: 35082 us total, 11734 us display, type 3
+frame 808: 34282 us total, 11686 us display, type 3
+frame 809: 36327 us total, 11827 us display, type 3
+frame 810: 33730 us total, 11686 us display, type 3
+frame 811: 34513 us total, 11694 us display, type 3
+frame 812: 33910 us total, 11693 us display, type 3
+frame 813: 33775 us total, 11694 us display, type 3
+frame 814: 36203 us total, 11694 us display, type 3
+frame 815: 36030 us total, 11693 us display, type 3
+frame 816: 35407 us total, 11693 us display, type 3
+frame 817: 38026 us total, 11996 us display, type 3
+frame 818: 40227 us total, 11686 us display, type 3
+frame 819: 41786 us total, 11687 us display, type 3
+frame 820: 45663 us total, 11700 us display, type 3
+frame 821: 45195 us total, 11694 us display, type 3
+frame 822: 44605 us total, 11693 us display, type 3
+frame 823: 44372 us total, 11694 us display, type 3
+frame 824: 45128 us total, 11693 us display, type 3
+frame 825: 44662 us total, 11694 us display, type 3
+frame 826: 45339 us total, 11693 us display, type 3
+frame 827: 44719 us total, 11694 us display, type 3
+frame 828: 43656 us total, 11687 us display, type 3
+frame 829: 42684 us total, 11693 us display, type 3
+frame 830: 42740 us total, 11694 us display, type 3
+frame 831: 42889 us total, 11727 us display, type 3
+frame 832: 42081 us total, 11701 us display, type 3
+frame 833: 42393 us total, 11687 us display, type 3
+frame 834: 41002 us total, 11692 us display, type 3
+frame 835: 41748 us total, 11701 us display, type 3
+frame 836: 41640 us total, 11699 us display, type 3
+frame 837: 44005 us total, 11694 us display, type 3
+frame 838: 41401 us total, 11694 us display, type 3
+frame 839: 44526 us total, 11694 us display, type 3
+frame 840: 41540 us total, 11686 us display, type 3
+frame 841: 42715 us total, 11694 us display, type 3
+frame 842: 41836 us total, 11693 us display, type 3
+frame 843: 42604 us total, 11687 us display, type 3
+frame 844: 41947 us total, 11693 us display, type 3
+frame 845: 40711 us total, 11701 us display, type 3
+frame 846: 40411 us total, 11686 us display, type 3
+frame 847: 41782 us total, 11686 us display, type 3
+frame 848: 41962 us total, 11700 us display, type 3
+frame 849: 41181 us total, 11686 us display, type 3
+frame 850: 42960 us total, 11694 us display, type 3
+frame 851: 40025 us total, 11687 us display, type 3
+frame 852: 47576 us total, 11750 us display, type 3
+frame 853: 43939 us total, 11694 us display, type 3
+frame 854: 45016 us total, 11701 us display, type 3
+frame 855: 43936 us total, 11698 us display, type 3
+frame 856: 45817 us total, 11686 us display, type 3
+frame 857: 47370 us total, 11694 us display, type 3
+frame 858: 46876 us total, 11701 us display, type 3
+frame 859: 48786 us total, 11694 us display, type 3
+frame 860: 48182 us total, 11694 us display, type 3
+frame 861: 47718 us total, 11713 us display, type 3
+frame 862: 45758 us total, 12000 us display, type 3
+frame 863: 46994 us total, 11693 us display, type 3
+frame 864: 48129 us total, 11687 us display, type 3
+frame 865: 46595 us total, 11694 us display, type 3
+frame 866: 45320 us total, 11686 us display, type 3
+frame 867: 46852 us total, 11686 us display, type 3
+frame 868: 44785 us total, 11694 us display, type 3
+frame 869: 44084 us total, 11694 us display, type 3
+frame 870: 44946 us total, 11701 us display, type 3
+frame 871: 44032 us total, 11694 us display, type 3
+frame 872: 45096 us total, 11694 us display, type 3
+frame 873: 44633 us total, 11794 us display, type 3
+frame 874: 45932 us total, 11917 us display, type 3
+frame 875: 45162 us total, 11701 us display, type 3
+frame 876: 44784 us total, 11693 us display, type 3
+frame 877: 44119 us total, 11694 us display, type 3
+frame 878: 43679 us total, 11693 us display, type 3
+[0;32mI (31291) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -89[0m
+[0;32mI (31292) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 879: 42545 us total, 11694 us display, type 3
+frame 880: 40162 us total, 11701 us display, type 3
+frame 881: 39831 us total, 11694 us display, type 3
+[0;32mI (31425) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 882: 39590 us total, 12166 us display, type 3
+frame 883: 39585 us total, 11887 us display, type 3
+frame 884: 40450 us total, 11686 us display, type 3
+frame 885: 40588 us total, 11686 us display, type 3
+frame 886: 42044 us total, 11735 us display, type 3
+frame 887: 41729 us total, 11694 us display, type 3
+frame 888: 44223 us total, 12201 us display, type 3
+frame 889: 42637 us total, 11697 us display, type 3
+frame 890: 44476 us total, 11694 us display, type 3
+frame 891: 45154 us total, 11686 us display, type 3
+frame 892: 44514 us total, 11694 us display, type 3
+[0;32mI (31872) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -78[0m
+[0;32mI (31872) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -78[0m
+frame 893: 45545 us total, 11694 us display, type 3
+frame 894: 44241 us total, 11694 us display, type 3
+frame 895: 45550 us total, 11694 us display, type 3
+frame 896: 43694 us total, 11879 us display, type 3
+frame 897: 43962 us total, 11694 us display, type 3
+frame 898: 42733 us total, 11693 us display, type 3
+frame 899: 45172 us total, 11805 us display, type 3
+frame 900: 44367 us total, 11689 us display, type 3
+frame 901: 44100 us total, 11686 us display, type 3
+frame 902: 44235 us total, 11686 us display, type 3
+frame 903: 43506 us total, 11701 us display, type 3
+frame 904: 43587 us total, 11693 us display, type 3
+frame 905: 43092 us total, 11693 us display, type 3
+frame 906: 43516 us total, 11686 us display, type 3
+frame 907: 43188 us total, 11686 us display, type 3
+frame 908: 43426 us total, 11694 us display, type 3
+frame 909: 44473 us total, 11686 us display, type 3
+frame 910: 44431 us total, 11701 us display, type 3
+frame 911: 44452 us total, 11955 us display, type 3
+frame 912: 42038 us total, 11898 us display, type 3
+[0;32mI (32776) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+[0;32mI (32776) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 913: 40371 us total, 12007 us display, type 3
+frame 914: 41230 us total, 11808 us display, type 3
+frame 915: 40026 us total, 11694 us display, type 3
+frame 916: 41213 us total, 11780 us display, type 3
+frame 917: 40282 us total, 11687 us display, type 3
+frame 918: 40334 us total, 11693 us display, type 3
+frame 919: 40958 us total, 11830 us display, type 3
+frame 920: 40147 us total, 11694 us display, type 3
+[0;32mI (33085) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 921: 41145 us total, 11694 us display, type 3
+frame 922: 41737 us total, 11836 us display, type 3
+frame 923: 38580 us total, 11693 us display, type 3
+frame 924: 38906 us total, 11687 us display, type 3
+frame 925: 37473 us total, 11693 us display, type 3
+frame 926: 38187 us total, 11694 us display, type 3
+frame 927: 38996 us total, 11701 us display, type 3
+frame 928: 38582 us total, 11693 us display, type 3
+frame 929: 39210 us total, 11694 us display, type 3
+frame 930: 38819 us total, 11686 us display, type 3
+frame 931: 37137 us total, 11686 us display, type 3
+frame 932: 38816 us total, 11687 us display, type 3
+frame 933: 37104 us total, 11687 us display, type 3
+frame 934: 35782 us total, 11833 us display, type 3
+frame 935: 35934 us total, 11710 us display, type 3
+frame 936: 35136 us total, 12008 us display, type 3
+frame 937: 35382 us total, 11694 us display, type 3
+frame 938: 33965 us total, 11794 us display, type 3
+frame 939: 32379 us total, 11694 us display, type 3
+frame 940: 33063 us total, 11693 us display, type 3
+frame 941: 31085 us total, 11687 us display, type 3
+frame 942: 30237 us total, 11693 us display, type 3
+frame 943: 29887 us total, 11689 us display, type 3
+frame 944: 30148 us total, 11687 us display, type 3
+frame 945: 31877 us total, 11686 us display, type 3
+frame 946: 30011 us total, 11686 us display, type 3
+frame 947: 29547 us total, 11694 us display, type 3
+frame 948: 29940 us total, 11694 us display, type 3
+frame 949: 29110 us total, 11693 us display, type 3
+frame 950: 28912 us total, 11701 us display, type 3
+frame 951: 29572 us total, 11694 us display, type 3
+frame 952: 29386 us total, 11692 us display, type 3
+frame 953: 28840 us total, 11693 us display, type 3
+frame 954: 28982 us total, 11701 us display, type 3
+frame 955: 28737 us total, 11692 us display, type 3
+frame 956: 31458 us total, 11928 us display, type 3
+frame 957: 31592 us total, 11693 us display, type 3
+frame 958: 32778 us total, 11686 us display, type 3
+[0;32mI (34385) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -80[0m
+[0;32mI (34386) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -80[0m
+frame 959: 35774 us total, 12502 us display, type 3
+frame 960: 34130 us total, 11692 us display, type 3
+frame 961: 34985 us total, 11699 us display, type 3
+frame 962: 41797 us total, 11694 us display, type 3
+frame 963: 37378 us total, 11687 us display, type 3
+frame 964: 39164 us total, 11750 us display, type 3
+frame 965: 40214 us total, 11700 us display, type 3
+frame 966: 38516 us total, 11837 us display, type 3
+frame 967: 39894 us total, 11694 us display, type 3
+frame 968: 40469 us total, 11686 us display, type 3
+frame 969: 38441 us total, 11694 us display, type 3
+frame 970: 39987 us total, 11694 us display, type 3
+frame 971: 42925 us total, 11694 us display, type 3
+frame 972: 41261 us total, 11762 us display, type 3
+frame 973: 39748 us total, 11694 us display, type 3
+frame 974: 40793 us total, 11816 us display, type 3
+frame 975: 42273 us total, 11695 us display, type 3
+frame 976: 44214 us total, 11693 us display, type 3
+frame 977: 41230 us total, 11687 us display, type 3
+frame 978: 39968 us total, 11687 us display, type 3
+frame 979: 40779 us total, 11806 us display, type 3
+frame 980: 42026 us total, 12006 us display, type 3
+frame 981: 40235 us total, 11686 us display, type 3
+frame 982: 48013 us total, 11741 us display, type 3
+frame 983: 45248 us total, 11693 us display, type 3
+frame 984: 45369 us total, 11694 us display, type 3
+[0;32mI (35422) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+[0;32mI (35422) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -95[0m
+frame 985: 45029 us total, 11695 us display, type 3
+frame 986: 41831 us total, 11694 us display, type 3
+frame 987: 46970 us total, 11701 us display, type 3
+frame 988: 44592 us total, 11729 us display, type 3
+frame 989: 43763 us total, 11726 us display, type 3
+frame 990: 44330 us total, 11686 us display, type 3
+frame 991: 44187 us total, 11750 us display, type 3
+frame 992: 45841 us total, 11694 us display, type 3
+frame 993: 44013 us total, 11693 us display, type 3
+frame 994: 39259 us total, 11694 us display, type 3
+frame 995: 38880 us total, 11694 us display, type 3
+frame 996: 39511 us total, 11736 us display, type 3
+frame 997: 39099 us total, 11687 us display, type 3
+frame 998: 37489 us total, 11694 us display, type 3
+frame 999: 38116 us total, 11700 us display, type 3
+[0;32mI (36070) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+[0;32mI (36070) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -79[0m
+frame 1000: 39843 us total, 12403 us display, type 3
+frame 1001: 37543 us total, 11687 us display, type 3
+frame 1002: 42204 us total, 11687 us display, type 3
+frame 1003: 41216 us total, 11694 us display, type 3
+frame 1004: 38897 us total, 11700 us display, type 3
+frame 1005: 38831 us total, 11687 us display, type 3
+frame 1006: 37217 us total, 11693 us display, type 3
+frame 1007: 36177 us total, 11699 us display, type 3
+frame 1008: 38011 us total, 11694 us display, type 3
+frame 1009: 36222 us total, 11874 us display, type 3
+frame 1010: 34506 us total, 11693 us display, type 3
+frame 1011: 36273 us total, 11694 us display, type 3
+frame 1012: 35416 us total, 11694 us display, type 3
+frame 1013: 35719 us total, 11701 us display, type 3
+frame 1014: 39246 us total, 11687 us display, type 3
+frame 1015: 38319 us total, 11769 us display, type 3
+[0;32mI (36679) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 1016: 37949 us total, 11794 us display, type 3
+frame 1017: 37072 us total, 11693 us display, type 3
+frame 1018: 37757 us total, 11687 us display, type 3
+frame 1019: 37482 us total, 11694 us display, type 3
+frame 1020: 39053 us total, 11871 us display, type 3
+frame 1021: 39652 us total, 11687 us display, type 3
+frame 1022: 38955 us total, 11686 us display, type 3
+frame 1023: 38686 us total, 11686 us display, type 3
+frame 1024: 41646 us total, 11694 us display, type 3
+mem @frame 1024: heap free 68132, largest 43008, min ever 67996, zone free 40564, stack free 14540, uptime 36 s, gamestate 0, demo 1, usergame 0, tic 1219
+frame 1025: 40380 us total, 11686 us display, type 3
+frame 1026: 39209 us total, 11694 us display, type 3
+frame 1027: 41365 us total, 11701 us display, type 3
+frame 1028: 40880 us total, 11693 us display, type 3
+frame 1029: 40694 us total, 11693 us display, type 3
+frame 1030: 41142 us total, 11686 us display, type 3
+frame 1031: 42098 us total, 12132 us display, type 3
+frame 1032: 43672 us total, 11687 us display, type 3
+frame 1033: 42891 us total, 11687 us display, type 3
+[0;32mI (37375) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -95[0m
+[0;32mI (37376) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -95[0m
+frame 1034: 44883 us total, 11694 us display, type 3
+frame 1035: 44205 us total, 11687 us display, type 3
+frame 1036: 39726 us total, 11693 us display, type 3
+frame 1037: 40635 us total, 11693 us display, type 3
+frame 1038: 40796 us total, 11686 us display, type 3
+frame 1039: 43482 us total, 11694 us display, type 3
+frame 1040: 42045 us total, 11701 us display, type 3
+frame 1041: 41521 us total, 11690 us display, type 3
+frame 1042: 40893 us total, 11686 us display, type 3
+frame 1043: 40749 us total, 11693 us display, type 3
+frame 1044: 40789 us total, 11854 us display, type 3
+frame 1045: 39262 us total, 11694 us display, type 3
+frame 1046: 37877 us total, 11694 us display, type 3
+frame 1047: 37860 us total, 11694 us display, type 3
+frame 1048: 36909 us total, 11700 us display, type 3
+frame 1049: 41266 us total, 11693 us display, type 3
+[0;32mI (38029) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+[0;32mI (38030) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+frame 1050: 41868 us total, 11701 us display, type 3
+frame 1051: 44086 us total, 11694 us display, type 3
+frame 1052: 43049 us total, 11693 us display, type 3
+frame 1053: 46918 us total, 11694 us display, type 3
+frame 1054: 45463 us total, 11694 us display, type 3
+frame 1055: 47418 us total, 11701 us display, type 3
+frame 1056: 47073 us total, 11701 us display, type 3
+frame 1057: 48439 us total, 11693 us display, type 3
+frame 1058: 47485 us total, 11701 us display, type 3
+frame 1059: 50525 us total, 11686 us display, type 3
+frame 1060: 50447 us total, 11694 us display, type 3
+frame 1061: 51728 us total, 11693 us display, type 3
+[0;32mI (38622) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -86[0m
+frame 1062: 50991 us total, 11686 us display, type 3
+frame 1063: 54602 us total, 11694 us display, type 3
+frame 1064: 51360 us total, 11889 us display, type 3
+frame 1065: 51919 us total, 11693 us display, type 3
+frame 1066: 50659 us total, 11694 us display, type 3
+frame 1067: 52841 us total, 11704 us display, type 3
+frame 1068: 48882 us total, 11694 us display, type 3
+frame 1069: 48127 us total, 11701 us display, type 3
+frame 1070: 45582 us total, 11687 us display, type 3
+frame 1071: 43357 us total, 11694 us display, type 3
+frame 1072: 43001 us total, 11694 us display, type 3
+frame 1073: 44772 us total, 11694 us display, type 3
+frame 1074: 41625 us total, 11687 us display, type 3
+frame 1075: 51618 us total, 11694 us display, type 3
+frame 1076: 46096 us total, 11694 us display, type 3
+frame 1077: 45438 us total, 11833 us display, type 3
+[0;32mI (39365) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -90[0m
+[0;32mI (39365) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -89[0m
+frame 1078: 44981 us total, 11687 us display, type 3
+frame 1079: 44029 us total, 11694 us display, type 3
+frame 1080: 44612 us total, 11694 us display, type 3
+frame 1081: 45690 us total, 11696 us display, type 3
+frame 1082: 46687 us total, 11694 us display, type 3
+frame 1083: 48439 us total, 11700 us display, type 3
+frame 1084: 45216 us total, 11701 us display, type 3
+frame 1085: 49812 us total, 11694 us display, type 3
+frame 1086: 50695 us total, 11693 us display, type 3
+frame 1087: 51349 us total, 11701 us display, type 3
+frame 1088: 48847 us total, 11701 us display, type 3
+frame 1089: 48998 us total, 11701 us display, type 3
+frame 1090: 47521 us total, 11693 us display, type 3
+[0;32mI (39977) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+frame 1091: 49666 us total, 12012 us display, type 3
+frame 1092: 46708 us total, 11760 us display, type 3
+frame 1093: 44551 us total, 11693 us display, type 3
+frame 1094: 43081 us total, 11687 us display, type 3
+frame 1095: 43989 us total, 11730 us display, type 3
+frame 1096: 41567 us total, 11698 us display, type 3
+frame 1097: 49950 us total, 11959 us display, type 3
+frame 1098: 45110 us total, 11701 us display, type 3
+frame 1099: 47867 us total, 11701 us display, type 3
+frame 1100: 45730 us total, 11687 us display, type 3
+frame 1101: 45273 us total, 11694 us display, type 3
+frame 1102: 48741 us total, 11884 us display, type 3
+frame 1103: 47967 us total, 11687 us display, type 3
+frame 1104: 44486 us total, 11694 us display, type 3
+frame 1105: 47833 us total, 11694 us display, type 3
+frame 1106: 45865 us total, 11694 us display, type 3
+frame 1107: 46124 us total, 11694 us display, type 3
+frame 1108: 45677 us total, 11687 us display, type 3
+[0;32mI (40824) PAD: seen Galaxy Watch5 (V9HM) appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -87[0m
+frame 1109: 47795 us total, 11687 us display, type 3
+frame 1110: 46269 us total, 11769 us display, type 3
+frame 1111: 47780 us total, 11686 us display, type 3
+frame 1112: 45465 us total, 11694 us display, type 3
+frame 1113: 47593 us total, 11995 us display, type 3
+frame 1114: 47280 us total, 11693 us display, type 3
+frame 1115: 47219 us total, 11694 us display, type 3
+frame 1116: 45847 us total, 11694 us display, type 3
+frame 1117: 46504 us total, 11686 us display, type 3
+frame 1118: 45089 us total, 11687 us display, type 3
+frame 1119: 46263 us total, 11694 us display, type 3
+frame 1120: 49740 us total, 11686 us display, type 3
+[0;32mI (41391) PAD: seen shiznield appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -92[0m
+frame 1121: 49876 us total, 11686 us display, type 3
+frame 1122: 46888 us total, 11693 us display, type 3
+frame 1123: 47512 us total, 11693 us display, type 3
+frame 1124: 47346 us total, 11694 us display, type 3
+frame 1125: 47411 us total, 11693 us display, type 3
+frame 1126: 46608 us total, 11810 us display, type 3
+frame 1127: 48510 us total, 11687 us display, type 3
+[0;32mI (41736) PAD: seen  appearance 0000 uuids16 0 uuids128 1 hid 0 rssi -96[0m
+[0;32mI (41736) PAD: seen SoundSend appearance 0000 uuids16 0 uuids128 0 hid 0 rssi -95[0m
+frame 1128: 49961 us total, 11693 us display, type 3
+frame 1129: 46882 us total, 11686 us display, type 3
+frame 1130: 48393 us total, 11741 us display, type 3
+frame 1131: 49085 us total, 11913 us display, type 3
+frame 1132: 47984 us total, 11701 us display, type 3
+frame 1133: 48643 us total, 11693 us display, type 3
+frame 1134: 50570 us total, 11701 us display, type 3
+frame 1135: 49522 us total, 11803 us display, type 3
+frame 1136: 48117 us total, 11699 us display, type 3
+frame 1137: 48864 us total, 11740 us display, type 3
+frame 1138: 48264 us total, 11767 us display, type 3
+frame 1139: 47482 us total, 11687 us display, type 3
+frame 1140: 45715 us total, 11825 us display, type 3
+frame 1141: 47097 us total, 11693 us display, type 3
+frame 1142: 49433 us total, 11687 us display, type 3
+frame 1143: 49273 us total, 11699 us display, type 3
+frame 1144: 47503 us total, 11687 us display, type 3
+frame 1145: 48414 us total, 11693 us display, type 3
+frame 1146: 47736 us total, 11692 us display, type 3
+frame 1147: 49906 us total, 11883 us display, type 3
+frame 1148: 47608 us total, 11701 us display, type 3
+frame 1149: 48952 us total, 11694 us display, type 3
+[0;32mI (42774) PAD: seen  appearance 00c0 uuids16 0 uuids128 0 hid 0 rssi -85[0m
+frame 1150: 49269 us total, 11694 us display, type 3
+frame 1151: 50139 us total, 11693 us display, type 3

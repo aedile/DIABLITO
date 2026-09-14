@@ -1,0 +1,8 @@
+[submodule "third_party/rp2040-doom"]
+	path = third_party/rp2040-doom
+	url = https://github.com/kilograham/rp2040-doom.git
+	ignore = dirty
+[submodule "third_party/rp2040-doom-LCD"]
+	path = third_party/rp2040-doom-LCD
+	url = https://github.com/rsheldiii/rp2040-doom-LCD.git
+	ignore = dirty
