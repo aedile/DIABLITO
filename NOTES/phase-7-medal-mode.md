@@ -21,6 +21,12 @@ Date: 2026-09-14. Log: `NOTES/logs/phase7-run1-idle.log`.
 - Power off: PWR held 3 s (`medal.c`, BAT_EN low). On USB the rail stays up and the medal just
   goes dark.
 
+- **Portrait.** Jesse wants the medal worn portrait, so `DISPLAY_PORTRAIT` (default 1 in
+  `display.h`) runs the panel at 240x280 (MADCTL 0x00, the 20 px panel offset on the row axis)
+  with Doom scaled 4:3 horizontally to 240x200 (columns 3 and 7 of every 8 dropped) and 40 px
+  black bars top and bottom. Landscape (280x240, 8:7, 20 px bars) is the `#else`. Wire time per
+  frame drops from 11.7 to 9.9 ms; demo frames 28.8 ms mean (34.7 FPS).
+
 ## Measured
 
 - Idle sleep triggered at 120 s of untouched attract loop, frame output stopped, heap steady at
