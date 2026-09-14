@@ -205,7 +205,10 @@ static uint32_t stick_vkeys(void)
 // Medal mode: after doom_idle_sleep_s without input while the attract loop runs, put the panel to
 // sleep and park the game task (tics stop, the DAC ring drains to silence, BLE keeps listening).
 // Any medal button or pad button wakes it. 0 disables.
-int doom_idle_sleep_s = 120;
+#ifndef DOOM_IDLE_SLEEP_S
+#define DOOM_IDLE_SLEEP_S 120
+#endif
+int doom_idle_sleep_s = DOOM_IDLE_SLEEP_S;   // build default; NVS medal/idle_s overrides
 static int64_t last_input_us;
 
 static void idle_sleep_if_due(uint32_t vk)
