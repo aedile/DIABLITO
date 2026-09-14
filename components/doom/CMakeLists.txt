@@ -16,7 +16,7 @@ idf_component_register(
         ${S}/tiny_huff.c ${S}/musx_decoder.c ${S}/image_decoder.c ${S}/pd_render.cpp
         ${S}/adpcm-xq/adpcm-lib.c
         ${S}/pico/i_glob.c ${S}/pico/i_picosound.c
-        esp/i_video.c esp/i_system.c esp/i_timer.c esp/i_input.c esp/i_sound_glue.c esp/doom_main.c
+        esp/i_video.c esp/i_system.c esp/i_timer.c esp/i_input.c esp/i_sound_glue.c esp/doom_main.c esp/prof.c
     INCLUDE_DIRS include
     PRIV_INCLUDE_DIRS shim ${S} ${S}/doom ${S}/pico ${S}/adpcm-xq
     REQUIRES display
@@ -31,8 +31,8 @@ target_compile_options(${COMPONENT_LIB} PRIVATE
 set_source_files_properties(${S}/pd_render.cpp PROPERTIES COMPILE_OPTIONS "-Wno-narrowing;-Wno-register;-Wno-class-memaccess")
 
 target_compile_definitions(${COMPONENT_LIB} PRIVATE
-    # platform
-    PICO_ON_DEVICE=1 PICO_BUILD=1 PICO_RP2040=0 PICO_RP2350=0 LIB_PICO_STDLIB=0
+    # platform. NDEBUG as in the RP2040 MinSizeRel build: the decoders assert per pixel otherwise
+    NDEBUG=1 PICO_ON_DEVICE=1 PICO_BUILD=1 PICO_RP2040=0 PICO_RP2350=0 LIB_PICO_STDLIB=0
     USE_INTERP=0 USE_CORE1_FOR_FLATS=0 USE_CORE1_FOR_REGULAR=0 USE_ZONE_FOR_MALLOC=0
     NO_USE_MOUSE=1 NO_USE_ENDDOOM=1 SUPPORT_OVERLAYS=1 SUPPORT_TEXT=0 TINY_WAD_ADDR=0
     PICO_AUDIO_I2S_DATA_PIN=23 PICO_AUDIO_I2S_CLOCK_PIN_BASE=20 PICO_SOUND_SAMPLE_FREQ=22050
@@ -58,4 +58,5 @@ target_compile_definitions(${COMPONENT_LIB} PRIVATE
     EMU8950_NO_RATECONV=1 NO_ZONE_DEBUG=1
     # render_newhope
     PICODOOM_RENDER_NEWHOPE=1 MERGE_DISTSCALE0_INTO_VIEWCOSSINANGLE=1
+    DOOM_PROFILE=1
 )

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #if PICO_BUILD
 #include "pico.h"
+#include "esp_attr.h"
 #else
 #define __not_in_flash_func(x) x
 #endif
