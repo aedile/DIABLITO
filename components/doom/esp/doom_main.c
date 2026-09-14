@@ -11,8 +11,13 @@ void D_DoomMain(void);
 extern const uint8_t *whd_map_base;
 void W_Memory_SetBase(const uint8_t *base);
 
+void prof_start(void);
+
 void doom_run(const uint8_t *wad)
 {
+#if DOOM_PROFILE
+    prof_start();
+#endif
     W_Memory_SetBase(wad);
     I_Init();
     D_DoomMain();

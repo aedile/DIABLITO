@@ -49,3 +49,6 @@ CONFIG_BT_NIMBLE_HTP_SERVICE=n
 
 # Console on the USB-Serial-JTAG port
 CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
+
+# sampling profiler (components/doom/esp/prof.c)
+CONFIG_ESP_TIMER_SUPPORTS_ISR_DISPATCH_METHOD=y

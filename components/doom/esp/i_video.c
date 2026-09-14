@@ -803,6 +803,17 @@ static inline void downsample_line(const uint16_t *s, uint16_t *d) {
 #define DOOM_VIEW_W 280
 #define DOOM_VIEW_Y ((DISPLAY_HEIGHT - SCREENHEIGHT) / 2)
 
+// Fast path for a 3D-view row with no overlay on it: palette-convert and 8:7 downsample in one
+// pass, four source pixels per load, straight into the DMA strip. No 320-wide intermediate.
+static inline void convert_downsample(const uint8_t *src, uint16_t *d) {
+    const uint32_t *s = (const uint32_t *)src;
+    for (int g = 0; g < SCREENWIDTH / 8; g++, s += 2, d += 7) {
+        uint32_t a = s[0], b = s[1];
+        d[0] = palette[a & 0xff]; d[1] = palette[(a >> 8) & 0xff]; d[2] = palette[(a >> 16) & 0xff]; d[3] = palette[a >> 24];
+        d[4] = palette[b & 0xff]; d[5] = palette[(b >> 8) & 0xff]; d[6] = palette[(b >> 16) & 0xff];
+    }
+}
+
 // Compose every scanline (palette + overlays) exactly as the RP2040 did ahead of the beam, but
 // into 16-row DMA strips: strip N+1 is composed while strip N is on the SPI wire.
 void fill_scanlines() {
@@ -811,6 +822,12 @@ void fill_scanlines() {
     uint16_t *strip = display_acquire_strip();
     int row = 0, y0 = 0;
     for (int scanline = 0; scanline < SCREENHEIGHT; scanline++) {
+        if (display_video_type == VIDEO_TYPE_DOUBLE && scanline < MAIN_VIEWHEIGHT &&
+            !vpatchlists->vpatch_next[0] && !vpatchlists->vpatch_starters[scanline]) {
+            // nothing overlaid on this row (no menu open): the overlay walker would be a no-op
+            convert_downsample(frame_buffer[display_frame_index] + scanline * SCREENWIDTH, strip + row * DOOM_VIEW_W);
+            goto next_row;
+        }
         switch (display_video_type) {
             case VIDEO_TYPE_SINGLE: scanline_func_single(line, scanline); break;
             case VIDEO_TYPE_DOUBLE: scanline_func_double(line, scanline); break;
@@ -821,6 +838,7 @@ void fill_scanlines() {
             handle_overlays(line, scanline);
         }
         downsample_line(line, strip + row * DOOM_VIEW_W);
+    next_row:
         if (++row == STRIP_ROWS || scanline == SCREENHEIGHT - 1) {
             display_submit_strip(y0, row);
             y0 += row;
@@ -830,35 +848,53 @@ void fill_scanlines() {
     }
 }
 
-// Called once per rendered frame (from pd_end_frame) and from the busy-waits that used to let
-// the display core catch up. Logs frame time: the gate for phase 3 asks for it per frame.
+// The display task: what core 1 did on the RP2040. Blocks until the game hands over a frame,
+// flips the display state, hands the previous framebuffer back, then composes and streams the
+// strips, sleeping on the SPI DMA between them so the game task renders the next frame meanwhile.
+// Logs frame time per frame: the phase 3 gate asks for it.
 uint32_t doom_frame_count;
-void I_DisplayFrame(void) {
-    static int64_t last_us;
-    if (!initialized) return;
-    I_UpdateSound();          /* second mixer opportunity per frame: 46 ms buffers vs 40-80 ms frames */
-    new_frame_stuff();
-    int64_t t0 = esp_timer_get_time();
-    fill_scanlines();
-    int64_t t1 = esp_timer_get_time();
-    doom_frame_count++;
-    if (last_us) {
-        printf("frame %lu: %ld us total, %ld us display, type %d\n", (unsigned long)doom_frame_count,
-               (long)(t1 - last_us), (long)(t1 - t0), display_video_type);
-    }
-    last_us = t1;
-    if ((doom_frame_count & 255) == 0) {
-        extern int Z_FreeMemory(void);
-        extern uint32_t audio_underrun_count(void); extern int audio_queued_ms(void);
-        printf("audio: %lu underruns, %d ms queued\n", (unsigned long)audio_underrun_count(), audio_queued_ms());
-        printf("mem @frame %lu: heap free %u, largest %u, min ever %u, zone free %d, stack free %u, uptime %lu s, gamestate %d, demo %d, usergame %d, tic %d\n",
-               (unsigned long)doom_frame_count, (unsigned)heap_caps_get_free_size(MALLOC_CAP_8BIT),
-               (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_8BIT),
-               (unsigned)heap_caps_get_minimum_free_size(MALLOC_CAP_8BIT), Z_FreeMemory(),
-               (unsigned)(uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t)),
-               (unsigned long)(t1 / 1000000), (int)gamestate, (int)demoplayback, (int)usergame, (int)gametic);
+static void display_task(void *arg)
+{
+    int64_t last_us = 0;
+    for (;;) {
+        sem_acquire_blocking(&render_frame_ready);
+        display_video_type = next_video_type;
+        display_frame_index = next_frame_index;
+        display_overlay_index = next_overlay_index;
+#if !DEMO1_ONLY
+        video_scroll = next_video_scroll;
+#endif
+        sem_release(&display_frame_freed);
+        if (display_video_type != VIDEO_TYPE_SAVING) {
+            new_frame_init_overlays_palette_and_wipe();
+        }
+        int64_t t0 = esp_timer_get_time();
+        fill_scanlines();
+        int64_t t1 = esp_timer_get_time();
+        doom_frame_count++;
+        if (last_us) {
+            printf("frame %lu: %ld us total, %ld us display, type %d\n", (unsigned long)doom_frame_count,
+                   (long)(t1 - last_us), (long)(t1 - t0), display_video_type);
+        }
+        last_us = t1;
+#if DOOM_PROFILE
+        if ((doom_frame_count & 511) == 0) { extern void prof_report(void); prof_report(); }
+#endif
+        if ((doom_frame_count & 255) == 0) {
+            extern int Z_FreeMemory(void);
+            extern uint32_t audio_underrun_count(void); extern int audio_queued_ms(void);
+            printf("audio: %lu underruns, %d ms queued\n", (unsigned long)audio_underrun_count(), audio_queued_ms());
+            printf("mem @frame %lu: heap free %u, largest %u, min ever %u, zone free %d, display stack free %u, uptime %lu s, gamestate %d, demo %d, usergame %d, tic %d\n",
+                   (unsigned long)doom_frame_count, (unsigned)heap_caps_get_free_size(MALLOC_CAP_8BIT),
+                   (unsigned)heap_caps_get_largest_free_block(MALLOC_CAP_8BIT),
+                   (unsigned)heap_caps_get_minimum_free_size(MALLOC_CAP_8BIT), Z_FreeMemory(),
+                   (unsigned)(uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t)),
+                   (unsigned long)(t1 / 1000000), (int)gamestate, (int)demoplayback, (int)usergame, (int)gametic);
+        }
     }
 }
+
+void I_DisplayFrame(void) {}   // kept for callers; the display task picks frames up by itself
 #pragma GCC pop_options
 
 void I_InitGraphics(void)
@@ -873,6 +909,8 @@ void I_InitGraphics(void)
     sem_init(&render_frame_ready, 0, 2);
     sem_init(&display_frame_freed, 1, 2);
     pd_init();
+    // above the game task (1) so a finished frame starts going out at once, below BLE (5)
+    xTaskCreate(display_task, "display", 6144, NULL, 3, NULL);
     initialized = true;
 }
 

@@ -91,12 +91,13 @@ extern "C" {
 void I_UpdateSound(void);
 void I_DisplayFrame(void);
 }
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 void draw_cast_sprite(int sprite_lump);
 // single core: the busy-waits that used to let core 1 catch up must run the display themselves
 static void pump_display(void) {
-    extern semaphore_t render_frame_ready;
-    if (sem_available(&render_frame_ready)) I_DisplayFrame();
-    I_UpdateSound();
+    I_UpdateSound();       // the display task does the blitting; this just keeps the DAC fed while we wait
+    taskYIELD();
 }
 #pragma GCC push_options
 #if PICO_ON_DEVICE
@@ -771,7 +772,14 @@ static void push_down_x(int x, int new_index) {
 #endif
 }
 
+#include "esp_timer.h"
+#include "esp_attr.h"
+static int64_t prof_t0, prof_acc[6]; static int prof_n;
+static const char *prof_name[6] = { "logic+bsp", "wait-fb", "vp-mark", "flats", "columns", "fuzz" };
+static inline void prof_mark(int i) { int64_t t = esp_timer_get_time(); prof_acc[i] += t - prof_t0; prof_t0 = t; }
+
 void pd_begin_frame() {
+    prof_t0 = esp_timer_get_time();
     DEBUG_PINS_SET(start_end, 1);
     if (gamestate == GS_LEVEL) {
 //        render_frame_index ^= 1;
@@ -2607,6 +2615,7 @@ void pd_end_frame(int wipe_start) {
 #endif
     // these were only clipped as they were inserted (so may be more obscured)
     reclip_fuzz_columns();
+    prof_mark(0);
 #if PICO_ON_DEVICE
 //    gpio_put(22, 1);
     while (!sem_available(&display_frame_freed)) {
@@ -2615,6 +2624,7 @@ void pd_end_frame(int wipe_start) {
 //    gpio_put(22, 0);
 #endif
     sem_acquire_blocking(&display_frame_freed);
+    prof_mark(1);
     bool showing_help = inhelpscreens;
     static boolean was_in_help;
     if (gamestate == GS_LEVEL) {
@@ -2776,10 +2786,12 @@ void pd_end_frame(int wipe_start) {
     }
     // render the visplane identifiers, freeing up the visplane columns (which we will use below)
     int16_t fr_list = predraw_visplanes();
+    prof_mark(2);
 
     // ... now we can be parallel
 #if !USE_CORE1_FOR_FLATS
     draw_visplanes(fr_list);
+    prof_mark(3);
 #else
     core1_fr_list = fr_list;
     sem_release(&core1_do_flats);
@@ -2796,9 +2808,19 @@ void pd_end_frame(int wipe_start) {
         draw_cast_sprite(sprite_lump);
     }
 #endif
+#if USE_CORE1_FOR_FLATS || USE_CORE1_FOR_REGULAR
     sem_release(&core0_done);
     sem_acquire_blocking(&core1_done);
+#endif
+    prof_mark(4);
     draw_fuzz_columns();
+    prof_mark(5);
+    if (++prof_n == 128) {
+        printf("profile (avg of 128 frames, ms):");
+        for (int i = 0; i < 6; i++) { printf(" %s %.1f", prof_name[i], prof_acc[i] / 128000.0); prof_acc[i] = 0; }
+        printf("\n");
+        prof_n = 0;
+    }
     DEBUG_PINS_CLR(full_render, 1);
     NetUpdate();
 
@@ -2964,7 +2986,6 @@ void pd_end_frame(int wipe_start) {
 #endif
     sem_release(&render_frame_ready);
     DEBUG_PINS_CLR(start_end, 2);
-    I_DisplayFrame();
 }
 
 void pd_core1_loop() {
@@ -3019,7 +3040,6 @@ void pd_start_save_pause(void) {
 void pd_end_save_pause(void) {
     next_video_type = old_video_type;
     sem_release(&render_frame_ready);
-    I_DisplayFrame();
     I_PicoSoundFade(true);
     while (I_PicoSoundFading()) {
         I_UpdateSound();
