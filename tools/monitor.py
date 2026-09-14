@@ -7,7 +7,7 @@ args = [a for a in sys.argv[1:] if not a.startswith('--')]
 secs = float(args[0]) if args else 20.0
 logfile = args[1] if len(args) > 1 else None
 port = sys.argv[sys.argv.index('--port') + 1] if '--port' in sys.argv else glob.glob('/dev/cu.usbmodem*')[0]
-s = serial.Serial(port, 115200, timeout=0.2)
+s = serial.Serial(port, 115200, timeout=0.05)
 if '--no-reset' not in sys.argv:
     s.dtr = False; s.rts = True; time.sleep(0.1); s.rts = False   # RTS -> EN on the C6's USB-Serial-JTAG
 out = open(logfile, 'wb') if logfile else None

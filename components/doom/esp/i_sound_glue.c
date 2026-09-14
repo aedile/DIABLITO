@@ -117,10 +117,15 @@ audio_buffer_t *take_audio_buffer(struct audio_buffer_pool *pool, bool block)
     return b;
 }
 
+static bool muted;
+void audio_set_mute(bool m) { muted = m; }
+bool audio_is_muted(void) { return muted; }
+
 void give_audio_buffer(struct audio_buffer_pool *pool, audio_buffer_t *buffer)
 {
     (void)pool;
     size_t bytes = buffer->sample_count * frame_bytes, written = 0;
+    if (muted) memset(buffer->buffer->bytes, 0, bytes);   /* same number of samples, so the DAC still paces the mixer */
     i2s_channel_write(tx, buffer->buffer->bytes, bytes, &written, 0);
     bytes_written += written;
     if (written != bytes) { static int warned; if (warned++ < 3) ESP_LOGW(TAG, "short write %u/%u", (unsigned)written, (unsigned)bytes); }

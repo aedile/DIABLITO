@@ -21,6 +21,7 @@
 #include "ble_pad.h"
 #include "driver/usb_serial_jtag.h"
 #include "display.h"
+#include "nvs.h"
 #include "esp_vfs_usb_serial_jtag.h"
 
 float mouse_acceleration = 2.0;
@@ -78,24 +79,39 @@ static void post_set(uint32_t vk, int type)
     }
 }
 
+// Mute: BOOT held 3 s, remembered in NVS (medal/mute), announced on Doom's own HUD line.
+void audio_set_mute(bool m); bool audio_is_muted(void);
+static void set_mute(bool m, bool announce)
+{
+    audio_set_mute(m);
+    nvs_handle_t h;
+    if (nvs_open("medal", NVS_READWRITE, &h) == ESP_OK) { nvs_set_u8(h, "mute", m); nvs_commit(h); nvs_close(h); }
+    printf("sound %s\n", m ? "muted" : "unmuted");
+    if (announce) players[consoleplayer].message = m ? "SOUND MUTED" : "SOUND ON";
+}
+
 // PWR is edge-classified on release (tap) or the moment the hold threshold passes (hold), each
 // as a one-frame virtual key press so Doom sees a clean down/up pair.
-static uint32_t medal_vkeys(void)
+static uint32_t medal_vkeys(bool serial_boot)   // serial_boot: the bench pad's BOOT key counts as held too
 {
     static int64_t pwr_down_since;
     static bool pwr_hold_fired, armed[2];
     static uint32_t pulse;                    // one-shot bits to release next call
     uint32_t vk = 0;
     int64_t now = esp_timer_get_time();
-    bool boot = gpio_get_level(PIN_BTN_BOOT) == 0, pwr = gpio_get_level(PIN_BTN_PWR) == 0;
+    bool boot = gpio_get_level(PIN_BTN_BOOT) == 0 || serial_boot, pwr = gpio_get_level(PIN_BTN_PWR) == 0;
     // a button still held from power-on must be released once before it counts (medal.c does the same)
     if (!armed[0]) { if (!boot) armed[0] = true; boot = false; }
     if (!armed[1]) { if (!pwr) armed[1] = true; pwr = false; }
     if (boot) vk |= VK_MEDAL_BOOT;
-    // BOOT held 10 s: forget the paired controller and open pairing (NESTOR's escape hatch)
-    static int64_t boot_down_since; static bool boot_forgot;
-    if (boot && !boot_down_since) { boot_down_since = now; boot_forgot = false; }
+    // BOOT held 3 s: toggle mute (persisted); held 10 s: forget the paired controller and open pairing
+    static int64_t boot_down_since; static bool boot_forgot, boot_muted;
+    if (boot && !boot_down_since) { boot_down_since = now; boot_forgot = boot_muted = false; }
     if (!boot) boot_down_since = 0;
+    if (boot && !boot_muted && now - boot_down_since >= 3000000) {
+        boot_muted = true;
+        set_mute(!audio_is_muted(), true);
+    }
     if (boot && !boot_forgot && now - boot_down_since >= 10000000) {
         boot_forgot = true;
         ble_pad_forget(); ble_pad_scan_any(true);
@@ -135,6 +151,10 @@ void I_InputInit(void)
 {
     key_prevweapon = '[';
     key_nextweapon = ']';
+    nvs_handle_t h; uint8_t m = 0;
+    if (nvs_open("medal", NVS_READONLY, &h) == ESP_OK) { nvs_get_u8(h, "mute", &m); nvs_close(h); }
+    audio_set_mute(m);
+    if (m) printf("sound muted (NVS medal/mute)\n");
     usb_serial_jtag_driver_config_t usb = USB_SERIAL_JTAG_DRIVER_CONFIG_DEFAULT();
     usb_serial_jtag_driver_install(&usb);
     esp_vfs_usb_serial_jtag_use_driver();   // console printf must go through the same driver, or the two fight over the FIFO and hang
@@ -230,7 +250,8 @@ static void idle_sleep_if_due(uint32_t vk)
 
 void I_GetEvent(void)
 {
-    uint32_t vk = ble_pad_buttons() | stick_vkeys() | medal_vkeys() | serial_vkeys();
+    uint32_t serial = serial_vkeys();
+    uint32_t vk = ble_pad_buttons() | stick_vkeys() | medal_vkeys(serial & VK_MEDAL_BOOT) | serial;
     idle_sleep_if_due(vk);
     if (gamestate == GS_LEVEL && !menuactive && !demoplayback && (vk & (PAD_LEFT | PAD_RIGHT))) {
         // d-pad left/right strafe in a level; the right stick turns. In menus they stay arrows.

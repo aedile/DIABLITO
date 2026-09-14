@@ -1,0 +1,794 @@
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0x15 (USB_UART_HPSYS),boot:0x2c (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40815600
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875720,len:0x1a5c
+load:0x4086c110,len:0xf58
+load:0x4086e610,len:0x3074
+entry 0x4086c11a
+[0;32mI (23) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (23) boot: compile time Sep 14 2026 20:53:10[0m
+[0;32mI (23) boot: chip revision: v0.2[0m
+[0;32mI (24) boot: efuse block revision: v0.3[0m
+[0;32mI (24) qio_mode: Enabling QIO for flash chip WinBond[0m
+[0;32mI (24) boot.esp32c6: SPI Speed      : 80MHz[0m
+[0;32mI (25) boot.esp32c6: SPI Mode       : QIO[0m
+[0;32mI (25) boot.esp32c6: SPI Flash Size : 16MB[0m
+[0;32mI (25) boot: Enabling RNG early entropy source...[0m
+[0;32mI (26) boot: Partition Table:[0m
+[0;32mI (26) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (26) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (27) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (27) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (28) boot:  3 wad              Unknown data     01 40 00210000 00400000[0m
+[0;32mI (29) boot:  4 saves            WiFi data        01 02 00610000 00020000[0m
+[0;32mI (29) boot: End of partition table[0m
+[0;32mI (29) esp_image: segment 0: paddr=00010020 vaddr=420c0020 size=31e30h (204336) map[0m
+[0;32mI (67) esp_image: segment 1: paddr=00041e58 vaddr=40800000 size=0e1c0h ( 57792) load[0m
+[0;32mI (80) esp_image: segment 2: paddr=00050020 vaddr=42000020 size=b4b0ch (740108) map[0m
+[0;32mI (213) esp_image: segment 3: paddr=00104b34 vaddr=4080e1c0 size=08d28h ( 36136) load[0m
+[0;32mI (221) esp_image: segment 4: paddr=0010d864 vaddr=40816ef0 size=03414h ( 13332) load[0m
+[0;32mI (224) esp_image: segment 5: paddr=00110c80 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (230) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (231) boot: Disabling RNG early entropy source...[0m
+[0;32mI (232) cpu_start: Unicore app[0m
+[0;32mI (241) cpu_start: Pro cpu start user code[0m
+[0;32mI (241) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (241) app_init: Application information:[0m
+[0;32mI (241) app_init: Project name:     diablito[0m
+[0;32mI (241) app_init: App version:      86f3937-dirty[0m
+[0;32mI (242) app_init: Compile time:     Sep 14 2026 23:52:19[0m
+[0;32mI (242) app_init: ELF file SHA256:  a759749f8...[0m
+[0;32mI (242) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (242) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (243) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (243) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (243) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (244) heap_init: At 40834E10 len 00047800 (286 KiB): RAM[0m
+[0;32mI (244) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (244) heap_init: At 50000004 len 00003FE4 (15 KiB): RTCRAM[0m
+[0;32mI (245) spi_flash: detected chip: generic[0m
+[0;32mI (245) spi_flash: flash io: qio[0m
+[0;33mW (246) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (246) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (247) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (247) coexist: coex firmware version: a13b09d[0m
+[0;32mI (247) coexist: coexist rom version 5b8dcfa[0m
+[0;32mI (248) main_task: Started on CPU0[0m
+[0;32mI (248) main_task: Calling app_main()[0m
+[0;32mI (248) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (248) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (248) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (249) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (249) DIABLITO: DIABLITO skeleton, IDF v5.3.4, CPU 160 MHz[0m
+[0;32mI (249) DIABLITO: heap at boot: free 289908, largest block 262144, min ever 289908, dma-capable 275308[0m
+[0;32mI (250) gpio: GPIO[3]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (250) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (754) DISPLAY: ST7789 up: 240x280 portrait, SPI 80 MHz, 2 x 7680 B DMA strips[0m
+[0;32mI (754) DIABLITO: heap after display: free 273008, largest block 245760, min ever 273008, dma-capable 258408[0m
+[0;32mI (2270) DIABLITO: wad partition @0x210000 size 4194304: magic IWHD, 1264 lumps, infotable @36, file 2073676 bytes[0m
+[0;32mI (2270) DIABLITO: WHD mapped at 0x42100000, header via mmap: IWHD ·©ÔUDOOM1[0m
+[0;32mI (2270) DIABLITO: heap after wad mmap: free 272376, largest block 245760, min ever 272376, dma-capable 257776[0m
+[0;32mI (2271) DIABLITO: main task stack high-water: 14872 bytes free[0m
+[0;32mI (2271) DIABLITO: .bss ends at 0x40834e10 (short-pointer window ends at 0x40840000, 45552 bytes spare)[0m
+[0;32mI (2272) DIABLITO: heap before BLE: free 272376, largest block 245760, min ever 272376, dma-capable 257776[0m
+[0;32mI (2286) DIABLITO: previous run (boot 1) lasted 122 s (2 min), last battery 4152 mV[0m
+[0;32mI (2286) DIABLITO: idle sleep after 0 s in attract (NVS medal/idle_s)[0m
+[0;32mI (2287) BLE_INIT: Using main XTAL as clock source, chip ver: 2[0m
+[0;32mI (2287) BLE_INIT: ble controller commit:[ca6c20b][0m
+[0;32mI (2291) BLE_INIT: Bluetooth MAC: fc:01:2c:fd:fd:c6[0m
+[0;32mI (2292) phy_init: phy_version 341,a6c8fe6,Jul 30 2025,18:34:11[0m
+[0;32mI (2385) phy: libbtbb version: a945109, Jul 30 2025, 18:34:25[0m
+[0;32mI (2392) PAD: init, saved controller: yes[0m
+[0;32mI (2593) DIABLITO: heap after BLE init: free 233516, largest block 204800, min ever 233380, dma-capable 218916[0m
+[0;32mI (2593) DIABLITO: starting Doom[0m
+                          DIABLITO Doom 3.0.0
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0x408224b8, 10000 allocated for zone
+M_LoadDefaults: Load system defaults.
+W_Init: Init WADfiles.
+===========================================================================
+                            DOOM Shareware
+===========================================================================
+ DIABLITO Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+[0;32mI (2645) AUDIO: ES8311 + I2S: 22050 Hz, 2 ch, ring 8192 bytes (92 ms)[0m
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - .........
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+frame 2: 29200 us total, 10180 us display, type 4
+frame 3: 11716 us total, 10138 us display, type 4
+frame 4: 28688 us total, 10116 us display, type 4
+frame 5: 28035 us total, 10116 us display, type 4
+frame 6: 28991 us total, 10120 us display, type 4
+frame 7: 29042 us total, 10116 us display, type 4
+frame 8: 28039 us total, 10134 us display, type 4
+frame 9: 28873 us total, 10116 us display, type 4
+frame 10: 28045 us total, 10116 us display, type 4
+frame 11: 28974 us total, 10116 us display, type 4
+frame 12: 27986 us total, 10116 us display, type 4
+frame 13: 29019 us total, 10123 us display, type 4
+frame 14: 29118 us total, 10253 us display, type 4
+frame 15: 27942 us total, 10116 us display, type 4
+frame 16: 28936 us total, 10116 us display, type 4
+frame 17: 28016 us total, 10116 us display, type 4
+frame 18: 28989 us total, 10116 us display, type 4
+frame 19: 27977 us total, 10116 us display, type 4
+frame 20: 29022 us total, 10117 us display, type 4
+frame 21: 29191 us total, 10287 us display, type 4
+frame 22: 27861 us total, 10116 us display, type 4
+frame 23: 28956 us total, 10116 us display, type 4
+frame 24: 28017 us total, 10116 us display, type 4
+frame 25: 28934 us total, 10116 us display, type 4
+frame 26: 28059 us total, 10116 us display, type 4
+frame 27: 28940 us total, 10116 us display, type 4
+[0;32mI (3444) PAD: found  78:86:2e:8f:59:f6 rssi -49[0m
+frame 28: 30000 us total, 10152 us display, type 4
+frame 29: 27083 us total, 10116 us display, type 4
+frame 30: 28941 us total, 10116 us display, type 4
+frame 31: 28034 us total, 10116 us display, type 4
+frame 32: 29291 us total, 10185 us display, type 4
+frame 33: 27713 us total, 10116 us display, type 4
+[0;32mI (3602) NimBLE: Connection established [0m
+[0;32mI (3603) NIMBLE_HIDH: pairing for encrypted link (rc=0)[0m
+frame 34: 29260 us total, 10158 us display, type 4
+frame 35: 30090 us total, 11522 us display, type 4
+frame 36: 26852 us total, 10130 us display, type 4
+[0;32mI (3701) NimBLE: mtu update event; conn_handle=0 cid=4 mtu=23
+[0m
+frame 37: 28960 us total, 10146 us display, type 4
+frame 38: 27784 us total, 10116 us display, type 4
+frame 39: 29210 us total, 10151 us display, type 4
+frame 40: 27798 us total, 10116 us display, type 4
+frame 41: 29083 us total, 10136 us display, type 4
+[0;32mI (3852) NIMBLE_HIDH: encryption change: status=0[0m
+frame 42: 30535 us total, 11710 us display, type 4
+frame 43: 26632 us total, 10128 us display, type 4
+frame 44: 29361 us total, 10154 us display, type 4
+frame 45: 27428 us total, 10116 us display, type 4
+[0;32mI (3951) NIMBLE_HIDH: service 0x1800 handles 1-7[0m
+[0;32mI (3952) NIMBLE_HIDH: service 0x1801 handles 8-8[0m
+[0;32mI (3952) NIMBLE_HIDH: service 0x180a handles 9-17[0m
+frame 46: 29218 us total, 10144 us display, type 4
+frame 47: 27776 us total, 10116 us display, type 4
+frame 48: 29138 us total, 10145 us display, type 4
+[0;32mI (4051) NIMBLE_HIDH: service 0x180f handles 18-21[0m
+[0;32mI (4052) NIMBLE_HIDH: service 0x1812 handles 22-35[0m
+frame 49: 30135 us total, 11383 us display, type 4
+frame 50: 26950 us total, 10132 us display, type 4
+frame 51: 28911 us total, 10145 us display, type 4
+frame 52: 27877 us total, 10116 us display, type 4
+[0;32mI (4151) NIMBLE_HIDH: service 00000001-5f60-4c4f-9c83-a7953298d40d handles 36-42[0m
+frame 53: 29172 us total, 10151 us display, type 4
+frame 54: 27822 us total, 10116 us display, type 4
+frame 55: 29185 us total, 10144 us display, type 4
+frame 56: 29588 us total, 10937 us display, type 4
+frame 57: 27471 us total, 10145 us display, type 4
+frame 58: 29428 us total, 10809 us display, type 4
+frame 59: 27569 us total, 10141 us display, type 4
+frame 60: 29013 us total, 10154 us display, type 4
+[0;32mI (4372) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 61: 27957 us total, 10159 us display, type 4
+[0;32mI (4402) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (4402) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 62: 29104 us total, 10160 us display, type 4
+frame 63: 29302 us total, 10528 us display, type 4
+frame 64: 28357 us total, 10980 us display, type 4
+frame 65: 29083 us total, 10942 us display, type 4
+frame 66: 27663 us total, 10677 us display, type 4
+[0;32mI (4566) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (4567) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 67: 29744 us total, 11356 us display, type 4
+[0;32mI (4596) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (4597) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 68: 27912 us total, 11274 us display, type 4
+[0;32mI (4626) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (4627) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 69: 28925 us total, 11247 us display, type 4
+frame 70: 28587 us total, 10787 us display, type 4
+frame 71: 27320 us total, 10149 us display, type 4
+frame 72: 29038 us total, 10149 us display, type 4
+frame 73: 28344 us total, 10520 us display, type 4
+frame 74: 28943 us total, 10489 us display, type 4
+frame 75: 28210 us total, 10642 us display, type 4
+frame 76: 29162 us total, 10803 us display, type 4
+[0;32mI (4836) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 77: 28338 us total, 10197 us display, type 4
+[0;32mI (4866) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 78: 28494 us total, 10648 us display, type 4
+[0;32mI (4896) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 79: 28825 us total, 10511 us display, type 4
+[0;32mI (4926) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 80: 27686 us total, 10145 us display, type 4
+[0;32mI (4956) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 81: 29000 us total, 10151 us display, type 4
+[0;32mI (4986) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 82: 27955 us total, 10152 us display, type 4
+[0;32mI (5016) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 83: 29380 us total, 10157 us display, type 4
+[0;32mI (5046) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 84: 29620 us total, 11207 us display, type 4
+[0;32mI (5076) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 85: 27995 us total, 11088 us display, type 4
+[0;32mI (5106) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 86: 28838 us total, 10941 us display, type 4
+[0;32mI (5136) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 87: 27956 us total, 10930 us display, type 4
+[0;32mI (5166) NimBLE: Read complete; status=0 conn_handle=0[0m
+frame 88: 29231 us total, 11131 us display, type 4
+[0;32mI (5196) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (5197) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 89: 28084 us total, 11250 us display, type 4
+frame 90: 28632 us total, 10842 us display, type 4
+[0;32mI (5256) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (5257) NimBLE: Read complete; status=14 conn_handle=0[0m
+frame 91: 29462 us total, 11289 us display, type 4
+frame 92: 26800 us total, 10146 us display, type 4
+frame 93: 29090 us total, 10172 us display, type 4
+[0;32mI (5316) NimBLE: Read complete; status=0 conn_handle=0[0m
+[0;32mI (5317) NimBLE: Read complete; status=14 conn_handle=0[0m
+[0;32mI (5318) NIMBLE_HIDH: attaching listeners, battery handle 20 ccc 21[0m
+[0;32mI (5319) PAD: report map: 22 input fields[0m
+[0;32mI (5319) PAD:   field rid 1 page 1 usage 0x30 bits 16 @0 logical 0..65535[0m
+[0;32mI (5319) PAD:   field rid 1 page 1 usage 0x31 bits 16 @16 logical 0..65535[0m
+[0;32mI (5320) PAD:   field rid 1 page 1 usage 0x32 bits 16 @32 logical 0..65535[0m
+[0;32mI (5320) PAD:   field rid 1 page 1 usage 0x35 bits 16 @48 logical 0..65535[0m
+[0;32mI (5320) PAD:   field rid 1 page 2 usage 0xc5 bits 10 @64 logical 0..1023[0m
+[0;32mI (5321) PAD:   field rid 1 page 2 usage 0xc4 bits 10 @80 logical 0..1023[0m
+[0;32mI (5321) PAD:   field rid 1 page 1 usage 0x39 bits 4 @96 logical 1..8[0m
+[0;32mI (5321) PAD:   field rid 1 page 9 usage 0x01 bits 1 @104 logical 0..1[0m
+[0;32mI (5322) PAD:   field rid 1 page 9 usage 0x02 bits 1 @105 logical 0..1[0m
+[0;32mI (5322) PAD:   field rid 1 page 9 usage 0x03 bits 1 @106 logical 0..1[0m
+[0;32mI (5322) PAD:   field rid 1 page 9 usage 0x04 bits 1 @107 logical 0..1[0m
+[0;32mI (5323) PAD:   field rid 1 page 9 usage 0x05 bits 1 @108 logical 0..1[0m
+[0;32mI (5323) PAD:   field rid 1 page 9 usage 0x06 bits 1 @109 logical 0..1[0m
+[0;32mI (5323) PAD:   field rid 1 page 9 usage 0x07 bits 1 @110 logical 0..1[0m
+[0;32mI (5324) PAD:   field rid 1 page 9 usage 0x08 bits 1 @111 logical 0..1[0m
+[0;32mI (5324) PAD:   field rid 1 page 9 usage 0x09 bits 1 @112 logical 0..1[0m
+[0;32mI (5324) PAD:   field rid 1 page 9 usage 0x0a bits 1 @113 logical 0..1[0m
+[0;32mI (5324) PAD:   field rid 1 page 9 usage 0x0b bits 1 @114 logical 0..1[0m
+[0;32mI (5325) PAD:   field rid 1 page 9 usage 0x0c bits 1 @115 logical 0..1[0m
+[0;32mI (5325) PAD:   field rid 1 page 9 usage 0x0d bits 1 @116 logical 0..1[0m
+[0;32mI (5325) PAD:   field rid 1 page 9 usage 0x0e bits 1 @117 logical 0..1[0m
+[0;32mI (5326) PAD:   field rid 1 page 9 usage 0x0f bits 1 @118 logical 0..1[0m
+[0;32mI (5326) PAD:   rid 1 page 1 usage 30 bit 0 size 16 [0..65535][0m
+[0;32mI (5326) PAD:   rid 1 page 1 usage 31 bit 16 size 16 [0..65535][0m
+[0;32mI (5327) PAD:   rid 1 page 1 usage 32 bit 32 size 16 [0..65535][0m
+[0;32mI (5327) PAD:   rid 1 page 1 usage 35 bit 48 size 16 [0..65535][0m
+[0;32mI (5327) PAD:   rid 1 page 2 usage c5 bit 64 size 10 [0..1023][0m
+[0;32mI (5328) PAD:   rid 1 page 2 usage c4 bit 80 size 10 [0..1023][0m
+[0;32mI (5328) PAD:   rid 1 page 1 usage 39 bit 96 size 4 [1..8][0m
+[0;32mI (5328) PAD:   rid 1 page 9 usage 1 bit 104 size 1 [0..1][0m
+[0;32mI (5328) PAD:   rid 1 page 9 usage 2 bit 105 size 1 [0..1][0m
+[0;32mI (5329) PAD:   rid 1 page 9 usage 3 bit 106 size 1 [0..1][0m
+[0;32mI (5329) PAD:   rid 1 page 9 usage 4 bit 107 size 1 [0..1][0m
+[0;32mI (5329) PAD:   rid 1 page 9 usage 5 bit 108 size 1 [0..1][0m
+[0;32mI (5330) PAD:   rid 1 page 9 usage 6 bit 109 size 1 [0..1][0m
+[0;32mI (5330) PAD:   rid 1 page 9 usage 7 bit 110 size 1 [0..1][0m
+[0;32mI (5330) PAD:   rid 1 page 9 usage 8 bit 111 size 1 [0..1][0m
+[0;32mI (5330) PAD:   rid 1 page 9 usage 9 bit 112 size 1 [0..1][0m
+[0;32mI (5331) PAD:   rid 1 page 9 usage a bit 113 size 1 [0..1][0m
+[0;32mI (5331) PAD:   rid 1 page 9 usage b bit 114 size 1 [0..1][0m
+[0;32mI (5331) PAD:   rid 1 page 9 usage c bit 115 size 1 [0..1][0m
+[0;32mI (5332) PAD:   rid 1 page 9 usage d bit 116 size 1 [0..1][0m
+[0;32mI (5333) PAD:   rid 1 page 9 usage e bit 117 size 1 [0..1][0m
+[0;32mI (5333) PAD:   rid 1 page 9 usage f bit 118 size 1 [0..1][0m
+[0;32mI (5333) PAD: connected: Xbox Wireless Controller[0m
+gamepad connected: Xbox Wireless Controller
+frame 94: 31476 us total, 10168 us display, type 4
+[0;32mI (5346) NimBLE: Subscribe complete; status=259 conn_handle=0 attr_handle=20
+[0m
+frame 95: 25924 us total, 10660 us display, type 4
+[0;32mI (5376) NIMBLE_HIDH: write complete; status=0 attr_handle=21[0m
+[0;32mI (5376) NIMBLE_HIDH: report id 3 type 2 mode 1 perms 0xe handle 34 ccc 0[0m
+[0;32mI (5377) NIMBLE_HIDH: report id 1 type 1 mode 1 perms 0x12 handle 30 ccc 31[0m
+frame 96: 28213 us total, 10775 us display, type 4
+[0;32mI (5406) NimBLE: Subscribe complete; status=259 conn_handle=0 attr_handle=30
+[0m
+[0;32mI (5406) NIMBLE_HIDH:   notify registered[0m
+frame 97: 28798 us total, 10644 us display, type 4
+[0;32mI (5436) NIMBLE_HIDH: write complete; status=0 attr_handle=31[0m
+[0;32mI (5436) NIMBLE_HIDH:   ccc written[0m
+[0;32mI (5437) NIMBLE_HIDH: listeners attached[0m
+frame 98: 28819 us total, 10431 us display, type 4
+frame 99: 27873 us total, 10375 us display, type 4
+frame 100: 28928 us total, 10346 us display, type 4
+frame 101: 28421 us total, 10724 us display, type 4
+frame 102: 28385 us total, 10136 us display, type 4
+frame 103: 28031 us total, 10142 us display, type 4
+frame 104: 29017 us total, 10142 us display, type 4
+frame 105: 29074 us total, 10141 us display, type 4
+frame 106: 27921 us total, 10138 us display, type 4
+frame 107: 29069 us total, 10213 us display, type 4
+frame 108: 27748 us total, 10125 us display, type 4
+frame 109: 29031 us total, 10123 us display, type 4
+frame 110: 27960 us total, 10123 us display, type 4
+frame 111: 29039 us total, 10124 us display, type 4
+frame 112: 29000 us total, 10124 us display, type 4
+frame 113: 27966 us total, 10128 us display, type 4
+frame 114: 29031 us total, 10129 us display, type 4
+frame 115: 28048 us total, 10135 us display, type 4
+frame 116: 28956 us total, 10128 us display, type 4
+frame 117: 27999 us total, 10124 us display, type 4
+frame 118: 28961 us total, 10123 us display, type 4
+frame 119: 29039 us total, 10124 us display, type 4
+frame 120: 28000 us total, 10124 us display, type 4
+frame 121: 28961 us total, 10123 us display, type 4
+frame 122: 28039 us total, 10124 us display, type 4
+frame 123: 28966 us total, 10128 us display, type 4
+frame 124: 28031 us total, 10129 us display, type 4
+frame 125: 29008 us total, 10129 us display, type 4
+frame 126: 29022 us total, 10129 us display, type 4
+frame 127: 27977 us total, 10128 us display, type 4
+profile (avg of 128 frames, ms): logic+bsp 0.1 wait-fb 0.0 vp-mark 0.0 flats 0.0 columns 0.0 fuzz 0.0
+frame 128: 29579 us total, 10134 us display, type 4
+frame 129: 27420 us total, 10123 us display, type 4
+frame 130: 28997 us total, 10124 us display, type 4
+frame 131: 27981 us total, 10129 us display, type 4
+frame 132: 29023 us total, 10124 us display, type 4
+frame 133: 28996 us total, 10124 us display, type 4
+frame 134: 27966 us total, 10128 us display, type 4
+frame 135: 29031 us total, 10129 us display, type 4
+frame 136: 28041 us total, 10128 us display, type 4
+frame 137: 28963 us total, 10128 us display, type 4
+frame 138: 27999 us total, 10124 us display, type 4
+frame 139: 28961 us total, 10123 us display, type 4
+frame 140: 29039 us total, 10124 us display, type 4
+frame 141: 27968 us total, 10130 us display, type 4
+frame 142: 29032 us total, 10123 us display, type 4
+frame 143: 28000 us total, 10124 us display, type 4
+frame 144: 28966 us total, 10128 us display, type 4
+frame 145: 28031 us total, 10129 us display, type 4
+frame 146: 29009 us total, 10130 us display, type 4
+frame 147: 29020 us total, 10129 us display, type 4
+frame 148: 27978 us total, 10128 us display, type 4
+frame 149: 28964 us total, 10130 us display, type 4
+frame 150: 28032 us total, 10123 us display, type 4
+frame 151: 29000 us total, 10124 us display, type 4
+frame 152: 27968 us total, 10123 us display, type 4
+frame 153: 29032 us total, 10124 us display, type 4
+frame 154: 28968 us total, 10130 us display, type 4
+frame 155: 28037 us total, 10129 us display, type 4
+frame 156: 28992 us total, 10129 us display, type 4
+frame 157: 28041 us total, 10128 us display, type 4
+frame 158: 28963 us total, 10128 us display, type 4
+frame 159: 27999 us total, 10124 us display, type 4
+frame 160: 28961 us total, 10123 us display, type 4
+frame 161: 29039 us total, 10124 us display, type 4
+frame 162: 27961 us total, 10123 us display, type 4
+frame 163: 29039 us total, 10124 us display, type 4
+frame 164: 28000 us total, 10124 us display, type 4
+frame 165: 28966 us total, 10128 us display, type 4
+frame 166: 28042 us total, 10132 us display, type 4
+frame 167: 28962 us total, 10129 us display, type 4
+frame 168: 29107 us total, 10139 us display, type 4
+frame 169: 57900 us total, 12550 us display, type 5
+frame 170: 13170 us total, 12407 us display, type 5
+frame 171: 12860 us total, 12373 us display, type 5
+frame 172: 12922 us total, 12387 us display, type 5
+frame 173: 12755 us total, 12264 us display, type 5
+frame 174: 12886 us total, 12265 us display, type 5
+frame 175: 12839 us total, 12358 us display, type 5
+frame 176: 12921 us total, 12367 us display, type 5
+frame 177: 12861 us total, 12348 us display, type 5
+frame 178: 12904 us total, 12358 us display, type 5
+frame 179: 12854 us total, 12347 us display, type 5
+frame 180: 12749 us total, 12234 us display, type 5
+frame 181: 12851 us total, 12232 us display, type 5
+frame 182: 12834 us total, 12326 us display, type 5
+frame 183: 12874 us total, 12335 us display, type 5
+frame 184: 12839 us total, 12313 us display, type 5
+frame 185: 12863 us total, 12329 us display, type 5
+frame 186: 12836 us total, 12306 us display, type 5
+frame 187: 12725 us total, 12194 us display, type 5
+frame 188: 12824 us total, 12182 us display, type 5
+frame 189: 12774 us total, 12266 us display, type 5
+frame 190: 12845 us total, 12285 us display, type 5
+frame 191: 12781 us total, 12269 us display, type 5
+frame 192: 12824 us total, 12276 us display, type 5
+frame 193: 12759 us total, 12246 us display, type 5
+frame 194: 12692 us total, 12131 us display, type 5
+frame 195: 12743 us total, 12234 us display, type 5
+frame 196: 12797 us total, 12239 us display, type 5
+frame 197: 12726 us total, 12213 us display, type 5
+frame 198: 12767 us total, 12209 us display, type 5
+frame 199: 12733 us total, 12219 us display, type 5
+frame 200: 12614 us total, 12083 us display, type 5
+frame 201: 20755 us total, 12471 us display, type 5
+frame 202: 12883 us total, 12189 us display, type 5
+frame 203: 12689 us total, 12171 us display, type 5
+frame 204: 12555 us total, 12049 us display, type 5
+frame 205: 12675 us total, 12149 us display, type 5
+frame 206: 12672 us total, 12144 us display, type 5
+frame 207: 12652 us total, 12141 us display, type 5
+frame 208: 12670 us total, 12134 us display, type 5
+frame 209: 13786 us total, 12240 us display, type 5
+frame 210: 12670 us total, 12122 us display, type 5
+frame 211: 12559 us total, 11996 us display, type 5
+frame 212: 12627 us total, 12110 us display, type 5
+frame 213: 12584 us total, 12078 us display, type 5
+frame 214: 12644 us total, 12092 us display, type 5
+frame 215: 12586 us total, 12070 us display, type 5
+frame 216: 12635 us total, 12076 us display, type 5
+frame 217: 12483 us total, 11953 us display, type 5
+frame 218: 12605 us total, 11943 us display, type 5
+frame 219: 12552 us total, 12048 us display, type 5
+frame 220: 12556 us total, 12049 us display, type 5
+frame 221: 12546 us total, 12028 us display, type 5
+frame 222: 12552 us total, 12024 us display, type 5
+frame 223: 12443 us total, 11913 us display, type 5
+frame 224: 12542 us total, 11910 us display, type 5
+frame 225: 12532 us total, 12013 us display, type 5
+frame 226: 12522 us total, 12005 us display, type 5
+frame 227: 12545 us total, 12018 us display, type 5
+frame 228: 12521 us total, 11999 us display, type 5
+frame 229: 12525 us total, 11998 us display, type 5
+frame 230: 12400 us total, 11890 us display, type 5
+frame 231: 12476 us total, 11983 us display, type 5
+frame 232: 12525 us total, 11996 us display, type 5
+frame 233: 12493 us total, 11988 us display, type 5
+frame 234: 12522 us total, 12001 us display, type 5
+frame 235: 12369 us total, 11879 us display, type 5
+frame 236: 12504 us total, 11881 us display, type 5
+frame 237: 12553 us total, 12064 us display, type 5
+frame 238: 12509 us total, 12006 us display, type 5
+frame 239: 12508 us total, 12000 us display, type 5
+frame 240: 12480 us total, 11984 us display, type 5
+frame 241: 12388 us total, 11878 us display, type 5
+frame 242: 10592 us total, 9875 us display, type 3
+frame 243: 27125 us total, 10092 us display, type 3
+frame 244: 23624 us total, 10223 us display, type 3
+frame 245: 22994 us total, 9894 us display, type 3
+frame 246: 23599 us total, 10033 us display, type 3
+frame 247: 23878 us total, 9903 us display, type 3
+frame 248: 25802 us total, 10046 us display, type 3
+frame 249: 27351 us total, 9904 us display, type 3
+frame 250: 28835 us total, 9912 us display, type 3
+frame 251: 29115 us total, 10154 us display, type 3
+frame 252: 28955 us total, 10172 us display, type 3
+frame 253: 28656 us total, 10062 us display, type 3
+frame 254: 27876 us total, 9899 us display, type 3
+frame 255: 28815 us total, 9893 us display, type 3
+profile (avg of 128 frames, ms): logic+bsp 1.0 wait-fb 0.0 vp-mark 0.4 flats 1.1 columns 0.5 fuzz 0.0
+frame 256: 28666 us total, 9897 us display, type 3
+audio: 69 underruns, 81 ms queued
+mem @frame 256: heap free 49092, largest 23552, min ever 48596, zone free 41244, display stack free 4380, uptime 8 s, gamestate 0, demo 1, usergame 0, tic 189
+frame 257: 30246 us total, 9896 us display, type 3
+frame 258: 27291 us total, 9893 us display, type 3
+frame 259: 27597 us total, 9961 us display, type 3
+frame 260: 28519 us total, 9896 us display, type 3
+frame 261: 28372 us total, 10015 us display, type 3
+frame 262: 29390 us total, 9950 us display, type 3
+frame 263: 28233 us total, 9947 us display, type 3
+frame 264: 27489 us total, 9892 us display, type 3
+frame 265: 28584 us total, 9902 us display, type 3
+frame 266: 27796 us total, 9892 us display, type 3
+frame 267: 29280 us total, 9905 us display, type 3
+frame 268: 27653 us total, 9888 us display, type 3
+frame 269: 28528 us total, 9888 us display, type 3
+frame 270: 28747 us total, 10130 us display, type 3
+frame 271: 28726 us total, 9890 us display, type 3
+frame 272: 30582 us total, 10001 us display, type 3
+frame 273: 28973 us total, 10180 us display, type 3
+frame 274: 28645 us total, 10002 us display, type 3
+frame 275: 28755 us total, 9897 us display, type 3
+frame 276: 28993 us total, 9899 us display, type 3
+frame 277: 28213 us total, 9895 us display, type 3
+frame 278: 27150 us total, 9907 us display, type 3
+frame 279: 27642 us total, 9894 us display, type 3
+frame 280: 28368 us total, 9899 us display, type 3
+frame 281: 27616 us total, 9887 us display, type 3
+frame 282: 28737 us total, 10472 us display, type 3
+frame 283: 27617 us total, 9892 us display, type 3
+frame 284: 27205 us total, 9884 us display, type 3
+frame 285: 27279 us total, 9880 us display, type 3
+frame 286: 28204 us total, 9880 us display, type 3
+frame 287: 28048 us total, 9934 us display, type 3
+frame 288: 27579 us total, 10033 us display, type 3
+frame 289: 27198 us total, 9878 us display, type 3
+frame 290: 29706 us total, 9877 us display, type 3
+frame 291: 27214 us total, 9874 us display, type 3
+frame 292: 29597 us total, 9885 us display, type 3
+frame 293: 28161 us total, 9887 us display, type 3
+frame 294: 27318 us total, 9875 us display, type 3
+frame 295: 28485 us total, 9887 us display, type 3
+frame 296: 27782 us total, 9869 us display, type 3
+frame 297: 28067 us total, 9883 us display, type 3
+frame 298: 27704 us total, 9885 us display, type 3
+frame 299: 28628 us total, 9876 us display, type 3
+frame 300: 29863 us total, 9879 us display, type 3
+frame 301: 28838 us total, 9874 us display, type 3
+frame 302: 27388 us total, 9880 us display, type 3
+frame 303: 29029 us total, 10127 us display, type 3
+input: down 0x10000
+frame 304: 30346 us total, 9880 us display, type 3
+frame 305: 26611 us total, 9880 us display, type 3
+frame 306: 30618 us total, 10015 us display, type 3
+frame 307: 27527 us total, 9883 us display, type 3
+frame 308: 29668 us total, 10065 us display, type 3
+frame 309: 29044 us total, 9888 us display, type 3
+frame 310: 28956 us total, 9884 us display, type 3
+frame 311: 31995 us total, 10113 us display, type 3
+frame 312: 29190 us total, 9881 us display, type 3
+frame 313: 27393 us total, 9876 us display, type 3
+frame 314: 30912 us total, 9896 us display, type 3
+frame 315: 29866 us total, 9891 us display, type 3
+frame 316: 27755 us total, 9913 us display, type 3
+frame 317: 29731 us total, 9887 us display, type 3
+frame 318: 27782 us total, 10133 us display, type 3
+frame 319: 29198 us total, 9894 us display, type 3
+frame 320: 29367 us total, 9891 us display, type 3
+frame 321: 29240 us total, 9908 us display, type 3
+frame 322: 31674 us total, 9931 us display, type 3
+frame 323: 28272 us total, 9903 us display, type 3
+frame 324: 26683 us total, 9910 us display, type 3
+frame 325: 32661 us total, 9906 us display, type 3
+frame 326: 25783 us total, 9992 us display, type 3
+frame 327: 30745 us total, 10102 us display, type 3
+frame 328: 31013 us total, 9908 us display, type 3
+frame 329: 25956 us total, 9898 us display, type 3
+frame 330: 30010 us total, 9908 us display, type 3
+frame 331: 25792 us total, 9899 us display, type 3
+frame 332: 31170 us total, 9901 us display, type 3
+frame 333: 28477 us total, 10259 us display, type 3
+frame 334: 25776 us total, 10131 us display, type 3
+frame 335: 31614 us total, 10140 us display, type 3
+frame 336: 28400 us total, 10053 us display, type 3
+frame 337: 26199 us total, 9992 us display, type 3
+frame 338: 29907 us total, 10013 us display, type 3
+frame 339: 28284 us total, 9936 us display, type 3
+frame 340: 30861 us total, 10230 us display, type 3
+frame 341: 30605 us total, 10257 us display, type 3
+frame 342: 28536 us total, 10063 us display, type 3
+frame 343: 31388 us total, 10242 us display, type 3
+frame 344: 31814 us total, 9963 us display, type 3
+frame 345: 29258 us total, 10231 us display, type 3
+frame 346: 30835 us total, 9926 us display, type 3
+frame 347: 31510 us total, 9991 us display, type 3
+frame 348: 28393 us total, 10010 us display, type 3
+frame 349: 32699 us total, 9910 us display, type 3
+frame 350: 31517 us total, 9909 us display, type 3
+frame 351: 28408 us total, 9912 us display, type 3
+frame 352: 32182 us total, 9988 us display, type 3
+frame 353: 34115 us total, 9918 us display, type 3
+frame 354: 31815 us total, 9897 us display, type 3
+frame 355: 32777 us total, 9986 us display, type 3
+frame 356: 32431 us total, 9922 us display, type 3
+frame 357: 30664 us total, 10148 us display, type 3
+frame 358: 31804 us total, 9906 us display, type 3
+frame 359: 33748 us total, 9907 us display, type 3
+frame 360: 32096 us total, 9925 us display, type 3
+frame 361: 32793 us total, 9924 us display, type 3
+frame 362: 33757 us total, 10264 us display, type 3
+frame 363: 33205 us total, 10243 us display, type 3
+frame 364: 30095 us total, 9920 us display, type 3
+frame 365: 35602 us total, 9903 us display, type 3
+frame 366: 34112 us total, 9983 us display, type 3
+frame 367: 34394 us total, 10067 us display, type 3
+frame 368: 33941 us total, 9901 us display, type 3
+frame 369: 36248 us total, 10244 us display, type 3
+frame 370: 34001 us total, 10195 us display, type 3
+frame 371: 33215 us total, 10005 us display, type 3
+frame 372: 31409 us total, 9915 us display, type 3
+frame 373: 30365 us total, 9908 us display, type 3
+frame 374: 26609 us total, 10000 us display, type 3
+frame 375: 29205 us total, 10078 us display, type 3
+frame 376: 28399 us total, 9965 us display, type 3
+frame 377: 26800 us total, 10290 us display, type 3
+frame 378: 29518 us total, 10213 us display, type 3
+frame 379: 26144 us total, 9904 us display, type 3
+frame 380: 28540 us total, 9914 us display, type 3
+frame 381: 28939 us total, 10269 us display, type 3
+frame 382: 26128 us total, 9914 us display, type 3
+frame 383: 28937 us total, 9916 us display, type 3
+profile (avg of 128 frames, ms): logic+bsp 6.2 wait-fb 0.0 vp-mark 2.0 flats 4.6 columns 6.8 fuzz 0.0
+frame 384: 29993 us total, 10004 us display, type 3
+frame 385: 26196 us total, 10173 us display, type 3
+frame 386: 29806 us total, 10211 us display, type 3
+frame 387: 28124 us total, 9904 us display, type 3
+frame 388: 29273 us total, 9915 us display, type 3
+frame 389: 28292 us total, 9904 us display, type 3
+frame 390: 26490 us total, 9915 us display, type 3
+frame 391: 29292 us total, 9926 us display, type 3
+frame 392: 27786 us total, 9915 us display, type 3
+frame 393: 28929 us total, 10225 us display, type 3
+frame 394: 28788 us total, 9900 us display, type 3
+frame 395: 28474 us total, 10201 us display, type 3
+frame 396: 28979 us total, 9909 us display, type 3
+frame 397: 28035 us total, 9913 us display, type 3
+frame 398: 29972 us total, 9910 us display, type 3
+frame 399: 28930 us total, 9902 us display, type 3
+frame 400: 27437 us total, 10249 us display, type 3
+frame 401: 29509 us total, 9911 us display, type 3
+frame 402: 28052 us total, 10066 us display, type 3
+frame 403: 28404 us total, 10024 us display, type 3
+sound muted
+frame 404: 28532 us total, 9931 us display, type 3
+frame 405: 29903 us total, 10028 us display, type 3
+frame 406: 28397 us total, 10139 us display, type 3
+frame 407: 28592 us total, 10185 us display, type 3
+frame 408: 29022 us total, 9910 us display, type 3
+frame 409: 27926 us total, 9900 us display, type 3
+frame 410: 28887 us total, 9904 us display, type 3
+frame 411: 31436 us total, 9913 us display, type 3
+frame 412: 28592 us total, 9915 us display, type 3
+frame 413: 26946 us total, 9902 us display, type 3
+frame 414: 29196 us total, 10160 us display, type 3
+frame 415: 30014 us total, 10164 us display, type 3
+frame 416: 27586 us total, 10046 us display, type 3
+frame 417: 29207 us total, 9937 us display, type 3
+frame 418: 30795 us total, 10207 us display, type 3
+frame 419: 27756 us total, 9904 us display, type 3
+frame 420: 29365 us total, 9906 us display, type 3
+frame 421: 28754 us total, 10198 us display, type 3
+frame 422: 29634 us total, 10191 us display, type 3
+frame 423: 30038 us total, 10193 us display, type 3
+frame 424: 27714 us total, 9909 us display, type 3
+frame 425: 29630 us total, 9905 us display, type 3
+frame 426: 29683 us total, 9909 us display, type 3
+frame 427: 27625 us total, 9900 us display, type 3
+frame 428: 30272 us total, 9910 us display, type 3
+frame 429: 28047 us total, 9911 us display, type 3
+frame 430: 29232 us total, 9907 us display, type 3
+frame 431: 30002 us total, 9913 us display, type 3
+frame 432: 28053 us total, 10189 us display, type 3
+frame 433: 29202 us total, 10287 us display, type 3
+frame 434: 27596 us total, 10216 us display, type 3
+frame 435: 29194 us total, 10154 us display, type 3
+frame 436: 29052 us total, 10203 us display, type 3
+frame 437: 26686 us total, 9913 us display, type 3
+frame 438: 28923 us total, 9914 us display, type 3
+frame 439: 28343 us total, 9899 us display, type 3
+frame 440: 26139 us total, 9908 us display, type 3
+frame 441: 28273 us total, 9913 us display, type 3
+input: down 0x10000
+frame 442: 26819 us total, 9988 us display, type 3
+frame 443: 26669 us total, 9912 us display, type 3
+frame 444: 26393 us total, 10259 us display, type 3
+frame 445: 28691 us total, 9909 us display, type 3
+frame 446: 28325 us total, 9910 us display, type 3
+frame 447: 28092 us total, 9916 us display, type 3
+frame 448: 31053 us total, 9916 us display, type 3
+frame 449: 28437 us total, 9923 us display, type 3
+frame 450: 27306 us total, 10164 us display, type 3
+frame 451: 30008 us total, 10164 us display, type 3
+frame 452: 27449 us total, 9918 us display, type 3
+frame 453: 28437 us total, 9911 us display, type 3
+frame 454: 28212 us total, 9904 us display, type 3
+frame 455: 27584 us total, 9904 us display, type 3
+frame 456: 30506 us total, 10113 us display, type 3
+frame 457: 28406 us total, 10244 us display, type 3
+frame 458: 30021 us total, 9915 us display, type 3
+frame 459: 29983 us total, 10088 us display, type 3
+frame 460: 28405 us total, 9911 us display, type 3
+frame 461: 30794 us total, 9964 us display, type 3
+frame 462: 30001 us total, 9932 us display, type 3
+frame 463: 28629 us total, 9909 us display, type 3
+frame 464: 29771 us total, 9965 us display, type 3
+frame 465: 29997 us total, 9943 us display, type 3
+frame 466: 28730 us total, 9910 us display, type 3
+frame 467: 29671 us total, 10099 us display, type 3
+frame 468: 28735 us total, 9975 us display, type 3
+frame 469: 30104 us total, 9975 us display, type 3
+frame 470: 29563 us total, 10076 us display, type 3
+frame 471: 28399 us total, 10088 us display, type 3
+frame 472: 28815 us total, 9905 us display, type 3
+frame 473: 28860 us total, 9907 us display, type 3
+frame 474: 26213 us total, 9905 us display, type 3
+frame 475: 27504 us total, 9959 us display, type 3
+frame 476: 26184 us total, 9902 us display, type 3
+frame 477: 27574 us total, 9924 us display, type 3
+frame 478: 28931 us total, 9919 us display, type 3
+frame 479: 25868 us total, 9898 us display, type 3
+frame 480: 26679 us total, 9920 us display, type 3
+frame 481: 28965 us total, 10260 us display, type 3
+frame 482: 30001 us total, 10070 us display, type 3
+frame 483: 29399 us total, 9908 us display, type 3
+frame 484: 27735 us total, 9904 us display, type 3
+frame 485: 31576 us total, 9911 us display, type 3
+frame 486: 28900 us total, 9965 us display, type 3
+frame 487: 28701 us total, 9983 us display, type 3
+frame 488: 29696 us total, 10181 us display, type 3
+frame 489: 27564 us total, 9911 us display, type 3
+frame 490: 28670 us total, 9916 us display, type 3
+frame 491: 28676 us total, 9905 us display, type 3
+frame 492: 26488 us total, 10138 us display, type 3
+frame 493: 28400 us total, 10099 us display, type 3
+frame 494: 26406 us total, 9906 us display, type 3
+frame 495: 28797 us total, 10135 us display, type 3
+frame 496: 29482 us total, 10197 us display, type 3
+frame 497: 29022 us total, 9914 us display, type 3
+frame 498: 31490 us total, 10210 us display, type 3
+frame 499: 30014 us total, 9981 us display, type 3
+frame 500: 31588 us total, 10166 us display, type 3
+frame 501: 32408 us total, 9989 us display, type 3
+frame 502: 31677 us total, 9922 us display, type 3
+frame 503: 31065 us total, 9903 us display, type 3
+frame 504: 32174 us total, 9915 us display, type 3
+frame 505: 31379 us total, 9914 us display, type 3
+frame 506: 30547 us total, 9919 us display, type 3
+frame 507: 31435 us total, 9913 us display, type 3
+frame 508: 31113 us total, 10248 us display, type 3
+frame 509: 28099 us total, 9928 us display, type 3
+frame 510: 30226 us total, 9903 us display, type 3
+frame 511: 27486 us total, 9909 us display, type 3
+profile (avg of 128 frames, ms): logic+bsp 8.2 wait-fb 0.0 vp-mark 2.0 flats 4.9 columns 8.3 fuzz 0.0
+frame 512: 28758 us total, 10248 us display, type 3
+audio: 69 underruns, 34 ms queued
+mem @frame 512: heap free 49092, largest 23552, min ever 48596, zone free 41204, display stack free 4380, uptime 16 s, gamestate 0, demo 1, usergame 0, tic 450
+frame 513: 27765 us total, 9909 us display, type 3
+frame 514: 26668 us total, 10172 us display, type 3
+frame 515: 25381 us total, 9902 us display, type 3
+frame 516: 24474 us total, 9911 us display, type 3
+frame 517: 27504 us total, 10134 us display, type 3
+frame 518: 29220 us total, 10006 us display, type 3
+frame 519: 27069 us total, 9912 us display, type 3
+frame 520: 30058 us total, 9903 us display, type 3
+frame 521: 27291 us total, 10024 us display, type 3
+frame 522: 28265 us total, 9915 us display, type 3
+frame 523: 28846 us total, 9906 us display, type 3
+frame 524: 27661 us total, 10223 us display, type 3
+frame 525: 29004 us total, 10254 us display, type 3
+frame 526: 27594 us total, 9895 us display, type 3
+frame 527: 29201 us total, 10072 us display, type 3
+frame 528: 29200 us total, 10203 us display, type 3
+frame 529: 26818 us total, 10201 us display, type 3
+frame 530: 31084 us total, 9902 us display, type 3
+frame 531: 26797 us total, 9899 us display, type 3
+frame 532: 27305 us total, 9885 us display, type 3
+frame 533: 33306 us total, 9919 us display, type 3
+frame 534: 25921 us total, 9887 us display, type 3
+frame 535: 29904 us total, 9904 us display, type 3
+frame 536: 30634 us total, 9907 us display, type 3
+frame 537: 25634 us total, 10033 us display, type 3
+frame 538: 30006 us total, 10095 us display, type 3
+frame 539: 25319 us total, 9892 us display, type 3
+frame 540: 33263 us total, 9902 us display, type 3
+frame 541: 28247 us total, 10108 us display, type 3
+frame 542: 26127 us total, 9902 us display, type 3
+frame 543: 29869 us total, 9961 us display, type 3
+frame 544: 30001 us total, 9916 us display, type 3
+frame 545: 26351 us total, 9888 us display, type 3
+frame 546: 30722 us total, 9912 us display, type 3
+sound unmuted
+frame 547: 26714 us total, 10040 us display, type 3
+frame 548: 31235 us total, 9908 us display, type 3
+frame 549: 27466 us total, 9917 us display, type 3
+frame 550: 27306 us total, 9899 us display, type 3
+frame 551: 30006 us total, 10220 us display, type 3
+frame 552: 26789 us total, 10265 us display, type 3
+frame 553: 29851 us total, 10185 us display, type 3
+frame 554: 29360 us total, 10164 us display, type 3
+frame 555: 25793 us total, 9892 us display, type 3
+frame 556: 29672 us total, 9920 us display, type 3
+frame 557: 29187 us total, 9913 us display, type 3
+frame 558: 27504 us total, 9977 us display, type 3
+frame 559: 27895 us total, 9915 us display, type 3
+frame 560: 28094 us total, 9938 us display, type 3
+frame 561: 30048 us total, 10134 us display, type 3
+frame 562: 28659 us total, 9903 us display, type 3
+frame 563: 27415 us total, 9910 us display, type 3
+frame 564: 28790 us total, 9895 us display, type 3
+frame 565: 28074 us total, 9893 us display, type 3
+frame 566: 28788 us total, 9897 us display, type 3
+frame 567: 29414 us total, 9905 us display, type 3
+frame 568: 28630 us total, 10157 us display, type 3
+frame 569: 27894 us total, 9919 us display, type 3
+frame 570: 29340 us total, 9901 us display, type 3
+frame 571: 26688 us total, 9892 us display, type 3
+frame 572: 29847 us total, 9904 us display, type 3
+frame 573: 27453 us total, 10134 us display, type 3
+frame 574: 28567 us total, 9889 us display, type 3
+frame 575: 28766 us total, 9894 us display, type 3
+frame 576: 26735 us total, 9912 us display, type 3

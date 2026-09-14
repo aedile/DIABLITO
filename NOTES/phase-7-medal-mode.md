@@ -18,6 +18,9 @@ Date: 2026-09-14. Log: `NOTES/logs/phase7-run1-idle.log`.
   at the next boot the previous run's last record is printed:
   `previous run (boot N) lasted S s (M min), last battery X mV`. That is how the runtime on a
   full charge gets measured without a cable attached.
+- **Mute: BOOT held 3 s** toggles it (like the other medals), persisted in NVS `medal/mute`,
+  announced on Doom's HUD line ("SOUND MUTED" / "SOUND ON"). Muted output is silence at the same
+  sample rate so the DAC still paces the mixer. BOOT held 10 s still forgets the controller.
 - Power off: PWR held 3 s (`medal.c`, BAT_EN low). On USB the rail stays up and the medal just
   goes dark.
 
