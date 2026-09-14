@@ -89,5 +89,29 @@ demos (the frame lines are in the log).
   is NESTOR's shipped code, unchanged except the button map, and needs an Xbox BLE controller
   in the room. Scanning is confirmed alive: the log shows advertisements from nearby devices.
 
-**Phase 4 gate: software path verified; hardware confirmation pending Jesse with a controller
-and the buttons.** Not claiming the gate until then.
+## Hands-on session (Jesse, Xbox Wireless Controller)
+
+Three real problems surfaced and were fixed, in order (logs `phase4-sticks-jesse*.log`):
+
+1. **Stale bond.** Putting the pad back into pairing mode drops its bond; the medal still held
+   its copy, encryption failed with `BLE_HS_ENOTCONN` (7) as the pad dropped the link, and the
+   HID host then waited forever in service discovery on a dead connection. Fix: bounded GATT
+   waits, `ENOTCONN` handled in the open path, and on a failed open of the saved pad the medal
+   forgets it and pairs fresh with no 60 s penalty. Pairing now takes about four seconds.
+2. **HID events serviced too slowly.** The `esp_hidh` event task inherited the game task's
+   priority; Doom never yields, so the pad's 100 Hz reports queued up (5-deep queue, host task
+   blocking on the post) and the game saw stick values seconds late. Fix: event task priority 5,
+   queue 16, and the per-notification INFO log in the host task removed.
+3. **This pad's left-stick Y is faulty.** Raw report bytes: at rest `e1 25` (0x25E1, 15% of
+   travel, i.e. 70% forward) while X and both right-stick axes sit at 0x8000; after a push it
+   reads `00 00` and stays there through six reports as X returns to centre; after a pull,
+   `ff ff` likewise. Every build had faithfully turned that into permanent forward motion. The
+   left stick is now disabled (`LEFT_STICK_MOVE 0`); the analog movement path (Doom's mouse
+   forward/turn) is written and one define away for a pad with a working axis.
+
+Final mapping: d-pad moves and strafes (arrows in menus), right stick turns proportionally,
+triggers or A fire, B use, Menu opens the menu, View toggles the map; BOOT/PWR as in the table
+above; BOOT held 10 s forgets the controller.
+
+**Phase 4 gate: met.** Jesse played E1M1 with the pad and the medal buttons ("feels good");
+the bench-pad session above covers start-to-exit including the quit path.
