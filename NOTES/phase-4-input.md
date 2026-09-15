@@ -25,10 +25,14 @@ Date: 2026-09-14. Logs: `NOTES/logs/phase4-run1.log` (hung, see below), `phase4-
 | LB / RB | [ / ] | previous / next weapon (`key_prevweapon/nextweapon` bound at init) |
 | Menu (Start) | Escape | open/close menu; any key also opens the menu from the title/demo |
 | View (Select) | Tab | automap |
-| BOOT held | RCTRL, Down | fire; menu down; opens menu from attract |
-| PWR tap | space, Enter, y | use; menu forward; confirm |
-| PWR held 0.6 s | Escape | menu |
-| PWR held 3 s | | power off (`medal.c`, was 2 s in NESTOR) |
+| BOOT held 3 s | (device) | mute toggle, persisted |
+| BOOT held 10 s | (device) | forget the paired controller, open pairing |
+| PWR held 3 s | (device) | power off (BAT_EN low) |
+
+2026-09-15: Jesse's direction is that the physical buttons are device controls only (power,
+mute, forget controller) and never game input, so the earlier BOOT=fire / PWR=Enter/Escape
+mapping was removed. The brief's "navigable with the two buttons alone" is therefore not met by
+design; the controller is the input device.
 
 - Bench pad: keys typed into the USB serial console act as pad buttons held for 120 ms
   (`w s a d` d-pad, `j k u i o p` A B X Y L R, `q` Start, `e` Select, `l n h` medal BOOT /

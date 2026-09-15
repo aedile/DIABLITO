@@ -2,10 +2,8 @@
 // both turned into Doom key events. Doom only ever sees keys, so a pad button is a set of key
 // codes: the set covers the in-game meaning and the menu meaning at once (harmless overlap).
 //
-// Medal buttons (no controller nearby):
-//   BOOT held      = fire (in a menu / on the title: also opens the menu / picks "down")
-//   PWR tap        = use / menu forward (Enter)
-//   PWR 0.6 s hold = menu (Escape); 3 s = power off (medal.c)
+// Medal buttons are device controls only (Jesse): BOOT held 3 s = mute, 10 s = forget the
+// controller; PWR held 3 s = power off. They never reach the game.
 #include "pico.h"
 #include "esp_timer.h"
 #include "driver/gpio.h"
@@ -30,7 +28,8 @@ int novert = 0;
 
 #define PIN_BTN_BOOT GPIO_NUM_9
 #define PIN_BTN_PWR  GPIO_NUM_18
-#define PWR_MENU_HOLD_US 600000
+#define PWR_OFF_HOLD_US 3000000
+#define PIN_BAT_EN   GPIO_NUM_15
 
 // virtual key set: one bit per (pad button or medal action), each posting up to 3 key codes
 typedef struct { uint32_t pad_bit; uint8_t keys[3]; } vkey_t;
@@ -57,9 +56,6 @@ static const vkey_t vkeys[] = {
     { VK_LS_MLEFT,  { KEY_LEFTARROW } },                // left stick as a d-pad outside levels
     { VK_LS_MRIGHT, { KEY_RIGHTARROW } },
     { VK_TRIGGER,   { KEY_RCTRL } },                    // either trigger fires
-    { VK_MEDAL_BOOT,     { KEY_RCTRL, KEY_DOWNARROW } },
-    { VK_MEDAL_PWR_TAP,  { ' ', KEY_ENTER, 'y' } },
-    { VK_MEDAL_PWR_HOLD, { KEY_ESCAPE } },
 };
 
 static uint32_t prev_vk;
@@ -90,41 +86,38 @@ static void set_mute(bool m, bool announce)
     if (announce) players[consoleplayer].message = m ? "SOUND MUTED" : "SOUND ON";
 }
 
-// PWR is edge-classified on release (tap) or the moment the hold threshold passes (hold), each
-// as a one-frame virtual key press so Doom sees a clean down/up pair.
+static void medal_power_off(void)
+{
+    printf("power off\n");
+    display_set_backlight(0);
+    gpio_set_level(PIN_BAT_EN, 0);                   /* cuts the battery rail; on USB the rail stays up */
+    for (;;) vTaskDelay(pdMS_TO_TICKS(1000));        /* so sit dark until reset */
+}
+
+// Hold gestures only. A button still held from power-on must be released once before it counts
+// (the medal is switched on by holding PWR). Returns the BOOT bit for the bench/idle logic; it is
+// not in the key table, so nothing is posted to the game.
 static uint32_t medal_vkeys(bool serial_boot)   // serial_boot: the bench pad's BOOT key counts as held too
 {
-    static int64_t pwr_down_since;
-    static bool pwr_hold_fired, armed[2];
-    static uint32_t pulse;                    // one-shot bits to release next call
-    uint32_t vk = 0;
+    static int64_t boot_down_since, pwr_down_since;
+    static bool boot_muted, boot_forgot, armed[2];
     int64_t now = esp_timer_get_time();
     bool boot = gpio_get_level(PIN_BTN_BOOT) == 0 || serial_boot, pwr = gpio_get_level(PIN_BTN_PWR) == 0;
-    // a button still held from power-on must be released once before it counts (medal.c does the same)
     if (!armed[0]) { if (!boot) armed[0] = true; boot = false; }
     if (!armed[1]) { if (!pwr) armed[1] = true; pwr = false; }
-    if (boot) vk |= VK_MEDAL_BOOT;
-    // BOOT held 3 s: toggle mute (persisted); held 10 s: forget the paired controller and open pairing
-    static int64_t boot_down_since; static bool boot_forgot, boot_muted;
-    if (boot && !boot_down_since) { boot_down_since = now; boot_forgot = boot_muted = false; }
+    if (boot && !boot_down_since) { boot_down_since = now; boot_muted = boot_forgot = false; }
     if (!boot) boot_down_since = 0;
-    if (boot && !boot_muted && now - boot_down_since >= 3000000) {
-        boot_muted = true;
-        set_mute(!audio_is_muted(), true);
-    }
+    if (boot && !boot_muted && now - boot_down_since >= 3000000) { boot_muted = true; set_mute(!audio_is_muted(), true); }
     if (boot && !boot_forgot && now - boot_down_since >= 10000000) {
         boot_forgot = true;
         ble_pad_forget(); ble_pad_scan_any(true);
+        players[consoleplayer].message = "CONTROLLER FORGOTTEN";
         printf("gamepad: forgotten, pairing open\n");
     }
-    if (pulse) { pulse = 0; }                 // pulse bits were down for exactly one poll
-    if (pwr && !pwr_down_since) { pwr_down_since = now; pwr_hold_fired = false; }
-    if (pwr && !pwr_hold_fired && now - pwr_down_since >= PWR_MENU_HOLD_US) { pwr_hold_fired = true; pulse |= VK_MEDAL_PWR_HOLD; }
-    if (!pwr && pwr_down_since) {
-        if (!pwr_hold_fired && now - pwr_down_since > 30000) pulse |= VK_MEDAL_PWR_TAP;
-        pwr_down_since = 0;
-    }
-    return vk | pulse;
+    if (pwr && !pwr_down_since) pwr_down_since = now;
+    if (!pwr) pwr_down_since = 0;
+    if (pwr && now - pwr_down_since >= PWR_OFF_HOLD_US) medal_power_off();
+    return boot ? VK_MEDAL_BOOT : 0;
 }
 
 // Bench input: keys typed into the serial monitor act as a pad held for 120 ms per keystroke
@@ -251,7 +244,8 @@ static void idle_sleep_if_due(uint32_t vk)
 void I_GetEvent(void)
 {
     uint32_t serial = serial_vkeys();
-    uint32_t vk = ble_pad_buttons() | stick_vkeys() | medal_vkeys(serial & VK_MEDAL_BOOT) | serial;
+    medal_vkeys(serial & VK_MEDAL_BOOT);                       // device-only gestures, nothing posted
+    uint32_t vk = ble_pad_buttons() | stick_vkeys() | (serial & ~(VK_MEDAL_BOOT | VK_MEDAL_PWR_TAP | VK_MEDAL_PWR_HOLD));
     idle_sleep_if_due(vk);
     if (gamestate == GS_LEVEL && !menuactive && !demoplayback && (vk & (PAD_LEFT | PAD_RIGHT))) {
         // d-pad left/right strafe in a level; the right stick turns. In menus they stay arrows.
