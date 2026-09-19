@@ -10,5 +10,7 @@ All in `components/doom/esp/extras.c`, polled once a tic from `I_GetEvent`.
 | Battery gauge | PWR tap (30 ms to 1 s) shows a toast; bench key `n` | `battery: 97% 4176 mV` |
 | Low warning / cutoff | toast every 5 min at <= 15 %; power off after three 10 s readings under 3300 mV | **not exercised**: needs a run-down battery. Thresholds are MINIMAME's. |
 
-Not verified by hand yet: the physical PWR tap (only the bench key was driven), and the cutoff path.
+Confirmed by hand by Jesse 2026-09-19: physical PWR-tap battery toast, Konami code entry on the pad, its toast,
+its effect (weapons via LB/RB), and the single shot on the final A. Still open: the low warning and cutoff
+path, to be tried with a smaller battery.
 The last press of the code is A, so the gun fires once when the code lands.
