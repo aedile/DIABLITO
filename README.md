@@ -22,7 +22,7 @@ DIABLITO is a port of [Graham Sanderson's RP2040 Doom](https://github.com/kilogr
 
 Every number in this README was measured on the device over serial. The raw logs and the phase-by-phase engineering notes are in [`NOTES/`](NOTES/).
 
-From the maker of [PELLETINO](https://github.com/aedile/PELLETINO), the tilt-controlled Pac-Man on this same board ([Hackster](https://www.hackster.io/news/power-up-with-pelletino-2efc18108047), [XDA](https://www.xda-developers.com/this-adorable-esp32-project-puts-pacman-on-a-tiny-169-screen/), [Boing Boing](https://boingboing.net/2026/02/04/pelletino-puts-a-tilt-controlled-pac-man-in-your-pocket.html)).
+From the maker of [PELLETINO](https://github.com/aedile/PELLETINO), the tilt-controlled Pac-Man on this same board.
 
 ---
 
