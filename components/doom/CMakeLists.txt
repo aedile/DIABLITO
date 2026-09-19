@@ -18,7 +18,7 @@ idf_component_register(
         ${S}/pico/i_glob.c ${S}/pico/i_picosound.c
         # OPL2 music: emu8950 (portable C slot renderer) driven by i_oplmusic through opl_pico
         ${S}/i_oplmusic.c opl/opl_api.c opl/emu8950.c opl/slot_render.cpp opl/opl_pico.c
-        esp/i_video.c esp/i_system.c esp/i_timer.c esp/i_input.c esp/i_sound_glue.c esp/doom_main.c esp/prof.c
+        esp/i_video.c esp/i_system.c esp/i_timer.c esp/i_input.c esp/i_sound_glue.c esp/doom_main.c esp/prof.c esp/extras.c
     INCLUDE_DIRS include
     PRIV_INCLUDE_DIRS shim ${S} ${S}/doom ${S}/pico ${S}/adpcm-xq opl
     REQUIRES display

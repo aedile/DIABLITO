@@ -101,6 +101,7 @@ void app_main(void)
         if (e == ESP_ERR_NVS_NO_FREE_PAGES || e == ESP_ERR_NVS_NEW_VERSION_FOUND) { nvs_flash_erase(); e = nvs_flash_init(); }
         ESP_ERROR_CHECK(e);
         runlog_init();
+        doom_set_battery_hooks(medal_battery_mv, medal_battery_percent);
         ble_pad_init();
         ble_pad_scan_any(!ble_pad_has_saved());     /* no saved pad: pair with the first HID gamepad seen */
         ble_pad_scan_rate(true);

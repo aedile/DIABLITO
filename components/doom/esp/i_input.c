@@ -3,7 +3,7 @@
 // codes: the set covers the in-game meaning and the menu meaning at once (harmless overlap).
 //
 // Medal buttons are device controls only (Jesse): BOOT held 3 s = mute, 10 s = forget the
-// controller; PWR held 3 s = power off. They never reach the game.
+// controller; PWR tap = battery gauge toast, PWR held 3 s = power off. They never reach the game.
 #include "pico.h"
 #include "esp_timer.h"
 #include "driver/gpio.h"
@@ -78,6 +78,8 @@ static void post_set(uint32_t vk, int type)
 // Mute: BOOT held 3 s, remembered in NVS (medal/mute), announced with a toast.
 void audio_set_mute(bool m); bool audio_is_muted(void);
 void doom_toast(const char *line1, const char *line2);
+void extras_poll(uint32_t pad_down, bool in_level);
+void extras_battery_toast(void);
 static void set_mute(bool m, bool announce)
 {
     audio_set_mute(m);
@@ -87,7 +89,7 @@ static void set_mute(bool m, bool announce)
     if (announce) doom_toast(m ? "Muted" : "Sound on", "hold BOOT 3 s");
 }
 
-static void medal_power_off(void)
+void doom_power_off(void)
 {
     printf("power off\n");
     display_set_backlight(0);
@@ -116,8 +118,12 @@ static uint32_t medal_vkeys(bool serial_boot)   // serial_boot: the bench pad's 
         printf("gamepad: forgotten, pairing open\n");
     }
     if (pwr && !pwr_down_since) pwr_down_since = now;
-    if (!pwr) pwr_down_since = 0;
-    if (pwr && now - pwr_down_since >= PWR_OFF_HOLD_US) medal_power_off();
+    if (!pwr && pwr_down_since) {
+        int64_t held = now - pwr_down_since;
+        if (held > 30000 && held < 1000000) extras_battery_toast();      // PWR tap: battery gauge
+        pwr_down_since = 0;
+    }
+    if (pwr && now - pwr_down_since >= PWR_OFF_HOLD_US) doom_power_off();
     return boot ? VK_MEDAL_BOOT : 0;
 }
 
@@ -253,6 +259,13 @@ void I_GetEvent(void)
         if (vk & PAD_LEFT) vk |= VK_LS_LEFT;
         if (vk & PAD_RIGHT) vk |= VK_LS_RIGHT;
         vk &= ~(PAD_LEFT | PAD_RIGHT);
+    }
+    {   // settings, battery, Konami code: fed the raw pad presses, not the remapped keys
+        static uint32_t prev_pad;
+        uint32_t pad = ble_pad_buttons() | (serial & 0xffff) | (serial & VK_MEDAL_PWR_TAP);   // bench 'n' = PWR tap
+        if (pad & ~prev_pad & VK_MEDAL_PWR_TAP) extras_battery_toast();
+        extras_poll(pad & ~prev_pad, gamestate == GS_LEVEL && !menuactive && !demoplayback);
+        prev_pad = pad;
     }
     uint32_t down = vk & ~prev_vk, up = prev_vk & ~vk;
     if (down) { post_set(down, ev_keydown); printf("input: down 0x%05lx\n", (unsigned long)down); }

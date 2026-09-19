@@ -12,6 +12,7 @@ extern const uint8_t *whd_map_base;
 void W_Memory_SetBase(const uint8_t *base);
 
 void prof_start(void);
+void extras_load_settings(void);
 
 void doom_run(const uint8_t *wad)
 {
@@ -20,5 +21,6 @@ void doom_run(const uint8_t *wad)
 #endif
     W_Memory_SetBase(wad);
     I_Init();
+    extras_load_settings();
     D_DoomMain();
 }

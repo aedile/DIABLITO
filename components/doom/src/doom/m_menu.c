@@ -631,6 +631,11 @@ menu_t  SaveDef =
 
 #endif
 #if !NO_USE_LOAD
+#if ESP_PLATFORM
+// DIABLITO: the last skill played is remembered across power cycles (esp/extras.c)
+void M_SetSkillCursor(int skill) { NewDef.lastOn = skill; }
+#endif
+
 //
 // M_ReadSaveStrings
 //  read the strings from the savegame files
