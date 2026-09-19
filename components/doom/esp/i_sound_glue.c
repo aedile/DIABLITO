@@ -5,7 +5,9 @@
 // lifted from NESTOR/PELLETINO. Pacing is DAC-driven: a buffer is handed to the mixer only when
 // the DMA ring has room for it, so production is locked to the I2S clock and never blocks.
 //
-// Also stubs the OPL music module (music is a stretch goal, see NOTES/disabled-and-stubbed.md).
+// Music: the OPL2 emulator (opl/) is the mixer's music generator. It runs at half the chip's
+// native rate (24,858 Hz, pitch and envelopes corrected at the register level in opl_pico.c), so
+// that is the I2S rate; the sound effects are resampled to it by the mixer.
 #include "pico.h"
 #include "pico/audio_i2s.h"
 #include "esp_timer.h"
@@ -31,7 +33,7 @@ static const char *TAG = "AUDIO";
 #define ES8311_ADDR  0x18
 
 #define DMA_FRAMES_PER_DESC 256
-#define DMA_DESCS 8                      /* 2048 stereo frames = 93 ms at 22050 Hz */
+#define DMA_DESCS 8                      /* 2048 stereo frames = 82 ms at 24858 Hz */
 
 static i2s_chan_handle_t tx;
 static volatile uint32_t bytes_sent;     /* advanced by the DMA ISR */
@@ -39,6 +41,7 @@ static uint32_t bytes_written;
 static volatile uint32_t underruns;
 static size_t ring_bytes;
 static uint32_t frame_bytes = 4;         /* stereo int16 */
+static uint32_t sample_rate = 49716;
 
 /* ---- ES8311 (register sequence proven on this board in PELLETINO) ---- */
 static esp_err_t es8311_write_reg(uint8_t reg, uint8_t value)
@@ -102,15 +105,32 @@ struct audio_buffer_pool *audio_new_producer_pool(struct audio_buffer_format *fo
     return p;
 }
 
-/* The mixer may have a buffer when the DMA ring can take all of it: that keeps the write below
- * non-blocking and the latency bounded at ring size (93 ms). */
+/* Samples the driver has not accepted yet. They are written before anything new is mixed, so
+ * every sample mixed is played, in order (PELLETINO's scheme); a dropped tail is a tick in the music. */
+static const uint8_t *pending_ptr;
+static size_t pending_len;
+
+static bool flush_pending(void)
+{
+    while (pending_len) {
+        size_t written = 0;
+        i2s_channel_write(tx, pending_ptr, pending_len, &written, 0);
+        bytes_written += written;
+        pending_ptr += written; pending_len -= written;
+        if (!written) return false;          /* ring full: try again on the next update */
+    }
+    return true;
+}
+
+/* The mixer gets a buffer only when nothing is pending and the DMA ring (less the descriptor the
+ * driver keeps in flight) can take all of it: production is locked to the DAC clock, the write
+ * never blocks, and latency is bounded by the ring (82 ms). */
 audio_buffer_t *take_audio_buffer(struct audio_buffer_pool *pool, bool block)
 {
     (void)block;
-    if (!tx) return NULL;
+    if (!tx || !flush_pending()) return NULL;
     int32_t queued = (int32_t)(bytes_written - bytes_sent);
     if (queued < 0) { bytes_written = bytes_sent; queued = 0; }     /* ring ran dry: resync */
-    /* the driver keeps one descriptor in flight, so usable space is one descriptor less than the ring */
     if ((size_t)queued + pool->samples * frame_bytes > ring_bytes - DMA_FRAMES_PER_DESC * frame_bytes) return NULL;
     audio_buffer_t *b = &pool->buffers[pool->next];
     pool->next = (pool->next + 1) % pool->count;
@@ -124,11 +144,10 @@ bool audio_is_muted(void) { return muted; }
 void give_audio_buffer(struct audio_buffer_pool *pool, audio_buffer_t *buffer)
 {
     (void)pool;
-    size_t bytes = buffer->sample_count * frame_bytes, written = 0;
+    size_t bytes = buffer->sample_count * frame_bytes;
     if (muted) memset(buffer->buffer->bytes, 0, bytes);   /* same number of samples, so the DAC still paces the mixer */
-    i2s_channel_write(tx, buffer->buffer->bytes, bytes, &written, 0);
-    bytes_written += written;
-    if (written != bytes) { static int warned; if (warned++ < 3) ESP_LOGW(TAG, "short write %u/%u", (unsigned)written, (unsigned)bytes); }
+    pending_ptr = buffer->buffer->bytes; pending_len = bytes;
+    flush_pending();
 }
 
 const struct audio_format *audio_i2s_setup(const struct audio_format *intended, const struct audio_i2s_config *config)
@@ -136,6 +155,7 @@ const struct audio_format *audio_i2s_setup(const struct audio_format *intended, 
     (void)config;
     es8311_init();
     frame_bytes = 2 * intended->channel_count;
+    sample_rate = intended->sample_freq;
     i2s_chan_config_t chan = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
     chan.dma_desc_num = DMA_DESCS;
     chan.dma_frame_num = DMA_FRAMES_PER_DESC;
@@ -177,38 +197,4 @@ void audio_i2s_set_enabled(bool enabled)
 }
 
 uint32_t audio_underrun_count(void) { return underruns; }
-int audio_queued_ms(void) { return tx ? (int)((int32_t)(bytes_written - bytes_sent) / (int32_t)frame_bytes * 1000 / 22050) : 0; }
-
-// ---- music: OPL emulation not built ----
-uint8_t restart_song_state;   // owned by i_oplmusic.c when music is compiled in
-
-static snddevice_t music_none_devices[] = { SNDDEVICE_NONE };
-static boolean Music_Init(void) { return false; }
-static void Music_Shutdown(void) {}
-static void Music_SetVolume(int volume) { (void)volume; }
-static void Music_Pause(void) {}
-static void Music_Resume(void) {}
-static void *Music_RegisterSong(should_be_const void *data, int len) { (void)data; (void)len; return NULL; }
-static void Music_UnRegisterSong(void *handle) { (void)handle; }
-static void Music_PlaySong(void *handle, boolean looping) { (void)handle; (void)looping; }
-static void Music_StopSong(void) {}
-static boolean Music_IsPlaying(void) { return false; }
-static void Music_Poll(void) {}
-
-const music_module_t music_opl_module = {
-    music_none_devices,
-    0,
-    Music_Init,
-    Music_Shutdown,
-    Music_SetVolume,
-    Music_Pause,
-    Music_Resume,
-    Music_RegisterSong,
-    Music_UnRegisterSong,
-    Music_PlaySong,
-    Music_StopSong,
-    Music_IsPlaying,
-    Music_Poll,
-};
-
-void I_SetOPLDriverVer(opl_driver_ver_t ver) { (void)ver; }
+int audio_queued_ms(void) { return tx ? (int)((int32_t)(bytes_written - bytes_sent) / (int32_t)frame_bytes * 1000 / (int32_t)sample_rate) : 0; }

@@ -1,3 +1,7 @@
+// DIABLITO: OPL_RP2040_HW (was PICO_ON_DEVICE) selects the RP2040 interpolator/asm paths; 0 = portable C
+#ifndef OPL_RP2040_HW
+#define OPL_RP2040_HW 0
+#endif
 /**
  * Copyright (C) 2001-2020 Mitsutaka Okazaki
  * Copyright (C) 2021-2022 Graham Sanderson
@@ -6,7 +10,7 @@
 #include <cstdio>
 #include <cstring>
 
-#if PICO_ON_DEVICE
+#if OPL_RP2040_HW
 #include "hardware/interp.h"
 #define SLOT_RENDER_DATA __scratch_y("slot_render_cpp")
 #else
@@ -181,7 +185,7 @@ static INLINE int16_t calc_sample(const SLOT_RENDER *slot, uint32_t index, int16
 #if !EMU8950_NO_WAVE_TABLE_MAP
     uint16_t h = slot->wave_table[index & (PG_WIDTH - 1)];
 #else
-#if PICO_ON_DEVICE
+#if OPL_RP2040_HW
     interp0->accum[0] = index << 1;
     uint16_t h = *(uint16_t *)(interp0->peek[0]) | *(uint16_t *)(interp0->peek[1]);
 #else
@@ -300,7 +304,7 @@ template <int EG_STATE> void commit_slot_update_eg_only(SLOT_RENDER *slot) {
 template<bool PM> uint32_t advance_phase(SLOT_RENDER *slot, uint32_t &pm_phase) {
     int8_t pm = 0;
     if (PM) {
-#if !PICO_ON_DEVICE
+#if !OPL_RP2040_HW
         // todo if we do this with interpolator, then we can just skip the if
         // todo PM_DPHASE == 512
         pm_phase = (pm_phase + PM_DPHASE) & (PM_DP_WIDTH - 1);
@@ -311,7 +315,7 @@ template<bool PM> uint32_t advance_phase(SLOT_RENDER *slot, uint32_t &pm_phase) 
         pm = *(int8_t *)interp1->peek[1];
 #endif
     }
-#if !PICO_ON_DEVICE
+#if !OPL_RP2040_HW
     slot->pg_phase += slot->efix_pg_pm_x_fnum3ff + pm * slot->efix_pg_phase_multiplier;
 #if EMU8950_NIT_PICKS
     slot->pg_phase &= (DP_WIDTH - 1) * 2; // note the clear bottom bit is just for exact compatability for comparison with original code
@@ -394,7 +398,7 @@ template <bool PM> void alg1_am0_fn(SLOT_RENDER *slot, uint32_t& pm_phase, uint3
     slot->buffer[s] += val + slot->mod_buffer[s];
 }
 
-#if PICO_ON_DEVICE
+#if OPL_RP2040_HW
 extern "C" uint32_t test_slot_asm(SLOT_RENDER *slot, uint32_t nsamples, uint32_t eg_counter, uint fn);
 #endif
 
@@ -406,7 +410,7 @@ template <int F_NUM, typename F> uint32_t slot_envelope_loop(F&& fn, SLOT_RENDER
     // pm >>= (slot->pm_mode ? 0 : 1);
     int8_t *efix_pm_table = slot->pm_mode ? pm_table[(slot->fnum >> 7) & 7] :
                           pm_table_half[(slot->fnum >> 7) & 7];
-#if !PICO_ON_DEVICE
+#if !OPL_RP2040_HW
     slot->wav_or_table = wav_or_table_lookup[slot->patch->WS & 3];
     slot->logsin_table = logsin_table;
     slot->efix_pg_pm_x_fnum3ff = efix_pg_pm_x_fnum3ff;
@@ -459,7 +463,7 @@ template <int F_NUM, typename F> uint32_t slot_envelope_loop(F&& fn, SLOT_RENDER
     uint32_t nsamples_bak = nsamples;
     slot->eg_out_tll_lsl3 = std::min(EG_MAX/*EG_MUTE*/, slot->eg_out + slot->tll) << 3; // note EG_MAX not EG_MUTE to avoid overflow check later
 
-#if PICO_ON_DEVICE && EMU8950_ASM
+#if OPL_RP2040_HW && EMU8950_ASM
     // we lookup in mod_buffer at buffer_mod_buffer_offset + sample_ptr_in_buffer / 2
     slot->buffer_mod_buffer_offset = (uintptr_t)slot->mod_buffer - ((uintptr_t)slot->buffer) / 2;
     s = test_slot_asm(slot, nsamples, eg_counter, F_NUM);
@@ -584,7 +588,7 @@ template <int F_NUM, typename F> uint32_t slot_envelope_loop(F&& fn, SLOT_RENDER
             fn(slot, pm_phase, s);
         }
     }
-#if PICO_ON_DEVICE
+#if OPL_RP2040_HW
     slot->pg_phase = interp1->accum[0];
 #endif
     // not necessary for correctness

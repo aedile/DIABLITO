@@ -4,7 +4,7 @@ Running list. Every entry says what, why, and what it would take to restore.
 
 | Item | Status | Why | To restore |
 |---|---|---|---|
-| OPL2 music (`USE_EMU8950_OPL`, emu8950) | deferred, compile flag off | RP2040 ran the synth on its second core; we have one core at 160 MHz | measure headroom after phase 6, then try `EMU8950_LINEAR` C path at 22050 Hz |
+| OPL2 music | **enabled 2026-09-19** at half rate with register-level correction, see `music.md` | full-rate synthesis cost 15 ms a frame | n/a |
 | Super-tiny WHX format / `DEMO1_ONLY` | not used | 16 MB flash makes WHX pointless and `DEMO1_ONLY` breaks the attract loop | n/a |
 | USB keyboard (TinyUSB host) | removed | no USB host on this board's use case | n/a |
 | I2C multiplayer (`piconet`) | removed | no second device | n/a |

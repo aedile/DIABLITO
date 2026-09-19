@@ -76,6 +76,7 @@ uint32_t time_us_32(void);
 uint64_t time_us_64(void);
 void sleep_ms(uint32_t ms);
 void busy_wait_us(uint64_t us);
+static inline void sleep_us(uint64_t us) { busy_wait_us(us); }
 #ifdef __cplusplus
 }
 #endif

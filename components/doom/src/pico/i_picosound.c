@@ -334,8 +334,10 @@ static void I_Pico_UpdateSound(void)
     // todo note this is called from D_Main around the game loop, which is fast enough now but may not be.
     //  we can either poll more frequently, or use IRQ but then we have to be careful with threading (both OPL and channels)
     // todo hopefully at least we can run the AI fast enough.
-    audio_buffer_t *buffer = take_audio_buffer(producer_pool, false);
-    if (buffer) {
+    // DIABLITO: a frame here outlasts one 20 ms buffer, so top the DMA ring up (the pool only
+    // hands out a buffer when the ring has room for it)
+    audio_buffer_t *buffer;
+    for (int fills = 0; fills < 4 && (buffer = take_audio_buffer(producer_pool, false)); fills++) {
         if (music_generator) {
             // todo think about volume; this already has a (<< 3) in it
             music_generator(buffer);

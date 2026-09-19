@@ -4,6 +4,10 @@
  */
  #ifndef _SLOT_RENDER_H_
 #define _SLOT_RENDER_H_
+// DIABLITO: OPL_RP2040_HW (was PICO_ON_DEVICE) = RP2040 interpolator/asm layout; 0 = portable C
+#ifndef OPL_RP2040_HW
+#define OPL_RP2040_HW 0
+#endif
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -123,12 +127,12 @@ struct SLOT_RENDER {
     uint16_t *wave_table;     /* wave table */
 #else
 #if EMU8950_SLOT_RENDER
-#if !PICO_ON_DEVICE
+#if !OPL_RP2040_HW
     uint16_t *logsin_table;
     int8_t *efix_pm_table;
 #endif
 #endif
-#if !PICO_ON_DEVICE
+#if !OPL_RP2040_HW
     uint16_t *wav_or_table;
 #endif
 #endif

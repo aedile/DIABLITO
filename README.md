@@ -1,20 +1,20 @@
 # DIABLITO
 
-**The full shareware DOOM on a $20 ESP32-C6 board. No PSRAM. One 160 MHz RISC-V core. 512 KB of RAM. ~34 FPS, with sound, played with a Bluetooth gamepad.**
+**The full shareware DOOM on a $20 ESP32-C6 board. No PSRAM. One 160 MHz RISC-V core. 512 KB of RAM. ~30 FPS with OPL2 music and sound effects, played with a Bluetooth gamepad.**
 
 <!-- hero video / gif goes here -->
 
-DIABLITO is a port of [Graham Sanderson's RP2040 Doom](https://github.com/kilograham/rp2040-doom) (a Chocolate Doom derivative) to ESP-IDF on the [Waveshare ESP32-C6-LCD-1.69](https://www.waveshare.com/esp32-c6-lcd-1.69.htm): a thumb-sized board with a 1.69" 240x280 LCD, a speaker, a LiPo charger and two buttons. All nine levels of `DOOM1.WAD`, the three attract-mode demos, the status bar, the menus, the screen melt, the automap, 8-channel sound effects. Nothing external: no PSRAM chip, no SD card, no second MCU.
+DIABLITO is a port of [Graham Sanderson's RP2040 Doom](https://github.com/kilograham/rp2040-doom) (a Chocolate Doom derivative) to ESP-IDF on the [Waveshare ESP32-C6-LCD-1.69](https://www.waveshare.com/esp32-c6-lcd-1.69.htm): a thumb-sized board with a 1.69" 240x280 LCD, a speaker, a LiPo charger and two buttons. All nine levels of `DOOM1.WAD`, the three attract-mode demos, the status bar, the menus, the screen melt, the automap, 8-channel sound effects, and the AdLib soundtrack from an emulated OPL2 synth. Nothing external: no PSRAM chip, no SD card, no second MCU.
 
 | | |
 |---|---|
-| Frame rate, E1M1 gameplay | **34.5 FPS** mean, 99% of frames above 28 FPS |
-| Frame rate, attract demos (5 min soak) | **33.2 FPS** mean, worst single frame 53 ms |
-| Free heap while playing, BLE + sound running | 46 KB of 512 KB |
+| Frame rate with music, demos + E1M1 (4,190 frames) | **29.5 FPS** mean, 1.3% of frames under 20 FPS, worst 64 ms |
+| Frame rate with the synth idle | 33-35 FPS |
+| Free heap while playing, BLE + music + sound running | 37 KB of 512 KB |
 | Firmware image | 1.05 MB (Doom + ESP-IDF + NimBLE) |
 | Game data | 2.07 MB (`doom1.whd`, the 4.2 MB WAD compressed, executed in place from flash) |
 | Input | BLE HID gamepad (Xbox Wireless Controller tested) |
-| Audio | 8-channel ADPCM mixer, 22 kHz, ES8311 codec over I2S |
+| Audio | emulated OPL2 (AdLib) music + 8-channel ADPCM effects, 24.9 kHz, ES8311 codec over I2S |
 | Boot to Doom's title screen | about 2 seconds |
 
 Every number in this README was measured on the device over serial. The raw logs and the phase-by-phase engineering notes are in [`NOTES/`](NOTES/).
@@ -60,7 +60,9 @@ RP2040 Doom proved the *memory* problem is solvable: it squeezes the WAD from 4.
 6. **The 8:7 (or 4:3) squeeze.** Doom renders 320 wide; the panel is 280 (landscape) or 240 (portrait). Cropping would cut the ammo and health digits off the status bar, so each scanline is composed at 320 (palette + status bar overlays, exactly as upstream) and then dropped to 7-of-8 or 3-of-4 columns on its way into the DMA buffer, fused into the palette conversion so it costs nothing extra.
 7. **The single biggest speedup was one compiler flag.** A sampling profiler (a 2 kHz timer ISR recording the interrupted PC) showed 37% of all time in one function. The cause: ESP-IDF builds with `assert()` enabled, the RP2040 build didn't, and the Huffman texture decoder asserts *per pixel*. `NDEBUG` took column drawing from 9-14 ms to 7-8 ms per frame.
 
-The honest summary: the hard part was never "make Doom compile". It was fitting a BLE stack, an audio pipeline, two framebuffers, and a game designed around 264 KB into 512 KB, then finding 35 frames per second on one core.
+8. **An AdLib card at half speed.** The OPL2 emulator is only in tune at the chip's native 49,716 Hz, and in portable C that cost 15 ms a frame (22 FPS). Running it at half rate and correcting at the register level (every note's block number up an octave, every attack/decay/release rate up one step, both exact 2x in OPL2) brought music in at about 4 ms a frame. Details in [`NOTES/music.md`](NOTES/music.md).
+
+The honest summary: the hard part was never "make Doom compile". It was fitting a BLE stack, an audio pipeline, two framebuffers, and a game designed around 264 KB into 512 KB, then finding 30 frames per second on one core with the soundtrack playing.
 
 ---
 
@@ -154,8 +156,8 @@ pie showData
     "Doom column lists + flat cache (heap)" : 46
     "Doom zone heap (.bss, 16-bit pointer window)" : 64
     "NimBLE + HID host (.bss + heap)" : 82
-    "Other statics, stacks, audio + display DMA" : 76
-    "Free heap" : 46
+    "Other statics, stacks, OPL2 synth, audio + display DMA" : 85
+    "Free heap" : 37
 ```
 
 The constraint hiding in that chart: everything Doom reaches through a 16-bit pointer must sit in the first 256 KB, so the zone stays in `.bss` and the large buffers go to the heap. Details in [`NOTES/memory-budget.md`](NOTES/memory-budget.md).
@@ -182,7 +184,8 @@ flowchart LR
         BTNS["BOOT / PWR holds"] --> DEV["mute, forget pad, power off<br/>(never reach the game)"]
     end
     subgraph OUT["Audio"]
-        SFX["ADPCM lumps in flash"] --> MIX["8-channel mixer<br/>(upstream, untouched)"] --> POOL["buffer pool shim"] --> RING["I2S DMA ring, 92 ms"] --> ES["ES8311"] --> SPK(("speaker"))
+        MUS["MUS data in flash"] --> OPL["OPL2 emulator<br/>half rate, register-corrected"] --> MIX
+        SFX["ADPCM lumps in flash"] --> MIX["8-channel mixer<br/>(upstream)"] --> POOL["buffer pool shim"] --> RING["I2S DMA ring, 92 ms"] --> ES["ES8311"] --> SPK(("speaker"))
     end
 ```
 
@@ -323,7 +326,7 @@ flowchart LR
 | **Left-stick analog movement** | `LEFT_STICK_MOVE` in `i_input.c` | Set to 1 for analog walk/run on the left stick (through Doom's own mouse-forward path) plus strafe on its X axis. Off by default because the test pad's stick drifted. |
 | **Turn speed, deadzone** | `TURN_MAX`, `STICK_DEAD`, `TRIGGER_ON` in `i_input.c` | Full stick equals the keyboard's fast-turn rate by default. |
 | **Screen sleep** | NVS key `medal/idle_s`, or `-DIDLE_SLEEP_S=120` at build | Off by default (attract mode stays on screen). When enabled, the panel sleeps after N idle seconds in attract and wakes on any button. |
-| **Audio sample rate** | `PICO_SOUND_SAMPLE_FREQ` in `components/doom/CMakeLists.txt` | 22050 by default. Doom's samples are 11025 Hz. |
+| **Music quality vs speed** | `OPL_HALF_RATE` and `PICO_SOUND_SAMPLE_FREQ` in `components/doom/CMakeLists.txt` | Default runs the OPL2 at half its native rate (24,858 Hz). Remove `OPL_HALF_RATE`, set the rate to 49716 and double `DMA_DESCS` for the exact chip at about 22 FPS. |
 | **Doom's heap** | `DOOM_ZONE_SIZE` in `components/doom/esp/i_system.c` | 64 KB; peak use measured across the shareware levels and demos is 29 KB. It must stay inside the 256 KB short-pointer window. |
 | **Profiler** | uncomment `DOOM_PROFILE=1` in `components/doom/CMakeLists.txt` | Prints the 40 hottest code addresses every 512 frames; `tools/symbolize.sh log` turns them into function names. |
 | **Frame-phase timers** | always on in `pd_render.cpp` | `profile (avg of 128 frames, ms): logic+bsp ... flats ... columns ...` on the console. |
@@ -385,11 +388,10 @@ What changed from upstream, in one paragraph: `doomtype.h` (short-pointer base f
 
 ## Status and known gaps
 
-Working: all shareware levels, demos, menus, automap, wipes, status bar, 8-channel sound, BLE gamepad with bonding and auto-reconnect, mute, both orientations, battery monitoring.
+Working: all shareware levels, demos, menus, automap, wipes, status bar, OPL2 music, 8-channel sound, BLE gamepad with bonding and auto-reconnect, mute, both orientations, battery monitoring.
 
 Not there yet:
 
-- **Music.** The RP2040 port emulates an OPL2 synth on its second core. With one core that is the stretch goal; the module is stubbed.
 - **Savegames.** Upstream wrote raw flash sectors on the RP2040; the `saves` partition is reserved but the slot code is stubbed, so saving reports "not enough space".
 - **Battery runtime** has not been measured yet. The firmware logs uptime and battery voltage to NVS every minute and prints the previous run's duration at boot, so the number is one full discharge away.
 - Network play, USB keyboards, the DOS-prompt exit screen: removed.

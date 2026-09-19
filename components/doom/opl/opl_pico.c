@@ -437,6 +437,28 @@ static void OPL_Pico_PortWrite(opl_port_t port, unsigned int value)
     }
     else if (port == OPL_DATA_PORT)
     {
+#if OPL_HALF_RATE
+        // DIABLITO: the chip is clocked at half its native sample rate (24,858 Hz) to halve the
+        // synthesis cost. Everything time-based therefore runs at half speed, and OPL2 lets us
+        // undo that exactly at the register level: +1 block = one octave up (2x frequency), and
+        // +1 on an attack/decay/release rate = 2x envelope speed. (LFO vibrato/tremolo stay at
+        // half speed; block 7 notes cannot go higher and stay an octave low. Both are rare/subtle.)
+        unsigned int r = register_num & 0xff;
+        if (r >= 0x60 && r <= 0x75) {                       // AR | DR
+            unsigned int ar = value >> 4, dr = value & 15;
+            if (ar && ar < 15) ar++;
+            if (dr && dr < 15) dr++;
+            value = (ar << 4) | dr;
+        } else if (r >= 0x80 && r <= 0x95) {                // SL | RR
+            unsigned int rr = value & 15;
+            if (rr && rr < 15) rr++;
+            value = (value & 0xf0) | rr;
+        } else if (r >= 0xb0 && r <= 0xb8) {                // key-on | block | fnum high
+            unsigned int block = (value >> 2) & 7;
+            if (block < 7) block++;
+            value = (value & ~0x1cu) | (block << 2);
+        }
+#endif
         WriteRegister(register_num, value);
     }
 }

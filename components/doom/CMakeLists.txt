@@ -16,15 +16,17 @@ idf_component_register(
         ${S}/tiny_huff.c ${S}/musx_decoder.c ${S}/image_decoder.c ${S}/pd_render.cpp
         ${S}/adpcm-xq/adpcm-lib.c
         ${S}/pico/i_glob.c ${S}/pico/i_picosound.c
+        # OPL2 music: emu8950 (portable C slot renderer) driven by i_oplmusic through opl_pico
+        ${S}/i_oplmusic.c opl/opl_api.c opl/emu8950.c opl/slot_render.cpp opl/opl_pico.c
         esp/i_video.c esp/i_system.c esp/i_timer.c esp/i_input.c esp/i_sound_glue.c esp/doom_main.c esp/prof.c
     INCLUDE_DIRS include
-    PRIV_INCLUDE_DIRS shim ${S} ${S}/doom ${S}/pico ${S}/adpcm-xq
+    PRIV_INCLUDE_DIRS shim ${S} ${S}/doom ${S}/pico ${S}/adpcm-xq opl
     REQUIRES display
     PRIV_REQUIRES esp_timer driver ble_pad vfs nvs_flash
 )
 
 target_compile_options(${COMPONENT_LIB} PRIVATE
-    -w -Wno-error -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable
+    -fms-extensions -w -Wno-error -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable
     -Wno-unused-parameter -Wno-sign-compare -Wno-missing-field-initializers -Wno-format-truncation
     -Wno-implicit-fallthrough -Wno-char-subscripts -Wno-parentheses -Wno-misleading-indentation
     -Wno-format -Wno-strict-aliasing -Wno-unused-but-set-parameter -Wno-error=unused-but-set-parameter -Wno-error=all)
@@ -35,7 +37,7 @@ target_compile_definitions(${COMPONENT_LIB} PRIVATE
     NDEBUG=1 PICO_ON_DEVICE=1 PICO_BUILD=1 PICO_RP2040=0 PICO_RP2350=0 LIB_PICO_STDLIB=0
     USE_INTERP=0 USE_CORE1_FOR_FLATS=0 USE_CORE1_FOR_REGULAR=0 USE_ZONE_FOR_MALLOC=0
     NO_USE_MOUSE=1 NO_USE_ENDDOOM=1 SUPPORT_OVERLAYS=1 SUPPORT_TEXT=0 TINY_WAD_ADDR=0
-    PICO_AUDIO_I2S_DATA_PIN=23 PICO_AUDIO_I2S_CLOCK_PIN_BASE=20 PICO_SOUND_SAMPLE_FREQ=22050
+    PICO_AUDIO_I2S_DATA_PIN=23 PICO_AUDIO_I2S_CLOCK_PIN_BASE=20
     # small_doom_common (upstream src/CMakeLists.txt)
     SHRINK_MOBJ=1 DOOM_ONLY=1 DOOM_SMALL=1 DOOM_CONST=1 SOUND_LOW_PASS=1 NUM_SOUND_CHANNELS=8
     NO_USE_CHECKSUM=1 NO_USE_RELOAD=1 USE_SINGLE_IWAD=1 NO_USE_WIPE=1 NO_USE_JOYSTICK=1 NO_USE_DEH=1
@@ -50,7 +52,13 @@ target_compile_definitions(${COMPONENT_LIB} PRIVATE
     USE_THINKER_POOL=1 NO_INTERCEPTS_OVERRUN=1 TEMP_IMMUTABLE_DISABLED=1 USE_CONST_SFX=1
     USE_CONST_MUSIC=1 NO_DEMO_RECORDING=1 PICO_NO_TIMING_DEMO=1 NO_USE_EXIT=1
     # doom_tiny (non super tiny: WHD, all demos, finale)
-    DOOM_TINY=1 EMU8950_SLOT_RENDER=1 NO_RDRAW=1 USE_EMU8950_OPL=0 USE_DIRECT_MIDI_LUMP=1
+    DOOM_TINY=1 EMU8950_SLOT_RENDER=1 NO_RDRAW=1 USE_EMU8950_OPL=1 USE_DIRECT_MIDI_LUMP=1
+    # emu8950 diet flags from upstream, with the ARM asm slot renderer off
+    EMU8950_ASM=0 EMU8950_NO_WAVE_TABLE_MAP=1 EMU8950_NO_TLL=1 EMU8950_NO_FLOAT=1 EMU8950_NO_TIMER=1
+    EMU8950_NO_TEST_FLAG=1 EMU8950_SIMPLER_NOISE=1 EMU8950_SHORT_NOISE_UPDATE_CHECK=1 EMU8950_LINEAR_SKIP=1
+    EMU8950_LINEAR_END_OF_NOTE_OPTIMIZATION EMU8950_NO_PERCUSSION_MODE=1 EMU8950_LINEAR=1
+    # half-rate synth (see opl/opl_pico.c): chip, mixer and I2S all run at 49716/2 Hz
+    OPL_HALF_RATE=1 PICO_SOUND_SAMPLE_FREQ=24858
     NO_USE_NET=1 USE_PICO_NET=0 NO_FILE_ACCESS=1 SAVE_COMPRESSED=1 LOAD_COMPRESSED=1 NO_USE_ARGS=1
     NO_USE_SAVE_CONFIG=1 NO_USE_FLOAT=1 USE_VANILLA_KEYBOARD_MAPPING_ONLY=1 NO_USE_LOADING_DISK=1
     USE_WHD=1 NO_Z_MALLOC_USER_PTR=1 FIXED_SCREENWIDTH=1 FLOOR_CEILING_CLIP_8BIT=1 USE_MUSX=1
