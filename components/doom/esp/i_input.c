@@ -75,15 +75,16 @@ static void post_set(uint32_t vk, int type)
     }
 }
 
-// Mute: BOOT held 3 s, remembered in NVS (medal/mute), announced on Doom's own HUD line.
+// Mute: BOOT held 3 s, remembered in NVS (medal/mute), announced with a toast.
 void audio_set_mute(bool m); bool audio_is_muted(void);
+void doom_toast(const char *line1, const char *line2);
 static void set_mute(bool m, bool announce)
 {
     audio_set_mute(m);
     nvs_handle_t h;
     if (nvs_open("medal", NVS_READWRITE, &h) == ESP_OK) { nvs_set_u8(h, "mute", m); nvs_commit(h); nvs_close(h); }
     printf("sound %s\n", m ? "muted" : "unmuted");
-    if (announce) players[consoleplayer].message = m ? "SOUND MUTED" : "SOUND ON";
+    if (announce) doom_toast(m ? "Muted" : "Sound on", "hold BOOT 3 s");
 }
 
 static void medal_power_off(void)
@@ -111,7 +112,7 @@ static uint32_t medal_vkeys(bool serial_boot)   // serial_boot: the bench pad's 
     if (boot && !boot_forgot && now - boot_down_since >= 10000000) {
         boot_forgot = true;
         ble_pad_forget(); ble_pad_scan_any(true);
-        players[consoleplayer].message = "CONTROLLER FORGOTTEN";
+        doom_toast("Controller forgotten", "pair one now");
         printf("gamepad: forgotten, pairing open\n");
     }
     if (pwr && !pwr_down_since) pwr_down_since = now;

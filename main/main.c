@@ -25,39 +25,6 @@ static void log_heap(const char *when)
              esp_get_minimum_free_heap_size(), heap_caps_get_free_size(MALLOC_CAP_DMA));
 }
 
-/* DIABLITO splash: 5x7 glyphs scaled 5x, Doom red on black, up for 1.5 s before the engine starts. */
-static const uint8_t glyph5x7[][7] = {
-    /* D */ { 0x1E, 0x11, 0x11, 0x11, 0x11, 0x11, 0x1E },
-    /* I */ { 0x1F, 0x04, 0x04, 0x04, 0x04, 0x04, 0x1F },
-    /* A */ { 0x0E, 0x11, 0x11, 0x1F, 0x11, 0x11, 0x11 },
-    /* B */ { 0x1E, 0x11, 0x11, 0x1E, 0x11, 0x11, 0x1E },
-    /* L */ { 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x1F },
-    /* T */ { 0x1F, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04 },
-    /* O */ { 0x0E, 0x11, 0x11, 0x11, 0x11, 0x11, 0x0E },
-};
-static void splash(void)
-{
-    static const uint8_t word[8] = { 0, 1, 2, 3, 4, 1, 5, 6 };   /* D I A B L I T O */
-    const int scale = 5, adv = 6 * scale, x0 = (DISPLAY_WIDTH - 8 * adv + scale) / 2, y0 = (DISPLAY_HEIGHT - 7 * scale) / 2;
-    const uint16_t red = __builtin_bswap16(0xB000), black = 0;
-    display_set_viewport(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT);
-    for (int ys = 0; ys < DISPLAY_HEIGHT; ys += STRIP_ROWS) {
-        uint16_t *strip = display_acquire_strip();
-        for (int r = 0; r < STRIP_ROWS; r++) {
-            int y = ys + r, gy = (y - y0) / scale;
-            uint16_t *row = strip + r * DISPLAY_WIDTH;
-            for (int x = 0; x < DISPLAY_WIDTH; x++) {
-                int gx = (x - x0) / adv, cx = ((x - x0) % adv) / scale;
-                bool on = y >= y0 && gy < 7 && x >= x0 && gx < 8 && cx < 5 && (glyph5x7[word[gx]][gy] & (0x10 >> cx));
-                row[x] = on ? red : black;
-            }
-        }
-        display_submit_strip(ys, STRIP_ROWS);
-    }
-    display_wait_done();
-    vTaskDelay(pdMS_TO_TICKS(1500));
-}
-
 /* Battery run log: every minute, uptime and battery millivolts go to NVS; the previous run's last
  * record is printed at boot, which is how a full-charge runtime gets measured without a cable. */
 typedef struct { uint32_t boot, uptime_s; int mv; } runlog_t;
@@ -115,7 +82,6 @@ void app_main(void)
     log_heap("at boot");
     display_init();
     log_heap("after display");
-    splash();
     mount_wad();
     log_heap("after wad mmap");
     ESP_LOGI(TAG, "main task stack high-water: %u bytes free", uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t));

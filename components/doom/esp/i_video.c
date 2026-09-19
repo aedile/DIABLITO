@@ -813,6 +813,46 @@ static inline void downsample_line(const uint16_t *s, uint16_t *d) {
 }
 #endif
 
+// Toast: NESTOR-style popup (black box, white frame, yellow line over a white line) composited
+// onto the finished strip rows, so it shows on every screen: title, menu, demo, level.
+#include "font8x8.h"
+#define TOAST_H 48
+#define TOAST_MAX ((DOOM_VIEW_W - 32) / 8)
+static char toast_line[2][TOAST_MAX + 1];
+static int toast_w;
+static volatile int64_t toast_until;
+
+void doom_toast(const char *line1, const char *line2)
+{
+    strlcpy(toast_line[0], line1, sizeof toast_line[0]);
+    strlcpy(toast_line[1], line2, sizeof toast_line[1]);
+    int n = strlen(toast_line[0]) > strlen(toast_line[1]) ? strlen(toast_line[0]) : strlen(toast_line[1]);
+    toast_w = 8 * n + 32;
+    toast_until = esp_timer_get_time() + 1500000;
+}
+
+static inline void toast_row(uint16_t *row, int y)
+{
+    if (!toast_until) return;
+    int r = y - (SCREENHEIGHT - TOAST_H) / 2;
+    if (r < 0 || r >= TOAST_H) return;
+    const uint16_t white = 0xFFFF, black = 0, yellow = __builtin_bswap16(0xFFE0);
+    int x0 = (DOOM_VIEW_W - toast_w) / 2;
+    bool edge = r == 0 || r == TOAST_H - 1;
+    for (int x = 0; x < toast_w; x++) row[x0 + x] = (edge || x == 0 || x == toast_w - 1) ? white : black;
+    for (int k = 0; k < 2; k++) {
+        int gr = r - (12 + k * 16);
+        if (gr < 0 || gr >= 8) continue;
+        const char *t = toast_line[k];
+        int tx = (DOOM_VIEW_W - 8 * (int)strlen(t)) / 2;
+        for (; *t; t++, tx += 8) {
+            if (*t < 32 || *t > 126) continue;
+            uint8_t bits = font8x8[*t - 32][gr];
+            for (int c = 0; c < 8; c++) if (bits & (0x80 >> c)) row[tx + c] = k ? white : yellow;
+        }
+    }
+}
+
 // Fast path for a 3D-view row with no overlay on it: palette-convert and downsample in one
 // pass, four source pixels per load, straight into the DMA strip. No 320-wide intermediate.
 static inline void convert_downsample(const uint8_t *src, uint16_t *d) {
@@ -833,6 +873,7 @@ static inline void convert_downsample(const uint8_t *src, uint16_t *d) {
 // into 16-row DMA strips: strip N+1 is composed while strip N is on the SPI wire.
 void fill_scanlines() {
     frame++;
+    if (toast_until && esp_timer_get_time() > toast_until) toast_until = 0;
     uint16_t line[SCREENWIDTH];
     uint16_t *strip = display_acquire_strip();
     int row = 0, y0 = 0;
@@ -854,6 +895,7 @@ void fill_scanlines() {
         }
         downsample_line(line, strip + row * DOOM_VIEW_W);
     next_row:
+        toast_row(strip + row * DOOM_VIEW_W, scanline);
         if (++row == STRIP_ROWS || scanline == SCREENHEIGHT - 1) {
             display_submit_strip(y0, row);
             y0 += row;
