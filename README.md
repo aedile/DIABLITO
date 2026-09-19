@@ -2,7 +2,10 @@
 
 **The full shareware DOOM on a $20 ESP32-C6 board. No PSRAM. One 160 MHz RISC-V core. 512 KB of RAM. ~30 FPS with OPL2 music and sound effects, played with a Bluetooth gamepad.**
 
-<!-- hero video / gif goes here -->
+<p align="center">
+  <a href="media/demo-web.mp4"><img src="media/demo-hero.gif" width="360" alt="DIABLITO running Doom on the ESP32-C6 board, played with a Bluetooth gamepad"></a><br/>
+  <a href="media/demo-web.mp4">Watch the full two-minute demo with sound</a> (12 MB MP4)
+</p>
 
 DIABLITO is a port of [Graham Sanderson's RP2040 Doom](https://github.com/kilograham/rp2040-doom) (a Chocolate Doom derivative) to ESP-IDF on the [Waveshare ESP32-C6-LCD-1.69](https://www.waveshare.com/esp32-c6-lcd-1.69.htm): a thumb-sized board with a 1.69" 240x280 LCD, a speaker, a LiPo charger and two buttons. All nine levels of `DOOM1.WAD`, the three attract-mode demos, the status bar, the menus, the screen melt, the automap, 8-channel sound effects, and the AdLib soundtrack from an emulated OPL2 synth. Nothing external: no PSRAM chip, no SD card, no second MCU.
 
