@@ -196,12 +196,12 @@ flowchart LR
 
 ## Build your own
 
-No soldering is needed if you run it from USB. For a pocket version, add a battery.
+No soldering is needed, on USB or on battery: the board ships with a 1.25 mm pitch battery header already installed. For a pocket version, plug in a battery.
 
 | Part | Notes | Link |
 |---|---|---|
 | **Waveshare ESP32-C6-LCD-1.69** | The whole computer: MCU, LCD, speaker, charger, buttons. About $20. Get the non-touch version. | [Amazon](https://a.co/d/hGBAeMq) · [Waveshare](https://www.waveshare.com/esp32-c6-lcd-1.69.htm) |
-| **803040 3.7 V LiPo, 1000 mAh** (optional) | Plugs into / solders to the board's battery pads. About $9. | [Amazon](https://a.co/d/05E4ZhiI) |
+| **803040 3.7 V LiPo, 1000 mAh** (optional) | Plugs into the board's 1.25 mm pitch battery header, no soldering. About $9. | [Amazon](https://a.co/d/05E4ZhiI) |
 | **BLE gamepad** | Xbox Wireless Controller, model 1708 or later (the ones with Bluetooth). This is how you play. | any retailer |
 | USB-C data cable | For flashing and power | |
 
