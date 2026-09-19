@@ -396,7 +396,7 @@ Working: all shareware levels, demos, menus, automap, wipes, status bar, OPL2 mu
 
 Not there yet:
 
-- **Battery runtime** has not been measured yet. The firmware logs uptime and battery voltage to NVS every minute and prints the previous run's duration at boot, so the number is one full discharge away.
+- **Battery runtime** is not quoted because it depends on the cell you fit (runtime = capacity / average current). The average current has not been measured yet. The firmware logs uptime and battery voltage to NVS every minute and prints the previous run's duration at boot, so one run-down of a cell of known capacity gives you the number.
 - Network play, USB keyboards, the DOS-prompt exit screen: removed.
 
 Everything that was cut, and why, is listed in [`NOTES/disabled-and-stubbed.md`](NOTES/disabled-and-stubbed.md).

@@ -35,7 +35,11 @@ Date: 2026-09-14. Log: `NOTES/logs/phase7-run1-idle.log`.
 - Idle sleep triggered at 120 s of untouched attract loop, frame output stopped, heap steady at
   46,412, no reset (`phase7-run1-idle.log`).
 - Splash and wake-on-button: Jesse's eyes and thumb (pending).
-- **Battery runtime, display on:** pending. Protocol: charge fully, unplug, leave it in the attract loop until it dies, plug back in, boot, read the
-  "previous run lasted" line.
+- **Battery runtime, display on:** not measured, by Jesse's decision 2026-09-19. Runtime is a property of the
+  cell fitted, not of the firmware, and the only cell on hand is 3000 mAh, which takes too long to drain.
+  What would be portable is the average current (runtime = mAh / mA). It will fall out of the planned
+  small-battery run that also exercises the low warning and cutoff (`extras.md`): charge fully, unplug,
+  leave it in attract until it cuts off, boot, read the "previous run lasted" line, divide the cell's mAh
+  by the hours. No current figure is claimed until then.
 
-Gate: open until the runtime number is in.
+Gate: everything built and verified except this number, which stays outstanding for the reason above.
