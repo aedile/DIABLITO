@@ -1,12 +1,12 @@
-#!/opt/homebrew/Cellar/esptool/5.4.0/libexec/bin/python
-"""Reset the board over USB-Serial-JTAG and capture its console for N seconds.
+#!/usr/bin/env python3
+"""Reset the board over USB-Serial-JTAG and capture its console for N seconds (needs pyserial).
 Usage: tools/monitor.py [seconds=20] [logfile] [--no-reset] [--port /dev/cu.usbmodemXXX] [--script "5:q,6:s,7:j"]"""
 import glob, sys, time, serial
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 secs = float(args[0]) if args else 20.0
 logfile = args[1] if len(args) > 1 else None
-port = sys.argv[sys.argv.index('--port') + 1] if '--port' in sys.argv else glob.glob('/dev/cu.usbmodem*')[0]
+port = sys.argv[sys.argv.index('--port') + 1] if '--port' in sys.argv else (glob.glob('/dev/cu.usbmodem*') + glob.glob('/dev/ttyACM*'))[0]
 s = serial.Serial(port, 115200, timeout=0.05)
 if '--no-reset' not in sys.argv:
     s.dtr = False; s.rts = True; time.sleep(0.1); s.rts = False   # RTS -> EN on the C6's USB-Serial-JTAG
