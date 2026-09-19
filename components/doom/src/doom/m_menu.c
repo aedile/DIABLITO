@@ -850,6 +850,9 @@ void M_SaveSelect(int choice)
     {
         savegamestrings[choice][0] = 0;
 
+#if ESP_PLATFORM
+        joypadSave = true;   // DIABLITO: the pad posts key events and there is no keyboard to type a name with
+#endif
         if (joypadSave)
         {
             SetDefaultSaveName(choice);

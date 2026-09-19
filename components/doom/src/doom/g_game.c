@@ -1760,6 +1760,7 @@ void G_DoLoadGame (void) {
     P_SaveGameGetExistingFlashSlotAddresses(slots, g_load_slot+1);
     if (!slots[g_load_slot].data) return;
     const uint8_t *load_buffer = slots[g_load_slot].data;
+    printf("LOAD GAME slot %d, %d bytes\n", g_load_slot, slots[g_load_slot].size);
 #endif
     sg_bi = &bi;
     th_bit_input_init(sg_bi, load_buffer);

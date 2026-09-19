@@ -170,7 +170,7 @@ The constraint hiding in that chart: everything Doom reaches through a 16-bit po
 | `phy_init` | 0xF000 | 4 KB | RF calibration |
 | `factory` | 0x10000 | 2 MB | firmware (1.05 MB used) |
 | `wad` | 0x210000 | 4 MB | `doom1.whd`, memory-mapped read-only (2.07 MB used) |
-| `saves` | 0x610000 | 128 KB | reserved for savegames |
+| `saves` | 0x610000 | 128 KB | eight 16 KB savegame slots, memory-mapped for loading |
 
 ### Input and audio paths
 
@@ -382,17 +382,16 @@ third_party/           upstream repos as submodules, shareware doom1.wad
 NOTES/                 hardware map, memory budget, one file per phase with measurements, logs
 ```
 
-What changed from upstream, in one paragraph: `doomtype.h` (short-pointer base for C6 SRAM), `m_fixed.h` (ARM asm multiply skipped), `w_file_memory.c` (WAD base is a runtime mmap pointer), `pd_render.cpp` (single core, no interpolator, heap buffers, phase timers), `p_saveg.c` (flash saves stubbed), plus the new `esp/` layer. `git diff --no-index third_party/rp2040-doom/src components/doom/src` shows all of it.
+What changed from upstream, in one paragraph: `doomtype.h` (short-pointer base for C6 SRAM), `m_fixed.h` (ARM asm multiply skipped), `w_file_memory.c` (WAD base is a runtime mmap pointer), `pd_render.cpp` (single core, no interpolator, heap buffers, phase timers), `p_saveg.c` (save slots in an ESP-IDF partition), plus the new `esp/` layer. `git diff --no-index third_party/rp2040-doom/src components/doom/src` shows all of it.
 
 ---
 
 ## Status and known gaps
 
-Working: all shareware levels, demos, menus, automap, wipes, status bar, OPL2 music, 8-channel sound, BLE gamepad with bonding and auto-reconnect, mute, both orientations, battery monitoring.
+Working: all shareware levels, demos, menus, automap, wipes, status bar, OPL2 music, 8-channel sound, save and load (eight slots, auto-named, survive power cycles), BLE gamepad with bonding and auto-reconnect, mute, both orientations, battery monitoring.
 
 Not there yet:
 
-- **Savegames.** Upstream wrote raw flash sectors on the RP2040; the `saves` partition is reserved but the slot code is stubbed, so saving reports "not enough space".
 - **Battery runtime** has not been measured yet. The firmware logs uptime and battery voltage to NVS every minute and prints the previous run's duration at boot, so the number is one full discharge away.
 - Network play, USB keyboards, the DOS-prompt exit screen: removed.
 

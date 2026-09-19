@@ -2637,12 +2637,55 @@ void P_UnArchiveSpecials (void)
 }
 
 #if PICO_ON_DEVICE && ESP_PLATFORM
-// ponytail: no save slots yet; the 'saves' partition gets wired in a later phase
-void P_SaveGameGetExistingFlashSlotAddresses(flash_slot_info_t *slots, int count) {
-    for (int i = 0; i < count; i++) { slots[i].data = NULL; slots[i].size = 0; }
+// DIABLITO savegames: eight fixed 16 KB slots in the 'saves' flash partition, each
+// [magic][size][compressed save]. The partition is memory-mapped once, so loading reads a slot in
+// place exactly as the RP2040 read its XIP flash; saving is one erase + one write of that slot.
+#include "esp_partition.h"
+#include "picodoom.h"
+#define SAVE_SLOTS 8
+#define SAVE_SLOT_BYTES 0x4000
+#define SAVE_MAGIC 0x47535644u   /* "DVSG" */
+typedef struct { uint32_t magic, size; } save_slot_hdr_t;
+static const esp_partition_t *save_part;
+static const uint8_t *save_map;
+
+static bool saves_open(void) {
+    if (save_map) return true;
+    save_part = esp_partition_find_first(ESP_PARTITION_TYPE_DATA, 0x41, "saves");
+    if (!save_part || save_part->size < SAVE_SLOTS * SAVE_SLOT_BYTES) { printf("saves: no usable partition\n"); return false; }
+    esp_partition_mmap_handle_t h; const void *ptr;
+    if (esp_partition_mmap(save_part, 0, SAVE_SLOTS * SAVE_SLOT_BYTES, ESP_PARTITION_MMAP_DATA, &ptr, &h) != ESP_OK) { printf("saves: mmap failed\n"); return false; }
+    save_map = ptr;
+    return true;
 }
+
+void P_SaveGameGetExistingFlashSlotAddresses(flash_slot_info_t *slots, int count) {
+    bool ok = saves_open();
+    for (int i = 0; i < count; i++) {
+        slots[i].data = NULL; slots[i].size = 0;
+        if (!ok || i >= SAVE_SLOTS) continue;
+        const save_slot_hdr_t *hdr = (const save_slot_hdr_t *)(save_map + i * SAVE_SLOT_BYTES);
+        if (hdr->magic == SAVE_MAGIC && hdr->size && hdr->size <= SAVE_SLOT_BYTES - sizeof *hdr) {
+            slots[i].data = (const uint8_t *)(hdr + 1);
+            slots[i].size = hdr->size;
+        }
+    }
+}
+
+// buffer == NULL clears the slot
 boolean P_SaveGameWriteFlashSlot(int slot, const uint8_t *buffer, uint size, uint8_t *buffer4k) {
-    return false;
+    if (!saves_open() || slot < 0 || slot >= SAVE_SLOTS) return false;
+    if (buffer && size > SAVE_SLOT_BYTES - sizeof(save_slot_hdr_t)) { printf("saves: %u bytes does not fit a slot\n", size); return false; }
+    pd_start_save_pause();
+    esp_err_t e = esp_partition_erase_range(save_part, slot * SAVE_SLOT_BYTES, SAVE_SLOT_BYTES);
+    if (e == ESP_OK && buffer) {
+        save_slot_hdr_t hdr = { SAVE_MAGIC, size };
+        e = esp_partition_write(save_part, slot * SAVE_SLOT_BYTES + sizeof hdr, buffer, size);
+        if (e == ESP_OK) e = esp_partition_write(save_part, slot * SAVE_SLOT_BYTES, &hdr, sizeof hdr);   // header last: a torn write leaves an empty slot
+    }
+    pd_end_save_pause();
+    printf("saves: slot %d %s, %u bytes (%s)\n", slot, buffer ? "written" : "cleared", buffer ? size : 0, esp_err_to_name(e));
+    return e == ESP_OK;
 }
 #elif PICO_ON_DEVICE
 #include "w_wad.h"

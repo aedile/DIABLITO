@@ -1,8 +1,9 @@
 # DIABLITO flash layout, 16 MB W25Q128 on the Waveshare ESP32-C6-LCD-1.69.
+# saves = 8 x 16 KB savegame slots (raw, see p_saveg.c).
 # wad = doom1.whd (2,073,676 bytes) written by `idf.py flash` via esptool_py_flash_to_partition.
 # Name,     Type, SubType, Offset,   Size,     Flags
 nvs,        data, nvs,     0x9000,   0x6000,
 phy_init,   data, phy,     0xf000,   0x1000,
 factory,    app,  factory, 0x10000,  0x200000,
 wad,        data, 0x40,    0x210000, 0x400000,
-saves,      data, nvs,     0x610000, 0x20000,
+saves,      data, 0x41,    0x610000, 0x20000,

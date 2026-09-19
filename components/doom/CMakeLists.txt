@@ -22,7 +22,7 @@ idf_component_register(
     INCLUDE_DIRS include
     PRIV_INCLUDE_DIRS shim ${S} ${S}/doom ${S}/pico ${S}/adpcm-xq opl
     REQUIRES display
-    PRIV_REQUIRES esp_timer driver ble_pad vfs nvs_flash
+    PRIV_REQUIRES esp_timer driver ble_pad vfs nvs_flash esp_partition
 )
 
 target_compile_options(${COMPONENT_LIB} PRIVATE
