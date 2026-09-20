@@ -11,7 +11,7 @@ DIABLITO is a port of [Graham Sanderson's RP2040 Doom](https://github.com/kilogr
 
 | | |
 |---|---|
-| Frame rate with music, demos + E1M1 (4,190 frames) | **29.5 FPS** mean, 1.3% of frames under 20 FPS, worst 64 ms |
+| Frame rate with music, demos + E1M1 (4,190 frames) | **29.5 FPS** mean, 1.3% of frames under 20 FPS, worst 64.5 ms |
 | Frame rate with the synth idle | 33-35 FPS |
 | Free heap while playing, BLE + music + sound running | 37 KB of 512 KB |
 | Firmware image | 1.05 MB (Doom + ESP-IDF + NimBLE) |
@@ -333,7 +333,7 @@ flowchart LR
 | **Screen sleep** | NVS key `medal/idle_s`, or `-DIDLE_SLEEP_S=120` at build | Off by default (attract mode stays on screen). When enabled, the panel sleeps after N idle seconds in attract and wakes on any button. |
 | **Music quality vs speed** | `OPL_HALF_RATE` and `PICO_SOUND_SAMPLE_FREQ` in `components/doom/CMakeLists.txt` | Default runs the OPL2 at half its native rate (24,858 Hz). Remove `OPL_HALF_RATE`, set the rate to 49716 and double `DMA_DESCS` for the exact chip at about 22 FPS. |
 | **Remembered settings** | `components/doom/esp/extras.c`, NVS blob `medal/settings` | Sound and music volume, turn sensitivity, messages, gamma and the last skill you played are written to NVS two seconds after they change and restored at boot. Bump `SETTINGS_VERSION` to discard old blobs when the struct changes. |
-| **Battery warning and cutoff** | `BATTERY_LOW_PCT`, `BATTERY_CUTOFF_MV` in `extras.c` | A toast every five minutes at 15 % or less; the medal powers itself off after three consecutive readings under 3.30 V. |
+| **Battery warning and cutoff** | `BATTERY_LOW_PCT`, `BATTERY_CUTOFF_MV` in `extras.c` | A toast every five minutes at 15 % or less; the board powers itself off after three consecutive readings under 3.30 V. |
 | **Doom's heap** | `DOOM_ZONE_SIZE` in `components/doom/esp/i_system.c` | 64 KB; peak use measured across the shareware levels and demos is 29 KB. It must stay inside the 256 KB short-pointer window. |
 | **Profiler** | uncomment `DOOM_PROFILE=1` in `components/doom/CMakeLists.txt` | Prints the 40 hottest code addresses every 512 frames; `tools/symbolize.sh log` turns them into function names. |
 | **Frame-phase timers** | always on in `pd_render.cpp` | `profile (avg of 128 frames, ms): logic+bsp ... flats ... columns ...` on the console. |
